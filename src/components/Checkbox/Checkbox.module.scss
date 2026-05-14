@@ -7,7 +7,9 @@
 }
 
 .input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .customCheckbox {
@@ -18,8 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-sm);
-  background: var(--color-gray-0);
   transition: all 0.2s ease;
 }
 

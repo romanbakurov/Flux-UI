@@ -7,39 +7,30 @@ export interface CheckboxProps {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
-
-  isDisabled?: boolean;
-  error?: boolean;
-  size?: CheckboxSize;
+  disabled?: boolean;
 }
 
 export const Checkbox = ({
   label,
-  checked = false,
+  checked,
   onChange,
-  isDisabled = false,
-  error,
-  size = 'md',
+  disabled = false,
 }: CheckboxProps) => {
   return (
-    <label className={styles.wrapper}>
+    <label className={cn(styles.wrapper, { [styles.disabled]: disabled })}>
       <input
         type='checkbox'
         checked={checked}
-        isDisabled={isDisabled}
+        disabled={disabled}
         onChange={(e) => onChange(e.target.checked)}
-        className={cn(styles.input, styles[size], {
-          [styles.error]: !!error,
-        })}
+        className={styles.input}
       />
 
       <span className={styles.customCheckbox}>
-        <span className={styles.checkmark}>✓</span>
+        {checked && <span className={styles.checkmark}>✓</span>}
       </span>
 
       <span className={styles.label}>{label}</span>
-
-      {error && <span className={styles.errorText}>{error}</span>}
     </label>
   );
 };

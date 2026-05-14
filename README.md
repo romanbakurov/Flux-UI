@@ -3,8 +3,6 @@
 Flux UI is a lightweight, flexible React design system built with SCSS Modules and design tokens.  
 It provides a consistent foundation for building modern, accessible, and scalable user interfaces.
 
----
-
 ## ✨ Features
 
 - ⚛️ React components with TypeScript support
@@ -18,7 +16,6 @@ It provides a consistent foundation for building modern, accessible, and scalabl
 ---
 
 ## 📦 Installation
-
 Flux UI is designed to be used with React + TypeScript.
 
 ```bash
@@ -26,7 +23,6 @@ npm install flux-ui
 ````
 
 ## 🚀 Usage
-
 ```tsx
 import { Input, Checkbox } from 'flux-ui';
 
@@ -50,7 +46,6 @@ export default function App() {
 ```
 
 ## 🎨 Design Tokens
-
 Flux UI uses CSS variables for consistent styling across the system.
 #### Example:
 ```css
@@ -70,7 +65,6 @@ Flux UI uses CSS variables for consistent styling across the system.
 ```
 
 ## 🧱 Component Philosophy
-
 Flux UI follows a controlled component pattern:
 
 - All form components are controlled (value / checked + onChange)
@@ -80,7 +74,6 @@ Flux UI follows a controlled component pattern:
 
 
 ## 📚 Storybook
-
 Run Storybook locally:
 ```bash
 npm run storybook
@@ -92,7 +85,6 @@ npm run build-storybook
 ```
 
 ## 🧪 Development
-
 Start development server:
 ```bash
 npm run dev
@@ -133,10 +125,7 @@ Flux UI is built around:
 - Minimal abstraction leakage
 - Token-driven styling system
 
----
-
 ## 📌 Roadmap
-
 - [x] Input component
 - [x] Checkbox component
 - [ ] Select component
