@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Select, type SelectProps } from './Select.tsx';
 import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
 
 const meta = {
   title: 'Components/Select',
@@ -43,7 +44,7 @@ export const Basic: Story = {
       { label: 'Spain', value: 'es' },
       { label: 'Germany', value: 'de' },
     ],
-    onChange: fn(),
+    onChange: action('onChange'),
   },
 
   render: (args) => <SelectWithState {...args} />,
