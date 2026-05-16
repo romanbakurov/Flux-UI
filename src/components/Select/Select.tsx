@@ -52,15 +52,12 @@ export const Select = ({
     if (!controlRef.current) return;
 
     const rect = controlRef.current.getBoundingClientRect();
-    setDropdownPosition(
-      {
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX,
-        width: rect.width,
-      },
-      []
-    );
-  });
+    setDropdownPosition({
+      top: rect.bottom + window.scrollY,
+      left: rect.left + window.scrollX,
+      width: rect.width,
+    });
+  }, []);
 
   //Open/close
   const toggleOpen = useCallback(() => {

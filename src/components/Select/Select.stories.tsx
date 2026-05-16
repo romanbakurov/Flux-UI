@@ -43,7 +43,7 @@ export const Basic: Story = {
       { label: 'Spain', value: 'es' },
       { label: 'Germany', value: 'de' },
     ],
-    onChange: (value) => console.log('Selected:', value),
+    onChange: fn(),
   },
 
   render: (args) => <SelectWithState {...args} />,
