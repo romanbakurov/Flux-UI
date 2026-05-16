@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Select, type SelectProps } from './Select.tsx';
 import { useState } from 'react';
-import { action } from '@storybook/addon-actions';
 
 const meta = {
   title: 'Components/Select',
   component: Select,
   tags: ['autodocs'],
   argTypes: {
+    onChange: { action: 'changed' },
     error: {
       control: 'text',
       description: 'Error message (string)',
@@ -44,7 +44,6 @@ export const Basic: Story = {
       { label: 'Spain', value: 'es' },
       { label: 'Germany', value: 'de' },
     ],
-    onChange: action('onChange'),
   },
 
   render: (args) => <SelectWithState {...args} />,
