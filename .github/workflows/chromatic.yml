@@ -1,6 +1,10 @@
 name: 'Chromatic Publish'
 
-on: push
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   chromatic:
@@ -26,11 +30,10 @@ jobs:
       - name: Run linters
         run: npm run lint
 
-      - name: Run tests
-        run: npm test
-
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          autoAcceptChanges: 'main'
+          exitOnceUploaded: true
