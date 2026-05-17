@@ -1,5 +1,8 @@
 import { useState, useCallback } from 'react';
 
+//Сделать одинаковую работу для:
+// controlled (value + onChange)
+// uncontrolled (internal state)
 type UseControllableStateProps<T> = {
   value?: T;
   defaultValue: T;
