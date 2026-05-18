@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useRef } from 'react';
 
-export type Position = {
+type Position = {
   top: number;
   left: number;
   width: number;
