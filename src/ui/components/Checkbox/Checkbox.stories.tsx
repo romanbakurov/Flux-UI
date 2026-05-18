@@ -7,7 +7,7 @@ const meta = {
   component: Checkbox,
   tags: ['autodocs'],
   args: {
-    onChange: fn(),
+    onCheckedChange: fn(),
   },
 } satisfies Meta<typeof Checkbox>;
 
