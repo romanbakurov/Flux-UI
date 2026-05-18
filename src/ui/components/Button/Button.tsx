@@ -12,12 +12,14 @@ export const Button = ({
   fullWidth = false,
   className,
   onClick,
+  ariaLabel,
 }: ButtonProps) => {
   return (
     <button
       type='button'
       disabled={disabled}
       onClick={onClick}
+      aria-label={ariaLabel}
       className={cn(styles.button, styles[variant], styles[size], className, {
         [styles.disabled]: disabled,
         [styles.fullWidth]: fullWidth,
