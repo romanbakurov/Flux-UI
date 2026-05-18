@@ -37,6 +37,7 @@ export const Basic: Story = {
     size: 'medium',
     disabled: false,
     iconPosition: 'left',
+    ariaLabel: 'Download',
   },
   render: ({ iconPosition, ...args }) => {
     const icon = <Download />;

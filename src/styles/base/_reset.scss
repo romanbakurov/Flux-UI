@@ -11,14 +11,19 @@ body {
 }
 
 body {
-  font-family: var(--font-family-base);
+  color: #111;
   font-size: 16px;
   line-height: 1.5;
-  color: #111;
   background: #fff;
+  font-family: var(--font-family-base);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: inherit;
 }
@@ -27,7 +32,8 @@ p {
   margin: 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -39,15 +45,18 @@ a {
 }
 
 button {
-  font: inherit;
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
+  font: inherit;
 }
 
-input, textarea, select {
-  font: inherit;
+input,
+textarea,
+select {
+  margin: 0;
   border: none;
+  font: inherit;
   outline: none;
 }
 

@@ -4,6 +4,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonColor = 'primary' | 'secondary' | 'delete';
 
 export interface ButtonProps {
+  ariaLabel?: string | false;
   children: React.ReactNode;
   variant?: ButtonColor;
   size?: ButtonSize;

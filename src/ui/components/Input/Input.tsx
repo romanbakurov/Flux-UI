@@ -1,23 +1,10 @@
 import styles from './Input.module.scss';
 import { cn } from '@/ui/utils/cn';
-import { useId } from 'react';
-import { FormField } from '@/ui/components/FormField';
-
-export type InputSize = 'sm' | 'md' | 'lg';
-
-export interface InputProps {
-  label: string;
-  placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
-
-  size?: InputSize;
-  error?: string;
-  disabled?: boolean;
-  required?: boolean;
-}
+import { FormField } from '../FormField';
+import type { InputProps } from './types';
 
 export const Input = ({
+  id,
   label,
   placeholder,
   value,
@@ -27,8 +14,6 @@ export const Input = ({
   disabled,
   required,
 }: InputProps) => {
-  const id = useId();
-
   return (
     <FormField id={id} label={label} error={error} required={required}>
       <input
