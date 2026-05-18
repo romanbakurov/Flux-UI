@@ -31,12 +31,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <label
         htmlFor={generatedId}
-        className={cn(styles.wrapper, disabled && styles.disabled, className)}
+        className={cn(styles.wrapper, disabled, className)}
       >
         <input
           ref={ref}
           id={generatedId}
           type='checkbox'
+          checked={isChecked}
           aria-checked={isChecked}
           disabled={disabled}
           onChange={handleChange}
