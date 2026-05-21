@@ -1,9 +1,9 @@
 import type { RadioGroupProps } from './types';
 import { FormField } from '../FormField';
-import { useControllableState } from '@ui/hooks/useControllableState';
+import { useControllableState } from '@hooks/useControllableState';
 import styles from './RadioGroup.module.scss';
 import { useId } from 'react';
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 
 export const RadioGroup = ({
   label,

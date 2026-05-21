@@ -15,6 +15,7 @@ export const useFloatingPosition = () => {
   });
 
   const refRef = useRef<HTMLElement | null>(null);
+  const isFirstRender = useRef(true);
 
   const updatePosition = useCallback(() => {
     if (!refRef.current) return;
@@ -41,9 +42,11 @@ export const useFloatingPosition = () => {
 
   const setRef = useCallback(
     (ref: HTMLElement | null) => {
-      if (ref !== refRef.current) {
-        refRef.current = ref;
-        if (ref) updatePosition();
+      refRef.current = ref;
+
+      if (ref && isFirstRender.current) {
+        updatePosition();
+        isFirstRender.current = false;
       }
     },
     [updatePosition]

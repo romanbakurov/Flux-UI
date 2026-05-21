@@ -1,10 +1,10 @@
 import styles from './Select.module.scss';
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 import { useState, useId, useRef, useMemo } from 'react';
-import { useControllableState } from '@/ui/hooks/useControllableState';
-import { useKeyboardNavigation } from '@/ui/hooks/useKeyboardNavigation';
-import { useOutsideClick } from '@/ui/hooks/useOutsideClick';
-import { useFloatingPosition } from '@/ui/hooks/useFloatingPosition';
+import { useControllableState } from '@hooks/useControllableState';
+import { useKeyboardNavigation } from '@hooks/useKeyboardNavigation';
+import { useOutsideClick } from '@hooks/useOutsideClick';
+import { useFloatingPosition } from '@hooks/useFloatingPosition';
 import { SelectTrigger } from './SelectTrigger/SelectTrigger';
 import { SelectDropdown } from './SelectDropdown/SelectDropdown';
 import type { SelectProps } from './types';

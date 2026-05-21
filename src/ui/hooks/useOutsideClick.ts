@@ -17,7 +17,6 @@ export const useOutsideClick = (
 
     const listener = (e: MouseEvent) => {
       const target = e.target as Node;
-
       const isOutside = refsRef.current.every(
         (ref) => ref.current && !ref.current.contains(target)
       );

@@ -1,5 +1,5 @@
 import styles from './Input.module.scss';
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 import { FormField } from '../FormField';
 import type { InputProps } from './types';
 import { forwardRef } from 'react';
