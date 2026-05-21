@@ -26,9 +26,13 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
+}
 
-  &:hover:not(.disabled) {
-    color: var(--color-primary-accent);
+.button:hover:not(:disabled) .icon {
+  color: var(--color-primary-accent);
+
+  svg {
+    fill: currentcolor;
   }
 }
 
@@ -110,7 +114,7 @@
 .itemIcon {
   width: 20px;
   height: 20px;
-  color: var(--color-primary);
+  color: inherit;
   transition: transform 0.2s ease;
 
   svg {
