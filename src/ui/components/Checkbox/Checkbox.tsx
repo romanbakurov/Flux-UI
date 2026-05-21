@@ -1,7 +1,7 @@
 import styles from './Checkbox.module.scss';
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 import { forwardRef, ChangeEvent, useId } from 'react';
-import { useControllableState } from '../../hooks';
+import { useControllableState } from '@hooks/useControllableState';
 import type { CheckboxProps } from './types';
 import Check from '@/assets/icons/Check.svg?react';
 

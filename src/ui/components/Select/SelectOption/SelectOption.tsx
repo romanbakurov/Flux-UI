@@ -1,4 +1,4 @@
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 import styles from './SelectOption.module.scss';
 import type { SelectOptionProps } from './type';
 

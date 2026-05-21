@@ -1,5 +1,5 @@
 import styles from './Button.module.scss';
-import { cn } from '@/ui/utils/cn';
+import { cn } from '@utils/cn';
 import type { ButtonProps } from './types';
 import { forwardRef } from 'react';
 
