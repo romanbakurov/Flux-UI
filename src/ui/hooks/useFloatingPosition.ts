@@ -1,66 +1,47 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import {
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useFloating,
+  size,
+} from '@floating-ui/react';
+import type { Placement, Middleware } from '@floating-ui/react';
 
-type Position = {
-  top: number;
-  left: number;
-  width: number;
+type UseFloatingPositionProps = {
+  placement?: Placement;
+  matchTriggerWidth?: boolean;
 };
 
 //Позиционирование dropdown / tooltip / popover
-export const useFloatingPosition = () => {
-  const [position, setPosition] = useState<Position>({
-    top: 0,
-    left: 0,
-    width: 0,
+export const useFloatingPosition = ({
+  placement = 'bottom-start',
+  matchTriggerWidth = false,
+}: UseFloatingPositionProps = {}) => {
+  const middleware: Middleware[] = [offset(4), flip(), shift()];
+
+  if (matchTriggerWidth) {
+    middleware.push(
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+          });
+        },
+      })
+    );
+  }
+
+  const { refs, floatingStyles, update } = useFloating({
+    placement,
+    middleware,
+    whileElementsMounted: autoUpdate,
   });
 
-  const refRef = useRef<HTMLElement | null>(null);
-  const isFirstRender = useRef(true);
-
-  const updatePosition = useCallback(() => {
-    if (!refRef.current) return;
-
-    const rect = refRef.current.getBoundingClientRect();
-
-    setPosition((prev) => {
-      const next = {
-        top: rect.bottom + window.scrollY + 4,
-        left: rect.left + window.scrollX,
-        width: rect.width,
-      };
-
-      if (
-        prev.top === next.top &&
-        prev.left === next.left &&
-        prev.width === next.width
-      ) {
-        return prev;
-      }
-      return next;
-    });
-  }, []);
-
-  const setRef = useCallback(
-    (ref: HTMLElement | null) => {
-      refRef.current = ref;
-
-      if (ref && isFirstRender.current) {
-        updatePosition();
-        isFirstRender.current = false;
-      }
-    },
-    [updatePosition]
-  );
-
-  useEffect(() => {
-    window.addEventListener('scroll', updatePosition, true);
-    window.addEventListener('resize', updatePosition);
-
-    return () => {
-      window.removeEventListener('scroll', updatePosition, true);
-      window.removeEventListener('resize', updatePosition);
-    };
-  }, [updatePosition]);
-
-  return { position, setRef, updatePosition };
+  return {
+    floatingStyles,
+    setRef: refs.setReference,
+    setFloatingRef: refs.setFloating,
+    updatePosition: update,
+  };
 };
