@@ -1,20 +1,26 @@
 import type { DropdownProps } from './type';
 import { cn } from '@utils/cn';
-import { createPortal } from 'react-dom';
 import { useState, useRef, useId } from 'react';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { useFloatingPosition } from '@hooks/useFloatingPosition';
 import { useKeyboardNavigation } from '@hooks/useKeyboardNavigation';
 import styles from './Dropdown.module.scss';
-import DropdownMenu from '@/assets/icons/DropdownMenu.svg?react';
+import { DropdownTrigger } from './Trigger/DropdownTrigger';
+import { DropdownContent } from './Content/DropdownContent';
+import { DropdownItem } from './Item/DropdownItem';
+import { isMenuItem } from './types';
 
 export const Dropdown = ({
   label,
+  icon,
   trigger,
   items,
   onSelect,
   className,
   disabled,
+  rotateAngle = 90,
+  placement,
+  matchTriggerWidth,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -23,36 +29,47 @@ export const Dropdown = ({
   const menuRef = useRef<HTMLUListElement>(null);
   const menuId = useId();
 
-  const { position, setRef, updatePosition } = useFloatingPosition();
+  const { floatingStyles, setRef, setFloatingRef } = useFloatingPosition({
+    placement,
+    matchTriggerWidth,
+  });
+
+  const getFirstEnabledIndex = () =>
+    items.findIndex((item) => isMenuItem(item) && !item.disabled);
 
   const toggleOpen = () => {
     if (disabled) return;
+
     setIsOpen((prev) => {
       const next = !prev;
-      if (next) updatePosition();
-      setActiveIndex(next ? 0 : -1);
+      if (next) {
+        setActiveIndex(getFirstEnabledIndex());
+      } else {
+        setActiveIndex(-1);
+      }
       return next;
     });
   };
 
   const close = () => {
     setIsOpen(false);
+    setActiveIndex(-1);
   };
 
   const { onKeyDown } = useKeyboardNavigation({
     activeIndex,
     setActiveIndex,
-    itemsCount: items.length,
+    items,
     isOpen,
     onOpen: toggleOpen,
     onSelect: () => {
       const item = items[activeIndex];
-      if (!item || item.disabled) return;
+      if (!item || !isMenuItem(item) || item.disabled) return;
 
       onSelect?.(item.value);
       close();
     },
-    onClose: () => close(),
+    onClose: close,
   });
 
   useOutsideClick([buttonRef, menuRef], () => close(), isOpen);
@@ -62,54 +79,46 @@ export const Dropdown = ({
     setRef(el);
   };
 
+  const menuRefCallback = (el: HTMLUListElement | null) => {
+    menuRef.current = el;
+    setFloatingRef(el);
+  };
+
   return (
     <div className={cn(styles.wrapper, className)}>
-      <button
+      <DropdownTrigger
         ref={triggerRef}
-        type='button'
+        isOpen={isOpen}
+        disabled={disabled}
+        icon={icon}
+        label={label}
+        rotateAngle={rotateAngle}
         onClick={toggleOpen}
         onKeyDown={onKeyDown}
-        disabled={disabled}
         aria-expanded={isOpen}
         aria-haspopup='menu'
-        aria-controls={menuId}
-        aria-label={
-          label ? label : typeof trigger === 'string' ? trigger : undefined
-        }
-        className={cn(styles.button, {
-          [styles.disabled]: disabled,
-        })}
+        {...(isOpen && { 'aria-controls': menuId })}
       >
         {trigger}
-        <span
-          className={cn(styles.icon, {
-            [styles.open]: isOpen,
-          })}
-        >
-          <DropdownMenu />
-        </span>
-      </button>
+      </DropdownTrigger>
 
-      {isOpen &&
-        createPortal(
-          <ul
-            ref={menuRef}
-            id={menuId}
-            role='menu'
-            style={{
-              position: 'absolute',
-              top: position.top,
-              left: position.left,
-              width: position.width,
-              zIndex: 9999,
-            }}
-            className={styles.dropdown}
-          >
-            {items.map((item, index) => (
-              <li
+      {isOpen && (
+        <DropdownContent
+          ref={menuRefCallback}
+          floatingStyles={floatingStyles}
+          menuId={menuId}
+          role='menu'
+        >
+          {items.map((item, index) => {
+            if (!isMenuItem(item)) {
+              return null;
+            }
+
+            return (
+              <DropdownItem
                 key={item.value}
-                role='menuitem'
-                aria-disabled={item.disabled}
+                {...item}
+                active={activeIndex === index}
                 onClick={() => {
                   if (!item.disabled) {
                     onSelect?.(item.value);
@@ -117,21 +126,11 @@ export const Dropdown = ({
                   }
                 }}
                 onMouseEnter={() => setActiveIndex(index)}
-                className={cn(styles.item, {
-                  [styles.active]: activeIndex === index,
-                  [styles.disabled]: item.disabled,
-                  [styles.danger]: item.danger,
-                })}
-              >
-                {item.icon && (
-                  <span className={styles.itemIcon}>{item.icon}</span>
-                )}
-                {item.label}
-              </li>
-            ))}
-          </ul>,
-          document.body
-        )}
+              />
+            );
+          })}
+        </DropdownContent>
+      )}
     </div>
   );
 };

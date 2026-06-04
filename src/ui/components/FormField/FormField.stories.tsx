@@ -19,10 +19,11 @@ export const WithInput: Story = {
         type='text'
         placeholder='Enter email'
         style={{
-          padding: '8px 12px',
+          padding: '10px 16px',
           border: '1px solid #d8d8d8',
           borderRadius: '6px',
           fontSize: '14px',
+          width: '100%',
         }}
       />
     ),
@@ -38,10 +39,11 @@ export const WithError: Story = {
         type='text'
         placeholder='Enter email'
         style={{
-          padding: '8px 12px',
+          padding: '10px 16px',
           border: '1px solid #cf2333',
           borderRadius: '6px',
           fontSize: '14px',
+          width: '100%',
         }}
       />
     ),
@@ -57,10 +59,11 @@ export const Required: Story = {
         type='text'
         placeholder='Enter email'
         style={{
-          padding: '8px 12px',
+          padding: '10px 16px',
           border: '1px solid #d8d8d8',
           borderRadius: '6px',
           fontSize: '14px',
+          width: '100%',
         }}
       />
     ),
@@ -76,10 +79,11 @@ export const Disabled: Story = {
         type='text'
         placeholder='Enter email'
         style={{
-          padding: '8px 12px',
+          padding: '10px 16px',
           border: '1px solid #d8d8d8',
           borderRadius: '6px',
           fontSize: '14px',
+          width: '100%',
         }}
       />
     ),
