@@ -11,7 +11,6 @@ import UserIcon from '@/assets/icons/Profile.svg?react';
 import PlusIcon from '@/assets/icons/Plus.svg?react';
 import CopyIcon from '@/assets/icons/Copy.svg?react';
 import LogOutIcon from '@/assets/icons/Exit.svg?react';
-// import { fn } from '@storybook/test';
 
 const meta = {
   title: 'Components/Dropdown',
@@ -34,9 +33,6 @@ Fully accessible dropdown menu with comprehensive keyboard support.
       },
     },
   },
-  // args: {
-  //   onSelect: fn(),
-  // },
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;

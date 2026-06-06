@@ -16,13 +16,13 @@
   cursor: not-allowed;
 }
 
-.delete {
+.danger {
   color: var(--color-gray-0);
   background-color: var(--color-error);
   transition: all 0.2s ease;
 }
 
-.button:not(:disabled).delete:hover {
+.button:not(:disabled).danger:hover {
   color: var(--color-gray-0);
   background-color: var(--color-error-accent);
   transform: translateY(-1px);
