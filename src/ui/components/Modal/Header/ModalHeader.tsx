@@ -4,11 +4,13 @@ import CloseIcon from '@/assets/icons/Close.svg?react';
 import { useModalContext } from '../ModalContext';
 
 export const ModalHeader = ({ children }: ModalHeaderProps) => {
-  const { onClose } = useModalContext();
+  const { onClose, titleId } = useModalContext();
 
   return (
     <div className={styles.modalHeader}>
-      <h2 className={styles.modalHeaderTitle}>{children}</h2>
+      <h2 id={titleId} className={styles.modalHeaderTitle}>
+        {children}
+      </h2>
 
       {onClose && (
         <button
@@ -23,3 +25,5 @@ export const ModalHeader = ({ children }: ModalHeaderProps) => {
     </div>
   );
 };
+
+ModalHeader.displayName = 'ModalHeader';

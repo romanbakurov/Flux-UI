@@ -2,11 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Modal } from '@components/Modal';
 import { Button } from '../Button';
 import { useState } from 'react';
+import { fn } from 'storybook/test';
 
 const meta = {
   title: 'Components/Modal',
   component: Modal,
   tags: ['autodocs'],
+  args: {
+    onClose: fn(),
+  },
   parameters: {
     docs: {
       description: {
@@ -15,13 +19,38 @@ const meta = {
 
 Fully accessible modal dialog with keyboard support.
 
-**Features:**
+**Features**
 - Closes on ESC key
 - Closes on backdrop click (configurable)
-- Focus trap inside modal
+- Focus management
 - Scroll lock when open
 - Animated enter/exit
-        `,
+
+### Accessibility
+
+For proper accessibility, **Modal.Header is required**.
+
+The modal uses:
+
+- \`aria-labelledby\` → references \`Modal.Header\`
+- \`aria-describedby\` → references \`Modal.Body\`
+
+Correct usage:
+
+\`\`\`tsx
+<Modal isOpen onClose={handleClose}>
+  <Modal.Header>Delete file</Modal.Header>
+
+  <Modal.Body>
+    Are you sure you want to delete this file?
+  </Modal.Body>
+
+  <Modal.Footer>
+    ...
+  </Modal.Footer>
+</Modal>
+\`\`\`
+`,
       },
     },
   },
@@ -169,15 +198,16 @@ const LongContentDemo = () => {
 };
 
 export const Basic: Story = {
-  render: () => (
-    <ModalDemo onClose={() => console.log('cancel-clicked')}>
+  args: {},
+  render: (args) => (
+    <ModalDemo onClose={args.onClose}>
       <Modal.Header>Delete file</Modal.Header>
       <Modal.Body>Are you sure you want to delete this file?</Modal.Body>
       <Modal.Footer>
-        <Button variant='primary' onClick={() => console.log('cancel-clicked')}>
+        <Button variant='primary' onClick={args.onClose}>
           Cancel
         </Button>
-        <Button variant='danger' onClick={() => console.log('delete-clicked')}>
+        <Button variant='danger' onClick={args.onClose}>
           Delete
         </Button>
       </Modal.Footer>
@@ -198,16 +228,13 @@ export const LongContent: Story = {
 };
 
 export const CustomPosition: Story = {
-  render: () => (
-    <ModalDemo
-      defaultOpen={false}
-      position='top'
-      onClose={() => console.log('cancel-clicked')}
-    >
+  args: {},
+  render: (args) => (
+    <ModalDemo defaultOpen={false} position='top' onClose={args.onClose}>
       <Modal.Header>Top Positioned Modal</Modal.Header>
       <Modal.Body>This modal appears at the top of the screen.</Modal.Body>
       <Modal.Footer>
-        <Button variant='primary' onClick={() => console.log('cancel-clicked')}>
+        <Button variant='primary' onClick={args.onClose}>
           Close
         </Button>
       </Modal.Footer>

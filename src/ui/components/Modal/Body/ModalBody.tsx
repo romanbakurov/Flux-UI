@@ -1,6 +1,13 @@
 import type { ModalBodyProps } from './types';
 import styles from './ModalBody.module.scss';
+import { useModalContext } from '../ModalContext';
 
 export const ModalBody = ({ children }: ModalBodyProps) => {
-  return <div className={styles.modalBody}>{children}</div>;
+  const { descriptionId } = useModalContext();
+
+  return (
+    <div id={descriptionId} className={styles.modalBody}>
+      {children}
+    </div>
+  );
 };
