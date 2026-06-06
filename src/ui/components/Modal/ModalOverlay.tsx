@@ -1,6 +1,7 @@
 import type { ModalOverlayProps } from './types';
 import { cn } from '@utils/cn';
 import { useCallback, useRef, useEffect } from 'react';
+import FocusTrap from 'focus-trap-react';
 import { Portal } from '@ui/overlay/Portal';
 import { useModalKeyboard } from '@hooks/useModalKeyboard';
 import { useModalContext } from './ModalContext';
@@ -16,7 +17,6 @@ export const ModalOverlay = ({
   zIndex = 1000,
   animated = true,
 }: ModalOverlayProps) => {
-  const overlayRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const { titleId, descriptionId } = useModalContext();
 
@@ -32,17 +32,6 @@ export const ModalOverlay = ({
   );
 
   useModalKeyboard({ isOpen, onClose: closeOnEsc ? onClose : undefined });
-
-  useEffect(() => {
-    if (isOpen) {
-      overlayRef.current?.focus();
-    } else {
-      const previouslyFocused = document.activeElement as HTMLElement;
-      if (previouslyFocused) {
-        previouslyFocused.focus();
-      }
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -61,7 +50,6 @@ export const ModalOverlay = ({
   return (
     <Portal>
       <div
-        ref={overlayRef}
         className={cn(
           styles.overlay,
           isOpen && styles['overlay--open'],
@@ -74,16 +62,25 @@ export const ModalOverlay = ({
         aria-hidden={!isOpen}
         style={{ zIndex }}
       >
-        <div
-          ref={modalRef}
-          className={styles.modal}
-          role='dialog'
-          aria-modal='true'
-          aria-labelledby={titleId}
-          aria-describedby={descriptionId}
+        <FocusTrap
+          active={isOpen}
+          focusTrapOptions={{
+            fallbackFocus: () => modalRef.current!,
+            returnFocusOnDeactivate: true,
+          }}
         >
-          {children}
-        </div>
+          <div
+            ref={modalRef}
+            tabIndex={-1}
+            className={styles.modal}
+            role='dialog'
+            aria-modal='true'
+            aria-labelledby={titleId}
+            aria-describedby={descriptionId}
+          >
+            {children}
+          </div>
+        </FocusTrap>
       </div>
     </Portal>
   );

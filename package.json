@@ -92,6 +92,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "focus-trap-react": "^12.0.2"
   }
 }
