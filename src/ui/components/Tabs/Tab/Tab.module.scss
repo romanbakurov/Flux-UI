@@ -1,0 +1,20 @@
+.tab {
+  padding: 8px 16px;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-bottom-color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
+  }
+
+  &.active {
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
