@@ -18,7 +18,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'delete'],
+      options: ['primary', 'secondary', 'danger'],
     },
     size: {
       control: 'radio',
@@ -106,7 +106,7 @@ export const Variants: Story = {
         </Button>
         <Button
           {...args}
-          variant='delete'
+          variant='danger'
           leftIcon={
             iconPosition === 'left' || iconPosition === 'both' ? (
               <Delete />

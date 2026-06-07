@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
-export type ButtonColor = 'primary' | 'secondary' | 'delete';
+export type ButtonColor = 'primary' | 'secondary' | 'danger';
 
 export interface ButtonProps {
   ariaLabel?: string | false;
