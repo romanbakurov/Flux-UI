@@ -1,4 +1,5 @@
-import { KeyboardEvent, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import type { KeyboardEvent } from 'react';
 
 type UseModalKeyboardProps = {
   isOpen: boolean;

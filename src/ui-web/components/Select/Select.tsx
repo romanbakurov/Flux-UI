@@ -1,10 +1,11 @@
 import { useId, useMemo, useRef, useState } from 'react';
-import { cn } from '@utils/cn';
 
 import { useControllableState } from '@web/hooks/useControllableState';
 import { useFloatingPosition } from '@web/hooks/useFloatingPosition';
 import { useKeyboardNavigation } from '@web/hooks/useKeyboardNavigation';
 import { useOutsideClick } from '@web/hooks/useOutsideClick';
+
+import { cn } from '@utils/cn';
 
 import styles from './Select.module.scss';
 import { SelectDropdown } from './SelectDropdown/SelectDropdown';

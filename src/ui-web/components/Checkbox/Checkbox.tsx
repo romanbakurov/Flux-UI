@@ -1,9 +1,11 @@
-import { ChangeEvent, forwardRef, useId } from 'react';
-import { cn } from '@utils/cn';
+import { forwardRef, useId } from 'react';
+import type { ChangeEvent } from 'react';
 
 import { useControllableState } from '@web/hooks/useControllableState';
 
 import Check from '@shared/assets/icons/Check.svg?react';
+
+import { cn } from '@utils/cn';
 
 import styles from './Checkbox.module.scss';
 import type { CheckboxProps } from './types';

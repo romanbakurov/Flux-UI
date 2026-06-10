@@ -1,5 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { Tabs } from '@web/components/Tabs';
 
 import BellIcon from '@shared/assets/icons/Alarm.svg?react';
@@ -9,6 +7,8 @@ import ImageIcon from '@shared/assets/icons/Image.svg?react';
 import MusicIcon from '@shared/assets/icons/Music.svg?react';
 import UserIcon from '@shared/assets/icons/Profile.svg?react';
 import SettingsIcon from '@shared/assets/icons/Settings.svg?react';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Tabs',

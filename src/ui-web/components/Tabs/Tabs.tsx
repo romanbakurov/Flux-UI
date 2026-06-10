@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { cn } from '@utils/cn';
 
 import { useTabsKeyboard } from '@web/hooks/useTabsKeyboard';
+
+import { cn } from '@utils/cn';
 
 import styles from './Tabs.module.scss';
 import type { TabsContextValue } from './TabsContext';

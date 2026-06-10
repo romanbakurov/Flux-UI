@@ -1,6 +1,6 @@
-import React from 'react';
+import type React from 'react';
 
-import { DropdownMenuItem } from '../types';
+import type { DropdownMenuItem } from '../types';
 
 export type DropdownItemProps = DropdownMenuItem & {
   children: React.ReactNode;

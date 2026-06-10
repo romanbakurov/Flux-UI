@@ -1,7 +1,8 @@
 import { type CSSProperties, forwardRef } from 'react';
-import { cn } from '@utils/cn';
 
 import DefaultArrowIcon from '@shared/assets/icons/ChevronDown.svg?react';
+
+import { cn } from '@utils/cn';
 
 import styles from './DropdownTrigger.module.scss';
 import type { DropdownTriggerProps } from './types';

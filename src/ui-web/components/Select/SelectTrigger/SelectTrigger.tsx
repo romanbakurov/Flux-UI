@@ -1,7 +1,8 @@
 import React from 'react';
-import { cn } from '@utils/cn';
 
 import ChevronDown from '@shared/assets/icons/ChevronDown.svg?react';
+
+import { cn } from '@utils/cn';
 
 import styles from './SelectedTigger.module.scss';
 import type { SelectTriggerProps } from './types';

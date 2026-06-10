@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonColor = 'primary' | 'secondary' | 'danger';

@@ -1,12 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
-
 import { Tabs } from '@web/components/Tabs';
 
 import SearchIcon from '@shared/assets/icons/Search.svg?react';
 
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { Button } from '../Button/Button';
 import { Tooltip } from './Tooltip';
+
+import { fn } from 'storybook/test';
 
 const meta = {
   title: 'Components/Tooltip',

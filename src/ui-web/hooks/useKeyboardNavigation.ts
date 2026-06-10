@@ -1,4 +1,5 @@
-import { KeyboardEvent, useCallback } from 'react';
+import { useCallback } from 'react';
+import type { KeyboardEvent } from 'react';
 
 type Params = {
   activeIndex: number;

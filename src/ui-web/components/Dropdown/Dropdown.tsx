@@ -1,9 +1,10 @@
 import { useId, useRef, useState } from 'react';
-import { cn } from '@utils/cn';
 
 import { useFloatingPosition } from '@web/hooks/useFloatingPosition';
 import { useKeyboardNavigation } from '@web/hooks/useKeyboardNavigation';
 import { useOutsideClick } from '@web/hooks/useOutsideClick';
+
+import { cn } from '@utils/cn';
 
 import { DropdownContent } from './Content/DropdownContent';
 import styles from './Dropdown.module.scss';
