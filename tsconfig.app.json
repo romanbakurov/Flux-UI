@@ -24,10 +24,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@ui/*": ["./src/ui/*"],
-      "@utils/*": ["./src/ui/utils/*"],
-      "@hooks/*": ["./src/ui/hooks/*"],
-      "@components/*": ["./src/ui/components/*"]
+
+      "@shared/*": ["src/shared/*"],
+      "@web/*": ["src/ui-web/*"],
+      "@native/*": ["src/ui-native/*"],
+
+      "@assets/*": ["src/shared/assets/*"],
+      "@utils/*": ["src/shared/utils/*"],
+      "@hooks/*": ["src/shared/hooks/*"],
+      "@theme/*": ["src/shared/theme/*"],
+      "@types/*": ["src/shared/types/*"]
     }
   },
   "include": ["src"]

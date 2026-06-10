@@ -1,33 +1,64 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import globals from 'globals';
+
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import storybook from 'eslint-plugin-storybook';
-import prettier from 'eslint-plugin-prettier';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
+  {
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'node_modules/**',
+      'storybook-static/**',
+      '.storybook/**',
+    ],
+  },
+
   js.configs.recommended,
-  ...tseslint.configs.recommended,
-  jsxA11y.flatConfigs.recommended,
-  ...storybook.configs['flat/recommended'],
+
   {
     files: ['src/**/*.{ts,tsx}'],
+
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+
     plugins: {
+      '@typescript-eslint': tsPlugin,
       react: reactPlugin,
       'react-hooks': reactHooks,
+      'simple-import-sort': simpleImportSort,
     },
+
     settings: {
       react: {
         version: 'detect',
       },
     },
-    rules: {
-      'jsx-a11y/click-events-have-key-events': 'off',
-      // Кавычки
-      quotes: ['error', 'single', { avoidEscape: true }],
 
-      // TypeScript
+    rules: {
+      //
+      // отключаем JS версии правил
+      //
+      'no-undef': 'off',
+      'no-unused-vars': 'off',
+
+      //
+      // TS
+      //
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -35,30 +66,50 @@ export default [
           varsIgnorePattern: '^_',
         },
       ],
-      '@typescript-eslint/no-require-imports': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn', // warning вместо error
 
+      //
       // React
+      //
       'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
+
+      //
+      // Hooks
+      //
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // Storybook
-      'storybook/story-exports': 'off',
+      //
+      // Imports
+      //
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^react', '^@?\\w'],
+            ['^@web', '^@native'],
+            ['^@shared', '^@assets'],
+            ['^\\.'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
 
-      // Общие правила
+      //
+      // General
+      //
       'no-console': 'warn',
       'no-debugger': 'error',
     },
   },
+
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**',
-      '*.config.js',
-      '*.config.ts',
-      'vite.config.ts',
-    ],
+    files: ['**/*.stories.{ts,tsx}'],
+    rules: {
+      'no-console': 'off',
+    },
   },
+
+  prettierConfig,
 ];
