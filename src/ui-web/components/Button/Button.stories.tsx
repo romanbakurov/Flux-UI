@@ -1,6 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
-
 import Delete from '@shared/assets/icons/Delete.svg?react';
 import Download from '@shared/assets/icons/Download.svg?react';
 import Filter from '@shared/assets/icons/Filter.svg?react';
@@ -8,7 +5,11 @@ import Profile from '@shared/assets/icons/Profile.svg?react';
 import Save from '@shared/assets/icons/Save.svg?react';
 import Search from '@shared/assets/icons/Search.svg?react';
 
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { Button } from './Button.tsx';
+
+import { fn } from 'storybook/test';
 
 const meta = {
   title: 'Components/Button',

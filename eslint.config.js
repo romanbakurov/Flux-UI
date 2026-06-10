@@ -7,6 +7,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import prettierConfig from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
@@ -16,19 +17,26 @@ export default [
       'node_modules/**',
       'storybook-static/**',
       '.storybook/**',
+
+      'vite.config.*',
+      'vitest.config.*',
+      '**/*.config.*',
     ],
   },
 
   js.configs.recommended,
 
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx,mts,cts}'],
 
     languageOptions: {
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
       globals: {
         ...globals.browser,
@@ -41,11 +49,18 @@ export default [
       react: reactPlugin,
       'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
+      import: importPlugin,
     },
 
     settings: {
       react: {
         version: 'detect',
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
       },
     },
 
@@ -59,6 +74,14 @@ export default [
       //
       // TS
       //
+      '@typescript-eslint/no-explicit-any': 'warn',
+
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+        },
+      ],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -87,9 +110,10 @@ export default [
         'error',
         {
           groups: [
-            ['^react', '^@?\\w'],
+            ['^react$', '^react'],
             ['^@web', '^@native'],
             ['^@shared', '^@assets'],
+            ['^@'],
             ['^\\.'],
           ],
         },
@@ -101,6 +125,10 @@ export default [
       //
       'no-console': 'warn',
       'no-debugger': 'error',
+
+      'import/no-unresolved': 'error',
+      'import/no-duplicates': 'error',
+      'import/no-cycle': 'warn',
     },
   },
 

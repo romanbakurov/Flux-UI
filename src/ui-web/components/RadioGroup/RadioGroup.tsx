@@ -1,7 +1,8 @@
 import { useId } from 'react';
-import { cn } from '@utils/cn';
 
 import { useControllableState } from '@web/hooks/useControllableState';
+
+import { cn } from '@utils/cn';
 
 import { FormField } from '../FormField';
 import styles from './RadioGroup.module.scss';

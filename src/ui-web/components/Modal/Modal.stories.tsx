@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
 
 import { Modal } from '@web/components/Modal';
 
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { Button } from '../Button';
+
+import { fn } from 'storybook/test';
 
 const meta = {
   title: 'Components/Modal',

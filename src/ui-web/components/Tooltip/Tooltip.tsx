@@ -1,4 +1,7 @@
 import { useId, useRef, useState } from 'react';
+
+import { useFloatingPosition } from '@web/hooks/useFloatingPosition';
+
 import {
   arrow,
   FloatingPortal,
@@ -6,8 +9,6 @@ import {
   useHover,
   useInteractions,
 } from '@floating-ui/react';
-
-import { useFloatingPosition } from '@web/hooks/useFloatingPosition';
 
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';

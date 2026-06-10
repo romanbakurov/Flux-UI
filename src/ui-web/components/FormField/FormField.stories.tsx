@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { Checkbox } from '@web/components/Checkbox';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FormField } from './FormField';
 

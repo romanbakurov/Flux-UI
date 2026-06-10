@@ -1,7 +1,9 @@
 import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Input } from './Input';
+import type { InputProps } from './types';
 
 const meta = {
   title: 'Components/Input',
@@ -14,7 +16,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Компонент-обертка для базовой демонстрации
-const BasicStoryDemo = (args: any) => {
+const BasicStoryDemo = (args: InputProps) => {
   const [value, setValue] = useState('');
 
   return <Input {...args} value={value} onChange={setValue} />;

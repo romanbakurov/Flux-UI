@@ -1,4 +1,5 @@
-import React, { ReactNode, RefObject } from 'react';
+import type React from 'react';
+import type { ReactNode, RefObject } from 'react';
 
 export interface TooltipProps {
   content: ReactNode;

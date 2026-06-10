@@ -1,5 +1,5 @@
-import React from 'react';
-import { useId } from 'react';
+import React, { useId } from 'react';
+
 import { cn } from '@utils/cn';
 
 import styles from './FormField.module.scss';
