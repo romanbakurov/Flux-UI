@@ -3,7 +3,6 @@ name: Chromatic Publish
 on:
   push:
     branches: [main]
-
   pull_request:
     branches: [main]
 
@@ -27,6 +26,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
 
       - name: Install Playwright browsers
         run: pnpm --filter @flux-ui/storybook run playwright:install
