@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "playwright:install": "playwright install --with-deps chromium"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
