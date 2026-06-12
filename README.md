@@ -19,8 +19,7 @@ Flux UI provides a scalable foundation for building consistent, accessible, and 
 
 ## Live Demo
 
-Storybook:
-https://6a07269cf7126a71ef2f62ca-byvnojtjdx.chromatic.com
+[![Storybook](https://img.shields.io/badge/storybook-live-ff4785)](https://6a07269cf7126a71ef2f62ca-byvnojtjdx.chromatic.com)
 
 ---
 
@@ -272,3 +271,4 @@ Flux UI is built around:
 ## License
 
 MIT © Roman Bakurov
+
