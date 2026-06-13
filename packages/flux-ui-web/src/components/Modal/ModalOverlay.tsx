@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 
 import { useModalKeyboard } from '@hooks/useModalKeyboard';
-import { Portal } from '@primitives/Portal';
 import { cn } from '@utils/cn';
+import { Portal } from '@utils/Portal';
 
 import { useModalContext } from './ModalContext';
 import styles from './ModalOverlay.module.scss';

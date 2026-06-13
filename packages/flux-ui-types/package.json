@@ -1,0 +1,23 @@
+{
+  "name": "@romanbakurov/flux-ui-types",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./web": "./dist/web/index.js",
+    "./native": "./dist/native/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  }
+}

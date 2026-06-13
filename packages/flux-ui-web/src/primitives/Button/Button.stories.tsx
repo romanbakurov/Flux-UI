@@ -53,6 +53,7 @@ export const Basic: Story = {
 
     return (
       <Button
+        ariaLabel='Download'
         {...args}
         leftIcon={
           iconPosition === 'left' || iconPosition === 'both' ? icon : undefined
@@ -76,6 +77,7 @@ export const Variants: Story = {
     return (
       <div style={{ display: 'flex', gap: 12 }}>
         <Button
+          ariaLabel='Profile'
           {...args}
           variant='primary'
           leftIcon={
@@ -92,6 +94,7 @@ export const Variants: Story = {
           Primary
         </Button>
         <Button
+          ariaLabel='Search'
           {...args}
           variant='secondary'
           leftIcon={
@@ -108,6 +111,7 @@ export const Variants: Story = {
           Secondary
         </Button>
         <Button
+          ariaLabel='Delete'
           {...args}
           variant='danger'
           leftIcon={
@@ -139,13 +143,13 @@ export const Sizes: Story = {
           alignItems: 'flex-start',
         }}
       >
-        <Button {...args} size='small'>
+        <Button {...args} ariaLabel={false} size='small'>
           Small
         </Button>
-        <Button {...args} size='medium'>
+        <Button {...args} ariaLabel={false} size='medium'>
           Medium
         </Button>
-        <Button {...args} size='large'>
+        <Button {...args} ariaLabel={false} size='large'>
           Large
         </Button>
       </div>
@@ -160,11 +164,13 @@ export const WidthComparison: Story = {
     >
       <div style={{ border: '1px dashed #ccc', padding: 16 }}>
         <p>Default (inline)</p>
-        <Button {...args}>Normal Width</Button>
+        <Button {...args} ariaLabel={false}>
+          Normal Width
+        </Button>
       </div>
       <div style={{ border: '1px dashed #ccc', padding: 16 }}>
         <p>Full Width</p>
-        <Button {...args} fullWidth>
+        <Button {...args} ariaLabel={false} fullWidth>
           Full Width
         </Button>
       </div>
@@ -182,6 +188,7 @@ export const WithoutIcons: Story = {
 
     return (
       <Button
+        ariaLabel='Save'
         {...args}
         leftIcon={
           iconPosition === 'left' || iconPosition === 'both' ? icon : undefined
@@ -205,7 +212,7 @@ export const OnlyIcon: Story = {
     ariaLabel: 'Filter',
   },
   render: (args) => {
-    return <Button {...args} leftIcon={<Filter />} />;
+    return <Button {...args} ariaLabel='Filter' leftIcon={<Filter />} />;
   },
 };
 

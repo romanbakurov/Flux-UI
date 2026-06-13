@@ -3,11 +3,7 @@ import type { ReactNode } from 'react';
 import type { BaseButtonProps } from '@romanbakurov/flux-ui-types';
 
 export interface ButtonProps extends BaseButtonProps {
-  ariaLabel?: string | false;
   children: ReactNode;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
-  fullWidth?: boolean;
-  className?: string;
-  onClick?: () => void;
+
+  onPress?: () => void;
 }

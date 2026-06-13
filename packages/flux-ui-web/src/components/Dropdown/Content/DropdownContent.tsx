@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
-import { Portal } from '@primitives/Portal';
 import { cn } from '@utils/cn';
+import { Portal } from '@utils/Portal';
 
 import styles from './DropdownContent.module.scss';
 import type { DropdownContentProps } from './types';
