@@ -6,4 +6,4 @@ export const components = {
       lg: '14px 24px',
     },
   },
-};
+} as const;

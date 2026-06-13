@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Checkbox } from '../../components/Checkbox';
+import { Checkbox } from '../../primitives/Checkbox';
 import { FormField } from '../FormField';
 
 const meta = {

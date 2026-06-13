@@ -30,4 +30,4 @@ export const colors = {
     200: '#a9bafe',
     50: '#f1f3fb',
   },
-};
+} as const;

@@ -11,8 +11,8 @@
     "@romanbakurov/flux-ui-web": "workspace:*",
     "clsx": "^2.1.1",
     "focus-trap-react": "^12.0.2",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",

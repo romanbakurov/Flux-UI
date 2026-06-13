@@ -52,24 +52,24 @@
   transform: translateY(-1px);
 }
 
-.button[data-size='small'],
-.small {
+.button[data-size='sm'],
+.sm {
   --icon-size: 16px;
 
   padding: var(--button-padding-sm);
   font-size: var(--font-size-xs);
 }
 
-.button[data-size='medium'],
-.medium {
+.button[data-size='md'],
+.md {
   --icon-size: 20px;
 
   padding: var(--button-padding-md);
   font-size: var(--font-size-sm);
 }
 
-.button[data-size='large'],
-.large {
+.button[data-size='lg'],
+.lg {
   --icon-size: 24px;
 
   padding: var(--button-padding-lg);

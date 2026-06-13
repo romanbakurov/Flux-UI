@@ -10,7 +10,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       children,
       variant = 'primary',
-      size = 'medium',
+      size = 'md',
       disabled = false,
       leftIcon,
       rightIcon,

@@ -1,4 +1,4 @@
-import { Portal } from '@primitives/Portal';
+import { Portal } from '@utils/Portal';
 
 import { SelectOption } from '../SelectOption/SelectOption';
 import styles from './SelectedDropdown.module.scss';

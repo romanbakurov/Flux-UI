@@ -22,4 +22,4 @@ export const typography = {
     lg: '32px',
     xl: '40px',
   },
-};
+} as const;
