@@ -1,7 +1,6 @@
 import '@romanbakurov/flux-ui-tokens/css';
 import './styles';
 
-export * from './components/Checkbox';
 export * from './components/Dropdown';
 export * from './components/Modal';
 export * from './components/RadioGroup';
@@ -12,4 +11,5 @@ export * from './hooks';
 export * from './patterns/FormField';
 export * from './primitives';
 export * from './primitives/Button';
+export * from './primitives/Checkbox';
 export * from './primitives/Input';

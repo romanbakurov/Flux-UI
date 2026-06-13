@@ -1,4 +1,4 @@
-export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonColor = 'primary' | 'secondary' | 'danger';
 
 export interface BaseButtonProps {

@@ -25,7 +25,7 @@ const meta = {
     },
     size: {
       control: 'radio',
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md', 'lg'],
     },
     leftIcon: { table: { disable: true } },
     rightIcon: { table: { disable: true } },
@@ -43,7 +43,7 @@ export const Basic: Story = {
   args: {
     children: 'Download',
     variant: 'primary',
-    size: 'medium',
+    size: 'md',
     disabled: false,
     iconPosition: 'left',
     ariaLabel: 'Download',
@@ -68,7 +68,7 @@ export const Basic: Story = {
 
 export const Variants: Story = {
   args: {
-    size: 'medium',
+    size: 'md',
     disabled: false,
     iconPosition: 'left',
   },
@@ -143,13 +143,13 @@ export const Sizes: Story = {
           alignItems: 'flex-start',
         }}
       >
-        <Button {...args} ariaLabel={false} size='small'>
+        <Button {...args} ariaLabel={false} size='sm'>
           Small
         </Button>
-        <Button {...args} ariaLabel={false} size='medium'>
+        <Button {...args} ariaLabel={false} size='md'>
           Medium
         </Button>
-        <Button {...args} ariaLabel={false} size='large'>
+        <Button {...args} ariaLabel={false} size='lg'>
           Large
         </Button>
       </div>
@@ -208,7 +208,7 @@ export const OnlyIcon: Story = {
   },
   args: {
     variant: 'primary',
-    size: 'medium',
+    size: 'md',
     ariaLabel: 'Filter',
   },
   render: (args) => {
@@ -220,7 +220,7 @@ export const Disabled: Story = {
   args: {
     children: 'Disabled',
     variant: 'primary',
-    size: 'medium',
+    size: 'md',
     disabled: true,
   },
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 
-import { theme } from '@romanbakurov/flux-ui-tokens';
+import { theme } from '@romanbakurov/flux-ui-tokens/native';
 
 import { styles } from './Button.styles';
 import type { ButtonProps } from './types';
@@ -28,8 +28,8 @@ const sizeMap = {
 
 const variantMap = {
   primary: theme.colors.primary,
-
   secondary: theme.colors.secondary,
+  danger: theme.colors.warning,
 };
 
 export function Button({

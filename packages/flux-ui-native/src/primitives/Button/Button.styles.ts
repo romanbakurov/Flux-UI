@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { theme } from '@romanbakurov/flux-ui-tokens';
+import { theme } from '@romanbakurov/flux-ui-tokens/native';
 
 export const styles = StyleSheet.create({
   button: {

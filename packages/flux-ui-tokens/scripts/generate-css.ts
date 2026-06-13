@@ -2,13 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { colors } from '../src/tokens/colors';
-import { spacing } from '../src/tokens/spacing';
-import { radius } from '../src/tokens/radius';
-import { shadows } from '../src/tokens/shadows';
-import { typography } from '../src/tokens/typography';
-import { zIndex } from '../src/tokens/zIndex';
-import { components } from '../src/tokens/components';
+import { colors } from '../src/common/colors';
+import { spacing } from '../src/web/spacing';
+import { radius } from '../src/common/radius';
+import { shadows } from '../src/web/shadows';
+import { typography } from '../src/web/typography';
+import { zIndex } from '../src/common/zIndex';
+import { components } from '../src/web/components';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
