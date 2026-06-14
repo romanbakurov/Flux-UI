@@ -1,0 +1,30 @@
+{
+  "name": "@romanbakurov/flux-ui-icons",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "main": "./src/web.ts",
+  "exports": {
+    ".": {
+      "react-native": "./src/native.ts",
+      "default": "./src/web.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf src/icons/*.js",
+    "generate": "tsx scripts/generate-icons.ts",
+    "build": "pnpm generate"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": "*",
+    "react-native-svg": "*"
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "fast-glob": "^3.3.3",
+    "@svgr/core": "^8.1.0",
+    "typescript": "^6"
+  }
+}

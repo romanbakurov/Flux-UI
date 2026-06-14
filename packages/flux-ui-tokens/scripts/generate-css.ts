@@ -1,14 +1,13 @@
+import { colors } from '../src/tokens/colors';
+import { radius } from '../src/tokens/radius';
+import { shadows } from '../src/tokens/shadows';
+import { spacing } from '../src/tokens/spacing';
+import { typography } from '../src/tokens/typography';
+import { zIndex } from '../src/tokens/zIndex';
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { colors } from '../src/common/colors';
-import { spacing } from '../src/web/spacing';
-import { radius } from '../src/common/radius';
-import { shadows } from '../src/web/shadows';
-import { typography } from '../src/web/typography';
-import { zIndex } from '../src/common/zIndex';
-import { components } from '../src/web/components';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -41,14 +40,36 @@ function generateVariables(
     }
 
     if (typeof value === 'number') {
-      const unit = options?.numberUnit ?? '';
-      css += `  --${name}: ${value}${unit};\n`;
+      css += `  --${name}: ${value}${options?.numberUnit ?? ''};\n`;
       continue;
     }
 
     if (isPlainObject(value)) {
       css += generateVariables(value, name, options);
     }
+  }
+
+  return css;
+}
+
+type ShadowToken = {
+  x: number;
+  y: number;
+  blur: number;
+  opacity: number;
+  color: string;
+};
+
+function generateShadowVariables(shadows: Record<string, ShadowToken>): string {
+  let css = '';
+
+  for (const [key, shadow] of Object.entries(shadows)) {
+    const color =
+      shadow.color === '#000' || shadow.color === '#000000'
+        ? `rgba(0,0,0,${shadow.opacity})`
+        : shadow.color;
+
+    css += `  --shadow-${key}: ${shadow.x}px ${shadow.y}px ${shadow.blur}px ${color};\n`;
   }
 
   return css;
@@ -67,21 +88,27 @@ css += generateVariables(spacing, 'space', {
   numberUnit: 'px',
 });
 
-css += generateVariables(components, '', {
+css += generateVariables(radius, 'radius', {
   numberUnit: 'px',
 });
 
 css += generateVariables(colors, 'color');
 
-css += generateVariables(radius, 'radius', {
+css += generateVariables(zIndex, 'z-index');
+
+css += generateVariables(typography.family, 'font-family');
+
+css += generateVariables(typography.weight, 'font-weight');
+
+css += generateVariables(typography.size, 'font-size', {
   numberUnit: 'px',
 });
 
-css += generateVariables(shadows, 'shadow');
+css += generateVariables(typography.lineHeight, 'line-height', {
+  numberUnit: 'px',
+});
 
-css += generateVariables(zIndex, 'z-index');
-
-css += generateVariables(typography, 'font');
+css += generateShadowVariables(shadows);
 
 css += '}\n';
 

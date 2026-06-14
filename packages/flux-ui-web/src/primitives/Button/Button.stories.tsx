@@ -1,10 +1,11 @@
-import Delete from '@assets/icons/Delete.svg?react';
-import Download from '@assets/icons/Download.svg?react';
-import Filter from '@assets/icons/Filter.svg?react';
-import Profile from '@assets/icons/Profile.svg?react';
-import Save from '@assets/icons/Save.svg?react';
-import Search from '@assets/icons/Search.svg?react';
-
+import {
+  Delete,
+  Download,
+  Filter,
+  Profile,
+  Save,
+  Search,
+} from '@romanbakurov/flux-ui-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Button } from '../Button';

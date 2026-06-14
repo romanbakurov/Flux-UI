@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { theme } from '@romanbakurov/flux-ui-tokens/native';
+import { theme } from '@romanbakurov/flux-ui-tokens';
 
 export const styles = StyleSheet.create({
   button: {
@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
 
   text: {
+    fontFamily: theme.typography.family.regular,
     color: theme.colors.gray[0],
     fontWeight: theme.typography.weight.medium,
   },
