@@ -80,9 +80,12 @@ async function run(): Promise<void> {
     );
   }
 
-  fs.writeFileSync(path.join(ROOT, 'src/web.ts'), webExports.join('\n'));
+  fs.writeFileSync(path.join(ROOT, 'src/web.ts'), `${webExports.join('\n')}\n`);
 
-  fs.writeFileSync(path.join(ROOT, 'src/native.ts'), nativeExports.join('\n'));
+  fs.writeFileSync(
+    path.join(ROOT, 'src/native.ts'),
+    `${nativeExports.join('\n')}\n`
+  );
 
   console.log(`✅ Generated ${files.length} generated`);
 }
