@@ -12,12 +12,12 @@ import importPlugin from 'eslint-plugin-import';
 export default [
   {
     ignores: [
+      '**/generated/**',
       'dist/**',
       'coverage/**',
       'node_modules/**',
       'storybook-static/**',
       '.storybook/**',
-
       'vite.config.*',
       'vitest.config.*',
       '**/*.config.*',
@@ -29,6 +29,7 @@ export default [
   {
     files: [
       'packages/*/src/**/*.{ts,tsx,mts,cts}',
+      'packages/*/scripts/**/*.{ts,tsx,mts,cts}',
       'apps/*/src/**/*.{ts,tsx,mts,cts}',
       'apps/*/.storybook/**/*.{ts,tsx}',
     ],

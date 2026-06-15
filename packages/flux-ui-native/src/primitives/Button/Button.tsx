@@ -1,6 +1,6 @@
 import { Pressable, Text } from 'react-native';
 
-import { theme } from '@romanbakurov/flux-ui-tokens/native';
+import { theme } from '@romanbakurov/flux-ui-tokens';
 
 import { styles } from './Button.styles';
 import type { ButtonProps } from './types';

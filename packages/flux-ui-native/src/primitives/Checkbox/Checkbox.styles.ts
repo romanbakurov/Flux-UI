@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { theme } from '@romanbakurov/flux-ui-tokens/native';
+import { theme } from '@romanbakurov/flux-ui-tokens';
 
 export const styles = StyleSheet.create({
   wrapper: {

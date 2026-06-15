@@ -1,4 +1,3 @@
-import '@romanbakurov/flux-ui-tokens/css';
 import './styles';
 
 export * from './components/Dropdown';
