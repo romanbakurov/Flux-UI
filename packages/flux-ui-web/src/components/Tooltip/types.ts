@@ -14,7 +14,7 @@ export interface TooltipProps {
 export interface TooltipContentProps {
   content: ReactNode;
   placement: string;
-  arrowRef: RefObject<HTMLDivElement>;
+  arrowRef: RefObject<HTMLDivElement | null>;
   arrowX?: number | null;
   arrowY?: number | null;
   className?: string;

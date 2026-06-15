@@ -1,15 +1,17 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "dist",
+    "composite": true,
     "strict": true,
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/*.stories.*", "dist", "node_modules"]
 }

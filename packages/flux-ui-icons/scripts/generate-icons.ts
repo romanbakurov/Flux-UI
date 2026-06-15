@@ -1,8 +1,8 @@
-import { transform } from '@svgr/core';
-
-import fg from 'fast-glob';
 import fs from 'node:fs';
 import path from 'node:path';
+
+import { transform } from '@svgr/core';
+import fg from 'fast-glob';
 
 const ROOT = process.cwd();
 
