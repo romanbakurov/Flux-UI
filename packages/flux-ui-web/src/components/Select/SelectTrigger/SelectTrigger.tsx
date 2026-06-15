@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { ChevronDown } from '@romanbakurov/flux-ui-icons';
 import { cn } from '@utils/cn';
-
-import ChevronDown from '@assets/icons/ChevronDown.svg?react';
 
 import type { SelectTriggerProps } from './types';
 
