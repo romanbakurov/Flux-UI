@@ -12,5 +12,6 @@
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/*.stories.*", "dist", "node_modules"]
 }
