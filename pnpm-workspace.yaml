@@ -6,3 +6,11 @@ allowBuilds:
   deasync: true
   esbuild: true
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@storybook/addon-ondevice-actions@10.4.5'
+  - '@storybook/addon-ondevice-controls@10.4.5'
+  - '@storybook/react-native-theming@10.4.5'
+  - '@storybook/react-native-ui-common@10.4.5'
+  - '@storybook/react-native-ui-lite@10.4.5'
+  - '@storybook/react-native-ui@10.4.5'
+  - '@storybook/react-native@10.4.5'
