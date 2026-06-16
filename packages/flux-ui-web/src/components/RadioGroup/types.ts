@@ -1,21 +1,18 @@
-export interface RadioOption {
+import type {
+  BaseRadioGroupProps,
+  BaseRadioOption,
+  Orientation,
+} from '@romanbakurov/flux-ui-types';
+
+export interface RadioOption extends BaseRadioOption {
   label: string;
-  value: string;
-  disabled?: boolean;
 }
 
-export interface RadioGroupProps {
+export interface RadioGroupProps extends Omit<BaseRadioGroupProps, 'options'> {
   label?: string;
-  value?: string;
-  defaultValue: string;
-  onChange?: (value: string) => void;
-
-  options: RadioOption[];
-
   name: string;
-  required?: boolean;
-  disabled?: boolean;
+  options: RadioOption[];
   error?: string;
+  orientation: Orientation;
   className?: string;
-  orientation: 'vertical' | 'horizontal';
 }

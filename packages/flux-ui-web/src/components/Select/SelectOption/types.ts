@@ -1,8 +1,12 @@
-export interface SelectOptionProps {
-  option: { label: string; value: string; disabled?: boolean };
-  isSelected: boolean;
-  isActive: boolean;
+import type { BaseSelectOptionProps } from '@romanbakurov/flux-ui-types';
+
+import type { SelectOption } from '../types';
+
+export interface SelectOptionProps extends Omit<
+  BaseSelectOptionProps,
+  'option'
+> {
+  option: SelectOption;
   optionId: string;
-  onSelect: (value: string) => void;
   onMouseEnter: () => void;
 }

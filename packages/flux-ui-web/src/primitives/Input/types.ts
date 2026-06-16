@@ -1,24 +1,18 @@
-export type InputSize = 'sm' | 'md' | 'lg';
-export type InputType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'number'
-  | 'tel'
-  | 'url';
+import type {
+  BaseInputProps,
+  InputSize,
+  InputType,
+} from '@romanbakurov/flux-ui-types';
 
-export interface InputProps {
-  id?: string;
+export type { InputSize, InputType } from '@romanbakurov/flux-ui-types';
+
+export interface InputProps extends BaseInputProps {
   label: string;
   placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
-
   size?: InputSize;
   error?: string;
-  disabled?: boolean;
-  required?: boolean;
-  className?: string;
   type?: InputType;
+  id?: string;
+  className?: string;
   autoComplete?: string;
 }

@@ -1,11 +1,10 @@
+import type { BaseTabProps } from '@romanbakurov/flux-ui-types';
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
 
-export interface TabProps {
-  index: number;
+export interface TabProps extends BaseTabProps {
   children: ReactNode;
-  className?: string;
-  disabled?: boolean;
   icon?: ReactNode;
+  className?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement> | null) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLButtonElement> | null) => void;
 }
