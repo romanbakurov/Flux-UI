@@ -29,7 +29,8 @@
   "dependencies": {
     "@romanbakurov/flux-ui-tokens": "workspace:*",
     "@romanbakurov/flux-ui-types": "workspace:*",
-    "@romanbakurov/flux-ui-core": "workspace:*"
+    "@romanbakurov/flux-ui-core": "workspace:*",
+    "@romanbakurov/flux-ui-icons": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.2.3"
