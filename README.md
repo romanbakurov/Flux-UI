@@ -1,83 +1,136 @@
 # Flux UI
 
-A modern React component library built with TypeScript, SCSS Modules, and design tokens.
+Modern cross-platform Design System for React and React Native.
 
-Flux UI provides a scalable foundation for building consistent, accessible, and maintainable user interfaces across web and native platforms.
-
-## ✨ Features
-
-* React 19 + TypeScript
-* Design token-driven architecture
-* Modular component library
-* Storybook documentation
-* Vite-powered development workflow
-* Accessibility-first approach
-* pnpm workspace monorepo
-* Platform-agnostic design tokens
+Flux UI is a TypeScript-first component library built around a shared architecture, design tokens, and reusable primitives for Web and Native applications.
 
 ---
 
-## Live Demo
+## Features
 
-[![Storybook](https://img.shields.io/badge/storybook-live-ff4785)](https://6a07269cf7126a71ef2f62ca-byvnojtjdx.chromatic.com)
+* React 19
+* React Native 0.81+
+* TypeScript First
+* Design Tokens Architecture
+* Shared Core Logic
+* Shared Type System
+* Cross-platform Icon System
+* Storybook for Web
+* Storybook for React Native
+* Accessibility Focused
+* Semantic Release
+* GitHub Actions CI/CD
+* Monorepo powered by pnpm
+
+---
+
+## Live Storybook
+
+[Storybook Demo](https://6a07269cf7126a71ef2f62ca-byvnojtjdx.chromatic.com)
 
 ---
 
 ## Packages
 
-### @romanbakurov/flux-ui-web
+| Package                        | Description                    |
+| ------------------------------ | ------------------------------ |
+| `@romanbakurov/flux-ui-web`    | React Web Components           |
+| `@romanbakurov/flux-ui-native` | React Native Components        |
+| `@romanbakurov/flux-ui-core`   | Shared Hooks and State Logic   |
+| `@romanbakurov/flux-ui-types`  | Shared Type Definitions        |
+| `@romanbakurov/flux-ui-icons`  | Cross-platform SVG Icon System |
+| `@romanbakurov/flux-ui-tokens` | Design Tokens                  |
 
-React component library.
+---
 
-### @romanbakurov/flux-ui-tokens
+## Architecture
 
-Platform-agnostic design tokens.
+```text
+apps/
+├── storybook
+├── native-playground
+└── test-app
 
-### @romanbakurov/flux-ui-native
-
-React Native package (work in progress).
+packages/
+├── flux-ui-web
+├── flux-ui-native
+├── flux-ui-core
+├── flux-ui-types
+├── flux-ui-icons
+└── flux-ui-tokens
+```
 
 ---
 
 ## Installation
 
-### React Components
+### Web
 
 ```bash
-npm install @romanbakurov/flux-ui-web
+pnpm add @romanbakurov/flux-ui-web
+```
+
+### React Native
+
+```bash
+pnpm add @romanbakurov/flux-ui-native
 ```
 
 ### Design Tokens
 
 ```bash
-npm install @romanbakurov/flux-ui-tokens
+pnpm add @romanbakurov/flux-ui-tokens
 ```
 
 ---
 
-## Usage
+## Web Example
 
 ```tsx
 import {
+  Button,
   Input,
   Checkbox,
-  Modal,
 } from '@romanbakurov/flux-ui-web';
 
 export function App() {
   return (
     <>
-      <Input
-        label="Name"
-        value=""
-        onChange={() => {}}
-      />
+      <Input label="Email" />
 
       <Checkbox
         label="Accept terms"
-        checked={false}
-        onChange={() => {}}
+        defaultChecked
       />
+
+      <Button>
+        Submit
+      </Button>
+    </>
+  );
+}
+```
+
+---
+
+## React Native Example
+
+```tsx
+import {
+  Button,
+  Checkbox,
+} from '@romanbakurov/flux-ui-native';
+
+export default function App() {
+  return (
+    <>
+      <Checkbox
+        label="Accept terms"
+      />
+
+      <Button>
+        Continue
+      </Button>
     </>
   );
 }
@@ -87,52 +140,33 @@ export function App() {
 
 ## Design Tokens
 
-Flux UI tokens are distributed as CSS custom properties.
+Flux UI uses a single source of truth for:
 
-```css
-:root {
-  --color-primary: #4c8bf5;
-  --color-error: #e5484d;
+* Colors
+* Typography
+* Spacing
+* Radius
+* Shadows
+* Z-Index
 
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
+Tokens are distributed as:
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-
-  --z-index-modal: 1000;
-}
-```
+* TypeScript objects
+* CSS Variables
+* React Native theme objects
 
 ---
 
-## Package Contents
+## Components
 
-### UI Primitives
-
-Foundation building blocks used to compose higher-level components.
+### Primitives
 
 * Button
 * Input
-
-### Accessibility
-
-Utilities for building accessible interfaces.
-
-* VisuallyHidden
-
-### Infrastructure
-
-Internal primitives used by complex components.
-
-* Portal
+* Checkbox
 
 ### Components
 
-Reusable UI components built on top of primitives.
-
-* Checkbox
 * Dropdown
 * Modal
 * RadioGroup
@@ -142,25 +176,16 @@ Reusable UI components built on top of primitives.
 
 ### Patterns
 
-Higher-level composition abstractions.
-
 * FormField
 
 ---
 
-## Hooks
-
-State and behavior utilities used throughout the library.
+## Core Hooks
 
 * useControllableState
-* useDisclosure
-* useFloatingPosition
-* useFocusManager
-* useFocusTrap
-* useKeyboardNavigation
-* useModalKeyboard
-* useOutsideClick
-* useTabsKeyboard
+* useDropdown
+* useModal
+* useTabs
 
 ---
 
@@ -175,28 +200,28 @@ pnpm install
 Run Storybook:
 
 ```bash
-pnpm --filter @flux-ui/storybook storybook
+pnpm --filter @flux-ui/storybook dev
 ```
 
-Run playground application:
+Run Native Playground:
 
 ```bash
-pnpm --filter test-app dev
+pnpm --filter native-playground start
 ```
 
-Run linting:
-
-```bash
-pnpm lint
-```
-
-Run tests:
+Run Tests:
 
 ```bash
 pnpm test
 ```
 
-Build all packages:
+Run Lint:
+
+```bash
+pnpm lint
+```
+
+Build Everything:
 
 ```bash
 pnpm -r build
@@ -204,71 +229,46 @@ pnpm -r build
 
 ---
 
-## Workspace Structure
+## Quality
 
-```text
-apps/
-├── storybook
-└── test-app
+Current project checks:
 
-packages/
-├── flux-ui-tokens
-├── flux-ui-web
-└── flux-ui-native
-```
-
----
-
-## Design Principles
-
-Flux UI is built around:
-
-* Consistency over flexibility
-* Composition over duplication
-* Predictable UI behavior
-* Accessibility by default
-* Token-driven styling
-* Platform independence
+* ESLint
+* TypeScript
+* Vitest
+* Storybook
+* GitHub Actions
+* Semantic Release
+* Package Validation
 
 ---
 
 ## Roadmap
 
-### Web Components
+### Completed
 
-* [x] Button
-* [x] Input
-* [x] Checkbox
-* [x] Dropdown
-* [x] Modal
-* [x] RadioGroup
-* [x] Select
-* [x] Tabs
-* [x] Tooltip
-* [x] FormField
+* Web Design System
+* Native Design System Foundation
+* Design Tokens
+* Shared Core Hooks
+* Shared Types
+* Icon Generator
+* Storybook Web
+* Storybook Native
+* Automated Releases
 
-### Design Tokens
+### Planned
 
-* [x] Colors
-* [x] Spacing
-* [x] Typography
-* [x] Radius
-* [x] Shadows
-* [x] Z-Index
-
-### Upcoming
-
-* [ ] Dark theme
-* [ ] Theme switching
-* [ ] Data display components
-* [ ] Animation primitives
-* [ ] Accessibility audit
-* [ ] React Native implementation
-* [ ] Documentation website
+* Dark Theme
+* Theme Switching
+* Data Display Components
+* Toast System
+* Date Components
+* Full Accessibility Audit
+* Documentation Website
 
 ---
 
 ## License
 
 MIT © Roman Bakurov
-
