@@ -2,7 +2,21 @@
 
 Modern cross-platform Design System for React and React Native.
 
-Flux UI is a TypeScript-first component library built around a shared architecture, design tokens, and reusable primitives for Web and Native applications.
+Flux UI is a TypeScript-first component library built around shared architecture, design tokens, reusable primitives, and platform-specific rendering for Web and Native applications.
+
+![React](https://img.shields.io/badge/React-19-blue)
+![React Native](https://img.shields.io/badge/React%20Native-0.81-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Storybook](https://img.shields.io/badge/Storybook-Live-ff4785)
+![License](https://img.shields.io/github/license/romanbakurov/Flux-UI)
+
+## Links
+
+[Storybook Demo](https://main--6a07269cf7126a71ef2f62ca.chromatic.com)
+
+[Chromatic Library](https://www.chromatic.com/library?appId=6a07269cf7126a71ef2f62ca&branch=main)
+
+[GitHub Repository](https://github.com/romanbakurov/Flux-UI)
 
 ---
 
@@ -11,35 +25,29 @@ Flux UI is a TypeScript-first component library built around a shared architectu
 * React 19
 * React Native 0.81+
 * TypeScript First
-* Design Tokens Architecture
+* Shared Design Tokens
 * Shared Core Logic
 * Shared Type System
 * Cross-platform Icon System
-* Storybook for Web
-* Storybook for React Native
+* Storybook Web
+* Storybook Native
 * Accessibility Focused
 * Semantic Release
 * GitHub Actions CI/CD
-* Monorepo powered by pnpm
-
----
-
-## Live Storybook
-
-[Storybook Demo](https://6a07269cf7126a71ef2f62ca-byvnojtjdx.chromatic.com)
+* pnpm Monorepo
 
 ---
 
 ## Packages
 
-| Package                        | Description                    |
-| ------------------------------ | ------------------------------ |
-| `@romanbakurov/flux-ui-web`    | React Web Components           |
-| `@romanbakurov/flux-ui-native` | React Native Components        |
-| `@romanbakurov/flux-ui-core`   | Shared Hooks and State Logic   |
-| `@romanbakurov/flux-ui-types`  | Shared Type Definitions        |
-| `@romanbakurov/flux-ui-icons`  | Cross-platform SVG Icon System |
-| `@romanbakurov/flux-ui-tokens` | Design Tokens                  |
+| Package                        | Description                |
+| ------------------------------ | -------------------------- |
+| `@romanbakurov/flux-ui-web`    | React Web Components       |
+| `@romanbakurov/flux-ui-native` | React Native Components    |
+| `@romanbakurov/flux-ui-core`   | Shared Hooks & State Logic |
+| `@romanbakurov/flux-ui-types`  | Shared Type Definitions    |
+| `@romanbakurov/flux-ui-icons`  | Cross-platform Icon System |
+| `@romanbakurov/flux-ui-tokens` | Design Tokens              |
 
 ---
 
@@ -59,6 +67,19 @@ packages/
 ├── flux-ui-icons
 └── flux-ui-tokens
 ```
+
+---
+
+## Philosophy
+
+Flux UI is built around a few core principles:
+
+* Shared logic across platforms
+* Shared design tokens
+* Platform-specific rendering
+* Accessibility by default
+* Predictable APIs
+* Type-safe development experience
 
 ---
 
@@ -89,8 +110,8 @@ pnpm add @romanbakurov/flux-ui-tokens
 ```tsx
 import {
   Button,
-  Input,
   Checkbox,
+  Input,
 } from '@romanbakurov/flux-ui-web';
 
 export function App() {
@@ -140,7 +161,7 @@ export default function App() {
 
 ## Design Tokens
 
-Flux UI uses a single source of truth for:
+Single source of truth for:
 
 * Colors
 * Typography
@@ -157,26 +178,20 @@ Tokens are distributed as:
 
 ---
 
-## Components
+## Component Support
 
-### Primitives
-
-* Button
-* Input
-* Checkbox
-
-### Components
-
-* Dropdown
-* Modal
-* RadioGroup
-* Select
-* Tabs
-* Tooltip
-
-### Patterns
-
-* FormField
+| Component  | Web | Native |
+| ---------- | --- | ------ |
+| Button     | ✅   | ✅      |
+| Checkbox   | ✅   | ✅      |
+| Input      | ✅   | 🚧     |
+| Dropdown   | ✅   | 🚧     |
+| Modal      | ✅   | 🚧     |
+| RadioGroup | ✅   | 🚧     |
+| Select     | ✅   | 🚧     |
+| Tabs       | ✅   | 🚧     |
+| Tooltip    | ✅   | 🚧     |
+| FormField  | ✅   | 🚧     |
 
 ---
 
@@ -252,7 +267,7 @@ Current project checks:
 * Design Tokens
 * Shared Core Hooks
 * Shared Types
-* Icon Generator
+* Cross-platform Icons
 * Storybook Web
 * Storybook Native
 * Automated Releases
@@ -266,6 +281,8 @@ Current project checks:
 * Date Components
 * Full Accessibility Audit
 * Documentation Website
+* Visual Regression Coverage
+* Expanded Native Component Set
 
 ---
 
