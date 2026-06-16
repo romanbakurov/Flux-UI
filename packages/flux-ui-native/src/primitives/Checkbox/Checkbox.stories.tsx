@@ -22,3 +22,28 @@ export const Checked: Story = {
     defaultChecked: true,
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled',
+    disabled: true,
+  },
+};
+
+export const DisabledChecked: Story = {
+  args: {
+    label: 'Disabled checked',
+    disabled: true,
+    defaultChecked: true,
+  },
+};
+
+export const WithoutLabel: Story = {
+  args: {},
+};
+
+export const LongLabel: Story = {
+  args: {
+    label: 'I agree to the Terms of Service and Privacy Policy of Flux UI',
+  },
+};

@@ -373,6 +373,9 @@ importers:
       '@romanbakurov/flux-ui-core':
         specifier: workspace:*
         version: link:../flux-ui-core
+      '@romanbakurov/flux-ui-icons':
+        specifier: workspace:*
+        version: link:../flux-ui-icons
       '@romanbakurov/flux-ui-tokens':
         specifier: workspace:*
         version: link:../flux-ui-tokens

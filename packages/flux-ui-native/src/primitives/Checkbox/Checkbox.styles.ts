@@ -5,26 +5,37 @@ export const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
   },
-
-  checkbox: {
+  pressed: {
+    opacity: 0.8,
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  boxDisabled: {
+    backgroundColor: theme.colors.gray[100],
+    borderColor: theme.colors.gray[500],
+  },
+  box: {
     width: 20,
     height: 20,
-    borderWidth: 1,
-    borderRadius: theme.radius.md,
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+    borderRadius: theme.radius.sm,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  boxChecked: {
+    backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.primary,
+  },
 
   label: {
-    marginLeft: 8,
+    fontSize: 16,
+    color: theme.colors.gray[900],
   },
-
-  checkboxChecked: {
-    backgroundColor: theme.colors.gray[0],
-  },
-
-  checkboxDisabled: {
-    opacity: 0.5,
+  labelDisabled: {
+    color: theme.colors.gray[500],
   },
 });
