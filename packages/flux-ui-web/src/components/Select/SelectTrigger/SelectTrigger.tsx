@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { ChevronDown } from '@romanbakurov/flux-ui-icons';
 import { cn } from '@utils/cn';
-
-import ChevronDown from '@assets/icons/ChevronDown.svg?react';
 
 import type { SelectTriggerProps } from './types';
 
@@ -11,9 +10,9 @@ import styles from './SelectedTigger.module.scss';
 export const SelectTrigger = ({
   id,
   errorId,
-  name,
   isOpen,
   disabled,
+  required,
   hasLabel,
   labelId,
   listboxId,
@@ -28,12 +27,12 @@ export const SelectTrigger = ({
   return (
     <button
       id={id}
-      name={name}
       ref={buttonRef}
       type='button'
       role='combobox'
       disabled={disabled}
       aria-disabled={disabled}
+      aria-required={required}
       aria-expanded={isOpen}
       aria-haspopup='listbox'
       aria-labelledby={hasLabel ? labelId : undefined}

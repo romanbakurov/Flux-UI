@@ -22,6 +22,7 @@ export default [
       '**/coverage/**',
       '**/*.d.ts',
       '**/storybook-static/**',
+      '**/src/generated/**',
       '**/.storybook/**',
       '**/.rnstorybook/**',
       '**/android/**',

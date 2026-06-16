@@ -1,4 +1,4 @@
-import CloseIcon from '@assets/icons/Close.svg?react';
+import { Close } from '@romanbakurov/flux-ui-icons';
 
 import { useModalContext } from '../ModalContext';
 
@@ -22,7 +22,7 @@ export const ModalHeader = ({ children }: ModalHeaderProps) => {
           onClick={onClose}
           aria-label='Close modal'
         >
-          <CloseIcon />
+          <Close />
         </button>
       )}
     </div>

@@ -1,8 +1,7 @@
 import { type CSSProperties, forwardRef } from 'react';
 
+import { ChevronDown } from '@romanbakurov/flux-ui-icons';
 import { cn } from '@utils/cn';
-
-import DefaultArrowIcon from '@assets/icons/ChevronDown.svg?react';
 
 import type { DropdownTriggerProps } from './types';
 
@@ -31,7 +30,7 @@ export const DropdownTrigger = forwardRef<
 
     const isOnlyIcon = hasIcon && !hasContent;
     const showArrow = hasContent;
-    const arrow = arrowIcon ?? <DefaultArrowIcon />;
+    const arrow = arrowIcon ?? <ChevronDown />;
     const ariaLabel = isOnlyIcon ? (label ?? 'Open menu') : undefined;
 
     return (

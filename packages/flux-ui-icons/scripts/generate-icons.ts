@@ -15,45 +15,78 @@ function toName(file: string): string {
     .replace(/(^\w|-\w)/g, (m) => m.replace('-', '').toUpperCase());
 }
 
+function withIconProps(code: string, native: boolean): string {
+  if (native) {
+    return code
+      .replace(
+        'import type { SvgProps } from "react-native-svg";',
+        `import type { SvgProps } from "react-native-svg";
+
+type IconProps = SvgProps & {
+  size?: number | string;
+  color?: string;
+};`
+      )
+      .replace(/props: SvgProps/g, 'props: IconProps');
+  }
+
+  return code
+    .replace(
+      'import type { SVGProps } from "react";',
+      `import type { SVGProps } from "react";
+
+type IconProps = SVGProps<SVGSVGElement> & {
+  size?: number | string;
+  color?: string;
+};`
+    )
+    .replace(/props: SVGProps<SVGSVGElement>/g, 'props: IconProps');
+}
+
 async function compile(
   svg: string,
   componentName: string,
   native: boolean
 ): Promise<string> {
-  return transform(
+  const code = await transform(
     svg,
     {
       native,
       plugins: ['@svgr/plugin-jsx'],
-      typescript: false,
+      typescript: true,
       jsxRuntime: 'automatic',
       exportType: 'default',
       expandProps: 'end',
-
       svgProps: {
-        width: '{props.size}',
-        height: '{props.size}',
-        fill: '{props.color}',
+        width: '{props.size ?? 16}',
+        height: '{props.size ?? 16}',
+        fill: '{props.color ?? "currentColor"}',
       },
-
       replaceAttrValues: {
-        '#000': '{props.color}',
-        black: '{props.color}',
+        '#000': '{props.color ?? "currentColor"}',
+        black: '{props.color ?? "currentColor"}',
       },
     },
     {
       componentName,
     }
   );
+
+  return withIconProps(code, native);
 }
 
 async function run(): Promise<void> {
-  const files = await fg('*.svg', {
-    cwd: ASSETS,
+  fs.rmSync(ICONS, {
+    recursive: true,
+    force: true,
   });
 
   fs.mkdirSync(ICONS, {
     recursive: true,
+  });
+
+  const files = await fg('*.svg', {
+    cwd: ASSETS,
   });
 
   const webExports: string[] = [];
@@ -65,19 +98,17 @@ async function run(): Promise<void> {
     const name = toName(file);
 
     const webComponent = await compile(svg, name, false);
-
     const nativeComponent = await compile(svg, name, true);
 
-    fs.writeFileSync(path.join(ICONS, `${name}.web.jsx`), webComponent);
-
-    fs.writeFileSync(path.join(ICONS, `${name}.native.jsx`), nativeComponent);
+    fs.writeFileSync(path.join(ICONS, `${name}.web.tsx`), webComponent);
+    fs.writeFileSync(path.join(ICONS, `${name}.native.tsx`), nativeComponent);
 
     webExports.push(
-      `export { default as ${name} } from './generated/${name}.web.jsx';`
+      `export { default as ${name} } from './generated/${name}.web';`
     );
 
     nativeExports.push(
-      `export { default as ${name} } from './generated/${name}.native.jsx';`
+      `export { default as ${name} } from './generated/${name}.native';`
     );
   }
 
