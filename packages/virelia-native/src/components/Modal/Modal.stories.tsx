@@ -53,7 +53,7 @@ const meta: Meta<typeof Modal> = {
     docs: {
       description: {
         component:
-          'Modal is a native dialog pattern for focused actions and confirmations. It provides header, body, and footer composition, optional root title, backdrop closing control, and token-based spacing and colors.',
+          'Renders a native modal dialog. Use it for confirmations and focused flows that need to sit above the current screen. The stories show header, body, footer, title prop, default open state, and backdrop close behavior.',
       },
     },
   },

@@ -19,7 +19,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Tabs is an accessible web component for switching between related content panels. It supports horizontal and vertical orientation, multiple visual appearances, icon-only or text tabs, disabled tabs, and ARIA roles for tablists, tabs, and panels.',
+          'Renders tab navigation for switching between related content panels. Use it when sections belong to the same context. The stories cover default, underline, pills, vertical layout, icons, disabled tabs, and controlled content panels.',
       },
     },
   },

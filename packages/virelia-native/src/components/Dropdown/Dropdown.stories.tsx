@@ -19,7 +19,7 @@ const meta: Meta<typeof Dropdown> = {
     docs: {
       description: {
         component:
-          'Dropdown is a native contextual action menu. It supports text or custom triggers, grouped items, separators, disabled actions, danger actions, and wrapped labels for longer mobile menu content.',
+          'Renders a native menu of actions from a trigger. Use it for contextual actions on mobile. The stories cover custom trigger content, disabled items, danger actions, grouped items, separators, and long labels.',
       },
     },
   },

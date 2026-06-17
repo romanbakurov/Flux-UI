@@ -15,7 +15,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Select is an accessible web listbox-style control for choosing one option from a predefined set. It supports labels, placeholders, disabled options, validation errors, keyboard closing, and controlled value changes.',
+          'Renders a select control for choosing one value from a list. Use it when all available options are known in advance. The stories cover placeholder, selected value, disabled state, disabled options, error message, and closing with Escape.',
       },
     },
   },

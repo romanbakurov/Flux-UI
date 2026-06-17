@@ -13,7 +13,7 @@ const meta: Meta<typeof Tooltip> = {
     docs: {
       description: {
         component:
-          'Tooltip is a native helper overlay for short contextual guidance. It supports plain text or custom content, disabled state, maximum width, and touch-friendly trigger composition.',
+          'Renders helper content attached to a native trigger. Use it for short explanations or hints. The stories cover long content, custom content, disabled state, and maximum width.',
       },
     },
   },

@@ -23,7 +23,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Dropdown is an accessible web menu for grouped actions and contextual commands. It supports text or icon triggers, disabled and danger items, separators, long menus, and keyboard navigation for opening, moving through items, and closing the menu.',
+          'Renders a menu of actions opened from a trigger. Use it for secondary or contextual actions. The stories cover text and icon triggers, disabled items, danger items, long menus, and different trigger styles.',
       },
     },
   },

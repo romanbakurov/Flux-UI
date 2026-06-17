@@ -17,7 +17,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Modal is an accessible web dialog for blocking flows and focused decisions. It provides header, body, and footer subcomponents, supports configurable backdrop closing, ESC handling, size and position variants, focus management, and scroll locking while open.',
+          'Renders a dialog above the page content. Use Modal for focused decisions, confirmations, and short blocking flows. The stories show header, body, footer, size variants, position variants, long content, and backdrop close behavior.',
       },
     },
   },

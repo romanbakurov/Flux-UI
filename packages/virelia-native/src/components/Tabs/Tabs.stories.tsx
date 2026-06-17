@@ -11,7 +11,7 @@ const meta: Meta<typeof Tabs> = {
     docs: {
       description: {
         component:
-          'Tabs is a native navigation component for switching between related panels. It supports pills and underline appearances, horizontal and vertical orientation, disabled tabs, and token-based active states.',
+          'Renders native tab navigation for switching between related panels. Use it for small groups of content in the same screen. The stories cover underline and pills appearance, vertical layout, and disabled tabs.',
       },
     },
   },

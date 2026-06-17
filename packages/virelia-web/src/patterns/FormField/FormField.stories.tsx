@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'FormField is a layout pattern for pairing a label, required marker, helper or error text, and an arbitrary form control. Use it when a custom input needs consistent spacing and validation presentation.',
+          'Provides consistent form field layout around a custom control. Use it to combine a label, required marker, error message, disabled state, and field content with the same spacing across forms.',
       },
     },
   },

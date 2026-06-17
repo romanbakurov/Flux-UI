@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component:
-          'Button is the primary action primitive for native screens. It uses shared Virelia tokens for color and typography while exposing native press handling, semantic variants, and platform-friendly touch targets.',
+          'Renders a native pressable action. Use Button for primary, secondary, and destructive actions in native screens. The stories show the available variants with platform touch handling.',
       },
     },
   },

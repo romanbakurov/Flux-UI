@@ -13,7 +13,7 @@ const meta: Meta<typeof FormField> = {
     docs: {
       description: {
         component:
-          'FormField is a native layout pattern for composing labels, required markers, errors, disabled state, and custom field content with consistent spacing across app forms.',
+          'Provides native form field layout around custom content. Use it to keep labels, required markers, errors, disabled state, and child controls visually consistent.',
       },
     },
   },

@@ -14,7 +14,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Input is a labeled web text-field primitive. It supports controlled values, required and disabled states, validation errors, placeholders, and size variants for compact or spacious form layouts.',
+          'Renders a labeled text input. Use it for short text values in forms. The stories cover controlled value, placeholder, required state, disabled state, validation error, and size variants.',
       },
     },
   },

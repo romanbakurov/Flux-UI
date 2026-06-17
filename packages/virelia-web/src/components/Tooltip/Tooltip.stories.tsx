@@ -14,7 +14,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Tooltip is a web overlay for short contextual help. It appears on hover or focus, supports top, bottom, left, and right placement, configurable open and close delays, disabled state, max width, and rich content.',
+          'Renders short helper content next to a trigger. Use Tooltip for additional context that should not interrupt the current flow. The stories cover placement, long content, disabled state, custom delay, custom content, and different triggers.',
       },
     },
   },

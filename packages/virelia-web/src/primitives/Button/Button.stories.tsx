@@ -19,7 +19,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Button is the primary action primitive for web surfaces. It supports semantic variants, three sizes, disabled and full-width states, optional leading and trailing icons, and accessible labels for icon-only actions.',
+          'Renders a clickable action. Use Button for form actions, toolbar actions, and icon actions. The stories show variants, sizes, disabled state, full width layout, and left or right icons.',
       },
     },
   },

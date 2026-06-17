@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Checkbox is a web form primitive for boolean choices. It renders a labeled control with checked, unchecked, and disabled states and exposes change events for controlled form flows.',
+          'Renders a checkbox with an optional label. Use it when the user can turn a single option on or off. The stories cover checked, unchecked, and disabled states.',
       },
     },
   },

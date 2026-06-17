@@ -10,7 +10,7 @@ const meta: Meta<typeof Input> = {
     docs: {
       description: {
         component:
-          'Input is a native text-field primitive with shared typography and color tokens. It supports labels, placeholders, values, required and disabled states, validation errors, input types, and size variants.',
+          'Renders a native text input with a label. Use it for short form values. The stories cover value, required state, error message, disabled state, input type, and size variants.',
       },
     },
   },
