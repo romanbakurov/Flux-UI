@@ -52,8 +52,39 @@ const meta: Meta<typeof Modal> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a native modal dialog. Use it for confirmations and focused flows that need to sit above the current screen. The stories show header, body, footer, title prop, default open state, and backdrop close behavior.',
+        component: `
+### Modal Component
+
+Native dialog displayed above the current screen.
+
+**Features**
+- Header, body, and footer composition
+- Optional root title prop
+- Default open state for previews
+- Backdrop close behavior can be disabled
+- Works with text content and action buttons
+
+### Usage
+
+Use Modal for confirmations and focused flows that should interrupt the current screen until the user responds.
+
+Correct usage:
+
+\`\`\`tsx
+<Modal isOpen={isOpen} onClose={handleClose}>
+  <Modal.Header>Delete file</Modal.Header>
+
+  <Modal.Body>
+    <Text>Are you sure you want to continue?</Text>
+  </Modal.Body>
+
+  <Modal.Footer>
+    <Button variant='secondary' onPress={handleClose}>Cancel</Button>
+    <Button variant='danger' onPress={handleDelete}>Delete</Button>
+  </Modal.Footer>
+</Modal>
+\`\`\`
+`,
       },
     },
   },

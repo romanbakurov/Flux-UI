@@ -9,8 +9,29 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'Renders a native pressable action. Use Button for primary, secondary, and destructive actions in native screens. The stories show the available variants with platform touch handling.',
+        component: `
+### Button Component
+
+Native pressable action for React Native screens.
+
+**Features**
+- Primary, secondary, and danger variants
+- Native \`onPress\` handling
+- Token-based colors and typography
+- Touch-friendly visual states
+
+### Usage
+
+Use Button for screen actions, form submits, and destructive confirmations.
+
+Correct usage:
+
+\`\`\`tsx
+<Button variant='primary' onPress={handleSave}>
+  Save changes
+</Button>
+\`\`\`
+`,
       },
     },
   },

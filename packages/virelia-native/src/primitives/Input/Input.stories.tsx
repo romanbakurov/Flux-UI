@@ -9,8 +9,34 @@ const meta: Meta<typeof Input> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a native text input with a label. Use it for short form values. The stories cover value, required state, error message, disabled state, input type, and size variants.',
+        component: `
+### Input Component
+
+Native text input for short form values.
+
+**Features**
+- Label and placeholder support
+- Value display
+- Required state
+- Disabled state
+- Validation error message
+- Input type variants
+- Size variants
+
+### Usage
+
+Use Input for names, emails, passwords, phone numbers, and other single-line native form values.
+
+Correct usage:
+
+\`\`\`tsx
+<Input
+  label='Email'
+  placeholder='name@company.com'
+  value={email}
+/>
+\`\`\`
+`,
       },
     },
   },

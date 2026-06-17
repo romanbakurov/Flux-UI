@@ -15,8 +15,33 @@ const meta: Meta<typeof RadioGroup> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a native radio group where one option can be selected. Use it for small sets of mutually exclusive choices. The stories cover horizontal layout, required state, error message, disabled group, and disabled option.',
+        component: `
+### RadioGroup Component
+
+Native group of mutually exclusive options.
+
+**Features**
+- Default selected value
+- Horizontal and vertical orientation
+- Required state
+- Disabled group state
+- Disabled individual options
+- Validation error message
+
+### Usage
+
+Use RadioGroup when a small set of options should remain visible and only one option can be selected.
+
+Correct usage:
+
+\`\`\`tsx
+<RadioGroup
+  label='Plan'
+  defaultValue='pro'
+  options={plans}
+/>
+\`\`\`
+`,
       },
     },
   },

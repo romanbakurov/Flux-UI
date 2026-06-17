@@ -14,8 +14,35 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a group of radio options where only one value can be selected. Use it when the user should compare a small set of choices. The stories cover required state, error state, disabled group, disabled option, and horizontal layout.',
+        component: `
+### RadioGroup Component
+
+Grouped radio control for selecting exactly one option.
+
+**Features**
+- Controlled selected value
+- Vertical and horizontal orientation
+- Required state
+- Disabled group state
+- Disabled individual options
+- Validation error message
+
+### Usage
+
+Use RadioGroup when users need to compare a small set of mutually exclusive choices.
+
+Correct usage:
+
+\`\`\`tsx
+<RadioGroup
+  name='plan'
+  label='Plan'
+  value={plan}
+  onChange={setPlan}
+  options={plans}
+/>
+\`\`\`
+`,
       },
     },
   },

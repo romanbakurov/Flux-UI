@@ -15,8 +15,33 @@ const meta: Meta<typeof Select> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a native select-like field for choosing one value from a list. Use it for compact option picking on mobile. The stories cover default value, required state, error message, disabled state, and disabled options.',
+        component: `
+### Select Component
+
+Native select-like field for choosing one value from a list.
+
+**Features**
+- Label and placeholder support
+- Default selected value
+- Required state
+- Disabled state
+- Disabled options
+- Validation error message
+
+### Usage
+
+Use Select for compact option picking on mobile when the available options are known in advance.
+
+Correct usage:
+
+\`\`\`tsx
+<Select
+  label='Country'
+  placeholder='Select country...'
+  options={countries}
+/>
+\`\`\`
+`,
       },
     },
   },

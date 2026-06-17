@@ -18,8 +18,36 @@ const meta: Meta<typeof Dropdown> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a native menu of actions from a trigger. Use it for contextual actions on mobile. The stories cover custom trigger content, disabled items, danger actions, grouped items, separators, and long labels.',
+        component: `
+### Dropdown Component
+
+Native contextual action menu opened from a trigger.
+
+**Features**
+- Label trigger
+- Custom trigger content
+- Group labels
+- Separators
+- Disabled items
+- Danger items
+- Wrapped long labels
+
+### Usage
+
+Use Dropdown for mobile action menus such as account actions, project actions, or destructive secondary actions.
+
+Correct usage:
+
+\`\`\`tsx
+<Dropdown
+  label='Open menu'
+  items={[
+    { label: 'Edit profile', value: 'edit' },
+    { label: 'Delete account', value: 'delete', danger: true },
+  ]}
+/>
+\`\`\`
+`,
       },
     },
   },

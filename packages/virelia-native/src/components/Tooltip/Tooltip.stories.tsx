@@ -12,8 +12,30 @@ const meta: Meta<typeof Tooltip> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders helper content attached to a native trigger. Use it for short explanations or hints. The stories cover long content, custom content, disabled state, and maximum width.',
+        component: `
+### Tooltip Component
+
+Native helper overlay attached to a trigger.
+
+**Features**
+- Text content
+- Custom React node content
+- Disabled state
+- Maximum width control
+- Custom trigger composition
+
+### Usage
+
+Use Tooltip for short contextual explanations. Keep the content concise so it remains readable on small screens.
+
+Correct usage:
+
+\`\`\`tsx
+<Tooltip content='Helpful native tooltip content'>
+  <Button>Press and hold</Button>
+</Tooltip>
+\`\`\`
+`,
       },
     },
   },

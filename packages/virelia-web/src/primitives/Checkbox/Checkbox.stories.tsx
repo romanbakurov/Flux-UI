@@ -10,8 +10,31 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a checkbox with an optional label. Use it when the user can turn a single option on or off. The stories cover checked, unchecked, and disabled states.',
+        component: `
+### Checkbox Component
+
+Boolean form control for turning a single option on or off.
+
+**Features**
+- Controlled checked state
+- Optional label
+- Disabled checked and unchecked states
+- Change callback for form integration
+
+### Usage
+
+Use Checkbox for independent choices such as accepting terms, enabling settings, or selecting optional preferences.
+
+Correct usage:
+
+\`\`\`tsx
+<Checkbox
+  label='Accept terms'
+  checked={accepted}
+  onCheckedChange={setAccepted}
+/>
+\`\`\`
+`,
       },
     },
   },

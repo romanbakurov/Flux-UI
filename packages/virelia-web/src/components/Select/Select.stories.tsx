@@ -14,8 +14,35 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Renders a select control for choosing one value from a list. Use it when all available options are known in advance. The stories cover placeholder, selected value, disabled state, disabled options, error message, and closing with Escape.',
+        component: `
+### Select Component
+
+Single-value select control for choosing from a predefined list.
+
+**Features**
+- Label and placeholder support
+- Controlled selected value
+- Disabled state
+- Disabled options
+- Validation error message
+- Keyboard close with Escape
+
+### Accessibility
+
+The trigger exposes combobox semantics and updates its expanded state when the list opens or closes.
+
+Correct usage:
+
+\`\`\`tsx
+<Select
+  label='Country'
+  value={country}
+  onChange={setCountry}
+  placeholder='Select country...'
+  options={countries}
+/>
+\`\`\`
+`,
       },
     },
   },
