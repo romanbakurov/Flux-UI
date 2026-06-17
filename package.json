@@ -1,7 +1,7 @@
 {
   "name": "@romanbakurov/virelia",
   "private": true,
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Virelia Design System monorepo",
   "type": "module",
   "author": "Roman Bakurov",
