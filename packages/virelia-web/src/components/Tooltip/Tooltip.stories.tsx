@@ -13,8 +13,31 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Tooltip is a web overlay for short contextual help. It appears on hover or focus, supports top, bottom, left, and right placement, configurable open and close delays, disabled state, max width, and rich content.',
+        component: `
+### Tooltip Component
+
+Short helper overlay attached to a trigger element.
+
+**Features**
+- Placement: top, bottom, left, and right
+- Opens on hover or focus
+- Disabled state
+- Custom open and close delay
+- Maximum width control
+- Rich content support
+
+### Usage
+
+Use Tooltip for brief explanations. Keep content short and avoid putting required information only inside a tooltip.
+
+Correct usage:
+
+\`\`\`tsx
+<Tooltip content='Search all projects' placement='top'>
+  <Button ariaLabel='Search' leftIcon={<Search />} />
+</Tooltip>
+\`\`\`
+`,
       },
     },
   },

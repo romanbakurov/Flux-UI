@@ -13,8 +13,34 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Input is a labeled web text-field primitive. It supports controlled values, required and disabled states, validation errors, placeholders, and size variants for compact or spacious form layouts.',
+        component: `
+### Input Component
+
+Labeled text input primitive for short form values.
+
+**Features**
+- Controlled value
+- Label and placeholder support
+- Required and disabled states
+- Validation error message
+- Size variants: sm, md, and lg
+
+### Usage
+
+Use Input for single-line values such as names, emails, phone numbers, and search text.
+
+Correct usage:
+
+\`\`\`tsx
+<Input
+  id='email'
+  label='Email'
+  value={email}
+  onChange={setEmail}
+  placeholder='name@company.com'
+/>
+\`\`\`
+`,
       },
     },
   },

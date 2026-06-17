@@ -8,8 +8,28 @@ const meta: Meta<typeof Checkbox> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Checkbox is a native form primitive for boolean choices. It supports labels, checked and unchecked defaults, disabled states, long labels, and unlabeled usage when the surrounding layout provides context.',
+        component: `
+### Checkbox Component
+
+Native boolean control with an optional label.
+
+**Features**
+- Default checked state
+- Disabled checked and unchecked states
+- Optional label
+- Long label wrapping
+- Unlabeled usage when surrounding copy provides context
+
+### Usage
+
+Use Checkbox for a single on/off choice in native forms or settings screens.
+
+Correct usage:
+
+\`\`\`tsx
+<Checkbox label='Accept terms' defaultChecked />
+\`\`\`
+`,
       },
     },
   },

@@ -12,8 +12,30 @@ const meta: Meta<typeof FormField> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'FormField is a native layout pattern for composing labels, required markers, errors, disabled state, and custom field content with consistent spacing across app forms.',
+        component: `
+### FormField Pattern
+
+Native layout wrapper for field labels, errors, and custom content.
+
+**Features**
+- Label rendering
+- Required marker
+- Error message
+- Disabled state
+- Works with custom children such as \`Input\`
+
+### Usage
+
+Use FormField when you need consistent form layout around a composed or custom native control.
+
+Correct usage:
+
+\`\`\`tsx
+<FormField label='Email' required error='Enter a valid email'>
+  <Input label='' placeholder='name@company.com' />
+</FormField>
+\`\`\`
+`,
       },
     },
   },

@@ -52,8 +52,39 @@ const meta: Meta<typeof Modal> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Modal is a native dialog pattern for focused actions and confirmations. It provides header, body, and footer composition, optional root title, backdrop closing control, and token-based spacing and colors.',
+        component: `
+### Modal Component
+
+Native dialog displayed above the current screen.
+
+**Features**
+- Header, body, and footer composition
+- Optional root title prop
+- Default open state for previews
+- Backdrop close behavior can be disabled
+- Works with text content and action buttons
+
+### Usage
+
+Use Modal for confirmations and focused flows that should interrupt the current screen until the user responds.
+
+Correct usage:
+
+\`\`\`tsx
+<Modal isOpen={isOpen} onClose={handleClose}>
+  <Modal.Header>Delete file</Modal.Header>
+
+  <Modal.Body>
+    <Text>Are you sure you want to continue?</Text>
+  </Modal.Body>
+
+  <Modal.Footer>
+    <Button variant='secondary' onPress={handleClose}>Cancel</Button>
+    <Button variant='danger' onPress={handleDelete}>Delete</Button>
+  </Modal.Footer>
+</Modal>
+\`\`\`
+`,
       },
     },
   },

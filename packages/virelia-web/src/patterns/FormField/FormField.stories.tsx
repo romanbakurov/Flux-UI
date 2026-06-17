@@ -10,8 +10,30 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'FormField is a layout pattern for pairing a label, required marker, helper or error text, and an arbitrary form control. Use it when a custom input needs consistent spacing and validation presentation.',
+        component: `
+### FormField Pattern
+
+Layout wrapper for composing labels, validation text, and custom form controls.
+
+**Features**
+- Label rendering
+- Required marker
+- Error message area
+- Disabled state styling
+- Works with native inputs or custom Virelia controls
+
+### Usage
+
+Use FormField when a control needs consistent spacing and validation presentation but the control itself is custom.
+
+Correct usage:
+
+\`\`\`tsx
+<FormField label='Email' required error={emailError}>
+  <input value={email} onChange={handleEmailChange} />
+</FormField>
+\`\`\`
+`,
       },
     },
   },

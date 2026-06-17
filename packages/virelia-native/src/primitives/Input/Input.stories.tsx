@@ -9,8 +9,34 @@ const meta: Meta<typeof Input> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Input is a native text-field primitive with shared typography and color tokens. It supports labels, placeholders, values, required and disabled states, validation errors, input types, and size variants.',
+        component: `
+### Input Component
+
+Native text input for short form values.
+
+**Features**
+- Label and placeholder support
+- Value display
+- Required state
+- Disabled state
+- Validation error message
+- Input type variants
+- Size variants
+
+### Usage
+
+Use Input for names, emails, passwords, phone numbers, and other single-line native form values.
+
+Correct usage:
+
+\`\`\`tsx
+<Input
+  label='Email'
+  placeholder='name@company.com'
+  value={email}
+/>
+\`\`\`
+`,
       },
     },
   },

@@ -9,8 +9,29 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'Button is the primary action primitive for native screens. It uses shared Virelia tokens for color and typography while exposing native press handling, semantic variants, and platform-friendly touch targets.',
+        component: `
+### Button Component
+
+Native pressable action for React Native screens.
+
+**Features**
+- Primary, secondary, and danger variants
+- Native \`onPress\` handling
+- Token-based colors and typography
+- Touch-friendly visual states
+
+### Usage
+
+Use Button for screen actions, form submits, and destructive confirmations.
+
+Correct usage:
+
+\`\`\`tsx
+<Button variant='primary' onPress={handleSave}>
+  Save changes
+</Button>
+\`\`\`
+`,
       },
     },
   },

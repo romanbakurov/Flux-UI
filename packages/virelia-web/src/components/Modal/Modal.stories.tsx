@@ -16,8 +16,41 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Modal is an accessible web dialog for blocking flows and focused decisions. It provides header, body, and footer subcomponents, supports configurable backdrop closing, ESC handling, size and position variants, focus management, and scroll locking while open.',
+        component: `
+### Modal Component
+
+Accessible dialog displayed above the page content.
+
+**Features**
+- Header, body, and footer composition
+- Closes on ESC key
+- Closes on backdrop click when enabled
+- Size variants
+- Position variants
+- Focus management
+- Scroll lock while open
+
+### Accessibility
+
+For proper accessibility, include a clear title in \`Modal.Header\`. The modal uses the header and body content to describe the dialog to assistive technologies.
+
+Correct usage:
+
+\`\`\`tsx
+<Modal isOpen={isOpen} onClose={handleClose}>
+  <Modal.Header>Delete file</Modal.Header>
+
+  <Modal.Body>
+    Are you sure you want to delete this file?
+  </Modal.Body>
+
+  <Modal.Footer>
+    <Button onClick={handleClose}>Cancel</Button>
+    <Button variant='danger' onClick={handleDelete}>Delete</Button>
+  </Modal.Footer>
+</Modal>
+\`\`\`
+`,
       },
     },
   },

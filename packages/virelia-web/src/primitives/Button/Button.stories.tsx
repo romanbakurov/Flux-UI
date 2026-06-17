@@ -18,8 +18,32 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Button is the primary action primitive for web surfaces. It supports semantic variants, three sizes, disabled and full-width states, optional leading and trailing icons, and accessible labels for icon-only actions.',
+        component: `
+### Button Component
+
+Clickable action primitive for web interfaces.
+
+**Features**
+- Visual variants: primary, secondary, and danger
+- Sizes: sm, md, and lg
+- Disabled and full-width states
+- Left and right icon support
+- Icon-only actions with accessible labels
+
+### Accessibility
+
+Use a clear text label whenever possible. For icon-only buttons, provide an accessible label so screen readers can announce the action.
+
+Correct usage:
+
+\`\`\`tsx
+<Button variant='primary' onClick={handleSave}>
+  Save changes
+</Button>
+
+<Button ariaLabel='Search' leftIcon={<Search />} />
+\`\`\`
+`,
       },
     },
   },
@@ -35,8 +59,14 @@ const meta = {
       control: 'radio',
       options: ['sm', 'md', 'lg'],
     },
-    leftIcon: { table: { disable: true } },
-    rightIcon: { table: { disable: true } },
+    leftIcon: {
+      control: false,
+      table: { disable: true },
+    },
+    rightIcon: {
+      control: false,
+      table: { disable: true },
+    },
     iconPosition: {
       control: 'radio',
       options: ['none', 'left', 'right', 'both'],

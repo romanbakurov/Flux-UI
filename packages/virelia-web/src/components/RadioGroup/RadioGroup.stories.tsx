@@ -14,8 +14,35 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'RadioGroup is a web form component for selecting exactly one option from a group. It supports vertical and horizontal layouts, required and disabled states, disabled options, and validation errors.',
+        component: `
+### RadioGroup Component
+
+Grouped radio control for selecting exactly one option.
+
+**Features**
+- Controlled selected value
+- Vertical and horizontal orientation
+- Required state
+- Disabled group state
+- Disabled individual options
+- Validation error message
+
+### Usage
+
+Use RadioGroup when users need to compare a small set of mutually exclusive choices.
+
+Correct usage:
+
+\`\`\`tsx
+<RadioGroup
+  name='plan'
+  label='Plan'
+  value={plan}
+  onChange={setPlan}
+  options={plans}
+/>
+\`\`\`
+`,
       },
     },
   },
