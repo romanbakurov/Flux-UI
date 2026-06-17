@@ -13,7 +13,8 @@
     "format:check": "prettier '**/*.{ts,tsx,json,md,css,scss}' --check",
     "build": "pnpm -r build",
     "test": "pnpm --filter @romanbakurov/virelia-web test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "create:component": "tsx scripts/generators/create-component.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",

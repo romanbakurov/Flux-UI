@@ -1,6 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import {
+  renderIndexTemplate,
+  renderNativeComponentTemplate,
+  renderStoryTemplate,
+  renderStylesTemplate,
+  renderTypesTemplate,
+  renderWebComponentTemplate,
+} from './templates';
+
 type Platform = 'web' | 'native' | 'both';
 type Layer = 'primitives' | 'components' | 'patterns';
 
@@ -53,56 +62,32 @@ function createComponent(params: {
 
   fs.writeFileSync(
     path.join(componentDir, 'types.ts'),
-    `export type ${componentName}Props = {
-  disabled?: boolean;
-};
-`
+    renderTypesTemplate({ componentName })
   );
 
   fs.writeFileSync(
     path.join(componentDir, 'index.ts'),
-    `export * from './${componentName}';
-export * from './types';
-`
+    renderIndexTemplate({ componentName })
   );
 
   fs.writeFileSync(
     path.join(componentDir, `${componentName}.tsx`),
     isNative
-      ? `import { Text } from 'react-native';
-
-import type { ${componentName}Props } from './types';
-
-export function ${componentName}(_props: ${componentName}Props) {
-  return <Text>${componentName}</Text>;
-}
-`
-      : `import type { ${componentName}Props } from './types';
-
-export function ${componentName}(_props: ${componentName}Props) {
-  return <div>${componentName}</div>;
-}
-`
+      ? renderNativeComponentTemplate({ componentName })
+      : renderWebComponentTemplate({ componentName })
   );
 
   fs.writeFileSync(
     path.join(componentDir, `${componentName}.stories.tsx`),
-    `import type { Meta, StoryObj } from '@storybook/react';
-
-import { ${componentName} } from './${componentName}';
-
-const meta: Meta<typeof ${componentName}> = {
-  title: '${layer[0].toUpperCase() + layer.slice(1)}/${componentName}',
-  component: ${componentName},
-};
-
-export default meta;
-
-type Story = StoryObj<typeof ${componentName}>;
-
-export const Default: Story = {};
-`
+    renderStoryTemplate({ componentName, layer, isNative })
   );
+
+  if (!isNative) {
+    fs.writeFileSync(
+      path.join(componentDir, `${componentName}.module.scss`),
+      renderStylesTemplate({ componentName })
+    );
+  }
 
   const barrelFile = path.join(
     process.cwd(),

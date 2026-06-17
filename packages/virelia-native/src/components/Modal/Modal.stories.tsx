@@ -61,15 +61,15 @@ export const Open: Story = {
   render: () => <ModalDemo defaultOpen />,
 };
 
-export const WithTitleProp: Story = {
-  render: () => (
-    <Modal isOpen onClose={() => undefined} title='Native modal'>
-      <Modal.Body>
-        <Text>Modal can render a title through the root title prop.</Text>
-      </Modal.Body>
-    </Modal>
-  ),
-};
+// export const WithTitleProp: Story = {
+//   render: () => (
+//     <Modal isOpen onClose={() => undefined} title='Native modal'>
+//       <Modal.Body>
+//         <Text>Modal can render a title through the root title prop.</Text>
+//       </Modal.Body>
+//     </Modal>
+//   ),
+// };
 
 export const WithoutBackdropClose: Story = {
   render: () => <ModalDemo closeOnBackdrop={false} title='Important notice' />,
