@@ -6,6 +6,7 @@ import {
   renderNativeComponentTemplate,
   renderStoryTemplate,
   renderStylesTemplate,
+  renderTestTemplate,
   renderTypesTemplate,
   renderWebComponentTemplate,
 } from './templates';
@@ -80,6 +81,11 @@ function createComponent(params: {
   fs.writeFileSync(
     path.join(componentDir, `${componentName}.stories.tsx`),
     renderStoryTemplate({ componentName, layer, isNative })
+  );
+
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.test.tsx`),
+    renderTestTemplate({ componentName, isNative })
   );
 
   if (!isNative) {

@@ -3,6 +3,7 @@ export * from './story';
 export * from './native-component';
 export * from './web-component';
 export * from './styles';
+export * from './test';
 
 import type { ComponentTemplateParams } from './types';
 

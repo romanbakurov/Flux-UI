@@ -5,7 +5,7 @@
   "description": "Virelia Design System monorepo",
   "type": "module",
   "author": "Roman Bakurov",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint 'packages/**/*.{ts,tsx}' 'apps/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'packages/**/*.{ts,tsx}' 'apps/**/*.{ts,tsx}' --fix",
