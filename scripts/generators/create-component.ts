@@ -4,6 +4,7 @@ import path from 'node:path';
 import {
   renderIndexTemplate,
   renderNativeComponentTemplate,
+  renderNativeStylesTemplate,
   renderStoryTemplate,
   renderStylesTemplate,
   renderTestTemplate,
@@ -88,7 +89,12 @@ function createComponent(params: {
     renderTestTemplate({ componentName, isNative })
   );
 
-  if (!isNative) {
+  if (isNative) {
+    fs.writeFileSync(
+      path.join(componentDir, `${componentName}.styles.ts`),
+      renderNativeStylesTemplate({ componentName })
+    );
+  } else {
     fs.writeFileSync(
       path.join(componentDir, `${componentName}.module.scss`),
       renderStylesTemplate({ componentName })
