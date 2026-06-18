@@ -1,10 +1,4 @@
-import {
-  Delete,
-  Download,
-  Filter,
-  Profile,
-  Search,
-} from '@romanbakurov/vellira-icons';
+import { Download, Filter, Save } from '@romanbakurov/vellira-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
@@ -119,11 +113,6 @@ Correct usage:
         type: { summary: 'ReactNode' },
       },
     },
-    iconPosition: {
-      control: 'radio',
-      options: ['none', 'left', 'right', 'both'],
-      table: { disable: true },
-    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -136,23 +125,8 @@ export const Basic: Story = {
     variant: 'primary',
     size: 'md',
     disabled: false,
-    iconPosition: 'left',
     ariaLabel: 'Download',
-  },
-  render: ({ iconPosition, ...args }) => {
-    const icon = <Download />;
-
-    return (
-      <Button
-        {...args}
-        leftIcon={
-          iconPosition === 'left' || iconPosition === 'both' ? icon : undefined
-        }
-        rightIcon={
-          iconPosition === 'right' || iconPosition === 'both' ? icon : undefined
-        }
-      />
-    );
+    leftIcon: <Download />,
   },
 };
 
@@ -160,61 +134,18 @@ export const Variants: Story = {
   args: {
     size: 'md',
     disabled: false,
-    iconPosition: 'left',
   },
 
-  render: ({ iconPosition, ...args }) => {
+  render: (args) => {
     return (
       <div style={{ display: 'flex', gap: 12 }}>
-        <Button
-          ariaLabel='Profile'
-          {...args}
-          variant='primary'
-          leftIcon={
-            iconPosition === 'left' || iconPosition === 'both' ? (
-              <Profile />
-            ) : undefined
-          }
-          rightIcon={
-            iconPosition === 'right' || iconPosition === 'both' ? (
-              <Profile />
-            ) : undefined
-          }
-        >
+        <Button ariaLabel='Profile' {...args} variant='primary'>
           Primary
         </Button>
-        <Button
-          ariaLabel='Search'
-          {...args}
-          variant='secondary'
-          leftIcon={
-            iconPosition === 'left' || iconPosition === 'both' ? (
-              <Search />
-            ) : undefined
-          }
-          rightIcon={
-            iconPosition === 'right' || iconPosition === 'both' ? (
-              <Search />
-            ) : undefined
-          }
-        >
+        <Button ariaLabel='Search' {...args} variant='secondary'>
           Secondary
         </Button>
-        <Button
-          ariaLabel='Delete'
-          {...args}
-          variant='danger'
-          leftIcon={
-            iconPosition === 'left' || iconPosition === 'both' ? (
-              <Delete />
-            ) : undefined
-          }
-          rightIcon={
-            iconPosition === 'right' || iconPosition === 'both' ? (
-              <Delete />
-            ) : undefined
-          }
-        >
+        <Button ariaLabel='Delete' {...args} variant='danger'>
           Delete
         </Button>
       </div>
@@ -276,7 +207,6 @@ export const WithoutIcons: Story = {
 
 export const OnlyIcon: Story = {
   argTypes: {
-    iconPosition: { table: { disable: true } },
     children: { table: { disable: true } },
   },
   args: {
@@ -286,6 +216,28 @@ export const OnlyIcon: Story = {
   },
   render: (args) => {
     return <Button {...args} leftIcon={<Filter />} />;
+  },
+};
+
+export const WithLeftIcon: Story = {
+  args: {
+    children: 'Download',
+    leftIcon: <Download />,
+  },
+};
+
+export const WithRightIcon: Story = {
+  args: {
+    children: 'Download',
+    rightIcon: <Download />,
+  },
+};
+
+export const WithBothIcons: Story = {
+  args: {
+    children: 'Download',
+    rightIcon: <Download />,
+    leftIcon: <Save />,
   },
 };
 
