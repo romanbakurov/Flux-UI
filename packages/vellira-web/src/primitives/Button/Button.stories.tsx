@@ -1,4 +1,4 @@
-import { Download, Filter, Save } from '@romanbakurov/virelia-icons';
+import { Download, Filter, Save } from '@romanbakurov/vellira-icons';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
