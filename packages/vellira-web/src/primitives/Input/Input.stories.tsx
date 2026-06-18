@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
 import { Input } from '../Input';
 
@@ -44,6 +45,85 @@ Correct usage:
       },
     },
   },
+  args: {
+    onChange: fn(),
+  },
+  argTypes: {
+    id: {
+      description: 'Unique input id used to connect the label with the input.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    label: {
+      description: 'Text label displayed above or next to the input.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    value: {
+      description: 'Current input value for controlled usage.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    placeholder: {
+      description: 'Placeholder text shown when the input is empty.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    size: {
+      description: 'Input size.',
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      table: {
+        type: { summary: `'sm' | 'md' | 'lg'` },
+        defaultValue: { summary: 'md' },
+      },
+    },
+    required: {
+      description: 'Marks the input as required.',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabled: {
+      description: 'Disables user interaction.',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    error: {
+      description: 'Validation error message displayed below the input.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    autoComplete: {
+      description: 'Browser autocomplete hint.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    onChange: {
+      description: 'Called when the input value changes.',
+      action: 'changed',
+      table: {
+        type: { summary: '(value: string) => void' },
+      },
+    },
+  },
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -51,7 +131,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Компонент-обертка для базовой демонстрации
-const BasicStoryDemo = (args: InputProps) => {
+const ControlledInputDemo = (args: InputProps) => {
   const [value, setValue] = useState('');
 
   return <Input {...args} value={value} onChange={setValue} />;
@@ -59,7 +139,9 @@ const BasicStoryDemo = (args: InputProps) => {
 
 // Компонент-обертка для демонстрации разных размеров
 const InputSizesDemo = () => {
-  const [value, setValue] = useState('');
+  const [smallValue, setSmallValue] = useState('');
+  const [mediumValue, setMediumValue] = useState('');
+  const [largeValue, setLargeValue] = useState('');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -67,24 +149,24 @@ const InputSizesDemo = () => {
         id='name-sm'
         label='Small'
         size='sm'
-        value={value}
-        onChange={setValue}
+        value={smallValue}
+        onChange={setSmallValue}
       />
 
       <Input
         id='name-md'
         label='Medium'
         size='md'
-        value={value}
-        onChange={setValue}
+        value={mediumValue}
+        onChange={setMediumValue}
       />
 
       <Input
         id='name-lg'
         label='Large'
         size='lg'
-        value={value}
-        onChange={setValue}
+        value={largeValue}
+        onChange={setLargeValue}
       />
     </div>
   );
@@ -98,7 +180,7 @@ export const Basic: Story = {
     value: '',
     size: 'md',
   },
-  render: (args) => <BasicStoryDemo {...args} />,
+  render: (args) => <ControlledInputDemo {...args} />,
 };
 
 export const Error: Story = {
@@ -110,7 +192,7 @@ export const Error: Story = {
     error: 'This field is required',
     size: 'md',
   },
-  render: (args) => <Input {...args} />,
+  render: (args) => <ControlledInputDemo {...args} />,
 };
 
 export const Disabled: Story = {
@@ -121,7 +203,7 @@ export const Disabled: Story = {
     disabled: true,
     size: 'md',
   },
-  render: (args) => <Input {...args} />,
+  render: (args) => <ControlledInputDemo {...args} />,
 };
 
 export const Sizes: Story = {
