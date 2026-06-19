@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, screen, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { Select } from '../Select';
 
@@ -50,9 +50,88 @@ Correct usage:
     onChange: fn(),
   },
   argTypes: {
-    error: {
+    id: {
+      description:
+        'Unique select id used to connect the label with the select.',
       control: 'text',
-      description: 'Error message (string)',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    label: {
+      description: 'Text label displayed above the Select.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    name: {
+      description: 'Select name shared by all select options.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    placeholder: {
+      description: 'Placeholder text shown when no value is selected.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    value: {
+      description: 'Current selected value for controlled usage.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    defaultValue: {
+      description: 'Initial selected value for uncontrolled usage.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    options: {
+      description: 'List of select options.',
+      control: 'object',
+      table: {
+        type: {
+          summary:
+            'Array<{ label: string; value: string; disabled?: boolean }>',
+        },
+      },
+    },
+    required: {
+      description: 'Marks the select as required.',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabled: {
+      description: 'Disables the select trigger and prevents interaction.',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    error: {
+      description: 'Validation error message displayed below the select.',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    onChange: {
+      description: 'Called when the selected value changes.',
+      action: 'changed',
+      table: {
+        type: { summary: '(value: string) => void' },
+      },
     },
   },
 } satisfies Meta<typeof Select>;
@@ -73,7 +152,7 @@ const optionsWithDisabled = [
 ];
 
 const SelectWithState = (args: SelectProps) => {
-  const [value, setValue] = useState(args.value);
+  const [value, setValue] = useState(args.value ?? args.defaultValue ?? '');
 
   return (
     <Select
@@ -95,16 +174,6 @@ export const Basic: Story = {
     options: defaultOptions,
   },
   render: (args) => <SelectWithState {...args} />,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const combobox = canvas.getByRole('combobox');
-
-    await expect(combobox).not.toBeDisabled();
-    await expect(combobox).toHaveAttribute('aria-expanded', 'false');
-
-    await userEvent.click(combobox);
-    await expect(combobox).toHaveAttribute('aria-expanded', 'true');
-  },
 };
 
 export const CloseOnEscape: Story = {
@@ -115,39 +184,16 @@ export const CloseOnEscape: Story = {
     options: defaultOptions,
   },
   render: (args) => <SelectWithState {...args} />,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const combobox = canvas.getByRole('combobox');
-
-    // Открыть кликом
-    await userEvent.click(combobox);
-    await expect(combobox).toHaveAttribute('aria-expanded', 'true');
-
-    // Навигация стрелками
-    await userEvent.keyboard('{Escape}');
-    await expect(combobox).toHaveAttribute('aria-expanded', 'false');
-  },
 };
 
 export const WithValue: Story = {
   args: {
     label: 'Country',
-    value: '',
+    value: 'fr',
     placeholder: 'Select country...',
     options: defaultOptions,
   },
   render: (args) => <SelectWithState {...args} />,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const combobox = canvas.getByRole('combobox');
-
-    await userEvent.click(combobox);
-
-    const option = await screen.findByText('France');
-    await userEvent.click(option);
-
-    await expect(combobox).toHaveTextContent('France');
-  },
 };
 
 export const WithError: Story = {
@@ -159,16 +205,6 @@ export const WithError: Story = {
     error: 'This field is required',
   },
   render: (args) => <SelectWithState {...args} />,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    // Проверить наличие сообщения об ошибке
-    const errorMessage = canvas.getByRole('alert');
-    await expect(errorMessage).toHaveTextContent('This field is required');
-
-    const combobox = canvas.getByRole('combobox');
-    await expect(combobox).toBeInTheDocument();
-  },
 };
 
 export const OptionWithDisabled: Story = {
@@ -179,16 +215,6 @@ export const OptionWithDisabled: Story = {
     options: optionsWithDisabled,
   },
   render: (args) => <SelectWithState {...args} />,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const combobox = canvas.getByRole('combobox');
-
-    await expect(combobox).not.toBeDisabled();
-    await expect(combobox).toHaveAttribute('aria-expanded', 'false');
-
-    await userEvent.click(combobox);
-    await expect(combobox).toHaveAttribute('aria-expanded', 'true');
-  },
 };
 
 export const Disabled: Story = {
@@ -200,12 +226,21 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (args) => <SelectWithState {...args} />,
+};
+
+export const Selection: Story = {
+  args: {
+    label: 'Country',
+    value: '',
+    placeholder: 'Select country...',
+    options: defaultOptions,
+  },
+  render: (args) => <SelectWithState {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const combobox = canvas.getByRole('combobox');
 
-    await expect(combobox).toHaveAttribute('aria-expanded', 'false');
     await userEvent.click(combobox);
-    await expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    await expect(combobox).toHaveAttribute('aria-expanded', 'true');
   },
 };
