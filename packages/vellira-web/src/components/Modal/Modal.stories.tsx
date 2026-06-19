@@ -139,7 +139,6 @@ const BasicModalDemo = ({ onClose }: { onClose?: () => void }) => {
     setIsOpen(false);
     onClose?.();
   };
-
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
