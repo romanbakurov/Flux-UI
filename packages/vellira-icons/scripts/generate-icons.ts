@@ -18,6 +18,7 @@ function toName(file: string): string {
 function withIconProps(code: string, native: boolean): string {
   if (native) {
     return code
+      .replace(/\s+xmlns=['"]http:\/\/www\.w3\.org\/2000\/svg['"]/g, '')
       .replace(
         'import type { SvgProps } from "react-native-svg";',
         `import type { SvgProps } from "react-native-svg";
@@ -65,6 +66,7 @@ async function compile(
       replaceAttrValues: {
         '#000': '{props.color ?? "currentColor"}',
         black: '{props.color ?? "currentColor"}',
+        currentColor: '{props.color ?? "currentColor"}',
       },
     },
     {
@@ -104,11 +106,11 @@ async function run(): Promise<void> {
     fs.writeFileSync(path.join(ICONS, `${name}.native.tsx`), nativeComponent);
 
     webExports.push(
-      `export { default as ${name} } from './generated/${name}.web';`
+      `export { default as ${name} } from './generated/${name}.web.js';`
     );
 
     nativeExports.push(
-      `export { default as ${name} } from './generated/${name}.native';`
+      `export { default as ${name} } from './generated/${name}.native.js';`
     );
   }
 
