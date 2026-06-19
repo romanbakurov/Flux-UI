@@ -5,26 +5,34 @@
   "private": false,
   "sideEffects": false,
   "type": "module",
-  "main": "./src/web.ts",
+  "main": "./dist/web.js",
   "exports": {
     ".": {
-      "react-native": "./src/native.ts",
-      "import": "./src/web.ts",
-      "default": "./src/web.ts"
+      "types": "./dist/web.d.ts",
+      "react-native": "./dist/native.js",
+      "import": "./dist/web.js",
+      "default": "./dist/web.js"
+    },
+    "./web": {
+      "types": "./dist/web.d.ts",
+      "import": "./dist/web.js",
+      "default": "./dist/web.js"
+    },
+    "./native": {
+      "types": "./dist/native.d.ts",
+      "import": "./dist/native.js",
+      "default": "./dist/native.js"
     }
   },
   "files": [
-    "src",
+    "dist",
     "README.md",
-    "LICENSE",
-    "!src/**/*.stories.*",
-    "!src/**/*.test.*",
-    "!src/test-utils"
+    "LICENSE"
   ],
   "scripts": {
-    "clean": "rm -rf src/generated/*.jsx",
-    "generate": "pnpm clean && tsx scripts/generate-icons.ts && pnpm --workspace-root exec prettier 'packages/vellira-icons/src/**/*.{ts,tsx}' --write",
-    "build": "pnpm generate"
+    "clean": "node --input-type=module -e \"import fs from 'node:fs'; fs.rmSync('dist', { recursive: true, force: true }); fs.rmSync('src/generated', { recursive: true, force: true })\"",
+    "generate": "tsx scripts/generate-icons.ts && pnpm --workspace-root exec prettier 'packages/vellira-icons/src/**/*.{ts,tsx}' --write",
+    "build": "pnpm clean && pnpm generate && tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -42,5 +50,16 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com"
+  },
+  "module": "./dist/web.js",
+  "types": "./dist/web.d.ts",
+  "react-native": "./dist/native.js",
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
   }
 }

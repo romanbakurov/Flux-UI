@@ -2,7 +2,7 @@
 
 Shared icon package for Vellira.
 
-Icons are generated for both web and React Native entry points. Web consumers resolve the default web entry, while React Native can use the `react-native` export condition.
+Icons are generated for both web and React Native entry points and compiled to `dist` for publishing. Web consumers resolve the default web entry, while React Native can use the `react-native` export condition. Explicit `./web` and `./native` entry points are also available.
 
 ## Development
 
@@ -12,11 +12,13 @@ Generate icons:
 pnpm --filter @romanbakurov/vellira-icons generate
 ```
 
-Build icons:
+Build icons and compile publishable output:
 
 ```bash
 pnpm --filter @romanbakurov/vellira-icons build
 ```
+
+Published files are emitted to `dist` and include JavaScript, source maps, and TypeScript declarations.
 
 ## Notes
 
