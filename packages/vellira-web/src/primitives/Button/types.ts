@@ -1,12 +1,12 @@
 import type { BaseButtonProps } from '@romanbakurov/vellira-types';
-import type { ReactNode } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 export interface ButtonProps extends BaseButtonProps {
   ariaLabel?: string | false;
-  children: ReactNode;
+  children?: ReactNode;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   fullWidth?: boolean;
   className?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
