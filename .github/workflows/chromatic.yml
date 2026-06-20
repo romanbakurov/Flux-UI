@@ -37,7 +37,7 @@ jobs:
 
       - name: Publish to Chromatic
         if: github.actor != 'dependabot[bot]'
-        uses: chromaui/action@latest
+        uses: chromaui/action@v13
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}

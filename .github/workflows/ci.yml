@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   quality:
-    name: Lint, build, and test
+    name: Lint, build, test
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Build
+      - name: Build packages
         run: pnpm build
 
       - name: Install Playwright browsers
@@ -38,3 +38,6 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Build Storybook
+        run: pnpm --filter @vellira/storybook build
