@@ -47,8 +47,8 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
           accessibilityState={{
             checked: isChecked,
             disabled,
-            invalid: hasError,
           }}
+          accessibilityHint={hasError ? error : undefined}
           accessibilityLabel={label ?? 'Checkbox'}
           style={({ pressed }) => [
             styles.wrapper,
