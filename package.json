@@ -12,9 +12,11 @@
     "format": "prettier '**/*.{ts,tsx,json,md,css,scss}' --write",
     "format:check": "prettier '**/*.{ts,tsx,json,md,css,scss}' --check",
     "build": "pnpm -r build",
-    "test": "pnpm --filter @romanbakurov/vellira-web test",
+    "test": "pnpm test:web && pnpm test:native",
     "prepare": "husky",
-    "create:component": "tsx scripts/generators/create-component.ts"
+    "create:component": "tsx scripts/generators/create-component.ts",
+    "test:web": "pnpm --filter @romanbakurov/vellira-web test",
+    "test:native": "pnpm --filter @romanbakurov/vellira-native test"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
