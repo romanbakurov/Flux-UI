@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
 import { Button } from '../../primitives/Button';
-import { Tabs } from '../Tabs';
 import { Tooltip } from '../Tooltip';
 
 const meta = {
@@ -45,110 +44,59 @@ Correct usage:
     onOpenChange: fn(),
   },
   argTypes: {
+    children: {
+      description: 'Trigger element that the tooltip is attached to.',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
+    content: {
+      description: 'Tooltip content.',
+      control: 'text',
+      table: { type: { summary: 'ReactNode' } },
+    },
     placement: {
+      description: 'Tooltip position relative to the trigger.',
       control: 'select',
       options: ['top', 'bottom', 'left', 'right'],
-      description: 'Tooltip position relative to children',
+      table: {
+        type: { summary: `'top' | 'bottom' | 'left' | 'right'` },
+        defaultValue: { summary: 'top' },
+      },
     },
     disabled: {
+      description: 'Disables tooltip behavior.',
       control: 'boolean',
-      description: 'Disable tooltip',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
     delay: {
+      description: 'Open and close delay in milliseconds.',
       control: 'object',
-      description: 'Delay in ms { open: number, close: number }',
+      table: {
+        type: { summary: '{ open?: number; close?: number }' },
+      },
     },
     maxWidth: {
+      description: 'Maximum tooltip width in pixels.',
       control: 'number',
-      description: 'Maximum width of tooltip',
+      table: {
+        type: { summary: 'number' },
+      },
+    },
+    onOpenChange: {
+      description: 'Called when tooltip open state changes.',
+      action: 'open changed',
+      table: {
+        type: { summary: '(open: boolean) => void' },
+      },
     },
   },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-const InteractivePlacementDemo = () => {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        alignItems: 'center',
-      }}
-    >
-      <Tabs defaultActiveIndex={0} variant='underlined' appearance='underline'>
-        <Tabs.List>
-          <Tabs.Tab index={0}>Top</Tabs.Tab>
-          <Tabs.Tab index={1}>Bottom</Tabs.Tab>
-          <Tabs.Tab index={2}>Left</Tabs.Tab>
-          <Tabs.Tab index={3}>Right</Tabs.Tab>
-        </Tabs.List>
-
-        <Tabs.Panel index={0}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '200px',
-            }}
-          >
-            <Tooltip content='Tooltip on top' placement='top'>
-              <Button>Hover me</Button>
-            </Tooltip>
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel index={1}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '200px',
-            }}
-          >
-            <Tooltip content='Tooltip on bottom' placement='bottom'>
-              <Button>Hover me</Button>
-            </Tooltip>
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel index={2}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '200px',
-            }}
-          >
-            <Tooltip content='Tooltip on left' placement='left'>
-              <Button>Hover me</Button>
-            </Tooltip>
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel index={3}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '200px',
-            }}
-          >
-            <Tooltip content='Tooltip on right' placement='right'>
-              <Button>Hover me</Button>
-            </Tooltip>
-          </div>
-        </Tabs.Panel>
-      </Tabs>
-    </div>
-  );
-};
 
 export const Basic: Story = {
   args: {
@@ -157,7 +105,7 @@ export const Basic: Story = {
   },
   render: (args) => {
     return (
-      <Tooltip {...args} placement='top'>
+      <Tooltip {...args}>
         <Button>Hover me</Button>
       </Tooltip>
     );
@@ -265,58 +213,6 @@ export const RichContent: Story = {
   ),
 };
 
-export const AllTogether: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: '20px',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <h3>Tooltip Examples</h3>
-
-      <div
-        style={{
-          display: 'flex',
-          gap: '20px',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-        }}
-      >
-        <Tooltip content='Basic tooltip' placement='top'>
-          <Button>Basic</Button>
-        </Tooltip>
-
-        <Tooltip content='With long text that wraps nicely' placement='top'>
-          <Button>Long</Button>
-        </Tooltip>
-
-        <Tooltip content='Disabled tooltip' disabled={true}>
-          <Button>Disabled</Button>
-        </Tooltip>
-
-        <Tooltip content='Fast tooltip' delay={{ open: 0, close: 0 }}>
-          <Button>Instant</Button>
-        </Tooltip>
-
-        <Tooltip
-          content={
-            <div style={{ textAlign: 'left' }}>
-              <strong>Rich content</strong>
-              <br />
-              With <em>formatting</em>
-            </div>
-          }
-        >
-          <Button>Rich</Button>
-        </Tooltip>
-      </div>
-    </div>
-  ),
-};
-
 export const DifferentTriggers: Story = {
   render: () => (
     <div
@@ -340,12 +236,8 @@ export const DifferentTriggers: Story = {
       </Tooltip>
 
       <Tooltip content='Icon only'>
-        <Button leftIcon={<Search />} />
+        <Button ariaLabel='Search' leftIcon={<Search />} />
       </Tooltip>
     </div>
   ),
-};
-
-export const InteractivePlacement: Story = {
-  render: () => <InteractivePlacementDemo />,
 };
