@@ -19,8 +19,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "pnpm build:tokens && tsc",
+    "clean": "rm -rf dist",
     "build:tokens": "tsx scripts/generate-css.ts",
+    "build": "pnpm run clean && pnpm run build:tokens && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "publishConfig": {
