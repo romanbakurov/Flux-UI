@@ -19,7 +19,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       className,
       onCheckedChange,
       error,
-      size = 'md',
     },
     ref
   ) => {
@@ -56,11 +55,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           />
 
           <span
-            className={cn(
-              styles.customCheckbox,
-              styles[size],
-              hasError && styles.error
-            )}
+            className={cn(styles.customCheckbox, hasError && styles.error)}
             aria-hidden='true'
           >
             {isChecked && (

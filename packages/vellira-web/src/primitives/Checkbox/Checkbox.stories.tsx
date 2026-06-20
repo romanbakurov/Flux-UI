@@ -161,13 +161,3 @@ export const Error: Story = {
     checked: false,
   },
 };
-
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <Checkbox label='Small' size='sm' />
-      <Checkbox label='Medium' size='md' />
-      <Checkbox label='Large' size='lg' />
-    </div>
-  ),
-};
