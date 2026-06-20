@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build": "storybook build",
     "playwright:install": "playwright install --with-deps chromium",
     "test": "vitest run --config vitest.config.ts"
   },
