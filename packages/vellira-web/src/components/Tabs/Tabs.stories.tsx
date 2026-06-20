@@ -85,7 +85,7 @@ Correct usage:
       },
     },
     defaultActiveIndex: {
-      description: 'Index of initially active tab',
+      description: 'Index of initially active tab.',
       control: 'number',
       table: {
         type: { summary: 'number' },
@@ -208,7 +208,11 @@ const ControlledDemo = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <Tabs activeIndex={activeIndex} onChange={setActiveIndex}>
+    <Tabs
+      activeIndex={activeIndex}
+      onChange={setActiveIndex}
+      appearance='underline'
+    >
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
