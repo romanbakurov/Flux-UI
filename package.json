@@ -11,14 +11,19 @@
     "lint:fix": "eslint 'packages/**/*.{ts,tsx}' 'apps/**/*.{ts,tsx}' --fix",
     "format": "prettier '**/*.{ts,tsx,json,md,css,scss}' --write",
     "format:check": "prettier '**/*.{ts,tsx,json,md,css,scss}' --check",
-    "build": "pnpm -r build",
+    "build": "pnpm build:packages",
+    "build:packages": "pnpm build:base && pnpm build:renderers",
+    "build:base": "pnpm --filter @romanbakurov/vellira-types build && pnpm --filter @romanbakurov/vellira-core build && pnpm --filter @romanbakurov/vellira-icons build && pnpm --filter @romanbakurov/vellira-tokens build",
+    "build:renderers": "pnpm --filter @romanbakurov/vellira-web build && pnpm --filter @romanbakurov/vellira-native build",
+    "build:storybook": "pnpm --filter @vellira/storybook build",
     "test": "pnpm test:unit && pnpm test:storybook",
     "prepare": "husky",
     "create:component": "tsx scripts/generators/create-component.ts",
     "test:web": "pnpm --filter @romanbakurov/vellira-web test",
     "test:native": "pnpm --filter @romanbakurov/vellira-native test",
     "test:storybook": "pnpm --filter @vellira/storybook test",
-    "test:unit": "pnpm test:web && pnpm test:native"
+    "test:unit": "pnpm test:web && pnpm test:native",
+    "typecheck": "pnpm -r --if-present typecheck"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
