@@ -62,8 +62,16 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'react/jsx-dev-runtime',
-        'focus-trap-react',
+
+        '@romanbakurov/vellira-core',
+        '@romanbakurov/vellira-icons',
+        '@romanbakurov/vellira-tokens',
+        '@romanbakurov/vellira-types',
+
+        '@floating-ui/react',
         'focus-trap',
+        'focus-trap-react',
+        'clsx',
       ],
     },
   },
