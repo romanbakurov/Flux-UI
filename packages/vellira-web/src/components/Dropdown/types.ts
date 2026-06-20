@@ -26,11 +26,13 @@ export interface DropdownProps extends Omit<BaseDropdownProps, 'items'> {
   label?: string;
   trigger?: ReactNode;
   icon?: ReactNode;
+  arrowIcon?: ReactNode;
   items: DropdownItem[];
   placement?: Placement;
   className?: string;
   rotateAngle?: number;
   matchTriggerWidth?: boolean;
+  showArrow?: boolean;
   textWrap?: TextWrap;
 }
 
