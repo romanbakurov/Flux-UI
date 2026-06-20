@@ -24,6 +24,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const iconOnly = !children && (leftIcon || rightIcon);
 
+    if (iconOnly && !ariaLabel && process.env.NODE_ENV !== 'production') {
+      console.warn('Button: icon-only buttons must provide ariaLabel.');
+    }
+
     return (
       <button
         ref={ref}
@@ -38,7 +42,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         })}
       >
         {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
-        <span>{children}</span>
+        {children && <span className={styles.label}>{children}</span>}
         {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
       </button>
     );

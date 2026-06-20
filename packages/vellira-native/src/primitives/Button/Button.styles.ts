@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   button: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 8,
     borderRadius: theme.radius.md,
-    paddingStart: 16,
-    paddingEnd: 16,
-    paddingBottom: 8,
-    paddingTop: 8,
+  },
+
+  fullWidth: {
+    alignSelf: 'stretch',
   },
 
   text: {
