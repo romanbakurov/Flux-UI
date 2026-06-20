@@ -1,11 +1,18 @@
 import type { BaseButtonProps } from '@romanbakurov/vellira-types';
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import type { ViewStyle } from 'react-native';
+
+export type ButtonIconElement = ReactElement<{
+  color?: string;
+  size?: number;
+}>;
 
 export interface ButtonProps extends BaseButtonProps {
   children?: ReactNode;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  leftIcon?: ButtonIconElement;
+  rightIcon?: ButtonIconElement;
   fullWidth?: boolean;
   onPress?: () => void;
   style?: ViewStyle;
