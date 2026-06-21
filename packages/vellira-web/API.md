@@ -57,32 +57,22 @@ import { Button } from '@romanbakurov/vellira-web';
 </Button>;
 ```
 
-| Prop        | Type              | Required | Description                                                   |
-| ----------- | ----------------- | -------- | ------------------------------------------------------------- |
-| `children`  | `ReactNode`       | Yes      | Button content.                                               |
-| `variant`   | `ButtonColor`     | No       | Visual color variant.                                         |
-| `size`      | `ButtonSize`      | No       | Button size.                                                  |
-| `disabled`  | `boolean`         | No       | Disables interaction.                                         |
-| `onClick`   | `() => void`      | No       | Click handler for web.                                        |
-| `leftIcon`  | `ReactNode`       | No       | Icon rendered before content.                                 |
-| `rightIcon` | `ReactNode`       | No       | Icon rendered after content.                                  |
-| `fullWidth` | `boolean`         | No       | Makes the button fill its container width.                    |
-| `ariaLabel` | `string \| false` | No       | Accessible label for icon-only or visually ambiguous buttons. |
-| `className` | `string`          | No       | Extra CSS class for the root element.                         |
+<!-- api-docgen:start web.ButtonProps.Button -->
 
-## Badge
+| Prop        | Type                                   | Required | Description                                                   |
+| ----------- | -------------------------------------- | -------- | ------------------------------------------------------------- |
+| `ariaLabel` | `string \| false`                      | No       | Accessible label for icon-only or visually ambiguous buttons. |
+| `children`  | `ReactNode`                            | No       | Button content.                                               |
+| `leftIcon`  | `ReactNode`                            | No       | Icon rendered before content.                                 |
+| `rightIcon` | `ReactNode`                            | No       | Icon rendered after content.                                  |
+| `fullWidth` | `boolean`                              | No       | Makes the button fill its container width.                    |
+| `className` | `string`                               | No       | Extra CSS class for the root element.                         |
+| `onClick`   | `MouseEventHandler<HTMLButtonElement>` | No       | Click handler for web.                                        |
+| `variant`   | `ButtonColor`                          | No       | Visual color variant.                                         |
+| `size`      | `ButtonSize`                           | No       | Button size.                                                  |
+| `disabled`  | `boolean`                              | No       | Disables interaction.                                         |
 
-Small status marker.
-
-```tsx
-import { Badge } from '@romanbakurov/vellira-web';
-
-<Badge />;
-```
-
-| Prop       | Type      | Required | Description                       |
-| ---------- | --------- | -------- | --------------------------------- |
-| `disabled` | `boolean` | No       | Renders the disabled badge state. |
+<!-- api-docgen:end web.ButtonProps.Button -->
 
 ## Checkbox
 
@@ -98,14 +88,19 @@ import { Checkbox } from '@romanbakurov/vellira-web';
 />;
 ```
 
+<!-- api-docgen:start web.CheckboxProps.Checkbox -->
+
 | Prop              | Type                         | Required | Description                                   |
 | ----------------- | ---------------------------- | -------- | --------------------------------------------- |
-| `checked`         | `boolean`                    | No       | Controlled checked state.                     |
-| `defaultChecked`  | `boolean`                    | No       | Initial checked state for uncontrolled usage. |
-| `onCheckedChange` | `(checked: boolean) => void` | No       | Called when the user changes the state.       |
-| `disabled`        | `boolean`                    | No       | Disables interaction.                         |
 | `label`           | `string`                     | No       | Text label rendered next to the control.      |
 | `className`       | `string`                     | No       | Extra CSS class for the root element.         |
+| `error`           | `string`                     | No       | Error message rendered for invalid state.     |
+| `checked`         | `boolean`                    | No       | Controlled checked state.                     |
+| `defaultChecked`  | `boolean`                    | No       | Initial checked state for uncontrolled usage. |
+| `disabled`        | `boolean`                    | No       | Disables interaction.                         |
+| `onCheckedChange` | `(checked: boolean) => void` | No       | Called when the user changes the state.       |
+
+<!-- api-docgen:end web.CheckboxProps.Checkbox -->
 
 ## Input
 
@@ -123,20 +118,24 @@ import { Input } from '@romanbakurov/vellira-web';
 />;
 ```
 
+<!-- api-docgen:start web.InputProps.Input -->
+
 | Prop           | Type                      | Required | Description                                  |
 | -------------- | ------------------------- | -------- | -------------------------------------------- |
 | `label`        | `string`                  | Yes      | Visible label.                               |
-| `value`        | `string`                  | Yes      | Controlled value.                            |
-| `onChange`     | `(value: string) => void` | Yes      | Called with the next value.                  |
 | `placeholder`  | `string`                  | No       | Placeholder text.                            |
 | `size`         | `InputSize`               | No       | Input size.                                  |
-| `type`         | `InputType`               | No       | HTML input type.                             |
 | `error`        | `string`                  | No       | Error message rendered under the input.      |
+| `type`         | `InputType`               | No       | HTML input type.                             |
 | `id`           | `string`                  | No       | Input id. Generated internally when omitted. |
-| `autoComplete` | `string`                  | No       | HTML autocomplete value.                     |
-| `required`     | `boolean`                 | No       | Marks the field as required.                 |
-| `disabled`     | `boolean`                 | No       | Disables the input.                          |
 | `className`    | `string`                  | No       | Extra CSS class for the root element.        |
+| `autoComplete` | `string`                  | No       | HTML autocomplete value.                     |
+| `value`        | `string`                  | Yes      | Controlled value.                            |
+| `onChange`     | `(value: string) => void` | Yes      | Called with the next value.                  |
+| `disabled`     | `boolean`                 | No       | Disables the input.                          |
+| `required`     | `boolean`                 | No       | Marks the field as required.                 |
+
+<!-- api-docgen:end web.InputProps.Input -->
 
 ## FormField
 
@@ -150,14 +149,18 @@ import { FormField, Input } from '@romanbakurov/vellira-web';
 </FormField>;
 ```
 
+<!-- api-docgen:start web.FormFieldProps.FormField -->
+
 | Prop       | Type        | Required | Description                                    |
 | ---------- | ----------- | -------- | ---------------------------------------------- |
-| `children` | `ReactNode` | Yes      | Field control or custom content.               |
 | `id`       | `string`    | No       | Id used to connect the label with the control. |
 | `label`    | `string`    | No       | Field label.                                   |
 | `error`    | `string`    | No       | Error message.                                 |
+| `children` | `ReactNode` | Yes      | Field control or custom content.               |
 | `required` | `boolean`   | No       | Marks the field as required.                   |
 | `disabled` | `boolean`   | No       | Renders the disabled field state.              |
+
+<!-- api-docgen:end web.FormFieldProps.FormField -->
 
 ## RadioGroup
 
@@ -180,27 +183,35 @@ import { RadioGroup } from '@romanbakurov/vellira-web';
 
 ### RadioGroup Props
 
+<!-- api-docgen:start web.RadioGroupProps.RadioGroupProps -->
+
 | Prop           | Type                      | Required | Description                           |
 | -------------- | ------------------------- | -------- | ------------------------------------- |
+| `label`        | `string`                  | No       | Group label.                          |
 | `name`         | `string`                  | Yes      | Radio input name.                     |
 | `options`      | `RadioOption[]`           | Yes      | Options rendered by the group.        |
-| `defaultValue` | `string`                  | Yes      | Initial value for uncontrolled usage. |
-| `value`        | `string`                  | No       | Controlled selected value.            |
-| `onChange`     | `(value: string) => void` | No       | Called when selection changes.        |
-| `label`        | `string`                  | No       | Group label.                          |
-| `orientation`  | `Orientation`             | Yes      | Layout direction.                     |
 | `error`        | `string`                  | No       | Error message.                        |
+| `orientation`  | `Orientation`             | Yes      | Layout direction.                     |
+| `className`    | `string`                  | No       | Extra CSS class for the root element. |
+| `value`        | `string`                  | No       | Controlled selected value.            |
+| `defaultValue` | `string`                  | No       | Initial value for uncontrolled usage. |
+| `onChange`     | `(value: string) => void` | No       | Called when selection changes.        |
 | `required`     | `boolean`                 | No       | Marks the group as required.          |
 | `disabled`     | `boolean`                 | No       | Disables the whole group.             |
-| `className`    | `string`                  | No       | Extra CSS class for the root element. |
+
+<!-- api-docgen:end web.RadioGroupProps.RadioGroupProps -->
 
 ### RadioOption
 
+<!-- api-docgen:start web.RadioOption.RadioOption -->
+
 | Prop       | Type      | Required | Description           |
 | ---------- | --------- | -------- | --------------------- |
-| `value`    | `string`  | Yes      | Option value.         |
 | `label`    | `string`  | Yes      | Visible option label. |
+| `value`    | `string`  | Yes      | Option value.         |
 | `disabled` | `boolean` | No       | Disables this option. |
+
+<!-- api-docgen:end web.RadioOption.RadioOption -->
 
 ## Select
 
@@ -223,28 +234,36 @@ import { Select } from '@romanbakurov/vellira-web';
 
 ### Select Props
 
+<!-- api-docgen:start web.SelectProps.SelectProps -->
+
 | Prop           | Type                      | Required | Description                                    |
 | -------------- | ------------------------- | -------- | ---------------------------------------------- |
+| `label`        | `string`                  | No       | Visible field label.                           |
+| `id`           | `string`                  | No       | Trigger id.                                    |
+| `name`         | `string`                  | No       | Field name.                                    |
 | `options`      | `SelectOption[]`          | Yes      | Options rendered in the dropdown.              |
+| `placeholder`  | `string`                  | No       | Text shown when no value is selected.          |
+| `error`        | `string`                  | No       | Error message.                                 |
+| `className`    | `string`                  | No       | Extra CSS class for the root element.          |
 | `value`        | `string`                  | No       | Controlled selected value.                     |
 | `defaultValue` | `string`                  | No       | Initial selected value for uncontrolled usage. |
 | `onChange`     | `(value: string) => void` | No       | Called when the user selects an option.        |
-| `label`        | `string`                  | No       | Visible field label.                           |
-| `placeholder`  | `string`                  | No       | Text shown when no value is selected.          |
-| `id`           | `string`                  | No       | Trigger id.                                    |
-| `name`         | `string`                  | No       | Field name.                                    |
-| `error`        | `string`                  | No       | Error message.                                 |
 | `required`     | `boolean`                 | No       | Marks the field as required.                   |
 | `disabled`     | `boolean`                 | No       | Disables interaction.                          |
-| `className`    | `string`                  | No       | Extra CSS class for the root element.          |
+
+<!-- api-docgen:end web.SelectProps.SelectProps -->
 
 ### SelectOption
 
+<!-- api-docgen:start web.SelectOption.SelectOption -->
+
 | Prop       | Type      | Required | Description           |
 | ---------- | --------- | -------- | --------------------- |
-| `value`    | `string`  | Yes      | Option value.         |
 | `label`    | `string`  | Yes      | Visible option label. |
+| `value`    | `string`  | Yes      | Option value.         |
 | `disabled` | `boolean` | No       | Disables this option. |
+
+<!-- api-docgen:end web.SelectOption.SelectOption -->
 
 ## Dropdown
 
@@ -266,19 +285,25 @@ import { Dropdown } from '@romanbakurov/vellira-web';
 
 ### Dropdown Props
 
-| Prop                | Type                      | Required | Description                               |
-| ------------------- | ------------------------- | -------- | ----------------------------------------- |
-| `items`             | `DropdownItem[]`          | Yes      | Menu model.                               |
-| `onSelect`          | `(value: string) => void` | No       | Called when a menu item is selected.      |
-| `disabled`          | `boolean`                 | No       | Disables the trigger.                     |
-| `label`             | `string`                  | No       | Default trigger label.                    |
-| `trigger`           | `ReactNode`               | No       | Custom trigger content.                   |
-| `icon`              | `ReactNode`               | No       | Icon rendered in the default trigger.     |
-| `placement`         | `Placement`               | No       | Floating UI menu placement.               |
-| `rotateAngle`       | `number`                  | No       | Rotation angle for the trigger arrow.     |
-| `matchTriggerWidth` | `boolean`                 | No       | Makes the menu match the trigger width.   |
-| `textWrap`          | `TextWrap`                | No       | Default text wrapping behavior for items. |
-| `className`         | `string`                  | No       | Extra CSS class for the root element.     |
+<!-- api-docgen:start web.DropdownProps.DropdownProps -->
+
+| Prop                | Type                      | Required | Description                                     |
+| ------------------- | ------------------------- | -------- | ----------------------------------------------- |
+| `label`             | `string`                  | No       | Default trigger label.                          |
+| `trigger`           | `ReactNode`               | No       | Custom trigger content.                         |
+| `icon`              | `ReactNode`               | No       | Icon rendered in the default trigger.           |
+| `arrowIcon`         | `ReactNode`               | No       | Custom arrow icon rendered in the trigger.      |
+| `items`             | `DropdownItem[]`          | Yes      | Menu model.                                     |
+| `placement`         | `Placement`               | No       | Floating UI menu placement.                     |
+| `className`         | `string`                  | No       | Extra CSS class for the root element.           |
+| `rotateAngle`       | `number`                  | No       | Rotation angle for the trigger arrow.           |
+| `matchTriggerWidth` | `boolean`                 | No       | Makes the menu match the trigger width.         |
+| `showArrow`         | `boolean`                 | No       | Controls whether the trigger arrow is rendered. |
+| `textWrap`          | `TextWrap`                | No       | Default text wrapping behavior for items.       |
+| `disabled`          | `boolean`                 | No       | Disables the trigger.                           |
+| `onSelect`          | `(value: string) => void` | No       | Called when a menu item is selected.            |
+
+<!-- api-docgen:end web.DropdownProps.DropdownProps -->
 
 ### Dropdown Items
 
@@ -307,37 +332,58 @@ import { Tabs } from '@romanbakurov/vellira-web';
 
 ### Tabs Props
 
-| Prop                 | Type             | Required | Description                                        |
-| -------------------- | ---------------- | -------- | -------------------------------------------------- |
-| `children`           | `ReactNode`      | No       | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
-| `orientation`        | `Orientation`    | Yes      | Keyboard and layout orientation.                   |
-| `defaultActiveIndex` | `number`         | No       | Initially active tab index.                        |
-| `appearance`         | `TabsAppearance` | No       | Visual style.                                      |
-| `className`          | `string`         | No       | Extra CSS class for the root element.              |
+<!-- api-docgen:start web.TabsProps.TabsProps -->
+
+| Prop                 | Type                      | Required | Description                                        |
+| -------------------- | ------------------------- | -------- | -------------------------------------------------- |
+| `children`           | `ReactNode`               | No       | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
+| `className`          | `string`                  | No       | Extra CSS class for the root element.              |
+| `activeIndex`        | `number`                  | No       | Currently active tab index.                        |
+| `defaultActiveIndex` | `number`                  | No       | Initially active tab index.                        |
+| `onChange`           | `(index: number) => void` | No       | Called when the value changes.                     |
+| `orientation`        | `Orientation`             | No       | Keyboard and layout orientation.                   |
+| `appearance`         | `TabsAppearance`          | No       | Visual style.                                      |
+
+<!-- api-docgen:end web.TabsProps.TabsProps -->
 
 ### Tabs.List Props
+
+<!-- api-docgen:start web.TabsListProps.TabsListProps -->
 
 | Prop        | Type        | Required | Description      |
 | ----------- | ----------- | -------- | ---------------- |
 | `children`  | `ReactNode` | No       | Tab buttons.     |
 | `className` | `string`    | No       | Extra CSS class. |
 
+<!-- api-docgen:end web.TabsListProps.TabsListProps -->
+
 ### Tabs.Tab Props
 
-| Prop        | Type        | Required | Description                                  |
-| ----------- | ----------- | -------- | -------------------------------------------- |
-| `index`     | `number`    | Yes      | Tab index used to connect the tab and panel. |
-| `children`  | `ReactNode` | No       | Tab label.                                   |
-| `disabled`  | `boolean`   | No       | Disables this tab.                           |
-| `className` | `string`    | No       | Extra CSS class.                             |
+<!-- api-docgen:start web.TabProps.TabsTabProps -->
+
+| Prop        | Type                                                    | Required | Description                                  |
+| ----------- | ------------------------------------------------------- | -------- | -------------------------------------------- |
+| `children`  | `ReactNode`                                             | Yes      | Tab label.                                   |
+| `icon`      | `ReactNode`                                             | No       | Icon rendered inside the component.          |
+| `className` | `string`                                                | No       | Extra CSS class.                             |
+| `onClick`   | `(e: MouseEvent<HTMLButtonElement> \| null) => void`    | No       | Click handler.                               |
+| `onKeyDown` | `(e: KeyboardEvent<HTMLButtonElement> \| null) => void` | No       | Keyboard handler.                            |
+| `index`     | `number`                                                | Yes      | Tab index used to connect the tab and panel. |
+| `disabled`  | `boolean`                                               | No       | Disables this tab.                           |
+
+<!-- api-docgen:end web.TabProps.TabsTabProps -->
 
 ### Tabs.Panel Props
 
+<!-- api-docgen:start web.TabsPanelProps.TabsPanelProps -->
+
 | Prop        | Type        | Required | Description                      |
 | ----------- | ----------- | -------- | -------------------------------- |
-| `index`     | `number`    | Yes      | Panel index matching `Tabs.Tab`. |
 | `children`  | `ReactNode` | No       | Panel content.                   |
 | `className` | `string`    | No       | Extra CSS class.                 |
+| `index`     | `number`    | Yes      | Panel index matching `Tabs.Tab`. |
+
+<!-- api-docgen:end web.TabsPanelProps.TabsPanelProps -->
 
 ## Tooltip
 
@@ -351,15 +397,19 @@ import { Tooltip, Button } from '@romanbakurov/vellira-web';
 </Tooltip>;
 ```
 
+<!-- api-docgen:start web.TooltipProps.Tooltip -->
+
 | Prop        | Type                | Required | Description                           |
 | ----------- | ------------------- | -------- | ------------------------------------- |
-| `content`   | `ReactNode`         | Yes      | Tooltip content.                      |
-| `children`  | `ReactNode`         | Yes      | Trigger element.                      |
-| `placement` | `FloatingPlacement` | No       | Preferred tooltip placement.          |
-| `delay`     | `TooltipDelay`      | No       | Open and close delay in milliseconds. |
-| `disabled`  | `boolean`           | No       | Prevents the tooltip from opening.    |
-| `maxWidth`  | `number \| string`  | No       | Maximum tooltip width.                |
+| `content`   | `React.ReactNode`   | Yes      | Tooltip content.                      |
+| `children`  | `React.ReactNode`   | Yes      | Trigger element.                      |
+| `maxWidth`  | `string \| number`  | No       | Maximum tooltip width.                |
 | `className` | `string`            | Yes      | Extra CSS class for the tooltip root. |
+| `placement` | `FloatingPlacement` | No       | Preferred tooltip placement.          |
+| `disabled`  | `boolean`           | No       | Prevents the tooltip from opening.    |
+| `delay`     | `TooltipDelay`      | No       | Open and close delay in milliseconds. |
+
+<!-- api-docgen:end web.TooltipProps.Tooltip -->
 
 ## Modal
 
@@ -383,14 +433,18 @@ import { Button, Modal } from '@romanbakurov/vellira-web';
 
 ### Modal Props
 
+<!-- api-docgen:start web.ModalProps.ModalProps -->
+
 | Prop              | Type         | Required | Description                              |
 | ----------------- | ------------ | -------- | ---------------------------------------- |
+| `children`        | `ReactNode`  | Yes      | Modal content.                           |
 | `isOpen`          | `boolean`    | Yes      | Controls dialog visibility.              |
 | `onClose`         | `() => void` | Yes      | Called when the modal requests to close. |
-| `children`        | `ReactNode`  | Yes      | Modal content.                           |
 | `closeOnBackdrop` | `boolean`    | No       | Allows closing by clicking the backdrop. |
 | `closeOnEsc`      | `boolean`    | No       | Allows closing with the Escape key.      |
 | `closeOnClick`    | `boolean`    | No       | Deprecated alias kept for compatibility. |
+
+<!-- api-docgen:end web.ModalProps.ModalProps -->
 
 ### Modal Compound Components
 

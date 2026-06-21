@@ -23,7 +23,9 @@
     "test:native": "pnpm --filter @romanbakurov/vellira-native test",
     "test:storybook": "pnpm --filter @vellira/storybook test",
     "test:unit": "pnpm test:web && pnpm test:native",
-    "typecheck": "pnpm -r --if-present typecheck"
+    "typecheck": "pnpm -r --if-present typecheck",
+    "docs:api": "tsx scripts/generate-api-docs.ts",
+    "docs:api:check": "tsx scripts/generate-api-docs.ts --check"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
