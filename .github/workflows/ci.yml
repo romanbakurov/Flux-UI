@@ -36,6 +36,9 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: API docs
+        run: pnpm docs:api:check
+
       - name: Install Playwright browsers
         run: pnpm --filter @vellira/storybook run playwright:install
 

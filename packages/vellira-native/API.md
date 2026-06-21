@@ -53,13 +53,23 @@ import { Button } from '@romanbakurov/vellira-native';
 </Button>;
 ```
 
-| Prop       | Type          | Required | Description                 |
-| ---------- | ------------- | -------- | --------------------------- |
-| `children` | `ReactNode`   | Yes      | Button content.             |
-| `variant`  | `ButtonColor` | No       | Visual color variant.       |
-| `size`     | `ButtonSize`  | No       | Button size.                |
-| `disabled` | `boolean`     | No       | Disables interaction.       |
-| `onPress`  | `() => void`  | No       | React Native press handler. |
+<!-- api-docgen:start native.ButtonProps.Button -->
+
+| Prop                 | Type                | Required | Description                                   |
+| -------------------- | ------------------- | -------- | --------------------------------------------- |
+| `children`           | `ReactNode`         | No       | Button content.                               |
+| `leftIcon`           | `ButtonIconElement` | No       | Icon rendered before content.                 |
+| `rightIcon`          | `ButtonIconElement` | No       | Icon rendered after content.                  |
+| `fullWidth`          | `boolean`           | No       | Makes the component fill its container width. |
+| `onPress`            | `() => void`        | No       | React Native press handler.                   |
+| `style`              | `ViewStyle`         | No       | Extra root style.                             |
+| `accessibilityLabel` | `string`            | No       | Accessible label for screen readers.          |
+| `iconSize`           | `number`            | No       | Icon size in pixels.                          |
+| `variant`            | `ButtonColor`       | No       | Visual color variant.                         |
+| `size`               | `ButtonSize`        | No       | Button size.                                  |
+| `disabled`           | `boolean`           | No       | Disables interaction.                         |
+
+<!-- api-docgen:end native.ButtonProps.Button -->
 
 ## Badge
 
@@ -89,15 +99,19 @@ import { Checkbox } from '@romanbakurov/vellira-native';
 />;
 ```
 
+<!-- api-docgen:start native.CheckboxProps.Checkbox -->
+
 | Prop              | Type                         | Required | Description                                   |
 | ----------------- | ---------------------------- | -------- | --------------------------------------------- |
+| `label`           | `string`                     | No       | Text label rendered next to the control.      |
+| `style`           | `StyleProp<ViewStyle>`       | No       | Extra container style.                        |
+| `error`           | `string`                     | No       | Error message rendered for invalid state.     |
 | `checked`         | `boolean`                    | No       | Controlled checked state.                     |
 | `defaultChecked`  | `boolean`                    | No       | Initial checked state for uncontrolled usage. |
-| `onCheckedChange` | `(checked: boolean) => void` | No       | Called when the user changes the state.       |
 | `disabled`        | `boolean`                    | No       | Disables interaction.                         |
-| `label`           | `string`                     | No       | Text label rendered next to the control.      |
-| `children`        | `ReactNode`                  | No       | Custom label/content.                         |
-| `style`           | `ViewStyle`                  | No       | Extra container style.                        |
+| `onCheckedChange` | `(checked: boolean) => void` | No       | Called when the user changes the state.       |
+
+<!-- api-docgen:end native.CheckboxProps.Checkbox -->
 
 ## Input
 
@@ -117,19 +131,23 @@ import { Input } from '@romanbakurov/vellira-native';
 
 `Input` also accepts React Native `TextInputProps`, except `value`, `onChange`, `onChangeText`, and `editable`, which are controlled by the Vellira API.
 
+<!-- api-docgen:start native.InputProps.Input -->
+
 | Prop             | Type                      | Required | Description                                |
 | ---------------- | ------------------------- | -------- | ------------------------------------------ |
 | `label`          | `string`                  | Yes      | Visible label.                             |
-| `value`          | `string`                  | Yes      | Controlled value.                          |
-| `onChange`       | `(value: string) => void` | Yes      | Called with the next value.                |
 | `placeholder`    | `string`                  | No       | Placeholder text.                          |
 | `size`           | `InputSize`               | No       | Input size.                                |
-| `type`           | `InputType`               | No       | Semantic input type used by the component. |
 | `error`          | `string`                  | No       | Error message rendered under the input.    |
-| `required`       | `boolean`                 | No       | Marks the field as required.               |
-| `disabled`       | `boolean`                 | No       | Disables the input.                        |
+| `type`           | `InputType`               | No       | Semantic input type used by the component. |
 | `containerStyle` | `ViewStyle`               | No       | Extra style for the field container.       |
 | `inputStyle`     | `TextStyle`               | No       | Extra style for the input element.         |
+| `value`          | `string`                  | Yes      | Controlled value.                          |
+| `onChange`       | `(value: string) => void` | Yes      | Called with the next value.                |
+| `disabled`       | `boolean`                 | No       | Disables the input.                        |
+| `required`       | `boolean`                 | No       | Marks the field as required.               |
+
+<!-- api-docgen:end native.InputProps.Input -->
 
 ## FormField
 
@@ -143,16 +161,20 @@ import { FormField, Input } from '@romanbakurov/vellira-native';
 </FormField>;
 ```
 
-| Prop         | Type        | Required | Description                       |
-| ------------ | ----------- | -------- | --------------------------------- |
-| `children`   | `ReactNode` | Yes      | Field control or custom content.  |
-| `label`      | `string`    | No       | Field label.                      |
-| `error`      | `string`    | No       | Error message.                    |
-| `required`   | `boolean`   | No       | Marks the field as required.      |
-| `disabled`   | `boolean`   | No       | Renders the disabled field state. |
-| `style`      | `ViewStyle` | No       | Extra container style.            |
-| `labelStyle` | `TextStyle` | No       | Extra label text style.           |
-| `errorStyle` | `TextStyle` | No       | Extra error text style.           |
+<!-- api-docgen:start native.FormFieldProps.FormField -->
+
+| Prop         | Type                   | Required | Description                       |
+| ------------ | ---------------------- | -------- | --------------------------------- |
+| `label`      | `string`               | No       | Field label.                      |
+| `error`      | `string`               | No       | Error message.                    |
+| `children`   | `ReactNode`            | Yes      | Field control or custom content.  |
+| `style`      | `StyleProp<ViewStyle>` | No       | Extra container style.            |
+| `labelStyle` | `StyleProp<TextStyle>` | No       | Extra label text style.           |
+| `errorStyle` | `StyleProp<TextStyle>` | No       | Extra error text style.           |
+| `required`   | `boolean`              | No       | Marks the field as required.      |
+| `disabled`   | `boolean`              | No       | Renders the disabled field state. |
+
+<!-- api-docgen:end native.FormFieldProps.FormField -->
 
 ## RadioGroup
 
@@ -174,28 +196,36 @@ import { RadioGroup } from '@romanbakurov/vellira-native';
 
 ### RadioGroup Props
 
+<!-- api-docgen:start native.RadioGroupProps.RadioGroupProps -->
+
 | Prop           | Type                      | Required | Description                           |
 | -------------- | ------------------------- | -------- | ------------------------------------- |
-| `options`      | `RadioOption[]`           | Yes      | Options rendered by the group.        |
-| `defaultValue` | `string`                  | Yes      | Initial value for uncontrolled usage. |
-| `value`        | `string`                  | No       | Controlled selected value.            |
-| `onChange`     | `(value: string) => void` | No       | Called when selection changes.        |
 | `label`        | `string`                  | No       | Group label.                          |
-| `orientation`  | `Orientation`             | No       | Layout direction.                     |
+| `options`      | `RadioOption[]`           | Yes      | Options rendered by the group.        |
 | `error`        | `string`                  | No       | Error message.                        |
+| `orientation`  | `Orientation`             | No       | Layout direction.                     |
+| `style`        | `StyleProp<ViewStyle>`    | No       | Extra group style.                    |
+| `optionStyle`  | `StyleProp<ViewStyle>`    | No       | Extra option style.                   |
+| `labelStyle`   | `StyleProp<TextStyle>`    | No       | Extra label text style.               |
+| `value`        | `string`                  | No       | Controlled selected value.            |
+| `defaultValue` | `string`                  | No       | Initial value for uncontrolled usage. |
+| `onChange`     | `(value: string) => void` | No       | Called when selection changes.        |
 | `required`     | `boolean`                 | No       | Marks the group as required.          |
 | `disabled`     | `boolean`                 | No       | Disables the whole group.             |
-| `style`        | `ViewStyle`               | No       | Extra group style.                    |
-| `optionStyle`  | `ViewStyle`               | No       | Extra option style.                   |
-| `labelStyle`   | `TextStyle`               | No       | Extra label text style.               |
+
+<!-- api-docgen:end native.RadioGroupProps.RadioGroupProps -->
 
 ### RadioOption
 
+<!-- api-docgen:start native.RadioOption.RadioOption -->
+
 | Prop       | Type      | Required | Description           |
 | ---------- | --------- | -------- | --------------------- |
-| `value`    | `string`  | Yes      | Option value.         |
 | `label`    | `string`  | Yes      | Visible option label. |
+| `value`    | `string`  | Yes      | Option value.         |
 | `disabled` | `boolean` | No       | Disables this option. |
+
+<!-- api-docgen:end native.RadioOption.RadioOption -->
 
 ## Select
 
@@ -218,29 +248,37 @@ import { Select } from '@romanbakurov/vellira-native';
 
 ### Select Props
 
+<!-- api-docgen:start native.SelectProps.SelectProps -->
+
 | Prop           | Type                      | Required | Description                                    |
 | -------------- | ------------------------- | -------- | ---------------------------------------------- |
+| `label`        | `string`                  | No       | Visible field label.                           |
 | `options`      | `SelectOption[]`          | Yes      | Options rendered in the dropdown.              |
+| `placeholder`  | `string`                  | No       | Text shown when no value is selected.          |
+| `error`        | `string`                  | No       | Error message.                                 |
+| `style`        | `StyleProp<ViewStyle>`    | No       | Extra container style.                         |
+| `triggerStyle` | `StyleProp<ViewStyle>`    | No       | Extra trigger style.                           |
+| `optionStyle`  | `StyleProp<ViewStyle>`    | No       | Extra option style.                            |
+| `textStyle`    | `StyleProp<TextStyle>`    | No       | Extra text style.                              |
 | `value`        | `string`                  | No       | Controlled selected value.                     |
 | `defaultValue` | `string`                  | No       | Initial selected value for uncontrolled usage. |
 | `onChange`     | `(value: string) => void` | No       | Called when the user selects an option.        |
-| `label`        | `string`                  | No       | Visible field label.                           |
-| `placeholder`  | `string`                  | No       | Text shown when no value is selected.          |
-| `error`        | `string`                  | No       | Error message.                                 |
 | `required`     | `boolean`                 | No       | Marks the field as required.                   |
 | `disabled`     | `boolean`                 | No       | Disables interaction.                          |
-| `style`        | `ViewStyle`               | No       | Extra container style.                         |
-| `triggerStyle` | `ViewStyle`               | No       | Extra trigger style.                           |
-| `optionStyle`  | `ViewStyle`               | No       | Extra option style.                            |
-| `textStyle`    | `TextStyle`               | No       | Extra text style.                              |
+
+<!-- api-docgen:end native.SelectProps.SelectProps -->
 
 ### SelectOption
 
+<!-- api-docgen:start native.SelectOption.SelectOption -->
+
 | Prop       | Type      | Required | Description           |
 | ---------- | --------- | -------- | --------------------- |
-| `value`    | `string`  | Yes      | Option value.         |
 | `label`    | `string`  | Yes      | Visible option label. |
+| `value`    | `string`  | Yes      | Option value.         |
 | `disabled` | `boolean` | No       | Disables this option. |
+
+<!-- api-docgen:end native.SelectOption.SelectOption -->
 
 ## Dropdown
 
@@ -262,17 +300,21 @@ import { Dropdown } from '@romanbakurov/vellira-native';
 
 ### Dropdown Props
 
+<!-- api-docgen:start native.DropdownProps.DropdownProps -->
+
 | Prop           | Type                      | Required | Description                          |
 | -------------- | ------------------------- | -------- | ------------------------------------ |
-| `items`        | `DropdownItem[]`          | Yes      | Menu model.                          |
-| `onSelect`     | `(value: string) => void` | No       | Called when a menu item is selected. |
-| `disabled`     | `boolean`                 | No       | Disables the trigger.                |
 | `label`        | `string`                  | No       | Default trigger label.               |
 | `trigger`      | `ReactNode`               | No       | Custom trigger content.              |
-| `style`        | `ViewStyle`               | No       | Extra root style.                    |
-| `triggerStyle` | `ViewStyle`               | No       | Extra trigger style.                 |
-| `itemStyle`    | `ViewStyle`               | No       | Extra item style.                    |
-| `textStyle`    | `TextStyle`               | No       | Extra text style.                    |
+| `items`        | `DropdownItem[]`          | Yes      | Menu model.                          |
+| `style`        | `StyleProp<ViewStyle>`    | No       | Extra root style.                    |
+| `triggerStyle` | `StyleProp<ViewStyle>`    | No       | Extra trigger style.                 |
+| `itemStyle`    | `StyleProp<ViewStyle>`    | No       | Extra item style.                    |
+| `textStyle`    | `StyleProp<TextStyle>`    | No       | Extra text style.                    |
+| `disabled`     | `boolean`                 | No       | Disables the trigger.                |
+| `onSelect`     | `(value: string) => void` | No       | Called when a menu item is selected. |
+
+<!-- api-docgen:end native.DropdownProps.DropdownProps -->
 
 ### Dropdown Items
 
@@ -301,39 +343,57 @@ import { Tabs } from '@romanbakurov/vellira-native';
 
 ### Tabs Props
 
-| Prop                 | Type             | Required | Description                                        |
-| -------------------- | ---------------- | -------- | -------------------------------------------------- |
-| `children`           | `ReactNode`      | Yes      | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
-| `orientation`        | `Orientation`    | Yes      | Layout orientation.                                |
-| `defaultActiveIndex` | `number`         | No       | Initially active tab index.                        |
-| `appearance`         | `TabsAppearance` | No       | Visual style.                                      |
-| `style`              | `ViewStyle`      | No       | Extra root style.                                  |
+<!-- api-docgen:start native.TabsProps.TabsProps -->
+
+| Prop                 | Type                      | Required | Description                                        |
+| -------------------- | ------------------------- | -------- | -------------------------------------------------- |
+| `children`           | `ReactNode`               | Yes      | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
+| `appearance`         | `TabsAppearance`          | No       | Visual style.                                      |
+| `style`              | `StyleProp<ViewStyle>`    | No       | Extra root style.                                  |
+| `activeIndex`        | `number`                  | No       | Currently active tab index.                        |
+| `defaultActiveIndex` | `number`                  | No       | Initially active tab index.                        |
+| `onChange`           | `(index: number) => void` | No       | Called when the value changes.                     |
+| `orientation`        | `Orientation`             | No       | Layout orientation.                                |
+
+<!-- api-docgen:end native.TabsProps.TabsProps -->
 
 ### Tabs.List Props
 
-| Prop       | Type        | Required | Description       |
-| ---------- | ----------- | -------- | ----------------- |
-| `children` | `ReactNode` | Yes      | Tab buttons.      |
-| `style`    | `ViewStyle` | No       | Extra list style. |
+<!-- api-docgen:start native.TabsListProps.TabsListProps -->
+
+| Prop       | Type                   | Required | Description       |
+| ---------- | ---------------------- | -------- | ----------------- |
+| `children` | `ReactNode`            | Yes      | Tab buttons.      |
+| `style`    | `StyleProp<ViewStyle>` | No       | Extra list style. |
+
+<!-- api-docgen:end native.TabsListProps.TabsListProps -->
 
 ### Tabs.Tab Props
 
-| Prop        | Type        | Required | Description                                  |
-| ----------- | ----------- | -------- | -------------------------------------------- |
-| `index`     | `number`    | Yes      | Tab index used to connect the tab and panel. |
-| `children`  | `ReactNode` | Yes      | Tab label.                                   |
-| `disabled`  | `boolean`   | No       | Disables this tab.                           |
-| `icon`      | `ReactNode` | No       | Icon rendered inside the tab.                |
-| `style`     | `ViewStyle` | No       | Extra tab style.                             |
-| `textStyle` | `TextStyle` | No       | Extra label text style.                      |
+<!-- api-docgen:start native.TabProps.TabsTabProps -->
+
+| Prop        | Type                   | Required | Description                                  |
+| ----------- | ---------------------- | -------- | -------------------------------------------- |
+| `children`  | `ReactNode`            | Yes      | Tab label.                                   |
+| `icon`      | `ReactNode`            | No       | Icon rendered inside the tab.                |
+| `style`     | `StyleProp<ViewStyle>` | No       | Extra tab style.                             |
+| `textStyle` | `StyleProp<TextStyle>` | No       | Extra label text style.                      |
+| `index`     | `number`               | Yes      | Tab index used to connect the tab and panel. |
+| `disabled`  | `boolean`              | No       | Disables this tab.                           |
+
+<!-- api-docgen:end native.TabProps.TabsTabProps -->
 
 ### Tabs.Panel Props
 
-| Prop       | Type        | Required | Description                      |
-| ---------- | ----------- | -------- | -------------------------------- |
-| `index`    | `number`    | Yes      | Panel index matching `Tabs.Tab`. |
-| `children` | `ReactNode` | No       | Panel content.                   |
-| `style`    | `ViewStyle` | No       | Extra panel style.               |
+<!-- api-docgen:start native.TabsPanelProps.TabsPanelProps -->
+
+| Prop       | Type                   | Required | Description                      |
+| ---------- | ---------------------- | -------- | -------------------------------- |
+| `children` | `ReactNode`            | No       | Panel content.                   |
+| `style`    | `StyleProp<ViewStyle>` | No       | Extra panel style.               |
+| `index`    | `number`               | Yes      | Panel index matching `Tabs.Tab`. |
+
+<!-- api-docgen:end native.TabsPanelProps.TabsPanelProps -->
 
 ## Tooltip
 
@@ -347,17 +407,21 @@ import { Tooltip, Button } from '@romanbakurov/vellira-native';
 </Tooltip>;
 ```
 
-| Prop          | Type                | Required | Description                           |
-| ------------- | ------------------- | -------- | ------------------------------------- |
-| `content`     | `ReactNode`         | Yes      | Tooltip content.                      |
-| `children`    | `ReactNode`         | Yes      | Trigger element.                      |
-| `placement`   | `FloatingPlacement` | No       | Preferred tooltip placement.          |
-| `delay`       | `TooltipDelay`      | No       | Open and close delay in milliseconds. |
-| `disabled`    | `boolean`           | No       | Prevents the tooltip from opening.    |
-| `maxWidth`    | `number`            | No       | Maximum tooltip width.                |
-| `style`       | `ViewStyle`         | No       | Extra root style.                     |
-| `bubbleStyle` | `ViewStyle`         | No       | Extra tooltip bubble style.           |
-| `textStyle`   | `TextStyle`         | No       | Extra tooltip text style.             |
+<!-- api-docgen:start native.TooltipProps.Tooltip -->
+
+| Prop          | Type                   | Required | Description                           |
+| ------------- | ---------------------- | -------- | ------------------------------------- |
+| `content`     | `ReactNode`            | Yes      | Tooltip content.                      |
+| `children`    | `ReactNode`            | Yes      | Trigger element.                      |
+| `maxWidth`    | `number`               | No       | Maximum tooltip width.                |
+| `style`       | `StyleProp<ViewStyle>` | No       | Extra root style.                     |
+| `bubbleStyle` | `StyleProp<ViewStyle>` | No       | Extra tooltip bubble style.           |
+| `textStyle`   | `StyleProp<TextStyle>` | No       | Extra tooltip text style.             |
+| `placement`   | `FloatingPlacement`    | No       | Preferred tooltip placement.          |
+| `disabled`    | `boolean`              | No       | Prevents the tooltip from opening.    |
+| `delay`       | `TooltipDelay`         | No       | Open and close delay in milliseconds. |
+
+<!-- api-docgen:end native.TooltipProps.Tooltip -->
 
 ## Modal
 
@@ -381,17 +445,21 @@ import { Button, Modal } from '@romanbakurov/vellira-native';
 
 ### Modal Props
 
-| Prop              | Type         | Required | Description                                       |
-| ----------------- | ------------ | -------- | ------------------------------------------------- |
-| `isOpen`          | `boolean`    | Yes      | Controls dialog visibility.                       |
-| `onClose`         | `() => void` | Yes      | Called when the modal requests to close.          |
-| `children`        | `ReactNode`  | Yes      | Modal content.                                    |
-| `title`           | `string`     | No       | Optional title for simple modal usage.            |
-| `closeOnBackdrop` | `boolean`    | No       | Allows closing by pressing the backdrop.          |
-| `closeOnEsc`      | `boolean`    | No       | Shared contract prop. Useful for parity with web. |
-| `closeOnClick`    | `boolean`    | No       | Deprecated alias kept for compatibility.          |
-| `overlayStyle`    | `ViewStyle`  | No       | Extra overlay style.                              |
-| `contentStyle`    | `ViewStyle`  | No       | Extra content style.                              |
+<!-- api-docgen:start native.ModalProps.ModalProps -->
+
+| Prop              | Type                   | Required | Description                                       |
+| ----------------- | ---------------------- | -------- | ------------------------------------------------- |
+| `children`        | `ReactNode`            | Yes      | Modal content.                                    |
+| `title`           | `string`               | No       | Optional title for simple modal usage.            |
+| `overlayStyle`    | `StyleProp<ViewStyle>` | No       | Extra overlay style.                              |
+| `contentStyle`    | `StyleProp<ViewStyle>` | No       | Extra content style.                              |
+| `isOpen`          | `boolean`              | Yes      | Controls dialog visibility.                       |
+| `onClose`         | `() => void`           | Yes      | Called when the modal requests to close.          |
+| `closeOnBackdrop` | `boolean`              | No       | Allows closing by pressing the backdrop.          |
+| `closeOnEsc`      | `boolean`              | No       | Shared contract prop. Useful for parity with web. |
+| `closeOnClick`    | `boolean`              | No       | Deprecated alias kept for compatibility.          |
+
+<!-- api-docgen:end native.ModalProps.ModalProps -->
 
 ### Modal Compound Components
 
