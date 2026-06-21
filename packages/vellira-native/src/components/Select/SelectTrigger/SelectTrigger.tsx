@@ -1,14 +1,11 @@
-import { useEffect, useRef } from 'react';
-
 import { ChevronDown } from '@romanbakurov/vellira-icons';
 import { theme } from '@romanbakurov/vellira-tokens';
-import { Animated, Easing, Pressable, Text } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { styles } from './SelectTrigger.styles';
 import type { SelectTriggerProps } from './types';
 
 export function SelectTrigger({
-  triggerRef,
   displayText,
   isPlaceholder,
   isOpen,
@@ -19,29 +16,12 @@ export function SelectTrigger({
   textStyle,
   onPress,
 }: SelectTriggerProps) {
-  const rotation = useRef(new Animated.Value(isOpen ? 1 : 0)).current;
-
-  useEffect(() => {
-    Animated.timing(rotation, {
-      toValue: isOpen ? 1 : 0,
-      duration: 160,
-      easing: Easing.out(Easing.cubic),
-      useNativeDriver: true,
-    }).start();
-  }, [isOpen, rotation]);
-
-  const rotate = rotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '180deg'],
-  });
-
   return (
     <Pressable
-      ref={triggerRef}
       disabled={disabled}
       accessibilityRole='button'
       accessibilityLabel={accessibilityLabel}
-      accessibilityHint='Opens a list of options'
+      accessibilityHint='Opens a picker'
       accessibilityState={{
         expanded: isOpen,
         disabled,
@@ -67,14 +47,8 @@ export function SelectTrigger({
         {displayText}
       </Text>
 
-      <Animated.View
-        style={[
-          styles.icon,
-          disabled && styles.iconDisabled,
-          {
-            transform: [{ rotate }],
-          },
-        ]}
+      <View
+        style={[styles.icon, isOpen && styles.iconOpen]}
         accessibilityElementsHidden
         importantForAccessibility='no'
       >
@@ -83,7 +57,7 @@ export function SelectTrigger({
           height={16}
           color={disabled ? theme.colors.gray[500] : theme.colors.gray[600]}
         />
-      </Animated.View>
+      </View>
     </Pressable>
   );
 }
