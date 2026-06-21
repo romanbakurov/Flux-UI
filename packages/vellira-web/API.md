@@ -74,20 +74,6 @@ import { Button } from '@romanbakurov/vellira-web';
 
 <!-- api-docgen:end web.ButtonProps.Button -->
 
-## Badge
-
-Small status marker.
-
-```tsx
-import { Badge } from '@romanbakurov/vellira-web';
-
-<Badge />;
-```
-
-| Prop       | Type      | Required | Description                       |
-| ---------- | --------- | -------- | --------------------------------- |
-| `disabled` | `boolean` | No       | Renders the disabled badge state. |
-
 ## Checkbox
 
 Boolean input with controlled and uncontrolled modes.

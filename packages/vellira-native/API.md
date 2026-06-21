@@ -71,20 +71,6 @@ import { Button } from '@romanbakurov/vellira-native';
 
 <!-- api-docgen:end native.ButtonProps.Button -->
 
-## Badge
-
-Small status marker.
-
-```tsx
-import { Badge } from '@romanbakurov/vellira-native';
-
-<Badge />;
-```
-
-| Prop       | Type      | Required | Description                       |
-| ---------- | --------- | -------- | --------------------------------- |
-| `disabled` | `boolean` | No       | Renders the disabled badge state. |
-
 ## Checkbox
 
 Boolean input with controlled and uncontrolled modes.
