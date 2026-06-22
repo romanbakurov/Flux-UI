@@ -14,6 +14,12 @@ vi.mock('focus-trap-react', () => ({
   default: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
+function pressDocumentKey(key: string) {
+  act(() => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { key }));
+  });
+}
+
 afterEach(() => {
   document.body.innerHTML = '';
   document.body.style.overflow = '';
@@ -42,6 +48,62 @@ describe('Modal', () => {
 
     act(() => closeButton?.click());
     expect(onClose).toHaveBeenCalledOnce();
+
+    unmount();
+  });
+
+  it('connects the dialog to header and body for accessibility', () => {
+    const { unmount } = render(
+      <Modal isOpen onClose={() => undefined}>
+        <ModalHeader>Delete file</ModalHeader>
+        <ModalBody>Are you sure?</ModalBody>
+      </Modal>
+    );
+
+    const dialog = document.querySelector('[role="dialog"]');
+    const titleId = dialog?.getAttribute('aria-labelledby');
+    const descriptionId = dialog?.getAttribute('aria-describedby');
+
+    expect(titleId).toBeTruthy();
+    expect(descriptionId).toBeTruthy();
+    expect(document.getElementById(titleId ?? '')?.textContent).toBe(
+      'Delete file'
+    );
+    expect(document.getElementById(descriptionId ?? '')?.textContent).toBe(
+      'Are you sure?'
+    );
+
+    unmount();
+  });
+
+  it('closes on Escape when enabled', () => {
+    const onClose = vi.fn();
+    const { unmount } = render(
+      <Modal isOpen onClose={onClose}>
+        <ModalHeader>Delete file</ModalHeader>
+        <ModalBody>Are you sure?</ModalBody>
+      </Modal>
+    );
+
+    pressDocumentKey('Escape');
+
+    expect(onClose).toHaveBeenCalledOnce();
+
+    unmount();
+  });
+
+  it('does not close on Escape when disabled', () => {
+    const onClose = vi.fn();
+    const { unmount } = render(
+      <Modal isOpen closeOnEsc={false} onClose={onClose}>
+        <ModalHeader>Delete file</ModalHeader>
+        <ModalBody>Are you sure?</ModalBody>
+      </Modal>
+    );
+
+    pressDocumentKey('Escape');
+
+    expect(onClose).not.toHaveBeenCalled();
 
     unmount();
   });

@@ -1,20 +1,44 @@
 import { act } from 'react';
 
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { render } from '../../test-utils/render';
 
+import { TabsList } from './List/TabsList';
 import { TabsPanel } from './Panel/TabsPanel';
 import { Tab } from './Tab/Tab';
 import { Tabs } from './Tabs';
 
-function TabsExample() {
+function pressKey(target: EventTarget, key: string) {
+  act(() => {
+    target.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+  });
+}
+
+function TabsExample({ onChange }: { onChange?: (index: number) => void }) {
   return (
-    <Tabs>
-      <div role='tablist'>
+    <Tabs onChange={onChange}>
+      <TabsList>
+        <Tab index={0}>Overview</Tab>
+        <Tab index={1} disabled>
+          Disabled
+        </Tab>
+        <Tab index={2}>Usage</Tab>
+      </TabsList>
+      <TabsPanel index={0}>Overview panel</TabsPanel>
+      <TabsPanel index={1}>Disabled panel</TabsPanel>
+      <TabsPanel index={2}>Usage panel</TabsPanel>
+    </Tabs>
+  );
+}
+
+function VerticalTabsExample() {
+  return (
+    <Tabs orientation='vertical'>
+      <TabsList>
         <Tab index={0}>Overview</Tab>
         <Tab index={1}>Usage</Tab>
-      </div>
+      </TabsList>
       <TabsPanel index={0}>Overview panel</TabsPanel>
       <TabsPanel index={1}>Usage panel</TabsPanel>
     </Tabs>
@@ -33,11 +57,79 @@ describe('Tabs', () => {
     expect(tabs[0].getAttribute('aria-selected')).toBe('true');
     expect(container.textContent).toContain('Overview panel');
 
-    act(() => tabs[1].click());
+    act(() => tabs[2].click());
+
+    expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+    expect(container.textContent).toContain('Usage panel');
+    expect(container.textContent).not.toContain('Overview panel');
+
+    unmount();
+  });
+
+  it('connects tabs and panels with accessible ids', () => {
+    const { container, unmount } = render(<TabsExample />);
+    const tab = container.querySelector<HTMLButtonElement>('#tab-0');
+    const panel = container.querySelector<HTMLElement>('#tab-panel-0');
+
+    expect(
+      container
+        .querySelector('[role="tablist"]')
+        ?.getAttribute('aria-orientation')
+    ).toBe('horizontal');
+    expect(tab?.getAttribute('aria-controls')).toBe('tab-panel-0');
+    expect(panel?.getAttribute('aria-labelledby')).toBe('tab-0');
+    expect(tab?.tabIndex).toBe(0);
+
+    unmount();
+  });
+
+  it('moves with horizontal keyboard controls and skips disabled tabs', () => {
+    const onChange = vi.fn();
+    const { container, unmount } = render(<TabsExample onChange={onChange} />);
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+
+    pressKey(tabs[0], 'ArrowRight');
+
+    expect(onChange).toHaveBeenCalledWith(2);
+    expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+    expect(document.activeElement).toBe(tabs[2]);
+    expect(container.textContent).toContain('Usage panel');
+
+    pressKey(tabs[2], 'ArrowLeft');
+
+    expect(onChange).toHaveBeenCalledWith(0);
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+
+    pressKey(tabs[0], 'End');
+
+    expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+
+    pressKey(tabs[2], 'Home');
+
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+
+    unmount();
+  });
+
+  it('uses vertical arrow keys when orientation is vertical', () => {
+    const { container, unmount } = render(<VerticalTabsExample />);
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+
+    expect(
+      container
+        .querySelector('[role="tablist"]')
+        ?.getAttribute('aria-orientation')
+    ).toBe('vertical');
+
+    pressKey(tabs[0], 'ArrowDown');
 
     expect(tabs[1].getAttribute('aria-selected')).toBe('true');
     expect(container.textContent).toContain('Usage panel');
-    expect(container.textContent).not.toContain('Overview panel');
+
+    pressKey(tabs[1], 'ArrowUp');
+
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+    expect(container.textContent).toContain('Overview panel');
 
     unmount();
   });
