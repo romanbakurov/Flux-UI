@@ -248,10 +248,13 @@ export const Selection: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const spain = canvas.getByLabelText('Spain');
+    const spainInput = canvas.getByLabelText('Spain');
+    const spainLabel = spainInput.closest('label');
 
-    await userEvent.click(spain);
+    expect(spainLabel).not.toBeNull();
 
-    await expect(spain).toBeChecked();
+    await userEvent.click(spainLabel as HTMLLabelElement);
+
+    await expect(spainInput).toBeChecked();
   },
 };
