@@ -8,8 +8,15 @@ import { Dropdown } from './Dropdown';
 
 const items = [
   { label: 'Edit', value: 'edit' },
+  { label: 'Archive', value: 'archive', disabled: true },
   { label: 'Delete', value: 'delete', danger: true },
 ];
+
+function pressKey(target: EventTarget, key: string) {
+  act(() => {
+    target.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+  });
+}
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -38,6 +45,63 @@ describe('Dropdown', () => {
 
     expect(onSelect).toHaveBeenCalledWith('edit');
     expect(document.querySelector('[role="menu"]')).toBeNull();
+
+    unmount();
+  });
+
+  it('opens and selects the active item from keyboard', () => {
+    const onSelect = vi.fn();
+    const { container, unmount } = render(
+      <Dropdown
+        label='Actions'
+        trigger='Actions'
+        items={items}
+        onSelect={onSelect}
+      />
+    );
+
+    const trigger = container.querySelector<HTMLButtonElement>('button');
+
+    pressKey(trigger!, 'Enter');
+
+    const menu = document.querySelector('[role="menu"]');
+    const menuItems = document.querySelectorAll('[role="menuitem"]');
+
+    expect(trigger?.getAttribute('aria-expanded')).toBe('true');
+    expect(trigger?.getAttribute('aria-controls')).toBe(menu?.id);
+    expect(menuItems[1]?.getAttribute('aria-disabled')).toBe('true');
+
+    pressKey(trigger!, 'ArrowDown');
+    pressKey(trigger!, 'Enter');
+
+    expect(onSelect).toHaveBeenCalledWith('delete');
+    expect(trigger?.getAttribute('aria-expanded')).toBe('false');
+    expect(document.querySelector('[role="menu"]')).toBeNull();
+
+    unmount();
+  });
+
+  it('closes from keyboard with Escape', () => {
+    const onSelect = vi.fn();
+    const { container, unmount } = render(
+      <Dropdown
+        label='Actions'
+        trigger='Actions'
+        items={items}
+        onSelect={onSelect}
+      />
+    );
+
+    const trigger = container.querySelector<HTMLButtonElement>('button');
+
+    pressKey(trigger!, ' ');
+    expect(trigger?.getAttribute('aria-expanded')).toBe('true');
+
+    pressKey(trigger!, 'Escape');
+
+    expect(trigger?.getAttribute('aria-expanded')).toBe('false');
+    expect(document.querySelector('[role="menu"]')).toBeNull();
+    expect(onSelect).not.toHaveBeenCalled();
 
     unmount();
   });
