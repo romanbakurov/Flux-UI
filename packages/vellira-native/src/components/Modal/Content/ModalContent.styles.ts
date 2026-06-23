@@ -2,15 +2,12 @@ import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  overlay: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
+  content: {
+    width: '100%',
+    maxWidth: 420,
     padding: theme.spacing[5],
-  },
-
-  backdrop: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    backgroundColor: theme.colors.gray[0],
+    borderRadius: theme.radius.xl,
+    gap: theme.spacing[4],
   },
 });

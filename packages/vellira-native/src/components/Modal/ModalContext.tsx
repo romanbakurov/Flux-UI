@@ -2,16 +2,16 @@ import { createContext, useContext } from 'react';
 
 interface ModalContextType {
   onClose?: () => void;
-  titleId: string;
-  descriptionId: string;
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
+ModalContext.displayName = 'ModalContext';
+
 export const useModalContext = () => {
   const context = useContext(ModalContext);
 
-  if (context === undefined) {
+  if (!context) {
     throw new Error('Modal compound components must be used inside Modal');
   }
 
@@ -19,4 +19,3 @@ export const useModalContext = () => {
 };
 
 export default ModalContext;
-ModalContext.displayName = 'ModalContext';

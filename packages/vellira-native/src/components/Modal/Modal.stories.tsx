@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 
 import { Button } from '../../primitives/Button';
 
-import { Modal } from './Modal';
+import { Modal } from '.';
 
 type ModalDemoProps = {
   defaultOpen?: boolean;
@@ -45,32 +45,109 @@ function ModalDemo({
   );
 }
 
-const meta: Meta<typeof Modal> = {
+const meta = {
   title: 'Components/Modal',
   component: Modal,
-};
+  tags: ['autodocs'],
+  args: {
+    isOpen: false,
+    closeOnBackdrop: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Modal Component
+
+Accessible modal dialog for React Native.
+
+**Features**
+- Backdrop close support
+- Compound API
+- Header, Body and Footer sections
+- Native modal overlay
+
+### Usage
+
+\`\`\`tsx
+<Modal isOpen={isOpen} onClose={handleClose}>
+  <Modal.Header>Delete file</Modal.Header>
+  <Modal.Body>
+    <Text>Are you sure?</Text>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onPress={handleClose}>Cancel</Button>
+  </Modal.Footer>
+</Modal>
+\`\`\`
+`,
+      },
+    },
+  },
+  argTypes: {
+    isOpen: {
+      control: 'boolean',
+      description: 'Controls whether the modal is open.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    onClose: {
+      action: 'closed',
+      description: 'Called when the modal requests to close.',
+      table: {
+        type: { summary: '() => void' },
+      },
+    },
+    closeOnBackdrop: {
+      control: 'boolean',
+      description: 'Allows closing the modal by tapping the backdrop.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    closeOnEsc: {
+      control: false,
+      description: 'Web-only. Not used by the native Modal.',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
+    children: {
+      control: false,
+      description: 'Modal content.',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    overlayStyle: {
+      control: false,
+      description: 'Custom style for the modal overlay.',
+    },
+    contentStyle: {
+      control: false,
+      description: 'Custom style for the modal content container.',
+    },
+  },
+} satisfies Meta<typeof Modal>;
 
 export default meta;
-type Story = StoryObj<typeof Modal>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <ModalDemo />,
+  render: (args) => <ModalDemo closeOnBackdrop={args.closeOnBackdrop} />,
 };
-
-export const Open: Story = {
-  render: () => <ModalDemo defaultOpen />,
-};
-
-// export const WithTitleProp: Story = {
-//   render: () => (
-//     <Modal isOpen onClose={() => undefined} title='Native modal'>
-//       <Modal.Body>
-//         <Text>Modal can render a title through the root title prop.</Text>
-//       </Modal.Body>
-//     </Modal>
-//   ),
-// };
 
 export const WithoutBackdropClose: Story = {
-  render: () => <ModalDemo closeOnBackdrop={false} title='Important notice' />,
+  args: {
+    closeOnBackdrop: false,
+  },
+  render: (args) => (
+    <ModalDemo
+      closeOnBackdrop={args.closeOnBackdrop}
+      title='Important notice'
+    />
+  ),
 };

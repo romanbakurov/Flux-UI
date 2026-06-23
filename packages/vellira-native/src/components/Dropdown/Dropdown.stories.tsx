@@ -142,7 +142,15 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {
     label: 'Actions',
-    icon: <DropdownMenu size={20} color={theme.colors.primary} />,
+    icon: (
+      <DropdownMenu
+        style={{
+          transform: [{ rotate: '90deg' }],
+        }}
+        size={20}
+        color={theme.colors.primary}
+      />
+    ),
     showArrow: false,
     items,
   },

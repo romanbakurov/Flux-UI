@@ -444,7 +444,6 @@ import { Button, Modal } from '@romanbakurov/vellira-native';
 | Prop              | Type                   | Required | Description                                       |
 | ----------------- | ---------------------- | -------- | ------------------------------------------------- |
 | `children`        | `ReactNode`            | Yes      | Modal content.                                    |
-| `title`           | `string`               | No       | Optional title for simple modal usage.            |
 | `overlayStyle`    | `StyleProp<ViewStyle>` | No       | Extra overlay style.                              |
 | `contentStyle`    | `StyleProp<ViewStyle>` | No       | Extra content style.                              |
 | `isOpen`          | `boolean`              | Yes      | Controls dialog visibility.                       |
