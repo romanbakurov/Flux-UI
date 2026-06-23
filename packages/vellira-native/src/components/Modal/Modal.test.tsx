@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Button } from '../../primitives/Button';
 import { render } from '../../test-utils/render';
 
-import { Modal } from './Modal';
+import { Modal } from '.';
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -14,7 +14,8 @@ afterEach(() => {
 describe('Native Modal', () => {
   it('renders modal content when open', () => {
     const { container, unmount } = render(
-      <Modal isOpen onClose={() => undefined} title='Native modal'>
+      <Modal isOpen onClose={() => undefined}>
+        <Modal.Header>Native modal</Modal.Header>
         <Modal.Body>Body content</Modal.Body>
       </Modal>
     );
@@ -29,6 +30,7 @@ describe('Native Modal', () => {
     const onClose = vi.fn();
     const { container, unmount } = render(
       <Modal isOpen onClose={onClose}>
+        <Modal.Header>Native modal</Modal.Header>
         <Modal.Body>Body content</Modal.Body>
         <Modal.Footer>
           <Button>Done</Button>
@@ -36,8 +38,10 @@ describe('Native Modal', () => {
       </Modal>
     );
 
-    const backdrop =
-      container.querySelector<HTMLButtonElement>('[role="button"]');
+    const backdrop = container.querySelector<HTMLButtonElement>(
+      '[data-testid="modal-backdrop"]'
+    );
+
     act(() => backdrop?.click());
 
     expect(onClose).toHaveBeenCalledOnce();

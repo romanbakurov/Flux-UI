@@ -8,8 +8,24 @@ import { vi } from 'vitest';
 vi.mock('@romanbakurov/vellira-icons', () => ({
   ChevronDown: () => React.createElement(Text, null, '⌄'),
   Check: () => React.createElement(Text, null, '✓'),
+  Close: () => React.createElement(Text, null, '×'),
 }));
 
 vi.mock('@react-native-picker/picker', async () => {
   return await import('./src/test-utils/mocks/react-native-picker');
+});
+
+vi.mock('react-native-svg', () => {
+  const React = require('react');
+
+  const Svg = ({ children }: { children?: React.ReactNode }) =>
+    React.createElement('svg', props, children);
+
+  const Path = () => React.createElement('path');
+
+  return {
+    default: Svg,
+    Svg,
+    Path,
+  };
 });
