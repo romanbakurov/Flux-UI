@@ -409,12 +409,12 @@ import { Tooltip, Button } from '@romanbakurov/vellira-native';
 | `children`     | `ReactNode`               | Yes      | Trigger element.                      |
 | `maxWidth`     | `number`                  | No       | Maximum tooltip width.                |
 | `style`        | `StyleProp<ViewStyle>`    | No       | Extra root style.                     |
-| `bubbleStyle`  | `StyleProp<ViewStyle>`    | No       | Extra tooltip bubble style.           |
 | `textStyle`    | `StyleProp<TextStyle>`    | No       | Extra tooltip text style.             |
 | `placement`    | `FloatingPlacement`       | No       | Preferred tooltip placement.          |
 | `disabled`     | `boolean`                 | No       | Prevents the tooltip from opening.    |
 | `delay`        | `TooltipDelay`            | No       | Open and close delay in milliseconds. |
 | `onOpenChange` | `(open: boolean) => void` | No       | —                                     |
+| `contentStyle` | `StyleProp<ViewStyle>`    | No       | Extra content style.                  |
 
 <!-- api-docgen:end native.TooltipProps.Tooltip -->
 
