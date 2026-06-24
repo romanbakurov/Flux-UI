@@ -7,6 +7,6 @@ export interface TooltipProps extends BaseTooltipProps {
   children: ReactNode;
   maxWidth?: number;
   style?: StyleProp<ViewStyle>;
-  bubbleStyle?: StyleProp<ViewStyle>;
+  contentStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
