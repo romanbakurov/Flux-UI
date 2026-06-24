@@ -8,41 +8,39 @@ import type { TabsPanelProps } from './types';
 
 import styles from './TabsPanel.module.scss';
 
-export const TabsPanel = ({
-  index,
-  children,
-  className = '',
-}: TabsPanelProps) => {
+export const TabsPanel = ({ index, children, className }: TabsPanelProps) => {
   const { activeIndex, orientation } = useTabs();
   const [isVisible, setIsVisible] = useState(false);
   const isActive = activeIndex === index;
 
   useEffect(() => {
-    if (isActive) {
-      const timer = setTimeout(() => setIsVisible(true), 10);
-      return () => clearTimeout(timer);
-    } else {
+    if (!isActive) {
       setIsVisible(false);
+      return;
     }
-  }, [isActive]);
 
-  if (!isActive) return null;
+    const timer = setTimeout(() => setIsVisible(true), 10);
+
+    return () => clearTimeout(timer);
+  }, [isActive]);
 
   return (
     <div
       role='tabpanel'
       id={`tab-panel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      hidden={!isActive}
+      tabIndex={0}
       className={cn(
         styles.panel,
         isVisible && styles.visible,
         orientation === 'vertical' && styles.vertical,
         className
       )}
-      aria-labelledby={`tab-${index}`}
     >
       {children}
     </div>
   );
 };
 
-TabsPanel.displayName = 'TabPanel';
+TabsPanel.displayName = 'TabsPanel';

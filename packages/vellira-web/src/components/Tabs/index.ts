@@ -14,7 +14,7 @@ export type { TabsProps } from './types';
 
 export const Tabs = Object.assign(BaseTabs, {
   List: TabsList,
-  Tab: Tab,
+  Tab,
   Panel: TabsPanel,
 });
 

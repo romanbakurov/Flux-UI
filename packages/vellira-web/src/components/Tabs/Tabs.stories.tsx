@@ -31,6 +31,7 @@ Navigation component for switching between related content panels.
 - Default, underline, and pills appearances
 - Horizontal and vertical orientation
 - Disabled tabs
+- Keyboard navigation with arrow keys, Home, and End
 - Panel composition through \`Tabs.Panel\`
 
 ### Accessibility
@@ -55,6 +56,9 @@ Correct usage:
     },
   },
   args: {
+    defaultActiveIndex: 0,
+    orientation: 'horizontal',
+    appearance: 'default',
     onChange: fn(),
   },
   argTypes: {
@@ -78,9 +82,9 @@ Correct usage:
     appearance: {
       description: 'Visual style of the tabs.',
       control: 'select',
-      options: ['default', 'pills', 'underline'],
+      options: ['default', 'underline', 'pills'],
       table: {
-        type: { summary: `'default' | 'pills' | 'underline'` },
+        type: { summary: `'default' | 'underline' | 'pills'` },
         defaultValue: { summary: 'default' },
       },
     },
@@ -110,6 +114,8 @@ Correct usage:
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const TextTabs = () => (
   <>
@@ -163,6 +169,20 @@ const DefaultPanels = () => (
   </>
 );
 
+const FileTabs = () => (
+  <>
+    <Tabs.Tab index={0} icon={<Folder />}>
+      Files
+    </Tabs.Tab>
+    <Tabs.Tab index={1} icon={<Image />}>
+      Images
+    </Tabs.Tab>
+    <Tabs.Tab index={2} icon={<Music />}>
+      Music
+    </Tabs.Tab>
+  </>
+);
+
 const FilePanels = () => (
   <>
     <Tabs.Panel index={0}>
@@ -172,7 +192,6 @@ const FilePanels = () => (
         <li>spreadsheet.xlsx</li>
       </ul>
     </Tabs.Panel>
-
     <Tabs.Panel index={1}>
       <ul>
         <li>photo.jpg</li>
@@ -187,20 +206,6 @@ const FilePanels = () => (
         <li>playlist.m3u</li>
       </ul>
     </Tabs.Panel>
-  </>
-);
-
-const FileTabs = () => (
-  <>
-    <Tabs.Tab index={0} icon={<Folder />}>
-      Files
-    </Tabs.Tab>
-    <Tabs.Tab index={1} icon={<Image />}>
-      Images
-    </Tabs.Tab>
-    <Tabs.Tab index={2} icon={<Music />}>
-      Music
-    </Tabs.Tab>
   </>
 );
 
@@ -221,11 +226,14 @@ const ControlledDemo = () => {
   );
 };
 
-type Story = StoryObj<typeof meta>;
-
 export const Basic: Story = {
-  render: () => (
-    <Tabs defaultActiveIndex={0}>
+  args: {
+    defaultActiveIndex: 0,
+    orientation: 'horizontal',
+    appearance: 'default',
+  },
+  render: (args) => (
+    <Tabs {...args}>
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
@@ -240,7 +248,6 @@ export const Underline: Story = {
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
@@ -252,7 +259,6 @@ export const Pills: Story = {
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
@@ -264,7 +270,6 @@ export const IconOnly: Story = {
       <Tabs.List>
         <IconTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
@@ -276,7 +281,6 @@ export const DisabledState: Story = {
       <Tabs.List>
         <DisabledTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
@@ -288,7 +292,6 @@ export const CustomContent: Story = {
       <Tabs.List>
         <FileTabs />
       </Tabs.List>
-
       <FilePanels />
     </Tabs>
   ),
@@ -300,7 +303,6 @@ export const VerticalBasic: Story = {
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
@@ -312,7 +314,6 @@ export const VerticalPills: Story = {
       <Tabs.List>
         <TextTabs />
       </Tabs.List>
-
       <DefaultPanels />
     </Tabs>
   ),
