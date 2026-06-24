@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { useTabsKeyboard } from '@romanbakurov/vellira-core';
 import { cn } from '@utils/cn';
@@ -16,7 +16,7 @@ export const Tabs = ({
   onChange,
   orientation = 'horizontal',
   appearance = 'default',
-  className = '',
+  className,
 }: TabsProps) => {
   const [uncontrolledActiveIndex, setUncontrolledActiveIndex] =
     useState(defaultActiveIndex);
@@ -45,16 +45,12 @@ export const Tabs = ({
     []
   );
 
-  const { onKeyDown } = useTabsKeyboard({
+  const { onKeyDown } = useTabsKeyboard<HTMLButtonElement>({
     activeIndex,
     setActiveIndex,
     tabRefs,
     orientation,
   });
-
-  useEffect(() => {
-    tabRefs.current[activeIndex]?.focus();
-  }, [activeIndex]);
 
   const contextValue: TabsContextValue = {
     activeIndex,

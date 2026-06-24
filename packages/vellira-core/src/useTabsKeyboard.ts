@@ -9,6 +9,10 @@ export interface TabsKeyboardEvent {
 
 export interface TabKeyboardItem {
   disabled?: boolean;
+  focus?: () => void;
+  props?: {
+    disabled?: boolean;
+  };
 }
 
 export interface UseTabsKeyboardParams<TItem extends TabKeyboardItem> {
@@ -26,6 +30,9 @@ export const useTabsKeyboard = <TItem extends TabKeyboardItem>({
 }: UseTabsKeyboardParams<TItem>) => {
   const onKeyDown = useCallback(
     (event: TabsKeyboardEvent) => {
+      const isTabDisabled = (tab: TItem | null) => {
+        return Boolean(tab?.disabled || tab?.props?.disabled);
+      };
       const getNextEnabledIndex = (current: number, direction: 1 | -1) => {
         const total = tabRefs.current.length;
         if (!total) return current;
@@ -36,7 +43,7 @@ export const useTabsKeyboard = <TItem extends TabKeyboardItem>({
 
           const tab = tabRefs.current[index];
 
-          if (tab && !tab.disabled) {
+          if (tab && !isTabDisabled(tab)) {
             return index;
           }
         }
@@ -45,14 +52,14 @@ export const useTabsKeyboard = <TItem extends TabKeyboardItem>({
       };
 
       const getFirstEnabledIndex = () => {
-        return tabRefs.current.findIndex((tab) => tab && !tab.disabled);
+        return tabRefs.current.findIndex((tab) => tab && !isTabDisabled(tab));
       };
 
       const getLastEnabledIndex = () => {
         for (let i = tabRefs.current.length - 1; i >= 0; i--) {
           const tab = tabRefs.current[i];
 
-          if (tab && !tab.disabled) {
+          if (tab && !isTabDisabled(tab)) {
             return i;
           }
         }
@@ -91,10 +98,15 @@ export const useTabsKeyboard = <TItem extends TabKeyboardItem>({
           }
           break;
 
-        case 'Home':
+        case 'Home': {
           event.preventDefault();
-          nextIndex = getFirstEnabledIndex();
+
+          const firstEnabledIndex = getFirstEnabledIndex();
+
+          nextIndex =
+            firstEnabledIndex === -1 ? activeIndex : firstEnabledIndex;
           break;
+        }
 
         case 'End':
           event.preventDefault();
@@ -107,6 +119,7 @@ export const useTabsKeyboard = <TItem extends TabKeyboardItem>({
 
       if (nextIndex !== activeIndex) {
         setActiveIndex(nextIndex);
+        tabRefs.current[nextIndex]?.focus?.();
       }
     },
     [activeIndex, orientation, setActiveIndex, tabRefs]

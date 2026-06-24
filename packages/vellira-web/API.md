@@ -341,7 +341,7 @@ import { Tabs } from '@romanbakurov/vellira-web';
 
 | Prop                 | Type                      | Required | Description                                        |
 | -------------------- | ------------------------- | -------- | -------------------------------------------------- |
-| `children`           | `ReactNode`               | No       | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
+| `children`           | `ReactNode`               | Yes      | `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` content. |
 | `className`          | `string`                  | No       | Extra CSS class for the root element.              |
 | `activeIndex`        | `number`                  | No       | Currently active tab index.                        |
 | `defaultActiveIndex` | `number`                  | No       | Initially active tab index.                        |
@@ -357,7 +357,7 @@ import { Tabs } from '@romanbakurov/vellira-web';
 
 | Prop        | Type        | Required | Description      |
 | ----------- | ----------- | -------- | ---------------- |
-| `children`  | `ReactNode` | No       | Tab buttons.     |
+| `children`  | `ReactNode` | Yes      | Tab buttons.     |
 | `className` | `string`    | No       | Extra CSS class. |
 
 <!-- api-docgen:end web.TabsListProps.TabsListProps -->
@@ -384,7 +384,7 @@ import { Tabs } from '@romanbakurov/vellira-web';
 
 | Prop        | Type        | Required | Description                      |
 | ----------- | ----------- | -------- | -------------------------------- |
-| `children`  | `ReactNode` | No       | Panel content.                   |
+| `children`  | `ReactNode` | Yes      | Panel content.                   |
 | `className` | `string`    | No       | Extra CSS class.                 |
 | `index`     | `number`    | Yes      | Panel index matching `Tabs.Tab`. |
 

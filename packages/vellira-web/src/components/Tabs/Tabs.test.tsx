@@ -59,9 +59,12 @@ describe('Tabs', () => {
 
     act(() => tabs[2].click());
 
+    const panels = container.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
     expect(tabs[2].getAttribute('aria-selected')).toBe('true');
-    expect(container.textContent).toContain('Usage panel');
-    expect(container.textContent).not.toContain('Overview panel');
+    expect(panels[0].hidden).toBe(true);
+    expect(panels[2].hidden).toBe(false);
+    expect(panels[2].textContent).toContain('Usage panel');
 
     unmount();
   });

@@ -13,7 +13,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
     {
       index,
       children,
-      className = '',
+      className,
       disabled = false,
       icon,
       onClick,
@@ -36,7 +36,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
 
     const tabRef = useCallback(
       (el: HTMLButtonElement | null) => {
-        registerTab(index, el, disabled);
+        registerTab(index, el);
 
         if (typeof ref === 'function') {
           ref(el);
@@ -44,7 +44,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
           ref.current = el;
         }
       },
-      [registerTab, index, disabled, ref]
+      [registerTab, index, ref]
     );
 
     return (

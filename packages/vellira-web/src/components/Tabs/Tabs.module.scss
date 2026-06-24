@@ -3,6 +3,7 @@
 
   &.vertical {
     display: flex;
-    gap: 24px;
+    align-items: flex-start;
+    gap: var(--space-6);
   }
 }

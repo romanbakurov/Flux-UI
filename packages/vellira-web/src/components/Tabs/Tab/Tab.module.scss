@@ -1,8 +1,8 @@
 .tab {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   color: var(--color-gray-600);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
@@ -20,7 +20,7 @@
   }
 
   &.iconOnly {
-    padding: 8px;
+    padding: var(--space-2);
   }
 
   &:focus-visible {
@@ -75,12 +75,12 @@
     transition: width 0.3s ease;
   }
 
-  &:hover:not(:disabled)::after {
-    width: 100%;
-  }
-
   &:hover:not(:disabled) {
     color: var(--color-primary);
+
+    &::after {
+      width: 100%;
+    }
   }
 
   &[aria-selected='true'] {
@@ -88,14 +88,13 @@
 
     &::after {
       width: 100%;
-      background-color: var(--color-primary);
     }
   }
 }
 
 // Variant Pills
 .pills {
-  border-radius: 6px;
+  border-radius: var(--radius-md);
 
   &:hover:not(:disabled) {
     color: var(--color-gray-900);
@@ -114,45 +113,45 @@
   width: 100%;
   color: var(--color-gray-700);
   text-align: left;
-}
 
-.vertical.default {
-  border-left: 2px solid transparent;
+  &.default {
+    border-left: 2px solid transparent;
 
-  &:hover:not(:disabled) {
-    color: var(--color-primary);
-    background-color: var(--color-gray-blue-50);
-    border-left-color: var(--color-primary);
+    &:hover:not(:disabled) {
+      color: var(--color-primary);
+      background-color: var(--color-gray-blue-50);
+      border-left-color: var(--color-primary);
+    }
+
+    &[aria-selected='true'] {
+      background-color: var(--color-gray-blue-50);
+    }
   }
 
-  &[aria-selected='true'] {
-    background-color: var(--color-gray-blue-50);
+  &.underline {
+    border-left: 2px solid transparent;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-blue-50);
+      border-left-color: var(--color-gray-blue-200);
+    }
+
+    &[aria-selected='true'] {
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+    }
   }
-}
 
-.vertical.underline {
-  &::after {
-    display: none;
-  }
+  &.pills {
+    border-radius: var(--radius-lg);
 
-  border-left: 2px solid transparent;
-
-  &:hover:not(:disabled) {
-    background-color: var(--color-gray-blue-50);
-    border-left-color: var(--color-gray-blue-200);
-  }
-
-  &[aria-selected='true'] {
-    color: var(--color-primary);
-    border-left-color: var(--color-primary);
-  }
-}
-
-.vertical.pills {
-  border-radius: 8px;
-
-  &[aria-selected='true'] {
-    color: var(--color-gray-0);
-    background-color: var(--color-primary);
+    &[aria-selected='true'] {
+      color: var(--color-gray-0);
+      background-color: var(--color-primary);
+    }
   }
 }
