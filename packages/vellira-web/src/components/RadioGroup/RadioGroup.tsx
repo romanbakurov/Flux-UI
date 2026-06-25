@@ -23,9 +23,12 @@ export const RadioGroup = ({
   orientation = 'vertical',
 }: RadioGroupProps) => {
   const generatedId = useId();
+
   const groupId = `${generatedId}-group`;
-  const errorId = error ? `${generatedId}-error` : undefined;
   const descriptionId = description ? `${generatedId}-description` : undefined;
+  const errorId = error ? `${generatedId}-error` : undefined;
+  const describedBy =
+    [descriptionId, errorId].filter(Boolean).join(' ') || undefined;
 
   const [selectedValue, setSelectedValue] = useControllableState({
     value,
@@ -48,9 +51,7 @@ export const RadioGroup = ({
         role='radiogroup'
         aria-required={required || undefined}
         aria-invalid={!!error || undefined}
-        aria-describedby={
-          [descriptionId, errorId].filter(Boolean).join(' ') || undefined
-        }
+        aria-describedby={describedBy}
       >
         {options.map((option) => {
           const optionId = `${generatedId}-${option.value}`;
@@ -74,7 +75,6 @@ export const RadioGroup = ({
                 disabled={isDisabled}
                 onChange={() => {
                   if (isDisabled) return;
-
                   setSelectedValue(option.value);
                 }}
                 className={styles.input}
