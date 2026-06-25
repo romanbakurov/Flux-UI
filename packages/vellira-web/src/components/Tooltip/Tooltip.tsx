@@ -27,7 +27,7 @@ export const Tooltip = ({
   const tooltipId = useId();
 
   const handleOpenChange = (nextOpen: boolean) => {
-    if (!disabled) return;
+    if (disabled) return;
 
     setOpen(nextOpen);
     onOpenChange?.(nextOpen);

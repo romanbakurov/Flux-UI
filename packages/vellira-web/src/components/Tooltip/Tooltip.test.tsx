@@ -1,6 +1,6 @@
 import { act } from 'react';
 
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { render } from '../../test-utils/render';
 
@@ -9,6 +9,7 @@ import { Tooltip } from './Tooltip';
 
 afterEach(() => {
   document.body.innerHTML = '';
+  vi.useRealTimers();
 });
 
 describe('Tooltip', () => {
@@ -49,5 +50,27 @@ describe('Tooltip', () => {
     expect(document.body.textContent).not.toContain('Disabled tooltip');
 
     unmount();
+  });
+
+  it('opens when enabled', () => {
+    vi.useFakeTimers();
+
+    const { container, unmount } = render(
+      <Tooltip content='Helpful tooltip'>
+        <button type='button'>Trigger</button>
+      </Tooltip>
+    );
+
+    const trigger = container.firstElementChild;
+
+    act(() => {
+      trigger?.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+      vi.advanceTimersByTime(300);
+    });
+
+    expect(document.body.textContent).toContain('Helpful tooltip');
+
+    unmount();
+    vi.useRealTimers();
   });
 });
