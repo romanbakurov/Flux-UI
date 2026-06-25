@@ -14,13 +14,13 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1000,
 
-    backgroundColor: theme.colors.gray[900],
+    backgroundColor: theme.colors.surface.inverse,
     borderRadius: theme.radius.md,
 
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
 
-    shadowColor: '#000',
+    shadowColor: theme.colors.surface.inverse,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
 
   text: {
-    color: theme.colors.gray[0],
+    color: theme.colors.text.inverse,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.xs,
     lineHeight: theme.typography.lineHeight.sm,

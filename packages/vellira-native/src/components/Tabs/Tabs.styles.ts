@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
 
   panel: {
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.colors.surface.default,
     flex: 1,
     flexShrink: 1,
     minWidth: 0,

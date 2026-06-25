@@ -9,11 +9,11 @@ export const styles = StyleSheet.create({
 
   backdrop: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgb(0 0 0 / 25%)',
+    backgroundColor: theme.colors.overlay.backdrop,
   },
 
   sheet: {
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.colors.surface.elevated,
     borderTopLeftRadius: theme.radius.xl,
     borderTopRightRadius: theme.radius.xl,
     overflow: 'hidden',
@@ -25,24 +25,24 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     paddingHorizontal: theme.spacing[4],
-    borderBottomColor: theme.colors.gray[150],
+    borderBottomColor: theme.colors.divider.muted,
     borderBottomWidth: 1,
   },
 
   title: {
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.md,
   },
 
   cancelText: {
-    color: theme.colors.gray[600],
+    color: theme.colors.text.secondary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.md,
   },
 
   doneText: {
-    color: theme.colors.primary,
+    color: theme.colors.interactive.primary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.md,
   },

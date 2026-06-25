@@ -14,30 +14,30 @@ export const styles = StyleSheet.create({
     opacity: 0.5,
   },
   boxDisabled: {
-    backgroundColor: theme.colors.gray[100],
-    borderColor: theme.colors.gray[500],
+    backgroundColor: theme.colors.surface.subtle,
+    borderColor: theme.colors.interactive.disabledForeground,
   },
   box: {
     width: 20,
     height: 20,
     borderWidth: 2,
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.interactive.primary,
     borderRadius: theme.radius.sm,
     alignItems: 'center',
     justifyContent: 'center',
   },
   boxChecked: {
-    backgroundColor: theme.colors.primary,
-    borderColor: theme.colors.primary,
+    backgroundColor: theme.colors.interactive.primary,
+    borderColor: theme.colors.interactive.primary,
   },
 
   label: {
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.md,
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
   },
   labelDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 
   container: {
@@ -45,11 +45,11 @@ export const styles = StyleSheet.create({
   },
 
   boxError: {
-    borderColor: theme.colors.error,
+    borderColor: theme.colors.border.danger,
   },
 
   errorText: {
-    color: theme.colors.error,
+    color: theme.colors.status.error,
     fontSize: theme.typography.size.sm,
   },
 });

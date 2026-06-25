@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 420,
     padding: theme.spacing[5],
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.colors.surface.elevated,
     borderRadius: theme.radius.xl,
     gap: theme.spacing[4],
   },

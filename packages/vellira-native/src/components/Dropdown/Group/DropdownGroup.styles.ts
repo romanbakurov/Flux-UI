@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   groupLabel: {
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[2],
-    color: theme.colors.gray[600],
+    color: theme.colors.text.secondary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.xs,
     lineHeight: theme.typography.lineHeight.sm,

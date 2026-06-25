@@ -14,19 +14,19 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
 }
 
 .required {
   margin-left: var(--space-1);
-  color: var(--color-error);
+  color: var(--color-status-error);
 }
 
 .description {
   @include text-sm;
 
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
 }
 
 .control {
@@ -38,7 +38,7 @@
 .errorText {
   @include text-sm;
 
-  color: var(--color-error);
+  color: var(--color-status-error);
 }
 
 .disabled {

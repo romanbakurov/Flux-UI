@@ -8,7 +8,7 @@
   min-width: 32px;
   min-height: 32px;
   padding: var(--space-2);
-  color: var(--color-primary);
+  color: var(--color-interactive-primary);
   background: transparent;
   border: none;
   border-radius: var(--radius-full);
@@ -21,10 +21,10 @@
   }
 
   &:hover:not(.disabled) {
-    color: var(--color-primary-accent);
+    color: var(--color-interactive-primary-hover);
 
     .iconLeft svg {
-      color: var(--color-primary-accent);
+      color: var(--color-interactive-primary-hover);
       fill: currentcolor;
     }
   }
@@ -42,7 +42,7 @@
     padding: 8px;
 
     &:hover:not(.disabled) {
-      background: var(--color-gray-blue-50, #f1f3fb);
+      background: var(--color-interactive-primary-muted);
 
       .iconLeft {
         transform: rotate(var(--dropdown-rotate-angle, 90deg));

@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 
   text: {
     fontFamily: theme.typography.family.regular,
-    color: theme.colors.gray[0],
+    color: theme.colors.text.inverse,
     fontWeight: theme.typography.weight.medium,
   },
 

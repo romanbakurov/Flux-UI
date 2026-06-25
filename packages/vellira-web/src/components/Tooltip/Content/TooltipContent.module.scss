@@ -4,11 +4,11 @@
   user-select: none;
   max-width: 240px;
   padding: var(--space-2) var(--space-3);
-  color: var(--color-gray-0);
+  color: var(--color-text-inverse);
   font-size: var(--font-size-sm);
   line-height: 1.4;
   text-align: center;
-  background-color: var(--color-gray-900);
+  background-color: var(--color-surface-inverse);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   opacity: 0;
@@ -23,7 +23,7 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  background: var(--color-gray-900);
+  background: var(--color-surface-inverse);
   transform: rotate(45deg);
 }
 

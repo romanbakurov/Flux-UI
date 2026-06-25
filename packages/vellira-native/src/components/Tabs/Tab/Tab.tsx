@@ -25,10 +25,10 @@ export const Tab = ({
 
   const iconColor =
     isPills && isActive
-      ? theme.colors.gray[0]
+      ? theme.colors.text.inverse
       : isActive
-        ? theme.colors.primary
-        : theme.colors.gray[700];
+        ? theme.colors.interactive.primary
+        : theme.colors.text.secondary;
 
   const renderedIcon = isValidElement(icon)
     ? cloneElement(icon as ReactElement<{ color?: string }>, {

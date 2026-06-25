@@ -21,40 +21,40 @@
 }
 
 .danger {
-  color: var(--color-gray-0);
-  background-color: var(--color-error);
+  color: var(--color-text-inverse);
+  background-color: var(--color-status-error);
 }
 
 .button:not(:disabled).danger:hover {
-  color: var(--color-gray-0);
-  background-color: var(--color-error-accent);
+  color: var(--color-text-inverse);
+  background-color: var(--color-status-error-hover);
   transform: translateY(-1px);
 }
 
 .primary {
-  color: var(--color-gray-0);
-  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  background-color: var(--color-interactive-primary);
 }
 
 .button:not(:disabled).primary:hover {
-  color: var(--color-gray-0);
-  background-color: var(--color-primary-accent);
+  color: var(--color-text-inverse);
+  background-color: var(--color-interactive-primary-hover);
   transform: translateY(-1px);
 }
 
 .secondary {
-  color: var(--color-gray-0);
-  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+  background-color: var(--color-interactive-secondary);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
 .button:not(:disabled).secondary:hover {
-  color: var(--color-gray-0);
-  background-color: var(--color-secondary-accent);
+  color: var(--color-text-inverse);
+  background-color: var(--color-interactive-secondary-hover);
   transform: translateY(-1px);
 }
 
