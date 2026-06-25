@@ -119,4 +119,84 @@ describe('Dropdown', () => {
 
     unmount();
   });
+
+  it('renders groups, separators, icons, shortcuts, and wrapped item text', () => {
+    const onSelect = vi.fn();
+    const { container, unmount } = render(
+      <Dropdown
+        label='Actions'
+        trigger='Actions'
+        textWrap='wrap'
+        items={[
+          { type: 'group', label: 'File' },
+          {
+            label: 'Duplicate',
+            value: 'duplicate',
+            icon: <span data-testid='duplicate-icon' />,
+            shortcut: '⌘D',
+          },
+          { type: 'separator' },
+          { label: 'Disabled', value: 'disabled', disabled: true },
+        ]}
+        onSelect={onSelect}
+      />
+    );
+
+    const trigger = container.querySelector<HTMLButtonElement>('button');
+    act(() => trigger?.click());
+
+    expect(document.body.textContent).toContain('File');
+    expect(document.querySelector('[role="separator"]')).not.toBeNull();
+    expect(
+      document.querySelector('[data-testid="duplicate-icon"]')
+    ).not.toBeNull();
+    expect(document.body.textContent).toContain('⌘D');
+
+    const disabledItem = Array.from(
+      document.querySelectorAll<HTMLElement>('[role="menuitem"]')
+    ).find((item) => item.textContent?.includes('Disabled'));
+
+    act(() => disabledItem?.click());
+    expect(onSelect).not.toHaveBeenCalled();
+
+    act(() =>
+      disabledItem?.dispatchEvent(
+        new MouseEvent('mouseover', { bubbles: true })
+      )
+    );
+    expect(disabledItem?.getAttribute('data-active')).toBeNull();
+
+    unmount();
+  });
+
+  it('supports icon-only triggers and closes on outside pointer down', () => {
+    const { container, unmount } = render(
+      <Dropdown
+        label='More actions'
+        icon={<span data-testid='trigger-icon' />}
+        showArrow={false}
+        items={items}
+      />
+    );
+
+    const trigger = container.querySelector<HTMLButtonElement>('button');
+
+    expect(trigger?.getAttribute('aria-label')).toBe('More actions');
+    expect(
+      container.querySelector('[data-testid="trigger-icon"]')
+    ).not.toBeNull();
+
+    act(() => trigger?.click());
+    expect(document.querySelector('[role="menu"]')).not.toBeNull();
+
+    act(() => {
+      document.body.dispatchEvent(
+        new PointerEvent('pointerdown', { bubbles: true })
+      );
+    });
+
+    expect(document.querySelector('[role="menu"]')).toBeNull();
+
+    unmount();
+  });
 });

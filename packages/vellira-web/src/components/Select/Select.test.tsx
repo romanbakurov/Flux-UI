@@ -148,4 +148,91 @@ describe('Select', () => {
       root.unmount();
     });
   });
+
+  it('ignores disabled option click and selects enabled option click', () => {
+    const onChange = vi.fn();
+    const form = document.createElement('form');
+    document.body.append(form);
+
+    const root = createRoot(form);
+
+    act(() => {
+      root.render(
+        <Select
+          id='country'
+          name='country'
+          label='Country'
+          defaultValue='de'
+          onChange={onChange}
+          options={options}
+        />
+      );
+    });
+
+    const trigger = form.querySelector<HTMLButtonElement>('[role="combobox"]');
+
+    act(() => {
+      trigger?.click();
+    });
+
+    const france = document.getElementById('country-listbox-option-0');
+    const germany = document.getElementById('country-listbox-option-1');
+
+    expect(germany?.getAttribute('aria-selected')).toBe('true');
+
+    act(() => {
+      france?.click();
+      france?.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+    });
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(trigger?.getAttribute('aria-expanded')).toBe('true');
+    expect(trigger?.getAttribute('aria-activedescendant')).toBe(
+      'country-listbox-option-1'
+    );
+
+    act(() => {
+      germany?.click();
+    });
+
+    expect(onChange).toHaveBeenCalledWith('de');
+    expect(trigger?.getAttribute('aria-expanded')).toBe('false');
+
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  it('does not open or submit a value when disabled', () => {
+    const form = document.createElement('form');
+    document.body.append(form);
+
+    const root = createRoot(form);
+
+    act(() => {
+      root.render(
+        <Select
+          id='country'
+          name='country'
+          label='Country'
+          disabled
+          options={options}
+        />
+      );
+    });
+
+    const trigger = form.querySelector<HTMLButtonElement>('[role="combobox"]');
+
+    act(() => {
+      trigger?.click();
+    });
+
+    expect(trigger?.getAttribute('aria-expanded')).toBe('false');
+    expect(document.querySelector('[role="listbox"]')).toBeNull();
+    expect(new FormData(form).get('country')).toBeNull();
+
+    act(() => {
+      root.unmount();
+    });
+  });
 });
