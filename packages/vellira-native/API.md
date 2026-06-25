@@ -240,22 +240,23 @@ import { Select } from '@romanbakurov/vellira-native';
 
 <!-- api-docgen:start native.SelectProps.SelectProps -->
 
-| Prop           | Type                      | Required | Description                                    |
-| -------------- | ------------------------- | -------- | ---------------------------------------------- |
-| `label`        | `string`                  | No       | Visible field label.                           |
-| `options`      | `SelectOption[]`          | Yes      | Options rendered in the dropdown.              |
-| `placeholder`  | `string`                  | No       | Text shown when no value is selected.          |
-| `error`        | `string`                  | No       | Error message.                                 |
-| `style`        | `StyleProp<ViewStyle>`    | No       | Extra container style.                         |
-| `triggerStyle` | `StyleProp<ViewStyle>`    | No       | Extra trigger style.                           |
-| `textStyle`    | `StyleProp<TextStyle>`    | No       | Extra text style.                              |
-| `value`        | `string`                  | No       | Controlled selected value.                     |
-| `defaultValue` | `string`                  | No       | Initial selected value for uncontrolled usage. |
-| `onChange`     | `(value: string) => void` | No       | Called when the user selects an option.        |
-| `required`     | `boolean`                 | No       | Marks the field as required.                   |
-| `disabled`     | `boolean`                 | No       | Disables interaction.                          |
-| `description`  | `string`                  | No       | —                                              |
-| `pickerStyle`  | `StyleProp<TextStyle>`    | No       | —                                              |
+| Prop                 | Type                      | Required | Description                                    |
+| -------------------- | ------------------------- | -------- | ---------------------------------------------- |
+| `label`              | `string`                  | No       | Visible field label.                           |
+| `options`            | `SelectOption[]`          | Yes      | Options rendered in the dropdown.              |
+| `placeholder`        | `string`                  | No       | Text shown when no value is selected.          |
+| `error`              | `string`                  | No       | Error message.                                 |
+| `style`              | `StyleProp<ViewStyle>`    | No       | Extra container style.                         |
+| `triggerStyle`       | `StyleProp<ViewStyle>`    | No       | Extra trigger style.                           |
+| `textStyle`          | `StyleProp<TextStyle>`    | No       | Extra text style.                              |
+| `value`              | `string`                  | No       | Controlled selected value.                     |
+| `defaultValue`       | `string`                  | No       | Initial selected value for uncontrolled usage. |
+| `onChange`           | `(value: string) => void` | No       | Called when the user selects an option.        |
+| `required`           | `boolean`                 | No       | Marks the field as required.                   |
+| `disabled`           | `boolean`                 | No       | Disables interaction.                          |
+| `description`        | `string`                  | No       | —                                              |
+| `pickerStyle`        | `StyleProp<TextStyle>`    | No       | —                                              |
+| `accessibilityLabel` | `string`                  | No       | Accessible label for screen readers.           |
 
 <!-- api-docgen:end native.SelectProps.SelectProps -->
 
