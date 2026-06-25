@@ -35,7 +35,9 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
       setIsChecked(!isChecked);
     };
 
-    const checkColor = disabled ? theme.colors.gray[700] : theme.colors.gray[0];
+    const checkColor = disabled
+      ? theme.colors.text.secondary
+      : theme.colors.text.inverse;
 
     return (
       <View style={styles.container}>

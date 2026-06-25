@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   },
 
   tabUnderlineActive: {
-    borderBottomColor: theme.colors.primary,
+    borderBottomColor: theme.colors.interactive.primary,
   },
 
   tabDisabled: {
@@ -39,21 +39,21 @@ export const styles = StyleSheet.create({
   },
 
   tabText: {
-    color: theme.colors.gray[700],
+    color: theme.colors.text.secondary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.sm,
   },
 
   tabTextActive: {
-    color: theme.colors.primary,
+    color: theme.colors.interactive.primary,
   },
 
   tabTextPillsActive: {
-    color: theme.colors.gray[0],
+    color: theme.colors.text.inverse,
   },
 
   tabPillsActive: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.interactive.primary,
   },
 
   tabDefaultActive: {
@@ -66,10 +66,10 @@ export const styles = StyleSheet.create({
   },
 
   tabIconActive: {
-    color: theme.colors.primary,
+    color: theme.colors.interactive.primary,
   },
 
   tabIconPillsActive: {
-    color: theme.colors.gray[0],
+    color: theme.colors.text.inverse,
   },
 });

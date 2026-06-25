@@ -10,29 +10,29 @@ export const styles = StyleSheet.create({
   },
 
   label: {
-    color: theme.colors.gray[800],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.sm,
     lineHeight: theme.typography.lineHeight.sm,
   },
 
   labelDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 
   required: {
-    color: theme.colors.error,
+    color: theme.colors.status.error,
   },
 
   description: {
-    color: theme.colors.gray[600],
+    color: theme.colors.text.secondary,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.sm,
     lineHeight: theme.typography.lineHeight.sm,
   },
 
   descriptionDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 
   control: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   },
 
   error: {
-    color: theme.colors.error,
+    color: theme.colors.status.error,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.xs,
     lineHeight: theme.typography.lineHeight.sm,

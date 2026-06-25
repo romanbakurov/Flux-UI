@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
 
   itemPressed: {
-    backgroundColor: theme.colors.gray[55],
+    backgroundColor: theme.colors.interactive.neutral,
   },
 
   itemDisabled: {
@@ -20,23 +20,23 @@ export const styles = StyleSheet.create({
   },
 
   itemDanger: {
-    backgroundColor: theme.colors['error-bg'],
+    backgroundColor: theme.colors.status.errorMuted,
   },
 
   itemText: {
     flex: 1,
     minWidth: 0,
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.md,
     lineHeight: theme.typography.lineHeight.md,
   },
 
   itemTextDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 
   dangerText: {
-    color: theme.colors.error,
+    color: theme.colors.status.error,
   },
 });

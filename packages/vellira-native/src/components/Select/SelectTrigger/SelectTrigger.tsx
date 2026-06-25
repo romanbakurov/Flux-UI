@@ -55,7 +55,9 @@ export function SelectTrigger({
         <ChevronDown
           width={16}
           height={16}
-          color={disabled ? theme.colors.gray[500] : theme.colors.gray[600]}
+          color={
+            disabled ? theme.colors.text.disabled : theme.colors.text.secondary
+          }
         />
       </View>
     </Pressable>

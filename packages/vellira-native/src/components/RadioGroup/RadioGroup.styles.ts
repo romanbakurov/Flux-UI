@@ -30,41 +30,41 @@ export const styles = StyleSheet.create({
     height: 22,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: theme.colors.gray[300],
+    borderColor: theme.colors.border.strong,
     borderRadius: 999,
     borderWidth: 2,
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.colors.surface.default,
   },
 
   radioSelected: {
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.interactive.primary,
   },
 
   radioDisabled: {
-    borderColor: theme.colors.gray[400],
-    backgroundColor: theme.colors.gray[55],
+    borderColor: theme.colors.border.strong,
+    backgroundColor: theme.colors.surface.muted,
   },
 
   dot: {
     width: 10,
     height: 10,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.interactive.primary,
     borderRadius: 999,
   },
 
   dotDisabled: {
-    backgroundColor: theme.colors.gray[500],
+    backgroundColor: theme.colors.interactive.disabledForeground,
   },
 
   label: {
     minWidth: 0,
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.md,
     lineHeight: theme.typography.lineHeight.md,
   },
 
   labelDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 });

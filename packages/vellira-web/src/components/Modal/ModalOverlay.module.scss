@@ -4,10 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0 0 0 / 50%);
+  background-color: var(--color-overlay-backdrop);
   opacity: 0;
   inset: 0;
-  backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   visibility: hidden;
 

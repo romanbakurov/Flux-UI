@@ -1,6 +1,6 @@
 .option {
   padding: var(--space-2) var(--space-3);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   line-height: var(--line-height-sm);
   transition:
     color 0.15s ease,
@@ -9,21 +9,21 @@
   min-height: 36px;
 
   &:hover:not(.selected, .disabled) {
-    background-color: var(--color-gray-150);
+    background-color: var(--color-interactive-neutral-hover);
   }
 }
 
 .selected {
-  color: var(--color-gray-0);
-  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  background-color: var(--color-interactive-primary);
 }
 
 .active:not(.selected, .disabled) {
-  background-color: var(--color-gray-150);
+  background-color: var(--color-interactive-neutral-hover);
 }
 
 .disabled {
-  color: var(--color-gray-500);
+  color: var(--color-text-muted);
   opacity: 0.5;
   cursor: not-allowed;
 }

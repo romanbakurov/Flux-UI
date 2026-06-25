@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
 
   backdrop: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgb(0 0 0 / 25%)',
+    backgroundColor: theme.colors.overlay.backdrop,
   },
 
   menu: {
     maxHeight: '70%',
     overflow: 'hidden',
     paddingVertical: theme.spacing[2],
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.colors.surface.elevated,
     borderTopLeftRadius: theme.radius.xl,
     borderTopRightRadius: theme.radius.xl,
   },

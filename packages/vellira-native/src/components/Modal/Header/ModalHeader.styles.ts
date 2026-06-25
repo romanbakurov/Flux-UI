@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     flex: 1,
     fontFamily: theme.typography.family.semibold,
     fontSize: theme.typography.size.lg,

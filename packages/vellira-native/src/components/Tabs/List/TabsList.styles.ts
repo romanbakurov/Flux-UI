@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
 
   listPills: {
-    backgroundColor: theme.colors.gray[55],
+    backgroundColor: theme.colors.surface.muted,
     borderRadius: theme.radius.lg,
     padding: theme.spacing[1],
   },

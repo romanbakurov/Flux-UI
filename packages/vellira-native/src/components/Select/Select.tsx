@@ -121,7 +121,7 @@ export function Select({
                 label={placeholder}
                 value=''
                 enabled={false}
-                color={theme.colors.gray[400]}
+                color={theme.colors.text.disabled}
               />
 
               {options.map((option) => (
@@ -136,8 +136,8 @@ export function Select({
                   enabled={!option.disabled}
                   color={
                     option.disabled
-                      ? theme.colors.gray[400]
-                      : theme.colors.gray[900]
+                      ? theme.colors.text.disabled
+                      : theme.colors.text.primary
                   }
                 />
               ))}

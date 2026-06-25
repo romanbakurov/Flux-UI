@@ -1,7 +1,7 @@
 import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const placeholderTextColor = theme.colors.gray[400];
+export const placeholderTextColor = theme.colors.text.disabled;
 
 export const styles = StyleSheet.create({
   input: {
@@ -9,11 +9,11 @@ export const styles = StyleSheet.create({
     minWidth: 0,
     alignSelf: 'stretch',
 
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.md,
-    backgroundColor: theme.colors.gray[0],
-    borderColor: theme.colors.gray[200],
+    backgroundColor: theme.colors.surface.default,
+    borderColor: theme.colors.border.default,
     borderRadius: theme.radius.lg,
     borderWidth: 1,
   },
@@ -40,11 +40,11 @@ export const styles = StyleSheet.create({
   },
 
   error: {
-    borderColor: theme.colors.error,
+    borderColor: theme.colors.border.danger,
   },
 
   disabled: {
-    color: theme.colors.gray[500],
-    backgroundColor: theme.colors.gray[55],
+    color: theme.colors.text.disabled,
+    backgroundColor: theme.colors.surface.muted,
   },
 });

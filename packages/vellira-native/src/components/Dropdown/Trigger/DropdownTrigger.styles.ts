@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
     gap: theme.spacing[2],
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
-    backgroundColor: theme.colors.gray[0],
-    borderColor: theme.colors.gray[200],
+    backgroundColor: theme.colors.surface.default,
+    borderColor: theme.colors.border.default,
     borderRadius: theme.radius.lg,
     borderWidth: 1,
   },
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
 
   triggerText: {
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.medium,
     fontSize: theme.typography.size.md,
     lineHeight: theme.typography.lineHeight.md,

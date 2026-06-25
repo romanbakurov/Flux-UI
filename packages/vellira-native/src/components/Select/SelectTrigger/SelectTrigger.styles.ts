@@ -11,40 +11,40 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
-    backgroundColor: theme.colors.gray[0],
-    borderColor: theme.colors.gray[200],
+    backgroundColor: theme.colors.surface.default,
+    borderColor: theme.colors.border.default,
     borderRadius: theme.radius.lg,
     borderWidth: 1,
   },
 
   triggerOpen: {
-    borderColor: theme.colors.primary,
+    borderColor: theme.colors.border.focus,
   },
 
   triggerError: {
-    borderColor: theme.colors.error,
+    borderColor: theme.colors.border.danger,
   },
 
   triggerDisabled: {
-    backgroundColor: theme.colors.gray[55],
+    backgroundColor: theme.colors.surface.muted,
     opacity: 0.6,
   },
 
   text: {
     flex: 1,
     minWidth: 0,
-    color: theme.colors.gray[900],
+    color: theme.colors.text.primary,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.md,
     lineHeight: theme.typography.lineHeight.md,
   },
 
   textDisabled: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.disabled,
   },
 
   placeholder: {
-    color: theme.colors.gray[500],
+    color: theme.colors.text.muted,
   },
 
   icon: {

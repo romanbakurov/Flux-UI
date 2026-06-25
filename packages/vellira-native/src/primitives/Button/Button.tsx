@@ -38,15 +38,15 @@ const sizeMap: Record<
 };
 
 const backgroundMap: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: theme.colors.primary,
-  secondary: theme.colors.secondary,
-  danger: theme.colors.error,
+  primary: theme.colors.interactive.primary,
+  secondary: theme.colors.interactive.secondary,
+  danger: theme.colors.status.error,
 };
 
 const contentColorMap: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: theme.colors.gray[0],
-  secondary: theme.colors.gray[0],
-  danger: theme.colors.gray[0],
+  primary: theme.colors.text.inverse,
+  secondary: theme.colors.text.inverse,
+  danger: theme.colors.text.inverse,
 };
 
 export function Button({
