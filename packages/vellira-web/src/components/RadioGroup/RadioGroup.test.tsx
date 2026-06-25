@@ -44,6 +44,7 @@ describe('RadioGroup', () => {
     const onChange = vi.fn();
     const { container, unmount } = render(
       <RadioGroup
+        name='plan'
         options={[options[0], { ...options[1], disabled: true }]}
         defaultValue='starter'
         onChange={onChange}
@@ -57,6 +58,41 @@ describe('RadioGroup', () => {
     act(() => disabledRadio.click());
     expect(disabledRadio.checked).toBe(false);
     expect(onChange).not.toHaveBeenCalled();
+
+    unmount();
+  });
+
+  it('connects description and error text through aria-describedby', () => {
+    const { container, unmount } = render(
+      <RadioGroup
+        label='Plan'
+        name='plan'
+        description='Choose your plan'
+        error='Plan is required'
+        options={options}
+        defaultValue='starter'
+      />
+    );
+
+    const group = container.querySelector<HTMLElement>('[role="radiogroup"]');
+    const describedBy = group?.getAttribute('aria-describedby');
+
+    expect(describedBy).toBeTruthy();
+
+    const ids = describedBy?.split(' ') ?? [];
+
+    expect(ids).toHaveLength(2);
+
+    for (const id of ids) {
+      expect(document.getElementById(id)).not.toBeNull();
+    }
+
+    expect(document.getElementById(ids[0])?.textContent).toBe(
+      'Choose your plan'
+    );
+    expect(document.getElementById(ids[1])?.textContent).toBe(
+      'Plan is required'
+    );
 
     unmount();
   });
