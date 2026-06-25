@@ -1,6 +1,12 @@
-import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import {
+  packPackages,
+  run,
+  shouldBuild,
+  writePackageJson,
+  writeWorkspaceFile,
+} from './utils.mjs';
 
 const root = process.cwd();
 const tempDir = path.join(root, '.tmp-package-smoke-native');
@@ -13,67 +19,25 @@ const packageNames = [
   '@romanbakurov/vellira-types',
 ];
 
-function run(command, args, options = {}) {
-  execFileSync(command, args, { stdio: 'inherit', ...options });
-}
-
-function packPackages() {
-  const dependencies = {};
-
-  for (const packageName of packageNames) {
-    const before = new Set(readdirSync(tempDir));
-
-    run('pnpm', ['--filter', packageName, 'pack', '--pack-destination', tempDir]);
-
-    const tarballName = readdirSync(tempDir).find(
-      (fileName) => fileName.endsWith('.tgz') && !before.has(fileName)
-    );
-
-    if (!tarballName) {
-      throw new Error(`Could not pack ${packageName}`);
-    }
-
-    dependencies[packageName] = `file:./${tarballName}`;
-  }
-
-  return dependencies;
-}
-
 rmSync(tempDir, { recursive: true, force: true });
 mkdirSync(tempDir, { recursive: true });
 
-run('pnpm', ['build']);
+if (shouldBuild()) {
+  run('pnpm', ['build']);
+}
 
-const dependencies = packPackages();
+const dependencies = packPackages(packageNames, tempDir);
 
-writeFileSync(
-  path.join(tempDir, 'package.json'),
-  JSON.stringify(
-    {
-      private: true,
-      type: 'module',
-      dependencies,
-      devDependencies: {
-        react: '^19.0.0',
-      },
-    },
-    null,
-    2
-  )
-);
+writePackageJson(tempDir, {
+  private: true,
+  type: 'module',
+  dependencies,
+  devDependencies: {
+    react: '^19.0.0',
+  },
+});
 
-writeFileSync(
-  path.join(tempDir, 'pnpm-workspace.yaml'),
-  [
-    'packages:',
-    "  - '.'",
-    'overrides:',
-    ...Object.entries(dependencies).map(
-      ([packageName, tarball]) => `  '${packageName}': '${tarball}'`
-    ),
-    '',
-  ].join('\n')
-);
+writeWorkspaceFile(tempDir, dependencies);
 
 const mocksDir = path.join(tempDir, 'mocks');
 mkdirSync(mocksDir, { recursive: true });
@@ -207,12 +171,24 @@ if (!isComponentExport(native.Button)) {
   throw new Error('vellira-native Button export invalid');
 }
 
+if (!isComponentExport(native.Input)) {
+  throw new Error('vellira-native Input export invalid');
+}
+
+if (!isComponentExport(native.Tabs)) {
+  throw new Error('vellira-native Tabs export invalid');
+}
+
 if (typeof core.useControllableState !== 'function') {
   throw new Error('vellira-core useControllableState export invalid');
 }
 
 if (typeof icons.Check !== 'function') {
   throw new Error('vellira-icons Check export invalid');
+}
+
+if (typeof icons.Search !== 'function') {
+  throw new Error('vellira-icons Search export invalid');
 }
 
 if (typeof tokens.theme !== 'object' || tokens.theme === null) {

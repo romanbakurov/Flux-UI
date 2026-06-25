@@ -29,9 +29,9 @@
     "docs:api:check": "tsx scripts/generate-api-docs.ts --check",
     "create:component": "tsx scripts/generators/create-component.ts",
     "prepare": "husky",
-    "smoke:web": "node scripts/smoke/web.mjs",
-    "smoke:native": "node scripts/smoke/native.mjs",
-    "smoke:packages": "pnpm smoke:web && pnpm smoke:native"
+    "smoke:web": "node scripts/smoke/web.mjs --skip-build",
+    "smoke:native": "node scripts/smoke/native.mjs --skip-build",
+    "smoke:packages": "pnpm build && pnpm smoke:web && pnpm smoke:native"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
