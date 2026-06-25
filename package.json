@@ -19,6 +19,7 @@
     "storybook": "pnpm --filter @vellira/storybook dev",
     "native": "pnpm --filter native-playground start",
     "build:storybook": "pnpm --filter @vellira/storybook build",
+    "build:native-playground": "pnpm --filter native-playground exec expo export --platform ios --platform android --output-dir dist",
     "test": "pnpm test:unit && pnpm test:storybook",
     "test:unit": "pnpm test:web && pnpm test:native",
     "test:web": "pnpm --filter @romanbakurov/vellira-web test",
