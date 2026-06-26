@@ -6,6 +6,7 @@
     "build": "storybook build",
     "build-storybook": "storybook build",
     "playwright:install": "playwright install --with-deps chromium",
+    "test:e2e": "playwright test",
     "test": "vitest run --config vitest.config.ts"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "@storybook/addon-docs": "^10.4.0",
     "@storybook/addon-vitest": "^10.4.0",
     "@storybook/react-vite": "^10.4.0",
+    "@playwright/test": "1.61.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
@@ -32,7 +34,7 @@
     "@vitest/coverage-v8": "^4.1.9",
     "chromatic": "^16.10.0",
     "eslint-plugin-storybook": "^10.4.3",
-    "playwright": "^1.61.0",
+    "playwright": "1.61.0",
     "sass": "^1.99.0",
     "storybook": "^10.4.0",
     "typescript": "5.5",
