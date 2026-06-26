@@ -39,4 +39,10 @@ describe('theme presets', () => {
       lightTheme.colors.focus.ring
     );
   });
+
+  it('provides theme-specific CSS variable values', () => {
+    expect(lightTheme.colors.surface.default).toBe('#ffffff');
+    expect(darkTheme.colors.surface.default).toBe('#030712');
+    expect(highContrastTheme.colors.text.primary).toBe('#000000');
+  });
 });
