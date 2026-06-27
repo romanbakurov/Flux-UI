@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 @mixin text-xl {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-semibold);
@@ -22,11 +24,30 @@
   line-height: var(--line-height-sm);
 }
 
-@mixin focus-ring {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
+@mixin ring($color, $width: 2px) {
+  box-shadow: 0 0 0 $width $color;
+}
+
+@mixin focus-ring($width: 2px) {
+  outline: none;
+
+  @include ring(var(--color-focus-ring), $width);
 }
 
 @mixin smooth-transition($properties: all, $duration: 0.2s) {
-  transition: $properties $duration ease;
+  $transitions: ();
+
+  @if list.length($properties) == 1 {
+    transition: $properties $duration ease;
+  } @else {
+    @each $property in $properties {
+      $transitions: list.append(
+        $transitions,
+        #{$property} #{$duration} ease,
+        $separator: comma
+      );
+    }
+
+    transition: $transitions;
+  }
 }

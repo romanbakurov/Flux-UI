@@ -1,3 +1,5 @@
+@use '@styles/mixins' as *;
+
 .inputWrapper {
   position: relative;
   width: 100%;
@@ -6,11 +8,11 @@
 .input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
-  color: var(--color-text-primary);
+  color: var(--color-control-fg);
   font: inherit;
   font-size: var(--font-size-md);
-  background-color: var(--color-surface-default);
-  border: 1px solid var(--color-border-default);
+  background-color: var(--color-control-bg);
+  border: 1px solid var(--color-control-border);
   border-radius: var(--radius-md);
   outline: none;
   transition:
@@ -22,22 +24,22 @@
     color: var(--color-text-disabled);
   }
 
-  &:focus {
-    border-color: var(--color-border-focus);
-    box-shadow: 0 0 0 1px var(--color-focus-ring);
+  &:focus-visible {
+    border-color: var(--color-control-focus-border);
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
   }
 
   &:disabled {
-    color: var(--color-text-muted);
-    background-color: var(--color-surface-subtle);
-    opacity: 0.6;
+    color: var(--color-control-disabled-fg);
+    background-color: var(--color-control-disabled-bg);
+    border-color: var(--color-control-disabled-border);
     cursor: not-allowed;
   }
 
   &.error {
     border-color: var(--color-status-error);
 
-    &:focus {
+    &:focus-visible {
       border-color: var(--color-status-error);
       box-shadow: 0 0 0 3px var(--color-status-error-muted);
     }
@@ -62,6 +64,14 @@
   &.lg {
     padding: var(--space-4) var(--space-5);
     font-size: var(--font-size-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .tooltip {
+    transition: none;
+    animation: none;
   }
 }
 

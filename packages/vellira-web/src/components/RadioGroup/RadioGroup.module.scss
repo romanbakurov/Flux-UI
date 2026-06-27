@@ -25,18 +25,24 @@
   user-select: none;
 
   &:hover:not(.disabled) {
-    color: var(--color-interactive-primary-hover);
+    color: var(--color-control-hover-fg);
 
     .customRadio {
-      border-color: var(--color-interactive-primary-hover);
+      border-color: var(--color-control-hover-border);
     }
   }
 }
 
 .input {
   position: absolute;
-  opacity: 0;
-  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
 }
 
 .customRadio {
@@ -44,8 +50,8 @@
   flex: 0 0 auto;
   width: 16px;
   height: 16px;
-  background-color: var(--color-surface-default);
-  border: 2px solid var(--color-border-default);
+  background-color: var(--color-control-bg);
+  border: 2px solid var(--color-control-border);
   border-radius: 50%;
   transition:
     border-color 0.15s ease,
@@ -56,7 +62,7 @@
     position: absolute;
     inset: 3px;
     content: '';
-    background-color: var(--color-interactive-primary);
+    background-color: var(--color-control-selected-bg);
     border-radius: 50%;
     opacity: 0;
     transform: scale(0.6);
@@ -67,7 +73,7 @@
 }
 
 .input:checked + .customRadio {
-  border-color: var(--color-interactive-primary);
+  border-color: var(--color-control-selected-bg);
 }
 
 .input:checked + .customRadio::after {
@@ -76,12 +82,12 @@
 }
 
 .input:focus-visible + .customRadio {
-  border-color: var(--color-interactive-primary);
+  border-color: var(--color-control-focus-border);
   box-shadow: 0 0 0 2px var(--color-focus-ring);
 }
 
 .option:has(.input:checked) {
-  color: var(--color-interactive-primary);
+  color: var(--color-control-hover-fg);
 }
 
 .label {
@@ -89,6 +95,14 @@
 }
 
 .disabled {
-  opacity: 0.5;
+  color: var(--color-control-disabled-fg);
   cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option,
+  .customRadio,
+  .customRadio::after {
+    transition: none;
+  }
 }

@@ -7,6 +7,7 @@ import { useTheme } from './useTheme';
 
 afterEach(() => {
   cleanup();
+  delete document.documentElement.dataset.velliraTheme;
 });
 
 const ThemeConsumer = () => {
@@ -48,6 +49,23 @@ describe('ThemeProvider', () => {
     expect(screen.getByText('Content').parentElement).toHaveAttribute(
       'data-vellira-theme',
       'dark'
+    );
+  });
+
+  it('normalizes highContrast theme names for CSS selectors', () => {
+    render(
+      <ThemeProvider defaultTheme='highContrast'>
+        <div>Content</div>
+      </ThemeProvider>
+    );
+
+    expect(screen.getByText('Content').parentElement).toHaveAttribute(
+      'data-vellira-theme',
+      'high-contrast'
+    );
+    expect(document.documentElement).toHaveAttribute(
+      'data-vellira-theme',
+      'high-contrast'
     );
   });
 
