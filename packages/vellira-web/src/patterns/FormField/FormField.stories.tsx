@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { CSSProperties } from 'react';
 
 import { Checkbox } from '../../primitives/Checkbox';
+import { Input } from '../../primitives/Input';
 import { FormField } from '../FormField';
 
 const inputStyle = {
@@ -140,7 +141,7 @@ export const WithInput: Story = {
     id: 'email',
     label: 'Email',
     children: (
-      <input
+      <Input
         id='email'
         type='email'
         placeholder='name@company.com'
@@ -157,7 +158,7 @@ export const WithDescription: Story = {
     description:
       'Use 3–20 characters. Letters, numbers, and underscores are allowed.',
     children: (
-      <input
+      <Input
         id='username'
         type='text'
         placeholder='alex_johnson'
@@ -173,7 +174,7 @@ export const Required: Story = {
     label: 'Full name',
     required: true,
     children: (
-      <input
+      <Input
         id='full-name'
         type='text'
         placeholder='Alex Johnson'
@@ -189,7 +190,7 @@ export const WithError: Story = {
     label: 'Password',
     error: 'Password must be at least 8 characters',
     children: (
-      <input
+      <Input
         id='password'
         type='password'
         placeholder='Enter password'
@@ -207,7 +208,7 @@ export const Disabled: Story = {
     label: 'Email',
     disabled: true,
     children: (
-      <input
+      <Input
         id='disabled-email'
         disabled
         type='email'
@@ -235,7 +236,7 @@ export const CompleteExample: Story = {
     required: true,
     error: 'Email is required',
     children: (
-      <input
+      <Input
         id='complete-email'
         type='email'
         placeholder='name@company.com'

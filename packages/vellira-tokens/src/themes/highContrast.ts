@@ -6,33 +6,136 @@ export const highContrastTheme = {
     ...lightTheme.colors,
 
     surface: {
-      default: '#ffffff',
-      muted: '#ffffff',
-      subtle: '#ffffff',
-      elevated: '#ffffff',
-      inverse: '#000000',
+      default: '#000000',
+      muted: '#0F0F0F',
+      subtle: '#0F0F0F',
+      elevated: '#0F0F0F',
+      inverse: '#FFFFFF',
     },
 
     text: {
       ...lightTheme.colors.text,
-      primary: '#000000',
-      secondary: '#000000',
-      muted: '#1f2937',
-      inverse: '#ffffff',
-      disabled: '#4b5563',
+      primary: '#FFFFFF',
+      secondary: '#FFFFFF',
+      muted: '#E5E5E5',
+      inverse: '#000000',
+      disabled: '#E5E5E5',
+      brand: '#4DA3FF',
+      danger: '#FF8A8A',
+      success: '#9AFFB8',
+      warning: '#FFFF00',
+      info: '#4DA3FF',
     },
 
     border: {
       ...lightTheme.colors.border,
-      default: '#000000',
-      muted: '#000000',
-      strong: '#000000',
-      focus: '#000000',
+      default: '#FFFFFF',
+      muted: '#A3A3A3',
+      strong: '#FFFFFF',
+      focus: '#FFFF00',
+      danger: '#FF8A8A',
+      success: '#9AFFB8',
+      warning: '#FFFF00',
+      info: '#4DA3FF',
+    },
+
+    interactive: {
+      primary: '#4DA3FF',
+      primaryHover: '#7BBCFF',
+      primaryPressed: '#B8DCFF',
+      primaryMuted: '#001A33',
+
+      secondary: '#FFFFFF',
+      secondaryHover: '#E5E5E5',
+      secondaryPressed: '#CCCCCC',
+      secondaryMuted: '#0F0F0F',
+
+      neutral: '#0F0F0F',
+      neutralHover: '#1A1A1A',
+      neutralPressed: '#333333',
+
+      disabled: '#0F0F0F',
+      disabledForeground: '#A3A3A3',
+    },
+
+    action: {
+      primaryBg: '#4DA3FF',
+      primaryFg: '#000000',
+      primaryHoverBg: '#7BBCFF',
+      primaryHoverFg: '#000000',
+
+      secondaryBg: '#FFFFFF',
+      secondaryFg: '#000000',
+      secondaryHoverBg: '#E5E5E5',
+      secondaryHoverFg: '#000000',
+
+      dangerBg: '#FF8A8A',
+      dangerFg: '#000000',
+      dangerHoverBg: '#0F0F0F',
+      dangerHoverFg: '#FFFFFF',
+
+      disabledBg: '#0F0F0F',
+      disabledFg: '#E5E5E5',
+      disabledBorder: '#A3A3A3',
+    },
+
+    control: {
+      bg: '#000000',
+      fg: '#FFFFFF',
+      border: '#FFFFFF',
+      hoverBorder: '#4DA3FF',
+      focusBorder: '#FFFF00',
+      selectedBg: '#4DA3FF',
+      selectedFg: '#000000',
+      hoverBg: '#0F0F0F',
+      hoverFg: '#FFFFFF',
+      disabledBg: '#0F0F0F',
+      disabledFg: '#E5E5E5',
+      disabledBorder: '#A3A3A3',
+    },
+
+    menu: {
+      itemFg: '#FFFFFF',
+      itemHoverBg: '#0F0F0F',
+      itemHoverFg: '#FFFFFF',
+      itemActiveBg: '#0F0F0F',
+      itemActiveFg: '#FFFFFF',
+      itemFocusRing: '#4DA3FF',
+
+      itemDangerFg: '#FF8A8A',
+      itemDangerHoverBg: '#FF8A8A',
+      itemDangerHoverFg: '#000000',
+      itemDangerActiveBg: '#FF8A8A',
+      itemDangerActiveFg: '#000000',
+
+      triggerFg: '#FFFFFF',
+      triggerHoverBg: '#0F0F0F',
+      triggerHoverFg: '#FFFFFF',
+      triggerHoverRing: '#4DA3FF',
+    },
+
+    status: {
+      success: '#9AFFB8',
+      successHover: '#C7FFD7',
+      successMuted: '#0F0F0F',
+
+      error: '#FF8A8A',
+      errorHover: '#FFC1C1',
+      errorMuted: '#0F0F0F',
+      errorForeground: '#000000',
+
+      warning: '#FFFF00',
+      warningHover: '#FFFF99',
+      warningMuted: '#0F0F0F',
+
+      info: '#4DA3FF',
+      infoHover: '#7BBCFF',
+      infoMuted: '#0F0F0F',
     },
 
     focus: {
-      ring: '#000000',
-      ringOffset: '#ffffff',
+      ring: '#FFFF00',
+      ringOffset: '#000000',
     },
 
     overlay: {
@@ -41,13 +144,18 @@ export const highContrastTheme = {
     },
 
     divider: {
-      default: '#000000',
-      muted: '#000000',
+      default: '#FFFFFF',
+      muted: '#FFFFFF',
+    },
+
+    skeleton: {
+      base: '#0F0F0F',
+      highlight: '#4DA3FF',
     },
 
     selection: {
-      background: '#000000',
-      foreground: '#ffffff',
+      background: '#4DA3FF',
+      foreground: '#000000',
     },
   },
 } as const;

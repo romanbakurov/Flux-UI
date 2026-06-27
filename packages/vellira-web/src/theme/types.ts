@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type ThemeName = 'light' | 'dark' | 'high-contrast';
+export type ThemeName = 'light' | 'dark' | 'high-contrast' | 'highContrast';
 
 export interface ThemeContextValue {
   theme: ThemeName;

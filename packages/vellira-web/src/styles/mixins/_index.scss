@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 @mixin text-xl {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-semibold);
@@ -28,5 +30,19 @@
 }
 
 @mixin smooth-transition($properties: all, $duration: 0.2s) {
-  transition: $properties $duration ease;
+  $transitions: ();
+
+  @if list.length($properties) == 1 {
+    transition: $properties $duration ease;
+  } @else {
+    @each $property in $properties {
+      $transitions: list.append(
+        $transitions,
+        #{$property} #{$duration} ease,
+        $separator: comma
+      );
+    }
+
+    transition: $transitions;
+  }
 }

@@ -20,7 +20,7 @@
 
 .required {
   margin-left: var(--space-1);
-  color: var(--color-status-error);
+  color: var(--color-text-danger);
 }
 
 .description {
@@ -38,9 +38,10 @@
 .errorText {
   @include text-sm;
 
-  color: var(--color-status-error);
+  color: var(--color-text-danger);
 }
 
 .disabled {
-  opacity: 0.6;
+  color: var(--color-control-disabled-fg);
+  cursor: not-allowed;
 }

@@ -15,7 +15,7 @@
   cursor: pointer;
 
   &:disabled {
-    opacity: 0.5;
+    color: var(--color-control-disabled-fg);
     cursor: not-allowed;
   }
 
@@ -51,11 +51,11 @@
 
 .default {
   &:hover:not(:disabled) {
-    color: var(--color-interactive-primary);
+    color: var(--color-control-hover-fg);
   }
 
   &[aria-selected='true'] {
-    color: var(--color-interactive-primary);
+    color: var(--color-control-hover-fg);
   }
 }
 
@@ -76,7 +76,7 @@
   }
 
   &:hover:not(:disabled) {
-    color: var(--color-interactive-primary);
+    color: var(--color-control-hover-fg);
 
     &::after {
       width: 100%;
@@ -84,7 +84,7 @@
   }
 
   &[aria-selected='true'] {
-    color: var(--color-interactive-primary);
+    color: var(--color-control-hover-fg);
 
     &::after {
       width: 100%;
@@ -97,13 +97,13 @@
   border-radius: var(--radius-md);
 
   &:hover:not(:disabled) {
-    color: var(--color-text-primary);
-    background-color: var(--color-interactive-neutral);
+    color: var(--color-control-hover-fg);
+    background-color: var(--color-control-hover-bg);
   }
 
   &[aria-selected='true'] {
-    color: var(--color-text-inverse);
-    background-color: var(--color-interactive-primary);
+    color: var(--color-control-selected-fg);
+    background-color: var(--color-control-selected-bg);
   }
 }
 
@@ -118,13 +118,13 @@
     border-left: 2px solid transparent;
 
     &:hover:not(:disabled) {
-      color: var(--color-interactive-primary);
-      background-color: var(--color-interactive-primary-muted);
-      border-left-color: var(--color-interactive-primary);
+      color: var(--color-control-hover-fg);
+      background-color: var(--color-control-hover-bg);
+      border-left-color: var(--color-control-hover-border);
     }
 
     &[aria-selected='true'] {
-      background-color: var(--color-interactive-primary-muted);
+      background-color: var(--color-control-hover-bg);
     }
   }
 
@@ -136,13 +136,13 @@
     }
 
     &:hover:not(:disabled) {
-      background-color: var(--color-interactive-primary-muted);
-      border-left-color: var(--color-border-default);
+      background-color: var(--color-control-hover-bg);
+      border-left-color: var(--color-control-hover-border);
     }
 
     &[aria-selected='true'] {
-      color: var(--color-interactive-primary);
-      border-left-color: var(--color-interactive-primary);
+      color: var(--color-control-hover-fg);
+      border-left-color: var(--color-control-selected-bg);
     }
   }
 
@@ -150,8 +150,15 @@
     border-radius: var(--radius-lg);
 
     &[aria-selected='true'] {
-      color: var(--color-text-inverse);
-      background-color: var(--color-interactive-primary);
+      color: var(--color-control-selected-fg);
+      background-color: var(--color-control-selected-bg);
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .underline::after {
+    transition: none;
   }
 }

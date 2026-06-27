@@ -30,8 +30,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .dropdown {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+    transition: none;
+    animation: none;
   }
 }
 

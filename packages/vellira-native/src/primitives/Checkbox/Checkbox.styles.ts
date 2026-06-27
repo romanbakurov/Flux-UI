@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
 
   errorText: {
-    color: theme.colors.status.error,
+    color: theme.colors.text.danger,
     fontSize: theme.typography.size.sm,
   },
 });

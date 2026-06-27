@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
 
   required: {
-    color: theme.colors.status.error,
+    color: theme.colors.text.danger,
   },
 
   description: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   },
 
   error: {
-    color: theme.colors.status.error,
+    color: theme.colors.text.danger,
     fontFamily: theme.typography.family.regular,
     fontSize: theme.typography.size.xs,
     lineHeight: theme.typography.lineHeight.sm,

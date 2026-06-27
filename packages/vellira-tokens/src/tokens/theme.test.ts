@@ -26,8 +26,8 @@ describe('theme', () => {
     expect(theme.colors.text.muted).toBe('#6b7280');
     expect(theme.colors.text.inverse).toBe('#ffffff');
     expect(theme.colors.text.disabled).toBe('#9ca3af');
-    expect(theme.colors.text.brand).toBe('#4f46e5');
-    expect(theme.colors.text.danger).toBe('#e11d48');
+    expect(theme.colors.text.brand).toBe('#5B4BEA');
+    expect(theme.colors.text.danger).toBe('#DC2626');
     expect(theme.colors.text.success).toBe('#008f6a');
     expect(theme.colors.text.warning).toBe('#c05621');
     expect(theme.colors.text.info).toBe('#0ea5e9');
@@ -37,23 +37,25 @@ describe('theme', () => {
     expect(theme.colors.border.default).toBe('#e5e7eb');
     expect(theme.colors.border.muted).toBe('#eceff3');
     expect(theme.colors.border.strong).toBe('#d1d5db');
-    expect(theme.colors.border.focus).toBe('#4f46e5');
-    expect(theme.colors.border.danger).toBe('#e11d48');
+    expect(theme.colors.border.focus).toBe('#5B4BEA');
+    expect(theme.colors.border.danger).toBe('#DC2626');
     expect(theme.colors.border.success).toBe('#008f6a');
     expect(theme.colors.border.warning).toBe('#c05621');
     expect(theme.colors.border.info).toBe('#0ea5e9');
   });
 
   it('exposes semantic interactive color tokens', () => {
-    expect(theme.colors.interactive.primary).toBe('#4f46e5');
-    expect(theme.colors.interactive.primaryHover).toBe('#4338ca');
-    expect(theme.colors.interactive.primaryPressed).toBe('#3730a3');
-    expect(theme.colors.interactive.primaryMuted).toBe('#eef2ff');
+    expect(theme.colors.interactive.primary).toBe('#5B4BEA');
+    expect(theme.colors.interactive.primaryHover).toBe('#4936D9');
+    expect(theme.colors.interactive.primaryPressed).toBe('#3B2BBF');
+    expect(theme.colors.interactive.primaryMuted).toBe('#eef0ff');
+    expect(theme.colors.interactive.primaryForeground).toBe('#ffffff');
 
-    expect(theme.colors.interactive.secondary).toBe('#2563eb');
-    expect(theme.colors.interactive.secondaryHover).toBe('#1d4ed8');
-    expect(theme.colors.interactive.secondaryPressed).toBe('#1e40af');
-    expect(theme.colors.interactive.secondaryMuted).toBe('#eff6ff');
+    expect(theme.colors.interactive.secondary).toBe('#4C4F8F');
+    expect(theme.colors.interactive.secondaryHover).toBe('#42477C');
+    expect(theme.colors.interactive.secondaryPressed).toBe('#373B68');
+    expect(theme.colors.interactive.secondaryMuted).toBe('#F0F1FF');
+    expect(theme.colors.interactive.secondaryForeground).toBe('#ffffff');
 
     expect(theme.colors.interactive.neutral).toBe('#f3f4f6');
     expect(theme.colors.interactive.neutralHover).toBe('#e5e7eb');
@@ -63,14 +65,38 @@ describe('theme', () => {
     expect(theme.colors.interactive.disabledForeground).toBe('#9ca3af');
   });
 
+  it('exposes semantic state color tokens', () => {
+    expect(theme.colors.action.primaryBg).toBe('#5B4BEA');
+    expect(theme.colors.action.primaryFg).toBe('#ffffff');
+    expect(theme.colors.action.secondaryBg).toBe('#4C4F8F');
+    expect(theme.colors.action.secondaryFg).toBe('#ffffff');
+    expect(theme.colors.action.dangerBg).toBe('#DC2626');
+    expect(theme.colors.action.dangerFg).toBe('#ffffff');
+    expect(theme.colors.action.disabledBg).toBe('#e5e7eb');
+    expect(theme.colors.action.disabledFg).toBe('#6b7280');
+
+    expect(theme.colors.control.selectedBg).toBe('#5B4BEA');
+    expect(theme.colors.control.selectedFg).toBe('#ffffff');
+    expect(theme.colors.control.hoverBg).toBe('#eef0ff');
+    expect(theme.colors.control.hoverFg).toBe('#4338ca');
+
+    expect(theme.colors.menu.itemHoverBg).toBe('#e5e7eb');
+    expect(theme.colors.menu.itemHoverFg).toBe('#111827');
+    expect(theme.colors.menu.itemDangerHoverBg).toBe('#FEF2F2');
+    expect(theme.colors.menu.itemDangerHoverFg).toBe('#DC2626');
+    expect(theme.colors.menu.triggerHoverBg).toBe('#eef0ff');
+    expect(theme.colors.menu.triggerHoverFg).toBe('#4338ca');
+  });
+
   it('exposes semantic status color tokens', () => {
     expect(theme.colors.status.success).toBe('#008f6a');
     expect(theme.colors.status.successHover).toBe('#00785a');
     expect(theme.colors.status.successMuted).toBe('#ecfdf5');
 
-    expect(theme.colors.status.error).toBe('#e11d48');
-    expect(theme.colors.status.errorHover).toBe('#be123c');
-    expect(theme.colors.status.errorMuted).toBe('#fff1f2');
+    expect(theme.colors.status.error).toBe('#DC2626');
+    expect(theme.colors.status.errorHover).toBe('#B91C1C');
+    expect(theme.colors.status.errorMuted).toBe('#FEF2F2');
+    expect(theme.colors.status.errorForeground).toBe('#ffffff');
 
     expect(theme.colors.status.warning).toBe('#c05621');
     expect(theme.colors.status.warningHover).toBe('#a74308');
@@ -82,7 +108,7 @@ describe('theme', () => {
   });
 
   it('exposes semantic utility color tokens', () => {
-    expect(theme.colors.focus.ring).toBe('#4f46e5');
+    expect(theme.colors.focus.ring).toBe('#5B4BEA');
     expect(theme.colors.focus.ringOffset).toBe('#ffffff');
 
     expect(theme.colors.overlay.backdrop).toBe('rgba(17, 24, 39, 0.45)');

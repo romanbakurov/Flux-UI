@@ -42,7 +42,19 @@ describe('theme presets', () => {
 
   it('provides theme-specific CSS variable values', () => {
     expect(lightTheme.colors.surface.default).toBe('#ffffff');
-    expect(darkTheme.colors.surface.default).toBe('#030712');
-    expect(highContrastTheme.colors.text.primary).toBe('#000000');
+    expect(darkTheme.colors.surface.default).toBe('#17151F');
+    expect(highContrastTheme.colors.surface.default).toBe('#000000');
+    expect(highContrastTheme.colors.surface.elevated).toBe('#0F0F0F');
+    expect(highContrastTheme.colors.text.primary).toBe('#FFFFFF');
+    expect(highContrastTheme.colors.text.muted).toBe('#E5E5E5');
+    expect(highContrastTheme.colors.border.default).toBe('#FFFFFF');
+    expect(highContrastTheme.colors.interactive.primary).toBe('#4DA3FF');
+    expect(highContrastTheme.colors.action.primaryFg).toBe('#000000');
+    expect(highContrastTheme.colors.action.dangerHoverBg).toBe('#0F0F0F');
+    expect(highContrastTheme.colors.action.dangerHoverFg).toBe('#FFFFFF');
+    expect(highContrastTheme.colors.control.selectedFg).toBe('#000000');
+    expect(highContrastTheme.colors.menu.itemHoverFg).toBe('#FFFFFF');
+    expect(highContrastTheme.colors.menu.itemFocusRing).toBe('#4DA3FF');
+    expect(highContrastTheme.colors.focus.ring).toBe('#FFFF00');
   });
 });
