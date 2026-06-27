@@ -87,7 +87,9 @@ const expectedWebApi = [
   'RadioGroup',
   'Select',
   'Tabs',
+  'ThemeProvider',
   'Tooltip',
+  'useTheme',
 ];
 
 const actualWebApi = Object.keys(web).sort();
@@ -108,6 +110,14 @@ if (!isComponentExport(web.Input)) {
 
 if (!isComponentExport(web.Tabs)) {
   throw new Error('vellira-web Tabs export invalid');
+}
+
+if (!isComponentExport(web.ThemeProvider)) {
+  throw new Error('vellira-web ThemeProvider export invalid');
+}
+
+if (typeof web.useTheme !== 'function') {
+  throw new Error('vellira-web useTheme export invalid');
 }
 
 if (typeof core.useControllableState !== 'function') {
