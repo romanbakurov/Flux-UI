@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { colors } from '../src/tokens/colors';
+import { darkTheme } from '../src/themes/dark';
+import { highContrastTheme } from '../src/themes/highContrast';
+import { lightTheme } from '../src/themes/light';
 import { radius } from '../src/tokens/radius';
 import { shadows } from '../src/tokens/shadows';
 import { spacing } from '../src/tokens/spacing';
@@ -75,6 +77,43 @@ function generateShadowVariables(shadows: Record<string, ShadowToken>): string {
   return css;
 }
 
+function generateBaseVariables(): string {
+  let css = '';
+
+  css += generateVariables(spacing, 'space', {
+    numberUnit: 'px',
+  });
+
+  css += generateVariables(radius, 'radius', {
+    numberUnit: 'px',
+  });
+
+  css += generateVariables(zIndex, 'z-index');
+
+  css += generateVariables(typography.family, 'font-family');
+
+  css += generateVariables(typography.weight, 'font-weight');
+
+  css += generateVariables(typography.size, 'font-size', {
+    numberUnit: 'px',
+  });
+
+  css += generateVariables(typography.lineHeight, 'line-height', {
+    numberUnit: 'px',
+  });
+
+  css += generateShadowVariables(shadows);
+
+  return css;
+}
+
+function generateThemeBlock(
+  selector: string,
+  theme: typeof lightTheme
+): string {
+  return `${selector} {\n${generateVariables(theme.colors, 'color')}}\n`;
+}
+
 let css = `/**
  * AUTO-GENERATED FILE
  * DO NOT EDIT MANUALLY
@@ -82,35 +121,29 @@ let css = `/**
  */
 
 :root {
+${generateBaseVariables()}}
 `;
 
-css += generateVariables(spacing, 'space', {
-  numberUnit: 'px',
-});
+css += '\n';
 
-css += generateVariables(radius, 'radius', {
-  numberUnit: 'px',
-});
+css += generateThemeBlock(
+  `:root,\n[data-theme='light'],\n[data-vellira-theme='light']`,
+  lightTheme
+);
 
-css += generateVariables(colors, 'color');
+css += '\n';
 
-css += generateVariables(zIndex, 'z-index');
+css += generateThemeBlock(
+  `[data-theme='dark'],\n[data-vellira-theme='dark']`,
+  darkTheme
+);
 
-css += generateVariables(typography.family, 'font-family');
+css += '\n';
 
-css += generateVariables(typography.weight, 'font-weight');
-
-css += generateVariables(typography.size, 'font-size', {
-  numberUnit: 'px',
-});
-
-css += generateVariables(typography.lineHeight, 'line-height', {
-  numberUnit: 'px',
-});
-
-css += generateShadowVariables(shadows);
-
-css += '}\n';
+css += generateThemeBlock(
+  `[data-theme='high-contrast'],\n[data-vellira-theme='high-contrast']`,
+  highContrastTheme
+);
 
 const outputPath = path.resolve(__dirname, '../dist/css/tokens.css');
 

@@ -46,6 +46,15 @@ const fallbackDescriptions: Record<string, string> = {
   style: 'Extra root style.',
   textStyle: 'Extra text style.',
   triggerStyle: 'Extra trigger style.',
+  children: 'Content rendered inside the component.',
+  theme: 'Controlled theme value.',
+  defaultTheme: 'Initial theme for uncontrolled usage.',
+  onThemeChange: 'Called whenever the active theme changes.',
+  className: 'Extra CSS class for the root element.',
+  description: 'Additional descriptive text.',
+  disabled: 'Disables interaction.',
+  required: 'Marks the field as required.',
+  placeholder: 'Placeholder text.',
 };
 
 const sections: ApiSection[] = [
@@ -123,6 +132,12 @@ const sections: ApiSection[] = [
     '### Modal Props',
     'ModalProps',
     'src/components/Modal/types.ts'
+  ),
+  section(
+    'web',
+    '### ThemeProvider Props',
+    'ThemeProviderProps',
+    'src/theme/types.ts'
   ),
   section(
     'native',
@@ -429,6 +444,8 @@ function sortRows(rows: PropRow[], descriptions: Map<string, string>) {
 
 function normalizeType(type: string) {
   const normalized = type
+    .replace(/import\(["'][^"']*\/@types\/react\/index["']\)\./g, '')
+    .replace(/import\(["'][^"']*\/@types\+react@[^"']*\/index["']\)\./g, '')
     .replace(/import\("react"\)\./g, '')
     .replace(/import\("react-native"\)\./g, '')
     .replace(/Readonly<(.+)>/g, '$1')
