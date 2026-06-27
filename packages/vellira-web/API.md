@@ -512,12 +512,12 @@ import { ThemeProvider } from '@romanbakurov/vellira-web';
 
 <!-- api-docgen:start web.ThemeProviderProps.ThemeProviderProps -->
 
-| Prop            | Type                                                                                                                                           | Required | Description                               |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------- |
-| `children`      | `import("/Users/romanbakurov/dev/buisenes-project/Vellira/node_modules/.pnpm/@types+react@19.2.17/node_modules/@types/react/index").ReactNode` | Yes      | Content wrapped by the provider.          |
-| `theme`         | `ThemeName`                                                                                                                                    | No       | Controlled theme value.                   |
-| `defaultTheme`  | `ThemeName`                                                                                                                                    | No       | Initial theme for uncontrolled usage.     |
-| `onThemeChange` | `(theme: ThemeName) => void`                                                                                                                   | No       | Called whenever the active theme changes. |
+| Prop            | Type                         | Required | Description                               |
+| --------------- | ---------------------------- | -------- | ----------------------------------------- |
+| `children`      | `ReactNode`                  | Yes      | Content wrapped by the provider.          |
+| `theme`         | `ThemeName`                  | No       | Controlled theme value.                   |
+| `defaultTheme`  | `ThemeName`                  | No       | Initial theme for uncontrolled usage.     |
+| `onThemeChange` | `(theme: ThemeName) => void` | No       | Called whenever the active theme changes. |
 
 <!-- api-docgen:end web.ThemeProviderProps.ThemeProviderProps -->
 <!-- api-docgen:end web.ThemeProviderProps.ThemeProvider -->

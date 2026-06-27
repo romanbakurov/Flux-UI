@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type ThemeName = 'light' | 'dark' | 'high-contrast';
 
 export interface ThemeContextValue {
@@ -9,5 +11,5 @@ export interface ThemeProviderProps {
   theme?: ThemeName;
   defaultTheme?: ThemeName;
   onThemeChange?: (theme: ThemeName) => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }

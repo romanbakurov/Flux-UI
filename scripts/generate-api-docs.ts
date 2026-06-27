@@ -444,6 +444,8 @@ function sortRows(rows: PropRow[], descriptions: Map<string, string>) {
 
 function normalizeType(type: string) {
   const normalized = type
+    .replace(/import\(["'][^"']*\/@types\/react\/index["']\)\./g, '')
+    .replace(/import\(["'][^"']*\/@types\+react@[^"']*\/index["']\)\./g, '')
     .replace(/import\("react"\)\./g, '')
     .replace(/import\("react-native"\)\./g, '')
     .replace(/Readonly<(.+)>/g, '$1')
