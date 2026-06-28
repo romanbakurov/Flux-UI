@@ -3,10 +3,10 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
-  color: var(--color-text-secondary);
+  color: var(--tabs-trigger-default-fg);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
-  background: transparent;
+  background: var(--tabs-trigger-default-bg);
   border: none;
   transition:
     color 0.2s ease,
@@ -15,7 +15,8 @@
   cursor: pointer;
 
   &:disabled {
-    color: var(--color-control-disabled-fg);
+    color: var(--tabs-trigger-disabled-fg);
+    background-color: var(--tabs-trigger-disabled-bg);
     cursor: not-allowed;
   }
 
@@ -24,7 +25,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-focus-ring);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
 }
@@ -51,11 +52,11 @@
 
 .default {
   &:hover:not(:disabled) {
-    color: var(--color-control-hover-fg);
+    color: var(--tabs-trigger-hover-fg);
   }
 
   &[aria-selected='true'] {
-    color: var(--color-control-hover-fg);
+    color: var(--tabs-trigger-hover-fg);
   }
 }
 
@@ -71,12 +72,12 @@
     left: 0;
     width: 0;
     height: 3px;
-    background-color: var(--color-interactive-primary);
+    background-color: var(--tabs-indicator-bg);
     transition: width 0.3s ease;
   }
 
   &:hover:not(:disabled) {
-    color: var(--color-control-hover-fg);
+    color: var(--tabs-trigger-hover-fg);
 
     &::after {
       width: 100%;
@@ -84,7 +85,7 @@
   }
 
   &[aria-selected='true'] {
-    color: var(--color-control-hover-fg);
+    color: var(--tabs-trigger-hover-fg);
 
     &::after {
       width: 100%;
@@ -97,13 +98,13 @@
   border-radius: var(--radius-md);
 
   &:hover:not(:disabled) {
-    color: var(--color-control-hover-fg);
-    background-color: var(--color-control-hover-bg);
+    color: var(--tabs-trigger-hover-fg);
+    background-color: var(--tabs-trigger-hover-bg);
   }
 
   &[aria-selected='true'] {
-    color: var(--color-control-selected-fg);
-    background-color: var(--color-control-selected-bg);
+    color: var(--tabs-trigger-active-fg);
+    background-color: var(--tabs-trigger-active-bg);
   }
 }
 
@@ -111,20 +112,20 @@
 .vertical {
   justify-content: flex-start;
   width: 100%;
-  color: var(--color-text-secondary);
+  color: var(--tabs-trigger-default-fg);
   text-align: left;
 
   &.default {
     border-left: 2px solid transparent;
 
     &:hover:not(:disabled) {
-      color: var(--color-control-hover-fg);
-      background-color: var(--color-control-hover-bg);
-      border-left-color: var(--color-control-hover-border);
+      color: var(--tabs-trigger-hover-fg);
+      background-color: var(--tabs-trigger-hover-bg);
+      border-left-color: var(--tabs-indicator-bg);
     }
 
     &[aria-selected='true'] {
-      background-color: var(--color-control-hover-bg);
+      background-color: var(--tabs-trigger-hover-bg);
     }
   }
 
@@ -136,13 +137,13 @@
     }
 
     &:hover:not(:disabled) {
-      background-color: var(--color-control-hover-bg);
-      border-left-color: var(--color-control-hover-border);
+      background-color: var(--tabs-trigger-hover-bg);
+      border-left-color: var(--tabs-indicator-bg);
     }
 
     &[aria-selected='true'] {
-      color: var(--color-control-hover-fg);
-      border-left-color: var(--color-control-selected-bg);
+      color: var(--tabs-trigger-hover-fg);
+      border-left-color: var(--tabs-indicator-bg);
     }
   }
 
@@ -150,8 +151,8 @@
     border-radius: var(--radius-lg);
 
     &[aria-selected='true'] {
-      color: var(--color-control-selected-fg);
-      background-color: var(--color-control-selected-bg);
+      color: var(--tabs-trigger-active-fg);
+      background-color: var(--tabs-trigger-active-bg);
     }
   }
 }

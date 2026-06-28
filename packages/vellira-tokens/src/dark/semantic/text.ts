@@ -1,12 +1,12 @@
 import { colors } from '../../primitives/colors.js';
 
 export const text = {
-  primary: colors.gray[50],
-  secondary: colors.gray[200],
-  muted: colors.gray[400],
-  disabled: colors.gray[500],
+  primary: colors.vellira[50],
+  secondary: colors.vellira[100],
+  muted: colors.vellira[200],
+  disabled: colors.vellira[300],
 
-  inverse: colors.gray[0],
+  inverse: colors.mono[50],
 
-  brand: colors.primary[300],
+  brand: colors.primary[200],
 } as const;

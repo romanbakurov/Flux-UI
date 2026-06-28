@@ -5,7 +5,9 @@
   max-height: 90vh;
   overflow: hidden auto;
   padding: var(--space-4);
-  background-color: var(--color-surface-elevated);
+  color: var(--modal-content-fg);
+  background-color: var(--modal-content-bg);
+  border: 1px solid var(--modal-content-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }

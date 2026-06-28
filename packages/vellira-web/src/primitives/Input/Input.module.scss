@@ -8,11 +8,11 @@
 .input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
-  color: var(--color-control-fg);
+  color: var(--input-default-fg);
   font: inherit;
   font-size: var(--font-size-md);
-  background-color: var(--color-control-bg);
-  border: 1px solid var(--color-control-border);
+  background-color: var(--input-default-bg);
+  border: 1px solid var(--input-default-border);
   border-radius: var(--radius-md);
   outline: none;
   transition:
@@ -21,27 +21,33 @@
     background-color 0.2s ease;
 
   &::placeholder {
-    color: var(--color-text-disabled);
+    color: var(--input-default-placeholder);
   }
 
   &:focus-visible {
-    border-color: var(--color-control-focus-border);
-    box-shadow: 0 0 0 2px var(--color-focus-ring);
+    color: var(--input-focus-fg);
+    background-color: var(--input-focus-bg);
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px var(--input-focus-ring);
   }
 
   &:disabled {
-    color: var(--color-control-disabled-fg);
-    background-color: var(--color-control-disabled-bg);
-    border-color: var(--color-control-disabled-border);
+    color: var(--input-disabled-fg);
+    background-color: var(--input-disabled-bg);
+    border-color: var(--input-disabled-border);
     cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--input-disabled-placeholder);
+    }
   }
 
   &.error {
-    border-color: var(--color-status-error);
+    border-color: var(--input-error-border);
 
     &:focus-visible {
-      border-color: var(--color-status-error);
-      box-shadow: 0 0 0 3px var(--color-status-error-muted);
+      border-color: var(--input-error-border);
+      box-shadow: 0 0 0 3px var(--input-error-ring);
     }
   }
 
@@ -83,12 +89,12 @@
   max-width: 300px;
   padding: var(--space-2) var(--space-3);
   margin-top: var(--space-2);
-  color: var(--color-text-inverse);
+  color: var(--tooltip-content-fg);
   font-size: var(--font-size-sm);
   overflow-wrap: break-word;
   white-space: normal;
   pointer-events: none;
-  background-color: var(--color-surface-inverse);
+  background-color: var(--tooltip-content-bg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   animation: fadeIn 0.15s ease-out;
@@ -99,7 +105,7 @@
     bottom: 100%;
     left: var(--space-3);
     border: 6px solid transparent;
-    border-bottom-color: var(--color-surface-inverse);
+    border-bottom-color: var(--tooltip-arrow-bg);
   }
 }
 

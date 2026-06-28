@@ -12,28 +12,28 @@ export const radio = {
   },
 
   hover: {
-    bg: colors.gray[100],
-    fg: text.primary,
+    bg: colors.primary[50],
+    fg: colors.primary[900],
     border: colors.primary[700],
   },
 
   checked: {
     default: {
-      bg: colors.primary[600],
-      fg: text.inverse,
-      border: colors.primary[600],
-    },
-
-    hover: {
       bg: colors.primary[700],
       fg: text.inverse,
       border: colors.primary[700],
     },
 
-    pressed: {
+    hover: {
       bg: colors.primary[800],
       fg: text.inverse,
       border: colors.primary[800],
+    },
+
+    pressed: {
+      bg: colors.primary[950],
+      fg: text.inverse,
+      border: colors.primary[950],
     },
   },
 

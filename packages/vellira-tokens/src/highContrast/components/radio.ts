@@ -12,22 +12,22 @@ export const radio = {
   },
 
   hover: {
-    bg: colors.gray[800],
+    bg: colors.gray[900],
     fg: text.inverse,
-    border: colors.primary[300],
+    border: colors.info[400],
   },
 
   checked: {
     default: {
-      bg: colors.primary[600],
+      bg: colors.info[400],
       fg: text.inverse,
-      border: colors.primary[600],
+      border: colors.info[400],
     },
 
     hover: {
-      bg: colors.primary[700],
+      bg: colors.info[500],
       fg: text.inverse,
-      border: colors.primary[700],
+      border: colors.info[500],
     },
 
     pressed: {

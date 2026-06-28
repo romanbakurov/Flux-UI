@@ -14,19 +14,19 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  color: var(--color-text-primary);
+  color: var(--form-field-label-fg);
   font-weight: var(--font-weight-medium);
 }
 
 .required {
   margin-left: var(--space-1);
-  color: var(--color-text-danger);
+  color: var(--form-field-required-mark-fg);
 }
 
 .description {
   @include text-sm;
 
-  color: var(--color-text-secondary);
+  color: var(--form-field-description-fg);
 }
 
 .control {
@@ -38,10 +38,10 @@
 .errorText {
   @include text-sm;
 
-  color: var(--color-text-danger);
+  color: var(--form-field-helper-text-error-fg);
 }
 
 .disabled {
-  color: var(--color-control-disabled-fg);
+  color: var(--form-field-disabled-label-fg);
   cursor: not-allowed;
 }

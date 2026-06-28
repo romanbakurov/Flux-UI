@@ -11,7 +11,7 @@ export const menu = {
     },
 
     hover: {
-      bg: colors.gray[100],
+      bg: colors.gray[200],
       fg: text.primary,
     },
 
@@ -35,13 +35,13 @@ export const menu = {
       },
 
       hover: {
-        bg: status.error.bg,
-        fg: status.error.fg,
+        bg: colors.error[50],
+        fg: colors.error[700],
       },
 
       active: {
-        bg: status.error.border,
-        fg: status.error.fg,
+        bg: colors.error[50],
+        fg: colors.error[700],
       },
     },
   },
@@ -53,7 +53,7 @@ export const menu = {
 
     hover: {
       bg: colors.primary[50],
-      fg: colors.primary[700],
+      fg: colors.primary[900],
       ring: 'transparent',
     },
   },

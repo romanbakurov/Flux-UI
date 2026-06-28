@@ -14,7 +14,7 @@ export const input = {
   },
 
   hover: {
-    bg: colors.gray[100],
+    bg: colors.primary[50],
     fg: text.primary,
     border: colors.primary[700],
     placeholder: text.muted,

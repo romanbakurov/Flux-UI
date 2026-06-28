@@ -2,30 +2,30 @@ import { colors } from '../../primitives/colors.js';
 
 export const status = {
   success: {
-    fg: colors.success[400],
-    bg: colors.success[50],
+    fg: colors.success[300],
+    bg: colors.gray[900],
     border: colors.success[300],
-    strong: colors.success[600],
+    strong: colors.success[300],
   },
 
   error: {
-    fg: colors.error[400],
-    bg: colors.error[50],
+    fg: colors.error[300],
+    bg: colors.gray[900],
     border: colors.error[300],
-    strong: colors.error[600],
+    strong: colors.error[300],
   },
 
   warning: {
-    fg: colors.warning[400],
-    bg: colors.warning[50],
-    border: colors.warning[300],
-    strong: colors.warning[600],
+    fg: colors.warning[500],
+    bg: colors.gray[900],
+    border: colors.warning[500],
+    strong: colors.warning[500],
   },
 
   info: {
     fg: colors.info[400],
-    bg: colors.info[50],
-    border: colors.info[300],
-    strong: colors.info[600],
+    bg: colors.gray[900],
+    border: colors.info[400],
+    strong: colors.info[400],
   },
 } as const;

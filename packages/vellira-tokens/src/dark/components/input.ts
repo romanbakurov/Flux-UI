@@ -1,4 +1,3 @@
-import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
 import { focus } from '../semantic/focus.js';
 import { status } from '../semantic/status.js';
@@ -14,9 +13,9 @@ export const input = {
   },
 
   hover: {
-    bg: colors.gray[800],
+    bg: surface.hover,
     fg: text.primary,
-    border: colors.primary[300],
+    border: border.focus,
     placeholder: text.muted,
   },
 

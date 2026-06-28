@@ -1,5 +1,6 @@
 import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
+import { surface } from '../semantic/surface.js';
 import { text } from '../semantic/text.js';
 
 export const tabs = {
@@ -15,7 +16,7 @@ export const tabs = {
     },
 
     hover: {
-      bg: colors.gray[800],
+      bg: surface.hover,
       fg: text.primary,
       border: 'transparent',
     },

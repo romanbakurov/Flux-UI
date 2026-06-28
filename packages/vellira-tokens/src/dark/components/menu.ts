@@ -11,12 +11,12 @@ export const menu = {
     },
 
     hover: {
-      bg: colors.gray[800],
+      bg: surface.active,
       fg: text.primary,
     },
 
     active: {
-      bg: colors.gray[700],
+      bg: surface.active,
       fg: text.primary,
     },
 
@@ -52,8 +52,8 @@ export const menu = {
     },
 
     hover: {
-      bg: colors.gray[800],
-      fg: text.primary,
+      bg: surface.hover,
+      fg: colors.vellira[50],
       ring: 'transparent',
     },
   },
