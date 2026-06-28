@@ -1,9 +1,11 @@
+import { colors } from '../primitives/colors.js';
+
 export const shadows = {
   sm: {
     x: 0,
     y: 1,
     blur: 2,
-    color: '#000000',
+    color: colors.mono[950],
     opacity: 0.05,
     elevation: 1,
   },
@@ -12,7 +14,7 @@ export const shadows = {
     x: 0,
     y: 4,
     blur: 6,
-    color: '#000000',
+    color: colors.mono[950],
     opacity: 0.1,
     elevation: 4,
   },
@@ -21,7 +23,7 @@ export const shadows = {
     x: 0,
     y: 10,
     blur: 15,
-    color: '#000000',
+    color: colors.mono[950],
     opacity: 0.15,
     elevation: 8,
   },

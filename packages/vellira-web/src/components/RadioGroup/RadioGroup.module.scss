@@ -16,7 +16,7 @@
 .option {
   display: inline-flex;
   align-items: center;
-  color: var(--color-text-secondary);
+  color: var(--radio-default-fg);
   font-size: var(--font-size-md);
   transition: color 0.15s ease;
   cursor: pointer;
@@ -25,10 +25,11 @@
   user-select: none;
 
   &:hover:not(.disabled) {
-    color: var(--color-control-hover-fg);
+    color: var(--radio-hover-fg);
 
     .customRadio {
-      border-color: var(--color-control-hover-border);
+      background-color: var(--radio-hover-bg);
+      border-color: var(--radio-hover-border);
     }
   }
 }
@@ -50,8 +51,8 @@
   flex: 0 0 auto;
   width: 16px;
   height: 16px;
-  background-color: var(--color-control-bg);
-  border: 2px solid var(--color-control-border);
+  background-color: var(--radio-default-bg);
+  border: 2px solid var(--radio-default-border);
   border-radius: 50%;
   transition:
     border-color 0.15s ease,
@@ -62,7 +63,7 @@
     position: absolute;
     inset: 3px;
     content: '';
-    background-color: var(--color-control-selected-bg);
+    background-color: var(--radio-checked-default-bg);
     border-radius: 50%;
     opacity: 0;
     transform: scale(0.6);
@@ -73,7 +74,7 @@
 }
 
 .input:checked + .customRadio {
-  border-color: var(--color-control-selected-bg);
+  border-color: var(--radio-checked-default-border);
 }
 
 .input:checked + .customRadio::after {
@@ -82,12 +83,12 @@
 }
 
 .input:focus-visible + .customRadio {
-  border-color: var(--color-control-focus-border);
-  box-shadow: 0 0 0 2px var(--color-focus-ring);
+  border-color: var(--radio-checked-default-border);
+  box-shadow: 0 0 0 2px var(--radio-focus-ring);
 }
 
 .option:has(.input:checked) {
-  color: var(--color-control-hover-fg);
+  color: var(--radio-hover-fg);
 }
 
 .label {
@@ -95,8 +96,13 @@
 }
 
 .disabled {
-  color: var(--color-control-disabled-fg);
+  color: var(--radio-disabled-fg);
   cursor: not-allowed;
+}
+
+.disabled .customRadio {
+  background-color: var(--radio-disabled-bg);
+  border-color: var(--radio-disabled-border);
 }
 
 @media (prefers-reduced-motion: reduce) {

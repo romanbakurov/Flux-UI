@@ -5,7 +5,7 @@ import { surface } from '../semantic/surface.js';
 export const tooltip = {
   content: {
     bg: surface.inverse,
-    fg: colors.gray[950],
+    fg: colors.mono[950],
     border: border.default,
   },
 

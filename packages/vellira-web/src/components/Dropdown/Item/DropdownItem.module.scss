@@ -2,24 +2,25 @@
 
 .item {
   position: relative;
-  overflow: hidden;
   display: flex;
   align-items: center;
-  gap: var(--space-4);
   width: 100%;
-  min-width: 0;
   padding: var(--space-2) var(--space-3);
-  color: var(--color-menu-item-fg);
+  color: var(--dropdown-item-default-fg);
   font-size: var(--font-size-md);
+  background-color: var(--dropdown-item-default-bg);
   border-radius: var(--radius-sm);
   cursor: pointer;
+  overflow: hidden;
+  gap: var(--space-4);
+  min-width: 0;
   user-select: none;
 
   @include smooth-transition((color, background-color, box-shadow));
 
   &:hover:not(.disabled) {
-    color: var(--color-menu-item-hover-fg);
-    background-color: var(--color-menu-item-hover-bg);
+    color: var(--dropdown-item-hover-fg);
+    background-color: var(--dropdown-item-hover-bg);
   }
 }
 
@@ -28,26 +29,23 @@
 }
 
 .active {
-  color: var(--color-menu-item-active-fg);
-  background-color: var(--color-menu-item-active-bg);
+  color: var(--dropdown-item-active-fg);
+  background-color: var(--dropdown-item-active-bg);
 }
 
 .item.active {
-  box-shadow: 0 0 0 2px var(--color-menu-item-focus-ring);
+  box-shadow: 0 0 0 2px var(--dropdown-item-active-ring);
 }
 
 .item.danger {
-  color: var(--color-menu-item-danger-fg);
+  color: var(--dropdown-item-danger-default-fg);
 
   &:hover:not(.disabled) {
-    color: var(--color-menu-item-danger-fg);
-    background-color: var(--color-menu-item-hover-bg);
+    color: var(--dropdown-item-danger-hover-fg);
   }
 
   &.active {
-    color: var(--color-menu-item-danger-fg);
-    background-color: var(--color-menu-item-active-bg);
-    box-shadow: 0 0 0 2px var(--color-menu-item-focus-ring);
+    box-shadow: 0 0 0 2px var(--dropdown-item-danger-active-ring);
   }
 }
 
@@ -58,16 +56,15 @@
 
 .item.disabled,
 .item.danger.disabled {
-  color: var(--color-menu-item-disabled-fg);
-  background-color: var(--color-menu-item-disabled-bg);
-  background-color: transparent;
+  color: var(--dropdown-item-disabled-fg);
+  background-color: var(--dropdown-item-disabled-bg);
   box-shadow: none;
   cursor: not-allowed;
   pointer-events: none;
 
   .itemIcon,
   .itemShortcut {
-    color: var(--color-menu-item-disabled-fg);
+    color: var(--dropdown-item-disabled-fg);
   }
 }
 
@@ -97,7 +94,7 @@
   flex-shrink: 0;
   margin-left: auto;
   padding-left: var(--space-3);
-  color: var(--color-text-muted);
+  color: var(--dropdown-group-label-fg);
   font-family: monospace;
   font-size: var(--font-size-xs);
 }

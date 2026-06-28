@@ -4,8 +4,9 @@
   flex-direction: column;
   margin-top: var(--space-1);
   padding: var(--space-1);
-  background-color: var(--color-surface-elevated);
-  border: none;
+  color: var(--dropdown-content-fg);
+  background-color: var(--dropdown-content-bg);
+  border: 1px solid var(--dropdown-content-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   transition: background-color 0.15s ease;

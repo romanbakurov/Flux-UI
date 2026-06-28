@@ -12,7 +12,7 @@ export const radio = {
   },
 
   hover: {
-    bg: colors.gray[800],
+    bg: surface.hover,
     fg: text.inverse,
     border: colors.primary[300],
   },

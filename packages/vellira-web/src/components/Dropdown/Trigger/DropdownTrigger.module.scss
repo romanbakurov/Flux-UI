@@ -8,9 +8,9 @@
   min-width: 32px;
   min-height: 32px;
   padding: var(--space-2);
-  color: var(--color-menu-trigger-fg);
-  background: transparent;
-  border: 2px solid transparent;
+  color: var(--dropdown-trigger-default-fg);
+  background: var(--dropdown-trigger-default-bg);
+  border: 2px solid var(--dropdown-trigger-default-border);
   border-radius: var(--radius-lg);
   cursor: pointer;
 
@@ -21,10 +21,10 @@
   }
 
   &:hover:not(.disabled) {
-    color: var(--color-menu-trigger-hover-fg);
-    background: var(--color-menu-trigger-hover-bg);
+    color: var(--dropdown-trigger-hover-fg);
+    background: var(--dropdown-trigger-hover-bg);
 
-    @include ring(var(--color-menu-trigger-hover-ring));
+    @include ring(var(--dropdown-trigger-hover-ring));
 
     .iconLeft svg {
       color: currentcolor;
@@ -33,15 +33,15 @@
   }
 
   &.disabled {
-    color: var(--color-control-disabled-fg);
-    background-color: var(--color-control-disabled-bg);
-    border: 2px dashed var(--color-control-disabled-border);
+    color: var(--dropdown-trigger-disabled-fg);
+    background-color: var(--dropdown-trigger-disabled-bg);
+    border: 2px dashed var(--dropdown-trigger-disabled-border);
     cursor: not-allowed;
     pointer-events: none;
 
     .iconLeft,
     .arrow {
-      color: var(--color-control-disabled-fg);
+      color: var(--dropdown-trigger-disabled-fg);
     }
   }
 
@@ -53,9 +53,9 @@
     border-radius: var(--radius-full);
 
     &:hover:not(.disabled) {
-      background: var(--color-menu-trigger-hover-bg);
+      background: var(--dropdown-trigger-hover-bg);
 
-      @include ring(var(--color-menu-trigger-hover-ring));
+      @include ring(var(--dropdown-trigger-hover-ring));
 
       .iconLeft {
         transform: rotate(var(--dropdown-rotate-angle, 90deg));

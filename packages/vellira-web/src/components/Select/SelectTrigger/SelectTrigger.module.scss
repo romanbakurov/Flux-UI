@@ -6,9 +6,9 @@
   align-items: center;
   width: 100%;
   padding: var(--space-2) var(--space-3);
-  color: var(--color-control-fg);
-  background-color: var(--color-control-bg);
-  border: 1px solid var(--color-control-border);
+  color: var(--select-trigger-default-fg);
+  background-color: var(--select-trigger-default-bg);
+  border: 1px solid var(--select-trigger-default-border);
   border-radius: var(--radius-md);
   transition:
     border-color 0.15s ease,
@@ -22,44 +22,48 @@
   user-select: none;
 
   &:hover:not(.disabled) {
-    border-color: var(--color-control-hover-border);
+    color: var(--select-trigger-hover-fg);
+    background-color: var(--select-trigger-hover-bg);
+    border-color: var(--select-trigger-hover-border);
 
     .arrow {
-      color: var(--color-control-hover-fg);
+      color: var(--select-trigger-hover-fg);
     }
   }
 
   &:focus-visible:not(.disabled) {
-    border-color: var(--color-focus-ring);
-    box-shadow: 0 0 0 2px var(--color-focus-ring);
+    color: var(--select-trigger-focus-fg);
+    background-color: var(--select-trigger-focus-bg);
+    border-color: var(--select-trigger-focus-border);
+    box-shadow: 0 0 0 2px var(--select-trigger-focus-ring);
   }
 }
 
 .value {
   min-width: 0;
   overflow: hidden;
-  color: var(--color-control-fg);
+  color: inherit;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .placeholder {
-  color: var(--color-text-muted);
+  color: var(--select-trigger-placeholder-fg);
 }
 
 .error {
-  border-color: var(--color-status-error);
+  border-color: var(--select-trigger-error-border);
 
   &:focus-visible:not(.disabled) {
-    border-color: var(--color-status-error);
-    box-shadow: 0 0 0 2px var(--color-status-error-muted);
+    border-color: var(--select-trigger-error-border);
+    box-shadow: 0 0 0 2px var(--select-trigger-error-ring);
   }
 }
 
 .disabled {
-  color: var(--color-control-disabled-fg);
-  background-color: var(--color-control-disabled-bg);
-  border-color: var(--color-control-disabled-border);
+  color: var(--select-trigger-disabled-fg);
+  background-color: var(--select-trigger-disabled-bg);
+  border-color: var(--select-trigger-disabled-border);
   cursor: not-allowed;
 }
 
@@ -70,7 +74,7 @@
   align-items: center;
   width: 16px;
   height: 16px;
-  color: var(--color-text-secondary);
+  color: var(--select-trigger-default-fg);
   transition:
     color 0.15s ease,
     transform 0.2s ease;

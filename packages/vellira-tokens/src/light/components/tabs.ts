@@ -15,15 +15,15 @@ export const tabs = {
     },
 
     hover: {
-      bg: colors.gray[100],
-      fg: text.primary,
+      bg: colors.primary[50],
+      fg: colors.primary[900],
       border: 'transparent',
     },
 
     active: {
-      bg: colors.primary[600],
+      bg: colors.primary[700],
       fg: text.inverse,
-      border: colors.primary[600],
+      border: colors.primary[700],
     },
 
     disabled: {

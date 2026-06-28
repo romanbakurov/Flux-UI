@@ -14,9 +14,9 @@ export const input = {
   },
 
   hover: {
-    bg: colors.gray[100],
+    bg: colors.gray[900],
     fg: text.primary,
-    border: colors.primary[700],
+    border: colors.info[400],
     placeholder: text.muted,
   },
 
@@ -29,9 +29,9 @@ export const input = {
   },
 
   disabled: {
-    bg: surface.subtle,
-    fg: text.disabled,
-    border: border.default,
+    bg: colors.gray[900],
+    fg: colors.gray[600],
+    border: colors.gray[600],
     placeholder: text.disabled,
   },
 

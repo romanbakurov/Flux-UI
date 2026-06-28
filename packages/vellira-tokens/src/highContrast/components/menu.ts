@@ -1,24 +1,26 @@
+import { colors } from '../../primitives/colors.js';
+
 export const menu = {
-  itemFg: '#FFFFFF',
-  itemHoverBg: '#1A1A1A',
-  itemHoverFg: '#FFFFFF',
-  itemActiveBg: '#1A1A1A',
-  itemActiveFg: '#FFFFFF',
-  itemFocusRing: '#FFFF00',
+  itemFg: colors.mono[50],
+  itemHoverBg: colors.gray[800],
+  itemHoverFg: colors.mono[50],
+  itemActiveBg: colors.gray[800],
+  itemActiveFg: colors.mono[50],
+  itemFocusRing: colors.warning[500],
 
-  itemDangerFg: '#FF8A8A',
-  itemDangerHoverBg: '#FF8A8A',
-  itemDangerHoverFg: '#000000',
-  itemDangerActiveBg: '#FF8A8A',
-  itemDangerActiveFg: '#000000',
+  itemDangerFg: colors.error[300],
+  itemDangerHoverBg: colors.error[300],
+  itemDangerHoverFg: colors.mono[950],
+  itemDangerActiveBg: colors.error[300],
+  itemDangerActiveFg: colors.mono[950],
 
-  triggerFg: '#FFFFFF',
-  triggerHoverBg: '#0F0F0F',
-  triggerHoverFg: '#FFFFFF',
-  triggerHoverRing: '#FFFF00',
+  triggerFg: colors.mono[50],
+  triggerHoverBg: colors.gray[900],
+  triggerHoverFg: colors.mono[50],
+  triggerHoverRing: colors.warning[500],
 
-  itemDisabledFg: '#737373',
-  itemDisabledBg: '#0F0F0F',
+  itemDisabledFg: colors.gray[600],
+  itemDisabledBg: colors.gray[900],
 
-  groupLabelFg: '#CFCFCF',
+  groupLabelFg: colors.gray[400],
 } as const;

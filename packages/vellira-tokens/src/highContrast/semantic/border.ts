@@ -1,9 +1,9 @@
 import { colors } from '../../primitives/colors.js';
 
 export const border = {
-  default: colors.gray[0],
-  muted: colors.gray[300],
-  strong: colors.gray[0],
+  default: colors.mono[50],
+  muted: colors.gray[400],
+  strong: colors.mono[50],
 
-  focus: colors.warning[300],
+  focus: colors.warning[500],
 } as const;

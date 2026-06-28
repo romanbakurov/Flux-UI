@@ -3,8 +3,9 @@
   max-height: 300px;
   box-sizing: border-box;
   overflow-y: auto;
-  background-color: var(--color-surface-elevated);
-  border: 1px solid var(--color-border-focus);
+  color: var(--select-dropdown-fg);
+  background-color: var(--select-dropdown-bg);
+  border: 1px solid var(--select-dropdown-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   outline: none;

@@ -1,6 +1,7 @@
 .panel {
   flex: 1;
   padding: var(--space-4);
+  color: var(--tabs-panel-fg);
   opacity: 0;
   transform: translateY(-8px);
   transition:

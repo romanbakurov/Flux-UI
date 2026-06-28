@@ -1,6 +1,7 @@
 import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
 import { focus } from '../semantic/focus.js';
+import { status } from '../semantic/status.js';
 import { surface } from '../semantic/surface.js';
 import { text } from '../semantic/text.js';
 
@@ -12,22 +13,22 @@ export const checkbox = {
   },
 
   hover: {
-    bg: colors.gray[100],
+    bg: colors.gray[900],
     fg: text.inverse,
-    border: colors.primary[700],
+    border: colors.info[400],
   },
 
   checked: {
     default: {
-      bg: colors.primary[600],
+      bg: colors.info[400],
       fg: text.inverse,
-      border: colors.primary[600],
+      border: colors.info[400],
     },
 
     hover: {
-      bg: colors.primary[700],
+      bg: colors.info[500],
       fg: text.inverse,
-      border: colors.primary[700],
+      border: colors.info[500],
     },
 
     pressed: {
@@ -45,5 +46,10 @@ export const checkbox = {
     bg: surface.subtle,
     fg: text.disabled,
     border: border.default,
+  },
+
+  error: {
+    border: status.error.fg,
+    fg: status.error.fg,
   },
 } as const;

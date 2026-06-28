@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-overlay-backdrop);
+  background-color: var(--modal-overlay-bg);
   opacity: 0;
   inset: 0;
   backdrop-filter: blur(4px);

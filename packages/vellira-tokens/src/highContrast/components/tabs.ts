@@ -15,15 +15,15 @@ export const tabs = {
     },
 
     hover: {
-      bg: colors.gray[800],
+      bg: colors.gray[900],
       fg: text.primary,
       border: 'transparent',
     },
 
     active: {
-      bg: colors.primary[600],
+      bg: colors.info[400],
       fg: text.primary,
-      border: colors.primary[600],
+      border: colors.info[400],
     },
 
     disabled: {
@@ -34,7 +34,7 @@ export const tabs = {
   },
 
   indicator: {
-    bg: colors.primary[500],
+    bg: colors.info[400],
   },
 
   panel: {

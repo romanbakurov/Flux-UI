@@ -6,55 +6,55 @@ import { text } from '../semantic/text.js';
 export const button = {
   primary: {
     default: {
-      bg: colors.primary[600],
+      bg: colors.info[400],
       fg: text.inverse,
-      border: colors.primary[600],
+      border: colors.info[400],
     },
 
     hover: {
-      bg: colors.primary[700],
+      bg: colors.info[500],
       fg: text.inverse,
-      border: colors.primary[700],
+      border: colors.info[500],
     },
 
     pressed: {
-      bg: colors.primary[800],
+      bg: colors.info[600],
       fg: text.inverse,
-      border: colors.primary[800],
+      border: colors.info[600],
     },
   },
 
   secondary: {
     default: {
-      bg: colors.secondary[600],
+      bg: colors.mono[50],
       fg: text.inverse,
-      border: colors.secondary[600],
+      border: colors.mono[50],
     },
 
     hover: {
-      bg: colors.secondary[700],
+      bg: colors.gray[200],
       fg: text.inverse,
-      border: colors.secondary[700],
+      border: colors.gray[200],
     },
 
     pressed: {
-      bg: colors.secondary[800],
+      bg: colors.gray[400],
       fg: text.inverse,
-      border: colors.secondary[800],
+      border: colors.gray[400],
     },
   },
 
   danger: {
     default: {
-      bg: colors.error[600],
+      bg: colors.error[300],
       fg: text.inverse,
-      border: colors.error[600],
+      border: colors.error[300],
     },
 
     hover: {
-      bg: colors.error[700],
+      bg: colors.error[200],
       fg: text.inverse,
-      border: colors.error[700],
+      border: colors.error[200],
     },
 
     pressed: {
