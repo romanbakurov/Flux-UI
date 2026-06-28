@@ -11,12 +11,12 @@ export const menu = {
     },
 
     hover: {
-      bg: colors.gray[200],
+      bg: colors.vellira[100],
       fg: text.primary,
     },
 
     active: {
-      bg: colors.gray[200],
+      bg: colors.vellira[150],
       fg: text.primary,
     },
 
@@ -40,7 +40,7 @@ export const menu = {
       },
 
       active: {
-        bg: colors.error[50],
+        bg: colors.error[100],
         fg: colors.error[700],
       },
     },
@@ -52,7 +52,7 @@ export const menu = {
     },
 
     hover: {
-      bg: colors.primary[50],
+      bg: colors.vellira[100],
       fg: colors.primary[900],
       ring: 'transparent',
     },

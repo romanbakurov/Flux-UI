@@ -1,5 +1,6 @@
 import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
+import { focus } from '../semantic/focus.js';
 import { status } from '../semantic/status.js';
 import { surface } from '../semantic/surface.js';
 import { text } from '../semantic/text.js';
@@ -13,9 +14,16 @@ export const dropdown = {
     },
 
     hover: {
-      bg: colors.primary[50],
+      bg: colors.vellira[100],
       fg: colors.primary[900],
       ring: 'transparent',
+    },
+
+    focus: {
+      bg: 'transparent',
+      fg: text.brand,
+      border: border.focus,
+      ring: focus.ring,
     },
 
     disabled: {
@@ -28,7 +36,7 @@ export const dropdown = {
   content: {
     bg: surface.elevated,
     fg: text.primary,
-    border: border.default,
+    border: colors.vellira[200],
   },
 
   item: {
@@ -38,14 +46,18 @@ export const dropdown = {
     },
 
     hover: {
-      bg: colors.gray[200],
+      bg: colors.vellira[100],
       fg: text.primary,
     },
 
     active: {
-      bg: colors.gray[200],
+      bg: colors.vellira[100],
       fg: text.primary,
       ring: 'transparent',
+    },
+
+    focus: {
+      ring: focus.ring,
     },
 
     disabled: {
@@ -59,13 +71,13 @@ export const dropdown = {
       },
 
       hover: {
-        bg: colors.error[50],
-        fg: colors.error[700],
+        bg: status.error.bg,
+        fg: status.error.fg,
       },
 
       active: {
-        bg: colors.error[50],
-        fg: colors.error[700],
+        bg: status.error.bg,
+        fg: status.error.fg,
         ring: 'transparent',
       },
     },

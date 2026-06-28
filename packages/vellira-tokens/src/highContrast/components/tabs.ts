@@ -15,9 +15,9 @@ export const tabs = {
     },
 
     hover: {
-      bg: colors.gray[900],
-      fg: text.primary,
-      border: 'transparent',
+      bg: colors.warning[500],
+      fg: colors.mono[950],
+      border: colors.warning[500],
     },
 
     active: {

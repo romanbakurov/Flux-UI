@@ -14,8 +14,8 @@ export const select = {
     },
 
     hover: {
-      bg: colors.gray[900],
-      fg: text.primary,
+      bg: colors.warning[500],
+      fg: colors.mono[950],
       border: colors.info[400],
     },
 
@@ -55,13 +55,13 @@ export const select = {
     },
 
     hover: {
-      bg: colors.gray[800],
-      fg: text.primary,
+      bg: colors.warning[500],
+      fg: colors.mono[950],
     },
 
     active: {
-      bg: colors.gray[800],
-      fg: text.primary,
+      bg: colors.warning[500],
+      fg: colors.mono[950],
       ring: focus.ring,
     },
 

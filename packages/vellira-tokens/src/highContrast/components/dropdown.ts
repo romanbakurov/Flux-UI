@@ -1,5 +1,6 @@
 import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
+import { focus } from '../semantic/focus.js';
 import { status } from '../semantic/status.js';
 import { surface } from '../semantic/surface.js';
 import { text } from '../semantic/text.js';
@@ -8,27 +9,35 @@ export const dropdown = {
   trigger: {
     default: {
       bg: 'transparent',
-      fg: text.brand,
+      fg: colors.mono[50],
       border: 'transparent',
     },
 
     hover: {
-      bg: colors.gray[900],
-      fg: text.primary,
-      ring: colors.warning[500],
+      bg: 'transparent',
+      fg: colors.mono[50],
+      border: colors.warning[500],
+      ring: focus.ring,
+    },
+
+    focus: {
+      bg: 'transparent',
+      fg: colors.mono[50],
+      border: colors.warning[500],
+      ring: focus.ring,
     },
 
     disabled: {
-      bg: surface.subtle,
+      bg: surface.muted,
       fg: text.disabled,
-      border: border.default,
+      border: border.strong,
     },
   },
 
   content: {
     bg: surface.elevated,
     fg: text.primary,
-    border: border.default,
+    border: colors.gray[200],
   },
 
   item: {
@@ -38,14 +47,14 @@ export const dropdown = {
     },
 
     hover: {
-      bg: colors.gray[800],
+      bg: surface.hover,
       fg: text.primary,
     },
 
     active: {
-      bg: colors.gray[800],
+      bg: surface.hover,
       fg: text.primary,
-      ring: colors.warning[500],
+      ring: focus.ring,
     },
 
     disabled: {
@@ -59,14 +68,14 @@ export const dropdown = {
       },
 
       hover: {
-        bg: colors.error[300],
-        fg: text.inverse,
+        bg: surface.hover,
+        fg: status.error.fg,
       },
 
       active: {
-        bg: colors.error[300],
-        fg: text.inverse,
-        ring: colors.warning[500],
+        bg: surface.hover,
+        fg: status.error.fg,
+        ring: focus.ring,
       },
     },
   },

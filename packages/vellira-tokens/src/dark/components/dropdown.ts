@@ -1,3 +1,4 @@
+import { focus } from '../../light/semantic';
 import { colors } from '../../primitives/colors.js';
 import { border } from '../semantic/border.js';
 import { status } from '../semantic/status.js';
@@ -16,6 +17,13 @@ export const dropdown = {
       bg: surface.hover,
       fg: colors.primary[200],
       ring: 'transparent',
+    },
+
+    focus: {
+      bg: 'transparent',
+      fg: text.brand,
+      border: border.focus,
+      ring: focus.ring,
     },
 
     disabled: {
@@ -46,6 +54,10 @@ export const dropdown = {
       bg: surface.active,
       fg: text.primary,
       ring: 'transparent',
+    },
+
+    focus: {
+      ring: focus.ring,
     },
 
     disabled: {

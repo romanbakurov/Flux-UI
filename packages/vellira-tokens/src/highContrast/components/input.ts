@@ -14,10 +14,10 @@ export const input = {
   },
 
   hover: {
-    bg: colors.gray[900],
-    fg: text.primary,
-    border: colors.info[400],
-    placeholder: text.muted,
+    bg: colors.warning[500],
+    fg: colors.mono[950],
+    border: colors.warning[500],
+    placeholder: colors.mono[950],
   },
 
   focus: {
