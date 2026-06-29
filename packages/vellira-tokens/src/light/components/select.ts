@@ -9,7 +9,7 @@ export const select = {
   trigger: {
     default: {
       bg: surface.default,
-      fg: text.brand,
+      fg: text.subtle,
       border: border.default,
     },
 
@@ -29,7 +29,7 @@ export const select = {
     disabled: {
       bg: surface.subtle,
       fg: text.disabled,
-      border: border.default,
+      border: border.muted,
     },
 
     placeholder: {
@@ -45,24 +45,25 @@ export const select = {
   dropdown: {
     bg: surface.elevated,
     fg: text.primary,
-    border: border.focus,
+    border: border.muted,
   },
 
   option: {
     default: {
       bg: 'transparent',
       fg: text.primary,
+      border: border.muted,
     },
 
     hover: {
-      bg: colors.gray[200],
+      bg: colors.gray[300],
       fg: text.primary,
     },
 
     active: {
       bg: colors.gray[200],
       fg: text.primary,
-      ring: focus.ring,
+      ring: 'transparent',
     },
 
     selected: {

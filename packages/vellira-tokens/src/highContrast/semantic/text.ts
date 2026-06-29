@@ -8,5 +8,5 @@ export const text = {
 
   inverse: colors.mono[950],
 
-  brand: colors.info[400],
+  brand: colors.primary[300],
 } as const;

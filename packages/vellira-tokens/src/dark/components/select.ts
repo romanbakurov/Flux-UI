@@ -9,13 +9,13 @@ export const select = {
   trigger: {
     default: {
       bg: surface.default,
-      fg: text.brand,
+      fg: text.subtle,
       border: border.subtle,
     },
 
     hover: {
       bg: surface.hover,
-      fg: text.primary,
+      fg: text.brand,
       border: colors.primary[300],
     },
 

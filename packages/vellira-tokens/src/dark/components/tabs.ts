@@ -11,7 +11,37 @@ export const tabs = {
   trigger: {
     default: {
       bg: 'transparent',
-      fg: text.muted,
+      fg: text.secondary,
+      border: 'transparent',
+    },
+
+    hover: {
+      bg: surface.hover,
+      fg: text.hover,
+      border: 'transparent',
+    },
+
+    active: {
+      bg: colors.primary[600],
+      fg: text.brand,
+      border: colors.primary[600],
+    },
+
+    focus: {
+      ring: text.brand,
+    },
+
+    disabled: {
+      bg: 'transparent',
+      fg: text.disabled,
+      border: 'transparent',
+    },
+  },
+
+  pills: {
+    default: {
+      bg: 'transparent',
+      fg: text.primary,
       border: 'transparent',
     },
 
@@ -22,9 +52,9 @@ export const tabs = {
     },
 
     active: {
-      bg: colors.primary[600],
-      fg: text.primary,
-      border: colors.primary[600],
+      bg: colors.primary[500],
+      fg: text.inverse,
+      border: colors.primary[500],
     },
 
     disabled: {
@@ -35,7 +65,17 @@ export const tabs = {
   },
 
   indicator: {
-    bg: colors.primary[500],
+    default: {
+      bg: text.brand,
+    },
+
+    hover: {
+      bg: colors.primary[500],
+    },
+
+    active: {
+      bg: text.brand,
+    },
   },
 
   panel: {

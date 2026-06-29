@@ -6,7 +6,7 @@ export const surface = {
   subtle: colors.vellira[100],
   elevated: colors.mono[50],
 
-  hover: colors.vellira[800],
+  hover: colors.vellira[150],
   active: colors.vellira[500],
 
   inverse: colors.vellira[950],

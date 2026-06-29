@@ -5,6 +5,7 @@ export const text = {
   secondary: colors.vellira[500],
   muted: colors.vellira[400],
   disabled: colors.gray[400],
+  subtle: colors.mono[800],
 
   inverse: colors.mono[50],
 

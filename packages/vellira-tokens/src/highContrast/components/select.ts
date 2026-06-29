@@ -9,14 +9,14 @@ export const select = {
   trigger: {
     default: {
       bg: surface.default,
-      fg: text.brand,
+      fg: text.primary,
       border: border.default,
     },
 
     hover: {
-      bg: colors.warning[500],
-      fg: colors.mono[950],
-      border: colors.info[400],
+      bg: 'transparent',
+      fg: colors.mono[50],
+      border: colors.warning[500],
     },
 
     focus: {
@@ -29,7 +29,7 @@ export const select = {
     disabled: {
       bg: surface.subtle,
       fg: text.disabled,
-      border: border.default,
+      border: border.disabled,
     },
 
     placeholder: {
@@ -62,12 +62,12 @@ export const select = {
     active: {
       bg: colors.warning[500],
       fg: colors.mono[950],
-      ring: focus.ring,
+      ring: 'transparent',
     },
 
     selected: {
-      bg: colors.info[400],
-      fg: text.inverse,
+      bg: colors.primary[500],
+      fg: colors.mono[50],
     },
 
     disabled: {
