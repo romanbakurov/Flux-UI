@@ -1,50 +1,88 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const placeholderTextColor = theme.colors.text.disabled;
+import type { NativeTheme } from '../../theme';
 
-export const styles = StyleSheet.create({
-  input: {
-    width: '100%',
-    minWidth: 0,
-    alignSelf: 'stretch',
+export const getPlaceholderTextColor = (theme: NativeTheme) =>
+  theme.components.input.default.placeholder;
 
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.md,
-    backgroundColor: theme.colors.surface.default,
-    borderColor: theme.colors.border.default,
-    borderRadius: theme.radius.lg,
-    borderWidth: 1,
-  },
+export const getDisabledPlaceholderTextColor = (theme: NativeTheme) =>
+  theme.components.input.disabled.placeholder;
 
-  sm: {
-    minHeight: 36,
-    paddingHorizontal: theme.spacing[3],
-    paddingVertical: theme.spacing[2],
-    fontSize: theme.typography.size.sm,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    inputWrapper: {
+      position: 'relative',
+      width: '100%',
+      minWidth: 0,
+      alignSelf: 'stretch',
+    },
 
-  md: {
-    minHeight: 44,
-    paddingHorizontal: theme.spacing[4],
-    paddingVertical: theme.spacing[3],
-    fontSize: theme.typography.size.md,
-  },
+    input: {
+      width: '100%',
+      minWidth: 0,
+      alignSelf: 'stretch',
 
-  lg: {
-    minHeight: 52,
-    paddingHorizontal: theme.spacing[5],
-    paddingVertical: theme.spacing[4],
-    fontSize: theme.typography.size.lg,
-  },
+      color: theme.components.input.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      backgroundColor: 'transparent',
+      borderColor: theme.components.input.default.border,
+      borderRadius: theme.tokens.radius.md,
+      borderWidth: 1,
+    },
 
-  error: {
-    borderColor: theme.colors.border.danger,
-  },
+    inputWithLeftIcon: {
+      paddingLeft: theme.tokens.spacing[5] + 20,
+    },
 
-  disabled: {
-    color: theme.colors.text.disabled,
-    backgroundColor: theme.colors.surface.muted,
-  },
-});
+    leftIcon: {
+      position: 'absolute',
+      left: theme.tokens.spacing[4],
+      top: 0,
+      bottom: 0,
+      zIndex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    sm: {
+      minHeight: 36,
+      paddingHorizontal: theme.tokens.spacing[3],
+      paddingVertical: theme.tokens.spacing[2],
+      fontSize: theme.tokens.typography.size.sm,
+    },
+
+    md: {
+      minHeight: 44,
+      paddingHorizontal: theme.tokens.spacing[4],
+      paddingVertical: theme.tokens.spacing[3],
+      fontSize: theme.tokens.typography.size.md,
+    },
+
+    lg: {
+      minHeight: 52,
+      paddingHorizontal: theme.tokens.spacing[5],
+      paddingVertical: theme.tokens.spacing[4],
+      fontSize: theme.tokens.typography.size.lg,
+    },
+
+    error: {
+      borderColor: theme.components.input.error.border,
+    },
+
+    focused: {
+      color: theme.components.input.focus.fg,
+      backgroundColor: 'transparent',
+    },
+
+    errorFocused: {
+      borderColor: theme.components.input.error.border,
+    },
+
+    disabled: {
+      opacity: 1,
+      color: theme.components.input.disabled.fg,
+      backgroundColor: 'transparent',
+      borderColor: theme.components.input.disabled.border,
+    },
+  });

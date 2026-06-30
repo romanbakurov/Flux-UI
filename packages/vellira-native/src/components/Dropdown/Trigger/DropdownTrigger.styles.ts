@@ -1,50 +1,60 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  trigger: {
-    minHeight: 42,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: theme.spacing[2],
-    paddingHorizontal: theme.spacing[4],
-    paddingVertical: theme.spacing[3],
-    backgroundColor: theme.colors.surface.default,
-    borderColor: theme.colors.border.default,
-    borderRadius: theme.radius.lg,
-    borderWidth: 1,
-  },
+import type { NativeTheme } from '../../../theme';
 
-  iconOnly: {
-    borderWidth: 0,
-    backgroundColor: 'transparent',
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    minWidth: 32,
-    minHeight: 32,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    trigger: {
+      minWidth: 32,
+      minHeight: 32,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      gap: theme.tokens.spacing[2],
+      padding: theme.tokens.spacing[2],
+      backgroundColor: theme.components.dropdown.trigger.default.bg,
+      borderColor: theme.components.dropdown.trigger.default.border,
+      borderRadius: theme.tokens.radius.lg,
+      borderWidth: 2,
+    },
 
-  triggerDisabled: {
-    opacity: 0.45,
-  },
+    iconOnly: {
+      width: 42,
+      height: 42,
+      padding: theme.tokens.spacing[2],
+      borderRadius: theme.tokens.radius.full,
+    },
 
-  triggerText: {
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.md,
-    lineHeight: theme.typography.lineHeight.md,
-  },
+    triggerDisabled: {
+      backgroundColor: theme.components.dropdown.trigger.disabled.bg,
+      borderColor: theme.components.dropdown.trigger.disabled.border,
+      borderStyle: 'dashed',
+    },
 
-  icon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    triggerPressed: {
+      backgroundColor: theme.components.dropdown.trigger.hover.bg,
+    },
 
-  arrow: {
-    width: 16,
-    height: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    triggerText: {
+      color: theme.components.dropdown.trigger.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      lineHeight: theme.tokens.typography.lineHeight.md,
+    },
+
+    triggerTextDisabled: {
+      color: theme.components.dropdown.trigger.disabled.fg,
+    },
+
+    icon: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    arrow: {
+      width: 16,
+      height: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });

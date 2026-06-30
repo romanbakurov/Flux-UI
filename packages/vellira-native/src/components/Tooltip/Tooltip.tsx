@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 
 import { useNativeFloatingPosition } from '../../hooks/useNativeFloatingPosition';
+import { useThemeStyles } from '../../theme';
 
-import { styles } from './Tooltip.styles';
+import { createStyles } from './Tooltip.styles';
 import type { TooltipProps } from './types';
 
 export function Tooltip({
@@ -18,6 +19,7 @@ export function Tooltip({
   contentStyle,
   textStyle,
 }: TooltipProps) {
+  const styles = useThemeStyles(createStyles);
   const [visible, setVisible] = useState(false);
 
   const triggerRef = useRef<View | null>(null);

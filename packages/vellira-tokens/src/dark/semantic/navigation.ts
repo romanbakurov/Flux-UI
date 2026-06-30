@@ -16,6 +16,21 @@ export const navigation = {
     bg: surface.hover,
     fg: colors.primary[200],
   },
+  tabHover: {
+    fg: colors.primary[200],
+  },
+  tabFocus: {
+    ring: colors.warning[500],
+  },
+  optionHover: {
+    bg: surface.active,
+    fg: text.primary,
+  },
+  optionActive: {
+    bg: surface.active,
+    fg: text.primary,
+  },
+  border: colors.vellira[700],
   triggerHover: {
     bg: surface.hover,
     fg: colors.vellira[50],

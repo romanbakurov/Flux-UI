@@ -132,6 +132,8 @@ import { Input } from '@romanbakurov/vellira-native';
 | `onChange`       | `(value: string) => void` | Yes      | Called with the next value.                |
 | `disabled`       | `boolean`                 | No       | Disables the input.                        |
 | `required`       | `boolean`                 | No       | Marks the field as required.               |
+| `leftIcon`       | `InputIconElement`        | No       | Icon rendered before content.              |
+| `iconSize`       | `number`                  | No       | Icon size in pixels.                       |
 
 <!-- api-docgen:end native.InputProps.Input -->
 

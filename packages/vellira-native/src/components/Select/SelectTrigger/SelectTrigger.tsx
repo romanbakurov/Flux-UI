@@ -1,8 +1,9 @@
 import { ChevronDown } from '@romanbakurov/vellira-icons';
-import { theme } from '@romanbakurov/vellira-tokens';
 import { Pressable, Text, View } from 'react-native';
 
-import { styles } from './SelectTrigger.styles';
+import { useTheme, useThemeStyles } from '../../../theme';
+
+import { createStyles } from './SelectTrigger.styles';
 import type { SelectTriggerProps } from './types';
 
 export function SelectTrigger({
@@ -16,6 +17,9 @@ export function SelectTrigger({
   textStyle,
   onPress,
 }: SelectTriggerProps) {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
+
   return (
     <Pressable
       disabled={disabled}
@@ -56,7 +60,9 @@ export function SelectTrigger({
           width={16}
           height={16}
           color={
-            disabled ? theme.colors.text.disabled : theme.colors.text.secondary
+            disabled
+              ? theme.components.select.trigger.disabled.fg
+              : theme.components.select.trigger.placeholder.fg
           }
         />
       </View>

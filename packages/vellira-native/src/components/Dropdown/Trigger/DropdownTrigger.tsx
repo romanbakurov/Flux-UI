@@ -1,9 +1,18 @@
-import { useEffect, useRef } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { ChevronDown } from '@romanbakurov/vellira-icons';
+import type { ReactElement, ReactNode } from 'react';
 import { Animated, Pressable, Text, View } from 'react-native';
 
-import { styles } from './DropdownTrigger.styles';
+import { useTheme, useThemeStyles } from '../../../theme';
+
+import { createStyles } from './DropdownTrigger.styles';
 import type { DropdownTriggerProps } from './types';
 
 export function DropdownTrigger({
@@ -17,9 +26,11 @@ export function DropdownTrigger({
   triggerStyle,
   onPress,
 }: DropdownTriggerProps) {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
   const hasIcon = Boolean(icon);
   const isIconOnly = !trigger && hasIcon && !showArrow;
-  const arrow = arrowIcon ?? <ChevronDown width={16} height={16} />;
+  const [isPressed, setIsPressed] = useState(false);
   const rotateAnim = useRef(new Animated.Value(isOpen ? 1 : 0)).current;
 
   useEffect(() => {
@@ -35,6 +46,21 @@ export function DropdownTrigger({
     outputRange: ['0deg', '180deg'],
   });
 
+  const renderColoredNode = (node: ReactNode, color: string) => {
+    if (!isValidElement(node)) return node;
+
+    return cloneElement(node as ReactElement<{ color?: string }>, { color });
+  };
+
+  const contentColor = disabled
+    ? theme.components.dropdown.trigger.disabled.fg
+    : isPressed
+      ? theme.components.dropdown.trigger.hover.fg
+      : theme.components.dropdown.trigger.default.fg;
+  const arrow = arrowIcon ?? (
+    <ChevronDown width={16} height={16} color={contentColor} />
+  );
+
   return (
     <Pressable
       disabled={disabled}
@@ -42,20 +68,32 @@ export function DropdownTrigger({
       accessibilityLabel={label}
       accessibilityState={{ expanded: isOpen, disabled }}
       onPress={onPress}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
       style={[
         styles.trigger,
+        isPressed && !disabled && styles.triggerPressed,
         disabled && styles.triggerDisabled,
         isIconOnly && styles.iconOnly,
         triggerStyle,
       ]}
     >
-      {hasIcon && <View style={styles.icon}>{icon}</View>}
+      {hasIcon && (
+        <View style={styles.icon}>{renderColoredNode(icon, contentColor)}</View>
+      )}
 
       {!isIconOnly &&
         (trigger ? (
           trigger
         ) : (
-          <Text numberOfLines={1} style={styles.triggerText}>
+          <Text
+            numberOfLines={1}
+            style={[
+              styles.triggerText,
+              { color: contentColor },
+              disabled && styles.triggerTextDisabled,
+            ]}
+          >
             {label}
           </Text>
         ))}
@@ -64,7 +102,7 @@ export function DropdownTrigger({
         <Animated.View
           style={[styles.arrow, { transform: [{ rotate: arrowRotate }] }]}
         >
-          {arrow}
+          {renderColoredNode(arrow, contentColor)}
         </Animated.View>
       )}
     </Pressable>

@@ -148,7 +148,7 @@ export const Basic: Story = {
           transform: [{ rotate: '90deg' }],
         }}
         size={20}
-        color={theme.colors.primary}
+        color={theme.components.dropdown.trigger.default.fg}
       />
     ),
     showArrow: false,
@@ -160,7 +160,12 @@ export const TextOnly: Story = {
   args: {
     label: 'Actions',
     trigger: <Text>Actions</Text>,
-    arrowIcon: <ChevronDown size={16} color={theme.colors.gray[700]} />,
+    arrowIcon: (
+      <ChevronDown
+        size={16}
+        color={theme.components.dropdown.trigger.default.fg}
+      />
+    ),
     showArrow: true,
     items,
   },

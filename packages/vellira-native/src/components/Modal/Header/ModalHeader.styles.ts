@@ -1,27 +1,32 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  header: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: theme.spacing[3],
-    justifyContent: 'space-between',
-  },
+import type { NativeTheme } from '../../../theme';
 
-  title: {
-    color: theme.colors.text.primary,
-    flex: 1,
-    fontFamily: theme.typography.family.semibold,
-    fontSize: theme.typography.size.lg,
-    lineHeight: theme.typography.lineHeight.md,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    header: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      gap: theme.tokens.spacing[3],
+      justifyContent: 'space-between',
+      paddingBottom: theme.tokens.spacing[4],
+      backgroundColor: theme.components.modal.content.bg,
+    },
 
-  closeButton: {
-    alignItems: 'center',
-    borderRadius: theme.radius.full,
-    height: 32,
-    justifyContent: 'center',
-    width: 32,
-  },
-});
+    title: {
+      color: theme.components.modal.title.fg,
+      flex: 1,
+      fontFamily: theme.tokens.typography.family.semibold,
+      fontSize: theme.tokens.typography.size.lg,
+      lineHeight: theme.tokens.typography.lineHeight.md,
+    },
+
+    closeButton: {
+      alignItems: 'center',
+      backgroundColor: theme.components.modal.closeButton.default.bg,
+      borderRadius: theme.tokens.radius.full,
+      height: 32,
+      justifyContent: 'center',
+      width: 32,
+    },
+  });

@@ -53,6 +53,7 @@ export const select = {
     default: {
       bg: 'transparent',
       fg: text.primary,
+      border: border.muted,
     },
 
     hover: navigation.hover,

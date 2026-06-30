@@ -177,7 +177,10 @@ const expectedNativeApi = [
   'RadioGroup',
   'Select',
   'Tabs',
+  'ThemeProvider',
   'Tooltip',
+  'nativeThemes',
+  'useTheme',
 ];
 
 const actualNativeApi = Object.keys(native).sort();
@@ -198,6 +201,23 @@ if (!isComponentExport(native.Input)) {
 
 if (!isComponentExport(native.Tabs)) {
   throw new Error('vellira-native Tabs export invalid');
+}
+
+if (!isComponentExport(native.ThemeProvider)) {
+  throw new Error('vellira-native ThemeProvider export invalid');
+}
+
+if (typeof native.useTheme !== 'function') {
+  throw new Error('vellira-native useTheme export invalid');
+}
+
+const expectedThemeNames = ['dark', 'highContrast', 'light'];
+const actualThemeNames = Object.keys(native.nativeThemes ?? {}).sort();
+
+if (JSON.stringify(actualThemeNames) !== JSON.stringify(expectedThemeNames)) {
+  throw new Error(
+    \`vellira-native nativeThemes export invalid. Expected \${expectedThemeNames.join(', ')}, got \${actualThemeNames.join(', ')}\`
+  );
 }
 
 if (typeof core.useControllableState !== 'function') {

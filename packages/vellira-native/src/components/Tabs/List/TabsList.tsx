@@ -1,11 +1,13 @@
 import { View } from 'react-native';
 
+import { useThemeStyles } from '../../../theme';
 import { useTabs } from '../TabsContext';
 
-import { styles } from './TabsList.styles';
+import { createStyles } from './TabsList.styles';
 import type { TabsListProps } from './types';
 
 export const TabsList = ({ children, style }: TabsListProps) => {
+  const styles = useThemeStyles(createStyles);
   const { orientation, appearance } = useTabs();
 
   return (

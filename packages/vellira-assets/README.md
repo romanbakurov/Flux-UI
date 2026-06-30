@@ -44,12 +44,12 @@ styles/
 
 This package is intended to become the shared home for static assets used across the Vellira ecosystem, including:
 
-* Fonts
-* Logos
-* Brand assets
-* Illustrations
-* Documentation assets
-* Future shared media resources
+- Fonts
+- Logos
+- Brand assets
+- Illustrations
+- Documentation assets
+- Future shared media resources
 
 ## License
 

@@ -1,6 +1,8 @@
 import { Pressable, Text } from 'react-native';
 
-import { styles } from './DropdownItem.styles';
+import { useThemeStyles } from '../../../theme';
+
+import { createStyles } from './DropdownItem.styles';
 import type { DropdownItemProps } from './types';
 
 export function DropdownItem({
@@ -14,6 +16,8 @@ export function DropdownItem({
   textStyle,
   onSelect,
 }: DropdownItemProps) {
+  const styles = useThemeStyles(createStyles);
+
   return (
     <Pressable
       disabled={disabled}
@@ -29,7 +33,7 @@ export function DropdownItem({
         styles.item,
         pressed && styles.itemPressed,
         disabled && styles.itemDisabled,
-        danger && styles.itemDanger,
+        pressed && danger && !disabled && styles.itemDangerPressed,
         itemStyle,
       ]}
     >

@@ -1,53 +1,59 @@
-import { theme } from '@romanbakurov/vellira-tokens';
+import { overlay } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  modalRoot: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
+import type { NativeTheme } from '../../theme';
 
-  backdrop: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: theme.colors.overlay.backdrop,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    modalRoot: {
+      flex: 1,
+      justifyContent: 'flex-end',
+    },
 
-  sheet: {
-    backgroundColor: theme.colors.surface.elevated,
-    borderTopLeftRadius: theme.radius.xl,
-    borderTopRightRadius: theme.radius.xl,
-    overflow: 'hidden',
-  },
+    backdrop: {
+      ...StyleSheet.absoluteFill,
+      backgroundColor: overlay.backdrop,
+    },
 
-  toolbar: {
-    minHeight: 48,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingHorizontal: theme.spacing[4],
-    borderBottomColor: theme.colors.divider.muted,
-    borderBottomWidth: 1,
-  },
+    sheet: {
+      maxHeight: '50%',
+      backgroundColor: theme.components.select.dropdown.bg,
+      borderColor: theme.components.select.dropdown.border,
+      borderTopLeftRadius: theme.tokens.radius.lg,
+      borderTopRightRadius: theme.tokens.radius.lg,
+      borderWidth: 1,
+      overflow: 'hidden',
+    },
 
-  title: {
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.md,
-  },
+    toolbar: {
+      minHeight: 48,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      paddingHorizontal: theme.tokens.spacing[4],
+      borderBottomColor: theme.components.select.dropdown.border,
+      borderBottomWidth: 1,
+    },
 
-  cancelText: {
-    color: theme.colors.text.secondary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.md,
-  },
+    title: {
+      color: theme.components.select.dropdown.fg,
+      fontFamily: theme.tokens.typography.family.medium,
+      fontSize: theme.tokens.typography.size.md,
+    },
 
-  doneText: {
-    color: theme.colors.interactive.primary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.md,
-  },
+    cancelText: {
+      color: theme.components.select.trigger.placeholder.fg,
+      fontFamily: theme.tokens.typography.family.medium,
+      fontSize: theme.tokens.typography.size.md,
+    },
 
-  picker: {
-    width: '100%',
-  },
-});
+    doneText: {
+      color: theme.components.select.option.selected.bg,
+      fontFamily: theme.tokens.typography.family.medium,
+      fontSize: theme.tokens.typography.size.md,
+    },
+
+    picker: {
+      width: '100%',
+    },
+  });

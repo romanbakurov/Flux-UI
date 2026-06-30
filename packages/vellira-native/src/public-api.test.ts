@@ -14,7 +14,10 @@ describe('public API', () => {
       'RadioGroup',
       'Select',
       'Tabs',
+      'ThemeProvider',
       'Tooltip',
+      'nativeThemes',
+      'useTheme',
     ]);
   });
 });

@@ -1,6 +1,8 @@
 import { Text, View } from 'react-native';
 
-import { styles } from './FormField.styles';
+import { useThemeStyles } from '../../theme';
+
+import { createStyles } from './FormField.styles';
 import type { FormFieldProps } from './types';
 
 export function FormField({
@@ -16,6 +18,8 @@ export function FormField({
   descriptionStyle,
   errorStyle,
 }: FormFieldProps) {
+  const styles = useThemeStyles(createStyles);
+
   return (
     <View
       style={[styles.root, style]}

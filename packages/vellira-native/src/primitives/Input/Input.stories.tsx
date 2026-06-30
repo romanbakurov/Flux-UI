@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { Search as SearchIcon } from '@romanbakurov/vellira-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Input } from './Input';
@@ -176,6 +177,7 @@ export const Search: Story = {
     label: 'Search',
     placeholder: 'Search components...',
     type: 'search',
+    leftIcon: <SearchIcon />,
   },
   render: (args) => <ControlledInputDemo {...args} />,
 };

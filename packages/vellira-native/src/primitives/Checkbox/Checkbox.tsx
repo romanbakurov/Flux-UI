@@ -2,10 +2,11 @@ import { forwardRef } from 'react';
 
 import { useControllableState } from '@romanbakurov/vellira-core';
 import { Check } from '@romanbakurov/vellira-icons';
-import { theme } from '@romanbakurov/vellira-tokens';
 import { Pressable, Text, View } from 'react-native';
 
-import { styles } from './Checkbox.styles';
+import { useTheme, useThemeStyles } from '../../theme';
+
+import { createStyles } from './Checkbox.styles';
 import type { CheckboxProps } from './types';
 
 export const Checkbox = forwardRef<View, CheckboxProps>(
@@ -22,6 +23,8 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
     },
     ref
   ) => {
+    const { theme } = useTheme();
+    const styles = useThemeStyles(createStyles);
     const hasError = Boolean(error);
 
     const [isChecked, setIsChecked] = useControllableState({
@@ -36,8 +39,8 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
     };
 
     const checkColor = disabled
-      ? theme.colors.text.secondary
-      : theme.colors.text.inverse;
+      ? theme.components.checkbox.disabled.fg
+      : theme.components.checkbox.checked.default.fg;
 
     return (
       <View style={styles.container}>
@@ -52,12 +55,7 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
           }}
           accessibilityHint={hasError ? error : undefined}
           accessibilityLabel={label ?? 'Checkbox'}
-          style={({ pressed }) => [
-            styles.wrapper,
-            disabled && styles.disabled,
-            pressed && !disabled && styles.pressed,
-            style,
-          ]}
+          style={[styles.wrapper, disabled && styles.disabled, style]}
           {...props}
         >
           <View
@@ -68,7 +66,7 @@ export const Checkbox = forwardRef<View, CheckboxProps>(
               disabled && styles.boxDisabled,
             ]}
           >
-            {isChecked && <Check size={14} color={checkColor} />}
+            {isChecked && <Check size={12} color={checkColor} />}
           </View>
 
           {label && (

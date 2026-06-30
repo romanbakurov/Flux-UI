@@ -1,23 +1,28 @@
-import { theme } from '@romanbakurov/vellira-tokens';
+import { overlay } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  modalRoot: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
+import type { NativeTheme } from '../../../theme';
 
-  backdrop: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: theme.colors.overlay.backdrop,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    modalRoot: {
+      flex: 1,
+      justifyContent: 'flex-end',
+    },
 
-  menu: {
-    maxHeight: '70%',
-    overflow: 'hidden',
-    paddingVertical: theme.spacing[2],
-    backgroundColor: theme.colors.surface.elevated,
-    borderTopLeftRadius: theme.radius.xl,
-    borderTopRightRadius: theme.radius.xl,
-  },
-});
+    backdrop: {
+      ...StyleSheet.absoluteFill,
+      backgroundColor: overlay.backdrop,
+    },
+
+    menu: {
+      maxHeight: '50%',
+      overflow: 'hidden',
+      padding: theme.tokens.spacing[1],
+      backgroundColor: theme.components.dropdown.content.bg,
+      borderColor: theme.components.dropdown.content.border,
+      borderTopLeftRadius: theme.tokens.radius.lg,
+      borderTopRightRadius: theme.tokens.radius.lg,
+      borderWidth: 1,
+    },
+  });

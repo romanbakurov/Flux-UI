@@ -1,42 +1,46 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  item: {
-    minHeight: 48,
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: theme.spacing[3],
-    paddingHorizontal: theme.spacing[4],
-    paddingVertical: theme.spacing[3],
-  },
+import type { NativeTheme } from '../../../theme';
 
-  itemPressed: {
-    backgroundColor: theme.colors.interactive.neutral,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    item: {
+      minWidth: 0,
+      alignItems: 'center',
+      flexDirection: 'row',
+      gap: theme.tokens.spacing[4],
+      paddingHorizontal: theme.tokens.spacing[3],
+      paddingVertical: theme.tokens.spacing[2],
+      backgroundColor: theme.components.dropdown.item.default.bg,
+      borderRadius: theme.tokens.radius.sm,
+    },
 
-  itemDisabled: {
-    opacity: 0.45,
-  },
+    itemPressed: {
+      backgroundColor: theme.components.dropdown.item.hover.bg,
+    },
 
-  itemDanger: {
-    backgroundColor: theme.colors.status.errorMuted,
-  },
+    itemDisabled: {
+      backgroundColor: theme.components.dropdown.item.disabled.bg,
+    },
 
-  itemText: {
-    flex: 1,
-    minWidth: 0,
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.md,
-    lineHeight: theme.typography.lineHeight.md,
-  },
+    itemDangerPressed: {
+      backgroundColor: theme.components.dropdown.item.danger.hover.bg,
+    },
 
-  itemTextDisabled: {
-    color: theme.colors.text.disabled,
-  },
+    itemText: {
+      flex: 1,
+      minWidth: 0,
+      color: theme.components.dropdown.item.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      lineHeight: 24,
+    },
 
-  dangerText: {
-    color: theme.colors.status.error,
-  },
-});
+    itemTextDisabled: {
+      color: theme.components.dropdown.item.disabled.fg,
+    },
+
+    dangerText: {
+      color: theme.components.dropdown.item.danger.default.fg,
+    },
+  });

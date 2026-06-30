@@ -65,5 +65,13 @@ export const action = {
       fg: text.inverse,
       border: colors.error[800],
     },
+    subtle: {
+      bg: colors.gray[900],
+      fg: colors.error[300],
+    },
+    muted: {
+      bg: colors.error[950],
+      fg: colors.error[300],
+    },
   },
 } as const;

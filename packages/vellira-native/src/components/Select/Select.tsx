@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import { Picker } from '@react-native-picker/picker';
 import { useControllableState } from '@romanbakurov/vellira-core';
-import { theme } from '@romanbakurov/vellira-tokens';
 import { Modal, Pressable, Text, View } from 'react-native';
 
 import { FormField } from '../../patterns/FormField';
+import { useTheme, useThemeStyles } from '../../theme';
 
 import { SelectTrigger } from './SelectTrigger/SelectTrigger';
-import { styles } from './Select.styles';
+import { createStyles } from './Select.styles';
 import type { SelectProps } from './types';
 
 export function Select({
@@ -28,6 +28,8 @@ export function Select({
   pickerStyle,
   accessibilityLabel,
 }: SelectProps) {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
   const [isOpen, setIsOpen] = useState(false);
 
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -126,7 +128,7 @@ export function Select({
                 label={placeholder}
                 value=''
                 enabled={false}
-                color={theme.colors.text.disabled}
+                color={theme.components.select.option.disabled.fg}
               />
 
               {options.map((option) => (
@@ -141,8 +143,8 @@ export function Select({
                   enabled={!option.disabled}
                   color={
                     option.disabled
-                      ? theme.colors.text.disabled
-                      : theme.colors.text.primary
+                      ? theme.components.select.option.disabled.fg
+                      : theme.components.select.option.default.fg
                   }
                 />
               ))}

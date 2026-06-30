@@ -2,7 +2,9 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { View } from 'react-native';
 
-import { styles } from './Tabs.styles';
+import { useThemeStyles } from '../../theme';
+
+import { createStyles } from './Tabs.styles';
 import { TabsProvider } from './TabsContext';
 import type { TabsProps } from './types';
 
@@ -15,6 +17,8 @@ export const TabsRoot = ({
   appearance = 'pills',
   style,
 }: TabsProps) => {
+  const styles = useThemeStyles(createStyles);
+
   const [uncontrolledActiveIndex, setUncontrolledActiveIndex] =
     useState(defaultActiveIndex);
 

@@ -1,6 +1,8 @@
 import { Modal as RNModal, Pressable, View } from 'react-native';
 
-import { styles } from './Modal.styles';
+import { useThemeStyles } from '../../theme';
+
+import { createStyles } from './Modal.styles';
 import type { ModalOverlayProps } from './types';
 
 export const ModalOverlay = ({
@@ -10,6 +12,8 @@ export const ModalOverlay = ({
   children,
   overlayStyle,
 }: ModalOverlayProps) => {
+  const styles = useThemeStyles(createStyles);
+
   return (
     <RNModal
       visible={isOpen}

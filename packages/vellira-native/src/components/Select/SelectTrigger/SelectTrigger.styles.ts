@@ -1,61 +1,62 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  trigger: {
-    minHeight: 46,
-    width: '100%',
-    minWidth: 0,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingHorizontal: theme.spacing[4],
-    paddingVertical: theme.spacing[3],
-    backgroundColor: theme.colors.surface.default,
-    borderColor: theme.colors.border.default,
-    borderRadius: theme.radius.lg,
-    borderWidth: 1,
-  },
+import type { NativeTheme } from '../../../theme';
 
-  triggerOpen: {
-    borderColor: theme.colors.border.focus,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    trigger: {
+      width: '100%',
+      minWidth: 0,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      paddingHorizontal: theme.tokens.spacing[4],
+      paddingVertical: theme.tokens.spacing[3],
+      backgroundColor: theme.components.select.trigger.default.bg,
+      borderColor: theme.components.select.trigger.default.border,
+      borderRadius: theme.tokens.radius.md,
+      borderWidth: 1,
+    },
 
-  triggerError: {
-    borderColor: theme.colors.border.danger,
-  },
+    triggerOpen: {
+      borderColor: theme.components.select.trigger.focus.border,
+    },
 
-  triggerDisabled: {
-    backgroundColor: theme.colors.surface.muted,
-    opacity: 0.6,
-  },
+    triggerError: {
+      borderColor: theme.components.select.trigger.error.border,
+    },
 
-  text: {
-    flex: 1,
-    minWidth: 0,
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.md,
-    lineHeight: theme.typography.lineHeight.md,
-  },
+    triggerDisabled: {
+      backgroundColor: theme.components.select.trigger.disabled.bg,
+      borderColor: theme.components.select.trigger.disabled.border,
+    },
 
-  textDisabled: {
-    color: theme.colors.text.disabled,
-  },
+    text: {
+      flex: 1,
+      minWidth: 0,
+      color: theme.components.select.trigger.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      lineHeight: theme.tokens.typography.lineHeight.md,
+    },
 
-  placeholder: {
-    color: theme.colors.text.muted,
-  },
+    textDisabled: {
+      color: theme.components.select.trigger.disabled.fg,
+    },
 
-  icon: {
-    width: 16,
-    height: 16,
-    marginLeft: theme.spacing[2],
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    placeholder: {
+      color: theme.components.select.trigger.placeholder.fg,
+    },
 
-  iconOpen: {
-    transform: [{ rotate: '180deg' }],
-  },
-});
+    icon: {
+      width: 16,
+      height: 16,
+      marginLeft: theme.tokens.spacing[2],
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    iconOpen: {
+      transform: [{ rotate: '180deg' }],
+    },
+  });

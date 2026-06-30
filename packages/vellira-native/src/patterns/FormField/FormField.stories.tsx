@@ -7,27 +7,30 @@ import { FormField } from './FormField';
 const controlStyle = {
   width: '100%',
   minHeight: 44,
-  paddingHorizontal: theme.spacing[4],
-  paddingVertical: theme.spacing[3],
-  color: theme.colors.gray[900],
-  fontFamily: theme.typography.family.regular,
-  fontSize: theme.typography.size.md,
-  backgroundColor: theme.colors.gray[0],
-  borderColor: theme.colors.gray[200],
-  borderRadius: theme.radius.lg,
+  paddingHorizontal: theme.tokens.spacing[4],
+  paddingVertical: theme.tokens.spacing[3],
+  color: theme.components.input.default.fg,
+  fontFamily: theme.tokens.typography.family.regular,
+  fontSize: theme.tokens.typography.size.md,
+  backgroundColor: theme.components.input.default.bg,
+  borderColor: theme.components.input.default.border,
+  borderRadius: theme.tokens.radius.lg,
   borderWidth: 1,
 };
 
 const errorControlStyle = {
   ...controlStyle,
-  borderColor: theme.colors.error,
+  borderColor: theme.components.input.error.border,
 };
 
 const disabledControlStyle = {
   ...controlStyle,
-  color: theme.colors.gray[500],
-  backgroundColor: theme.colors.gray[55],
+  color: theme.components.input.disabled.fg,
+  backgroundColor: theme.components.input.disabled.bg,
+  borderColor: theme.components.input.disabled.border,
 };
+
+const placeholderTextColor = theme.components.input.default.placeholder;
 
 const meta = {
   title: 'Patterns/FormField',
@@ -59,7 +62,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <View style={{ width: '100%', padding: theme.spacing[4] }}>
+      <View style={{ width: '100%', padding: theme.tokens.spacing[4] }}>
         <Story />
       </View>
     ),
@@ -80,7 +83,7 @@ export const WithDescription: Story = {
     children: (
       <TextInput
         placeholder='alex_johnson'
-        placeholderTextColor={theme.colors.gray[400]}
+        placeholderTextColor={placeholderTextColor}
         style={controlStyle}
       />
     ),
@@ -94,7 +97,7 @@ export const Required: Story = {
     children: (
       <TextInput
         placeholder='Alex Johnson'
-        placeholderTextColor={theme.colors.gray[400]}
+        placeholderTextColor={placeholderTextColor}
         style={controlStyle}
       />
     ),
@@ -109,7 +112,7 @@ export const WithError: Story = {
     children: (
       <TextInput
         placeholder='name@company.com'
-        placeholderTextColor={theme.colors.gray[400]}
+        placeholderTextColor={placeholderTextColor}
         style={errorControlStyle}
       />
     ),
@@ -124,7 +127,7 @@ export const Disabled: Story = {
       <TextInput
         editable={false}
         placeholder='Not editable'
-        placeholderTextColor={theme.colors.gray[400]}
+        placeholderTextColor={theme.components.input.disabled.placeholder}
         style={disabledControlStyle}
       />
     ),
@@ -148,7 +151,7 @@ export const CompleteExample: Story = {
     children: (
       <TextInput
         placeholder='name@company.com'
-        placeholderTextColor={theme.colors.gray[400]}
+        placeholderTextColor={placeholderTextColor}
         style={errorControlStyle}
       />
     ),
