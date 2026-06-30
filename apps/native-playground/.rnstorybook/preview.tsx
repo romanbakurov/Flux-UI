@@ -36,14 +36,22 @@ const preview: Preview = {
           <View
             style={{
               flex: 1,
-              padding: 24,
-              justifyContent: 'center',
-              alignItems: 'center',
+              width: '100%',
               backgroundColor: theme.semantic.surface.default,
             }}
           >
             <DeveloperPanel themeName={themeName} onChangeTheme={nextTheme} />
-            <Story />
+            <View
+              style={{
+                flex: 1,
+                width: '100%',
+                padding: 24,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Story />
+            </View>
           </View>
         </ThemeProvider>
       );
