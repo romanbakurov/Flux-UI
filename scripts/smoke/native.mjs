@@ -33,7 +33,7 @@ const externalDependencies = linkWorkspaceDependencies(
   root,
   tempDir,
   'packages/vellira-native',
-  ['react']
+  ['@react-native-picker/picker', 'react', 'react-native']
 );
 
 writePackageJson(tempDir, {

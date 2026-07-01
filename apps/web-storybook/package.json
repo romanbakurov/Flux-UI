@@ -30,7 +30,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/browser-playwright": "^4.1.6",
+    "@vitest/browser-playwright": "^4.1.9",
     "@vitest/coverage-v8": "^4.1.9",
     "chromatic": "^16.10.0",
     "eslint-plugin-storybook": "^10.4.3",
@@ -42,6 +42,6 @@
     "vite": "^8.0.13",
     "vite-plugin-dts": "^5.0.0",
     "vite-plugin-svgr": "^5.2.0",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.9"
   }
 }

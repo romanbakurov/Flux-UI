@@ -33,7 +33,10 @@ jobs:
         run: pnpm build
 
       - name: Install Playwright browsers
-        run: pnpm --filter @vellira/web-storybook run playwright:install
+        run: pnpm ci:playwright
+
+      - name: Test Storybook
+        run: pnpm test:storybook
 
       - name: Publish to Chromatic
         if: github.actor != 'dependabot[bot]'

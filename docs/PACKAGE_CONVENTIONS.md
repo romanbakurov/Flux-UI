@@ -246,15 +246,10 @@ Semantic Release updates versions during the release process.
 Before a package can be released, all checks must pass:
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm test:coverage
-pnpm build
-pnpm smoke:packages
-pnpm check:public-api
-pnpm docs:api:check
+pnpm ci
 ```
+
+`pnpm ci` runs `ci:quality`, `ci:build`, `ci:playwright`, `ci:test`, and `ci:smoke`. Use the narrower scripts for local iteration when you only need one gate.
 
 ---
 

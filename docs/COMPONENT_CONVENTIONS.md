@@ -314,15 +314,10 @@ Documentation should stay synchronized with implementation.
 Before opening a Pull Request:
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm test:coverage
-pnpm build
-pnpm smoke:packages
-pnpm check:public-api
-pnpm docs:api:check
+pnpm ci
 ```
+
+For focused local checks, use the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
 
 All checks must pass before merging.
 

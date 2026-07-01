@@ -36,29 +36,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Lint
-        run: pnpm lint
+      - name: Quality checks
+        run: pnpm ci:quality
 
-      - name: Build
-        run: pnpm build
+      - name: Build packages and apps
+        run: pnpm ci:build
 
       - name: Install Playwright browsers
-        run: pnpm --filter @vellira/web-storybook run playwright:install
+        run: pnpm ci:playwright
 
-      - name: Test
-        run: pnpm test
-
-      - name: Coverage
-        run: pnpm test:coverage
+      - name: Tests and coverage
+        run: pnpm ci:test
 
       - name: Smoke packages
-        run: pnpm smoke:packages
-
-      - name: Public API check
-        run: pnpm check:public-api
-
-      - name: Check API docs
-        run: pnpm docs:api:check
+        run: pnpm ci:smoke
 
       - name: Release
         env:

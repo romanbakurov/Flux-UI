@@ -319,17 +319,20 @@ See also:
 Before opening a Pull Request, run:
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm test:coverage
-pnpm build
-pnpm smoke:packages
-pnpm check:public-api
-pnpm docs:api:check
+pnpm ci
 ```
 
-Every command above must pass successfully.
+`pnpm ci` runs the same quality gates as the main CI workflow:
+
+```bash
+pnpm ci:quality
+pnpm ci:build
+pnpm ci:playwright
+pnpm ci:test
+pnpm ci:smoke
+```
+
+Every command above must pass successfully. For focused local checks, run the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
 
 ---
 
