@@ -1,8 +1,10 @@
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import {
+  linkWorkspaceDependencies,
   packPackages,
   run,
+  runPnpmInstall,
   shouldBuild,
   writePackageJson,
   writeWorkspaceFile,
@@ -27,18 +29,28 @@ if (shouldBuild()) {
 }
 
 const dependencies = packPackages(packageNames, tempDir);
+const externalDependencies = linkWorkspaceDependencies(
+  root,
+  tempDir,
+  'packages/vellira-web',
+  ['@floating-ui/react', 'clsx', 'focus-trap-react', 'react', 'react-dom']
+);
 
 writePackageJson(tempDir, {
   private: true,
   type: 'module',
-  dependencies,
-  devDependencies: {
-    react: '^19.0.0',
-    'react-dom': '^19.0.0',
+  dependencies: {
+    ...dependencies,
+    ...externalDependencies,
   },
 });
 
-writeWorkspaceFile(tempDir, dependencies);
+writeWorkspaceFile(tempDir, {
+  overrides: {
+    ...dependencies,
+    ...externalDependencies,
+  },
+});
 
 writeFileSync(
   path.join(tempDir, 'css-loader.mjs'),
@@ -211,8 +223,12 @@ if (!theme.components.select) {
   throw new Error('select component tokens missing');
 }
 
+const isColorToken = (value) =>
+  typeof value === 'string' &&
+  (value === 'transparent' || /^#[0-9a-f]{6}$/i.test(value));
+
 const assertColor = (value, name) => {
-  if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) {
+  if (!isColorToken(value)) {
     throw new Error(name + ' token invalid');
   }
 };
@@ -232,7 +248,7 @@ console.log('Web package smoke test passed');
 `
 );
 
-run('pnpm', ['install'], { cwd: tempDir });
+runPnpmInstall(tempDir);
 run('node', ['--loader', './css-loader.mjs', 'smoke.mjs'], { cwd: tempDir });
 
 if (!existsSync(path.join(tempDir, 'node_modules'))) {

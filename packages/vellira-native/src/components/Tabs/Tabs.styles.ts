@@ -1,34 +1,34 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  root: {
-    gap: theme.spacing[4],
-    width: '100%',
-  },
+import type { NativeTheme } from '../../theme';
 
-  rootVertical: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: theme.spacing[4],
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    root: {
+      width: '100%',
+    },
 
-  listVertical: {
-    flexDirection: 'column',
-    width: 140,
-    flexShrink: 0,
-  },
+    rootVertical: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      gap: theme.tokens.spacing[6],
+    },
 
-  tabVertical: {
-    flex: 0,
-    width: '100%',
-    justifyContent: 'flex-start',
-  },
+    listVertical: {
+      flexDirection: 'column',
+      width: 140,
+      flexShrink: 0,
+    },
 
-  panel: {
-    backgroundColor: theme.colors.surface.default,
-    flex: 1,
-    flexShrink: 1,
-    minWidth: 0,
-  },
-});
+    tabVertical: {
+      flex: 0,
+      width: '100%',
+      justifyContent: 'flex-start',
+    },
+
+    panel: {
+      flex: 1,
+      flexShrink: 1,
+      minWidth: 0,
+    },
+  });

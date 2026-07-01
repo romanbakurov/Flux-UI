@@ -9,7 +9,7 @@ Use this app to develop, document, and visually review web components. Web stori
 From the workspace root:
 
 ```bash
-pnpm --filter @vellira/storybook dev
+pnpm --filter @vellira/web-storybook dev
 ```
 
 Storybook runs on port `6006`.
@@ -17,7 +17,7 @@ Storybook runs on port `6006`.
 ## Build
 
 ```bash
-pnpm --filter @vellira/storybook build-storybook
+pnpm --filter @vellira/web-storybook build-storybook
 ```
 
 ## Tests And Visual Review
@@ -34,4 +34,4 @@ Chromatic publishes the hosted visual review build from this Storybook app.
 
 - Uses Storybook React Vite.
 - Uses Chromatic for hosted visual review.
-- Fonts used by Storybook are served from `apps/storybook/public/fonts`.
+- Fonts used by Storybook come from `@romanbakurov/vellira-assets`.

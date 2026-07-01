@@ -2,12 +2,14 @@ import { useState } from 'react';
 
 import { View } from 'react-native';
 
+import { useThemeStyles } from '../../theme';
+
 import { DropdownContent } from './Content/DropdownContent';
 import { DropdownGroup } from './Group/DropdownGroup';
 import { DropdownItem } from './Item/DropdownItem';
 import { DropdownSeparator } from './Separator/DropdownSeparator';
 import { DropdownTrigger } from './Trigger/DropdownTrigger';
-import { styles } from './Dropdown.styles';
+import { createStyles } from './Dropdown.styles';
 import type { DropdownProps } from './types';
 import { isGroup, isSeparator } from './types';
 
@@ -25,6 +27,7 @@ export function Dropdown({
   itemStyle,
   textStyle,
 }: DropdownProps) {
+  const styles = useThemeStyles(createStyles);
   const [isOpen, setIsOpen] = useState(false);
 
   const close = () => setIsOpen(false);

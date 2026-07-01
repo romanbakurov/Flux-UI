@@ -1,8 +1,12 @@
 import { View } from 'react-native';
 
-import { styles } from './DropdownSeparator.styles';
+import { useThemeStyles } from '../../../theme';
+
+import { createStyles } from './DropdownSeparator.styles';
 
 export function DropdownSeparator() {
+  const styles = useThemeStyles(createStyles);
+
   return <View style={styles.separator} />;
 }
 

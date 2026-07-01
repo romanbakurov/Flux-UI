@@ -224,6 +224,12 @@ const sections: ApiSection[] = [
     'ModalProps',
     'src/components/Modal/types.ts'
   ),
+  section(
+    'native',
+    '### ThemeProvider Props',
+    'ThemeProviderProps',
+    'src/theme/types.ts'
+  ),
 ];
 
 const sourceFiles = Array.from(
@@ -334,11 +340,11 @@ function readInterfaceRows(item: ApiSection): PropRow[] {
     throw new Error(`Cannot find source file for ${item.sourceFile}`);
   }
 
-  const declaration = findInterfaceDeclaration(sourceFile, item.interfaceName);
+  const declaration = findTypeDeclaration(sourceFile, item.interfaceName);
 
   if (!declaration) {
     throw new Error(
-      `Cannot find interface ${item.interfaceName} in ${item.sourceFile}`
+      `Cannot find interface or type alias ${item.interfaceName} in ${item.sourceFile}`
     );
   }
 
@@ -375,14 +381,14 @@ function readInterfaceRows(item: ApiSection): PropRow[] {
     });
 }
 
-function findInterfaceDeclaration(
-  sourceFile: ts.SourceFile,
-  interfaceName: string
-) {
-  let result: ts.InterfaceDeclaration | undefined;
+function findTypeDeclaration(sourceFile: ts.SourceFile, interfaceName: string) {
+  let result: ts.InterfaceDeclaration | ts.TypeAliasDeclaration | undefined;
 
   const visit = (node: ts.Node) => {
-    if (ts.isInterfaceDeclaration(node) && node.name.text === interfaceName) {
+    if (
+      (ts.isInterfaceDeclaration(node) || ts.isTypeAliasDeclaration(node)) &&
+      node.name.text === interfaceName
+    ) {
       result = node;
       return;
     }

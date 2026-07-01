@@ -1,70 +1,77 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  group: {
-    width: '100%',
-    minWidth: 0,
-    alignSelf: 'stretch',
-    gap: theme.spacing[3],
-  },
+import type { NativeTheme } from '../../theme';
 
-  horizontal: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    group: {
+      width: '100%',
+      minWidth: 0,
+      alignSelf: 'stretch',
+      gap: theme.tokens.spacing[2],
+    },
 
-  option: {
-    minWidth: 0,
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: theme.spacing[2],
-  },
+    horizontal: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: theme.tokens.spacing[4],
+    },
 
-  optionDisabled: {
-    opacity: 0.6,
-  },
+    option: {
+      minWidth: 0,
+      alignItems: 'center',
+      flexDirection: 'row',
+      gap: theme.tokens.spacing[2],
+    },
 
-  radio: {
-    width: 22,
-    height: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: theme.colors.border.strong,
-    borderRadius: 999,
-    borderWidth: 2,
-    backgroundColor: theme.colors.surface.default,
-  },
+    optionDisabled: {
+      opacity: 1,
+    },
 
-  radioSelected: {
-    borderColor: theme.colors.interactive.primary,
-  },
+    radio: {
+      width: 16,
+      height: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderColor: theme.components.radio.default.border,
+      borderRadius: 999,
+      borderWidth: 1,
+      backgroundColor: theme.components.radio.default.bg,
+    },
 
-  radioDisabled: {
-    borderColor: theme.colors.border.strong,
-    backgroundColor: theme.colors.surface.muted,
-  },
+    radioSelected: {
+      borderColor: theme.components.radio.checked.default.border,
+    },
 
-  dot: {
-    width: 10,
-    height: 10,
-    backgroundColor: theme.colors.interactive.primary,
-    borderRadius: 999,
-  },
+    radioDisabled: {
+      borderColor: theme.components.radio.disabled.border,
+      backgroundColor: theme.components.radio.disabled.bg,
+    },
 
-  dotDisabled: {
-    backgroundColor: theme.colors.interactive.disabledForeground,
-  },
+    dot: {
+      width: 12,
+      height: 12,
+      backgroundColor: theme.components.radio.checked.default.bg,
+      borderRadius: 999,
+    },
 
-  label: {
-    minWidth: 0,
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.md,
-    lineHeight: theme.typography.lineHeight.md,
-  },
+    dotDisabled: {
+      backgroundColor: theme.components.radio.disabled.fg,
+    },
 
-  labelDisabled: {
-    color: theme.colors.text.disabled,
-  },
-});
+    label: {
+      minWidth: 0,
+      color: theme.components.radio.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      lineHeight: theme.tokens.typography.lineHeight.md,
+    },
+
+    labelDisabled: {
+      color: theme.components.radio.disabled.fg,
+    },
+
+    labelSelected: {
+      color: theme.components.radio.checked.default.fg,
+    },
+  });

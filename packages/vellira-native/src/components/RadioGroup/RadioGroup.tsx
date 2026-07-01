@@ -2,8 +2,9 @@ import { useControllableState } from '@romanbakurov/vellira-core';
 import { Pressable, Text, View } from 'react-native';
 
 import { FormField } from '../../patterns/FormField';
+import { useThemeStyles } from '../../theme';
 
-import { styles } from './RadioGroup.styles';
+import { createStyles } from './RadioGroup.styles';
 import type { RadioGroupProps } from './types';
 
 export function RadioGroup({
@@ -21,6 +22,8 @@ export function RadioGroup({
   optionStyle,
   labelStyle,
 }: RadioGroupProps) {
+  const styles = useThemeStyles(createStyles);
+
   const [selectedValue, setSelectedValue] = useControllableState({
     value,
     defaultValue,
@@ -86,6 +89,7 @@ export function RadioGroup({
               <Text
                 style={[
                   styles.label,
+                  isSelected && styles.labelSelected,
                   isDisabled && styles.labelDisabled,
                   labelStyle,
                 ]}

@@ -1,33 +1,42 @@
-import { theme } from '@romanbakurov/vellira-tokens';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, type TextStyle } from 'react-native';
 
-export const styles = StyleSheet.create({
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    borderRadius: theme.tokens.radius.md,
-  },
+import type { NativeTheme } from '../../theme';
 
-  fullWidth: {
-    alignSelf: 'stretch',
-  },
+const fontWeight = (value: string): TextStyle['fontWeight'] =>
+  value as TextStyle['fontWeight'];
 
-  text: {
-    fontFamily: theme.tokens.typography.family.regular,
-    fontWeight: theme.tokens.typography.weight.medium,
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    button: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+      borderRadius: theme.tokens.radius.md,
+      borderWidth: 0,
+    },
 
-    // Кнопка сама задает цвет текста через props,
-    // поэтому это значение используется как fallback.
-    color: theme.components.button.primary.default.fg,
-  },
+    fullWidth: {
+      alignSelf: 'stretch',
+      width: '100%',
+    },
 
-  disabled: {
-    opacity: 0.5,
-  },
+    text: {
+      fontFamily: theme.tokens.typography.family.regular,
+      fontWeight: fontWeight(theme.tokens.typography.weight.regular),
+      lineHeight: theme.tokens.typography.lineHeight.md,
 
-  pressed: {
-    opacity: 0.8,
-  },
-});
+      // Кнопка сама задает цвет текста через props,
+      // поэтому это значение используется как fallback.
+      color: theme.components.button.primary.default.fg,
+    },
+
+    disabled: {
+      borderColor: theme.components.button.disabled.border,
+      borderWidth: 1,
+    },
+
+    pressed: {
+      transform: [{ scale: 0.98 }],
+    },
+  });

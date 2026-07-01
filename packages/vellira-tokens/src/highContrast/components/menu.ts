@@ -1,30 +1,59 @@
+import { action } from '../semantic/action.js';
+import { focus } from '../semantic/focus.js';
 import { navigation } from '../semantic/navigation.js';
-import { status } from '../semantic/status.js';
+import { surface } from '../semantic/surface.js';
 import { text } from '../semantic/text.js';
 
 export const menu = {
-  itemFg: text.primary,
+  item: {
+    default: {
+      bg: 'transparent',
+      fg: text.primary,
+    },
 
-  itemHoverBg: navigation.hover.bg,
-  itemHoverFg: navigation.hover.fg,
+    hover: navigation.itemHover,
 
-  itemActiveBg: navigation.active.bg,
-  itemActiveFg: navigation.active.fg,
-  itemFocusRing: navigation.hover.bg,
+    active: navigation.itemActive,
 
-  itemDangerFg: status.error.fg,
-  itemDangerHoverBg: navigation.hover.bg,
-  itemDangerHoverFg: navigation.hover.fg,
-  itemDangerActiveBg: navigation.active.bg,
-  itemDangerActiveFg: navigation.active.fg,
+    focus: {
+      ring: focus.ring,
+    },
 
-  triggerFg: text.primary,
-  triggerHoverBg: navigation.brandHover.bg,
-  triggerHoverFg: navigation.brandHover.fg,
-  triggerHoverRing: 'transparent',
+    disabled: {
+      bg: surface.muted,
+      fg: text.disabled,
+    },
 
-  itemDisabledFg: navigation.disabled.fg,
-  itemDisabledBg: navigation.disabled.bg,
+    danger: {
+      default: {
+        fg: action.danger.default.bg,
+      },
 
-  groupLabelFg: navigation.groupLabel.fg,
+      hover: {
+        bg: action.danger.subtle.bg,
+        fg: action.danger.subtle.fg,
+      },
+
+      active: {
+        bg: action.danger.muted.bg,
+        fg: action.danger.muted.fg,
+      },
+    },
+  },
+
+  trigger: {
+    default: {
+      fg: text.primary,
+    },
+
+    hover: {
+      bg: navigation.brandHover.bg,
+      fg: navigation.brandHover.fg,
+      ring: 'transparent',
+    },
+  },
+
+  groupLabel: {
+    fg: text.muted,
+  },
 } as const;

@@ -54,6 +54,10 @@ export const dropdown = {
       ring: focus.ring,
     },
 
+    focus: {
+      ring: focus.ring,
+    },
+
     disabled: {
       bg: 'transparent',
       fg: text.disabled,

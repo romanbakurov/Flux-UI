@@ -1,75 +1,85 @@
-import { theme } from '@romanbakurov/vellira-tokens';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, type TextStyle } from 'react-native';
 
-export const styles = StyleSheet.create({
-  tab: {
-    flex: 1,
-    alignItems: 'center',
-    borderRadius: theme.radius.md,
-    flexDirection: 'row',
-    gap: theme.spacing[2],
-    justifyContent: 'center',
-    minHeight: 38,
-    paddingHorizontal: theme.spacing[3],
-    paddingVertical: theme.spacing[2],
-  },
+import type { NativeTheme } from '../../../theme';
 
-  tabVertical: {
-    flex: 0,
-    width: '100%',
-    justifyContent: 'flex-start',
-  },
+const fontWeight = (value: string): TextStyle['fontWeight'] =>
+  value as TextStyle['fontWeight'];
 
-  tabActive: {
-    backgroundColor: 'transparent',
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    tab: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      gap: theme.tokens.spacing[2],
+      justifyContent: 'center',
+      paddingHorizontal: theme.tokens.spacing[4],
+      paddingVertical: theme.tokens.spacing[2],
+      backgroundColor: theme.components.tabs.trigger.default.bg,
+      borderWidth: 0,
+    },
 
-  tabUnderline: {
-    borderBottomColor: 'transparent',
-    borderBottomWidth: 2,
-    borderRadius: 0,
-  },
+    tabVertical: {
+      flex: 0,
+      width: '100%',
+      justifyContent: 'flex-start',
+    },
 
-  tabUnderlineActive: {
-    borderBottomColor: theme.colors.interactive.primary,
-  },
+    tabActive: {
+      backgroundColor: theme.components.tabs.trigger.active.bg,
+    },
 
-  tabDisabled: {
-    opacity: 0.45,
-  },
+    tabUnderline: {
+      borderBottomColor: 'transparent',
+      borderBottomWidth: 3,
+      borderRadius: 0,
+    },
 
-  tabText: {
-    color: theme.colors.text.secondary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.sm,
-  },
+    tabUnderlineActive: {
+      borderBottomColor: theme.components.tabs.indicator.active.bg,
+    },
 
-  tabTextActive: {
-    color: theme.colors.interactive.primary,
-  },
+    tabDisabled: {
+      backgroundColor: theme.components.tabs.trigger.disabled.bg,
+    },
 
-  tabTextPillsActive: {
-    color: theme.colors.text.inverse,
-  },
+    tabText: {
+      color: theme.components.tabs.trigger.default.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.md,
+      fontWeight: fontWeight(theme.tokens.typography.weight.regular),
+    },
 
-  tabPillsActive: {
-    backgroundColor: theme.colors.interactive.primary,
-  },
+    tabTextDisabled: {
+      color: theme.components.tabs.trigger.disabled.fg,
+    },
 
-  tabDefaultActive: {
-    backgroundColor: 'transparent',
-  },
+    tabTextActive: {
+      color: theme.components.tabs.trigger.active.fg,
+    },
 
-  tabIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    tabTextPillsActive: {
+      color: theme.components.tabs.pills.active.fg,
+    },
 
-  tabIconActive: {
-    color: theme.colors.interactive.primary,
-  },
+    tabPillsActive: {
+      backgroundColor: theme.components.tabs.pills.active.bg,
+      borderRadius: theme.tokens.radius.md,
+    },
 
-  tabIconPillsActive: {
-    color: theme.colors.text.inverse,
-  },
-});
+    tabDefaultActive: {
+      backgroundColor: theme.components.tabs.trigger.active.bg,
+    },
+
+    tabIcon: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    tabIconActive: {
+      color: theme.components.tabs.trigger.active.fg,
+    },
+
+    tabIconPillsActive: {
+      color: theme.components.tabs.pills.active.fg,
+    },
+  });

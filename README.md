@@ -52,16 +52,18 @@ Project documentation:
 | `@romanbakurov/vellira-types`  | Renderer-neutral TypeScript contracts |
 | `@romanbakurov/vellira-icons`  | Shared icon library                   |
 | `@romanbakurov/vellira-tokens` | Design tokens and theme               |
+| `@romanbakurov/vellira-assets` | Shared fonts and static assets        |
 
 ---
 
 # Apps
 
-| App                      | Purpose                                  |
-| ------------------------ | ---------------------------------------- |
-| `apps/storybook`         | Web Storybook                            |
-| `apps/native-playground` | Expo playground with on-device Storybook |
-| `apps/test-app`          | Local Vite playground                    |
+| App                      | Purpose               |
+| ------------------------ | --------------------- |
+| `apps/web-storybook`     | Web Storybook         |
+| `apps/native-playground` | Expo playground       |
+| `apps/native-storybook`  | on-device Storybook   |
+| `apps/test-app`          | Local Vite playground |
 
 ---
 
@@ -69,8 +71,9 @@ Project documentation:
 
 ```text
 apps/
-├── storybook
+├── web-storybook
 ├── native-playground
+├── native-storybook
 └── test-app
 
 packages/
@@ -79,7 +82,8 @@ packages/
 ├── vellira-core
 ├── vellira-types
 ├── vellira-icons
-└── vellira-tokens
+├── vellira-tokens
+└── vellira-assets
 ```
 
 Each package has a single responsibility.
@@ -88,6 +92,7 @@ Each package has a single responsibility.
 - **types** define renderer-neutral public contracts.
 - **core** contains reusable runtime logic and hooks.
 - **icons** provides shared icon components.
+- **assets** provides shared fonts and static assets.
 - **web** contains DOM-specific implementations.
 - **native** contains React Native implementations.
 
@@ -131,6 +136,7 @@ pnpm add @romanbakurov/vellira-web
 pnpm add @romanbakurov/vellira-native
 pnpm add @romanbakurov/vellira-icons
 pnpm add @romanbakurov/vellira-tokens
+pnpm add @romanbakurov/vellira-assets
 ```
 
 ---
@@ -209,18 +215,19 @@ Vellira exposes a shared `theme` object through
 `@romanbakurov/vellira-tokens`.
 
 ```ts
-import { theme } from '@romanbakurov/vellira-tokens';
+import { darkTheme, lightTheme, theme } from '@romanbakurov/vellira-tokens';
 
-theme.colors.primary;
-theme.colors.secondary;
+theme.semantic.surface.default;
+theme.semantic.text.primary;
+theme.components.button.primary.default.bg;
 
-theme.spacing[4];
+theme.tokens.spacing[4];
+theme.tokens.radius.md;
+theme.tokens.typography.family.regular;
+theme.tokens.typography.size.md;
 
-theme.radius.md;
-
-theme.typography.family.regular;
-
-theme.typography.size.md;
+lightTheme.name;
+darkTheme.semantic.focus.ring;
 ```
 
 Tokens are available as:
@@ -262,7 +269,7 @@ pnpm install
 Start the web Storybook:
 
 ```bash
-pnpm --filter @vellira/storybook dev
+pnpm --filter @vellira/web-storybook dev
 ```
 
 Run the native playground:
@@ -274,8 +281,8 @@ pnpm --filter native-playground start
 Run the native Storybook:
 
 ```bash
-pnpm --filter native-playground storybook:ios
-pnpm --filter native-playground storybook:android
+pnpm --filter native-storybook ios
+pnpm --filter native-storybook android
 ```
 
 ---
@@ -312,17 +319,21 @@ See also:
 Before opening a Pull Request, run:
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm test:coverage
-pnpm build
-pnpm smoke:packages
-pnpm check:public-api
-pnpm docs:api:check
+pnpm ci
 ```
 
-Every command above must pass successfully.
+`pnpm ci` runs the same quality gates as the main CI workflow:
+
+```bash
+pnpm ci:quality
+pnpm ci:build
+pnpm ci:typecheck
+pnpm ci:playwright
+pnpm ci:test
+pnpm ci:smoke
+```
+
+Every command above must pass successfully. For focused local checks, run the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
 
 ---
 
@@ -385,6 +396,7 @@ pnpm up @romanbakurov/vellira-web
 pnpm up @romanbakurov/vellira-native
 pnpm up @romanbakurov/vellira-icons
 pnpm up @romanbakurov/vellira-tokens
+pnpm up @romanbakurov/vellira-assets
 ```
 
 Then reinstall dependencies:
@@ -416,7 +428,7 @@ See:
 
 Vellira maintains stable public package exports.
 
-Every release validates public APIs using automated checks.
+Every release validates package export keys and public symbol snapshots using automated checks.
 
 Breaking changes are introduced only in major releases whenever possible.
 

@@ -42,7 +42,7 @@ Component/
 
 # Public API
 
-The package root must expose only public runtime components.
+The renderer package root must expose only supported public runtime APIs.
 
 Allowed exports:
 
@@ -55,7 +55,14 @@ Allowed exports:
 - RadioGroup
 - Select
 - Tabs
+- ThemeProvider
 - Tooltip
+- useTheme
+
+Native may also expose theme names and theme objects needed by consumers:
+
+- NativeThemeName
+- nativeThemes
 
 Do **not** export:
 
@@ -153,9 +160,9 @@ Use design tokens exclusively.
 Good:
 
 ```ts
-padding: theme.spacing[3];
-borderRadius: theme.radius.md;
-color: theme.colors.primary;
+padding: theme.tokens.spacing[3];
+borderRadius: theme.tokens.radius.md;
+color: theme.semantic.text.primary;
 ```
 
 Avoid hardcoded values whenever a token exists.
@@ -234,9 +241,8 @@ Prefer reusable hooks from:
 Examples:
 
 - useControllableState
-- useModal
-- useDropdown
-- useTabs
+- useKeyboardNavigation
+- useTabsKeyboard
 
 Avoid duplicating logic between components.
 
@@ -308,15 +314,10 @@ Documentation should stay synchronized with implementation.
 Before opening a Pull Request:
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm test:coverage
-pnpm build
-pnpm smoke:packages
-pnpm check:public-api
-pnpm docs:api:check
+pnpm ci
 ```
+
+For focused local checks, use the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
 
 All checks must pass before merging.
 

@@ -1,7 +1,9 @@
 import { darkTheme } from './dark/theme.js';
-import { overlay } from './semantic/overlay.js';
+import { highContrastTheme } from './highContrast/theme.js';
+import { lightTheme } from './light/theme.js';
 
-export { darkTheme } from './dark/theme.js';
+export { darkTheme, highContrastTheme, lightTheme };
+
 export type {
   BaseCssVariableName,
   BaseTokenPath,
@@ -24,41 +26,23 @@ export {
   themeNames,
   tokenPaths,
 } from './generated/token-types.js';
-export { highContrastTheme } from './highContrast/theme.js';
-export { lightTheme } from './light/theme.js';
+export { overlay } from './semantic/overlay.js';
+
+type WidenTokenValues<T> = {
+  readonly [K in keyof T]: T[K] extends string
+    ? string
+    : T[K] extends number
+      ? number
+      : T[K] extends boolean
+        ? boolean
+        : T[K] extends object
+          ? WidenTokenValues<T[K]>
+          : T[K];
+};
+
+export type VelliraTheme = WidenTokenValues<typeof lightTheme>;
 
 export const theme = {
-  ...darkTheme.tokens,
-
-  colors: {
-    ...darkTheme.semantic,
-    ...darkTheme.components,
-
-    overlay,
-
-    interactive: {
-      primary: darkTheme.components.button.primary.default.bg,
-      secondary: darkTheme.components.button.secondary.default.bg,
-      neutral: darkTheme.semantic.surface.subtle,
-      disabledForeground: darkTheme.components.checkbox.disabled.fg,
-    },
-
-    status: {
-      error: darkTheme.semantic.status.error.strong,
-      errorMuted: darkTheme.semantic.status.error.bg,
-    },
-
-    border: {
-      ...darkTheme.semantic.border,
-      danger: darkTheme.semantic.status.error.strong,
-    },
-
-    text: {
-      ...darkTheme.semantic.text,
-      danger: darkTheme.semantic.status.error.fg,
-    },
-  },
-
   semantic: darkTheme.semantic,
   components: darkTheme.components,
   tokens: darkTheme.tokens,

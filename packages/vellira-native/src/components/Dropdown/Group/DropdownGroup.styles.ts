@@ -1,14 +1,16 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  groupLabel: {
-    paddingHorizontal: theme.spacing[4],
-    paddingVertical: theme.spacing[2],
-    color: theme.colors.text.secondary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.xs,
-    lineHeight: theme.typography.lineHeight.sm,
-    textTransform: 'uppercase',
-  },
-});
+import type { NativeTheme } from '../../../theme';
+
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    groupLabel: {
+      paddingHorizontal: theme.tokens.spacing[4],
+      paddingVertical: theme.tokens.spacing[2],
+      color: theme.components.dropdown.groupLabel.fg,
+      fontFamily: theme.tokens.typography.family.medium,
+      fontSize: theme.tokens.typography.size.xs,
+      lineHeight: theme.tokens.typography.lineHeight.sm,
+      textTransform: 'uppercase',
+    },
+  });

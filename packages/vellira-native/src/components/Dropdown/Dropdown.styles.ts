@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  root: {
-    alignSelf: 'flex-start',
-  },
-});
+export const createStyles = () =>
+  StyleSheet.create({
+    root: {
+      alignSelf: 'flex-start',
+    },
+  });

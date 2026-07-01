@@ -1,33 +1,10 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text, TextInput, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import { Input } from '../../primitives/Input';
+import { useTheme } from '../../theme';
 
 import { FormField } from './FormField';
-
-const controlStyle = {
-  width: '100%',
-  minHeight: 44,
-  paddingHorizontal: theme.spacing[4],
-  paddingVertical: theme.spacing[3],
-  color: theme.colors.gray[900],
-  fontFamily: theme.typography.family.regular,
-  fontSize: theme.typography.size.md,
-  backgroundColor: theme.colors.gray[0],
-  borderColor: theme.colors.gray[200],
-  borderRadius: theme.radius.lg,
-  borderWidth: 1,
-};
-
-const errorControlStyle = {
-  ...controlStyle,
-  borderColor: theme.colors.error,
-};
-
-const disabledControlStyle = {
-  ...controlStyle,
-  color: theme.colors.gray[500],
-  backgroundColor: theme.colors.gray[55],
-};
 
 const meta = {
   title: 'Patterns/FormField',
@@ -58,11 +35,20 @@ const meta = {
     },
   },
   decorators: [
-    (Story) => (
-      <View style={{ width: '100%', padding: theme.spacing[4] }}>
-        <Story />
-      </View>
-    ),
+    (Story) => {
+      const { theme } = useTheme();
+
+      return (
+        <View
+          style={{
+            width: '100%',
+            padding: theme.tokens.spacing[4],
+          }}
+        >
+          <Story />
+        </View>
+      );
+    },
   ],
 } satisfies Meta<typeof FormField>;
 
@@ -70,20 +56,19 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    label: 'Full name',
+    children: <Input placeholder='Alex Johnson' />,
+  },
+};
 
 export const WithDescription: Story = {
   args: {
     label: 'Username',
     description:
       'Use 3–20 characters. Letters, numbers, and underscores are allowed.',
-    children: (
-      <TextInput
-        placeholder='alex_johnson'
-        placeholderTextColor={theme.colors.gray[400]}
-        style={controlStyle}
-      />
-    ),
+    children: <Input placeholder='alex_johnson' />,
   },
 };
 
@@ -91,13 +76,7 @@ export const Required: Story = {
   args: {
     label: 'Full name',
     required: true,
-    children: (
-      <TextInput
-        placeholder='Alex Johnson'
-        placeholderTextColor={theme.colors.gray[400]}
-        style={controlStyle}
-      />
-    ),
+    children: <Input placeholder='Alex Johnson' />,
   },
 };
 
@@ -106,13 +85,7 @@ export const WithError: Story = {
     label: 'Email',
     required: true,
     error: 'Enter a valid email',
-    children: (
-      <TextInput
-        placeholder='name@company.com'
-        placeholderTextColor={theme.colors.gray[400]}
-        style={errorControlStyle}
-      />
-    ),
+    children: <Input placeholder='name@company.com' error />,
   },
 };
 
@@ -120,14 +93,7 @@ export const Disabled: Story = {
   args: {
     label: 'Disabled field',
     disabled: true,
-    children: (
-      <TextInput
-        editable={false}
-        placeholder='Not editable'
-        placeholderTextColor={theme.colors.gray[400]}
-        style={disabledControlStyle}
-      />
-    ),
+    children: <Input placeholder='Not editable' disabled />,
   },
 };
 
@@ -145,12 +111,6 @@ export const CompleteExample: Story = {
     description: 'We will use this email for account notifications.',
     required: true,
     error: 'Email is required',
-    children: (
-      <TextInput
-        placeholder='name@company.com'
-        placeholderTextColor={theme.colors.gray[400]}
-        style={errorControlStyle}
-      />
-    ),
+    children: <Input placeholder='name@company.com' error />,
   },
 };

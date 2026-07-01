@@ -1,9 +1,10 @@
-import { cloneElement } from 'react';
+import { cloneElement, useState } from 'react';
 
-import { theme } from '@romanbakurov/vellira-tokens';
 import { Pressable, Text } from 'react-native';
 
-import { styles } from './Button.styles';
+import { useTheme, useThemeStyles } from '../../theme';
+
+import { createStyles } from './Button.styles';
 import type { ButtonIconElement, ButtonProps } from './types';
 
 const sizeMap: Record<
@@ -16,37 +17,25 @@ const sizeMap: Record<
   }
 > = {
   sm: {
-    px: theme.spacing[3],
-    py: theme.spacing[2],
-    fontSize: 14,
+    px: 12,
+    py: 8,
+    fontSize: 12,
     iconSize: 16,
   },
 
   md: {
-    px: theme.spacing[4],
-    py: theme.spacing[3],
-    fontSize: 16,
-    iconSize: 18,
+    px: 16,
+    py: 12,
+    fontSize: 14,
+    iconSize: 20,
   },
 
   lg: {
-    px: theme.spacing[5],
-    py: theme.spacing[4],
-    fontSize: 18,
-    iconSize: 20,
+    px: 20,
+    py: 16,
+    fontSize: 16,
+    iconSize: 24,
   },
-};
-
-const backgroundMap: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: theme.colors.interactive.primary,
-  secondary: theme.colors.interactive.secondary,
-  danger: theme.colors.status.error,
-};
-
-const contentColorMap: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: theme.colors.text.inverse,
-  secondary: theme.colors.text.inverse,
-  danger: theme.colors.text.inverse,
 };
 
 export function Button({
@@ -62,7 +51,11 @@ export function Button({
   accessibilityLabel,
   iconSize,
 }: ButtonProps) {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
   const config = sizeMap[size];
+  const variantTheme = theme.components.button[variant];
+  const [isPressed, setIsPressed] = useState(false);
 
   const iconOnly = !children && Boolean(leftIcon || rightIcon);
 
@@ -72,12 +65,16 @@ export function Button({
     );
   }
 
-  const contentColor = contentColorMap[variant];
+  const contentColor = disabled
+    ? theme.components.button.disabled.fg
+    : isPressed
+      ? variantTheme.pressed.fg
+      : variantTheme.default.fg;
   const resolvedIconSize = iconSize ?? config.iconSize;
 
-  const renderIcon = (icon: ButtonIconElement) => {
+  const renderIcon = (icon: ButtonIconElement, color: string) => {
     return cloneElement(icon, {
-      color: contentColor,
+      color,
       size: resolvedIconSize,
     });
   };
@@ -92,10 +89,16 @@ export function Button({
         accessibilityLabel ??
         (typeof children === 'string' ? children : undefined)
       }
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
       style={({ pressed }) => [
         styles.button,
         {
-          backgroundColor: backgroundMap[variant],
+          backgroundColor: disabled
+            ? theme.components.button.disabled.bg
+            : pressed
+              ? variantTheme.pressed.bg
+              : variantTheme.default.bg,
           paddingHorizontal: iconOnly ? config.py : config.px,
           paddingVertical: config.py,
         },
@@ -105,7 +108,7 @@ export function Button({
         style,
       ]}
     >
-      {leftIcon && renderIcon(leftIcon)}
+      {leftIcon && renderIcon(leftIcon, contentColor)}
       {children && (
         <Text
           style={[
@@ -119,7 +122,7 @@ export function Button({
           {children}
         </Text>
       )}
-      {rightIcon && renderIcon(rightIcon)}
+      {rightIcon && renderIcon(rightIcon, contentColor)}
     </Pressable>
   );
 }

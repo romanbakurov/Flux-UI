@@ -1,9 +1,10 @@
 import { Close } from '@romanbakurov/vellira-icons';
 import { Pressable, Text, View } from 'react-native';
 
+import { useTheme, useThemeStyles } from '../../../theme';
 import { useModalContext } from '../ModalContext';
 
-import { styles } from './ModalHeader.styles';
+import { createStyles } from './ModalHeader.styles';
 import type { ModalHeaderProps } from './types';
 
 export const ModalHeader = ({
@@ -11,6 +12,8 @@ export const ModalHeader = ({
   style,
   textStyle,
 }: ModalHeaderProps) => {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
   const { onClose } = useModalContext();
 
   return (
@@ -24,7 +27,10 @@ export const ModalHeader = ({
           onPress={onClose}
           style={styles.closeButton}
         >
-          <Close size={16} />
+          <Close
+            size={16}
+            color={theme.components.modal.closeButton.default.fg}
+          />
         </Pressable>
       )}
     </View>

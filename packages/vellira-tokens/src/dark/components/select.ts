@@ -48,6 +48,7 @@ export const select = {
     default: {
       bg: 'transparent',
       fg: text.primary,
+      border: border.default,
     },
 
     hover: {
@@ -69,6 +70,7 @@ export const select = {
     disabled: {
       bg: 'transparent',
       fg: text.disabled,
+      border: border.default,
     },
   },
 } as const;

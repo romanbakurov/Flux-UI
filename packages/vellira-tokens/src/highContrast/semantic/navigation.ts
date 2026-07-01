@@ -16,6 +16,20 @@ export const navigation = {
     bg: colors.warning[500],
     fg: colors.mono[950],
   },
+  tabHover: {
+    fg: colors.warning[500],
+  },
+  tabFocus: {
+    ring: colors.warning[500],
+  },
+  optionHover: {
+    bg: surface.hover,
+    fg: text.primary,
+  },
+  optionActive: {
+    bg: surface.active,
+    fg: text.primary,
+  },
   disabled: {
     bg: colors.gray[900],
     fg: colors.gray[600],

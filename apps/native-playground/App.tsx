@@ -1,7 +1,6 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Alert } from 'react-native';
-import { Check } from '@romanbakurov/vellira-icons';
 
 import { Button, Checkbox } from '@romanbakurov/vellira-native';
 
@@ -25,9 +24,7 @@ export default function App() {
       >
         Click me
       </Button>
-      <Checkbox>
-        <Check />
-      </Checkbox>
+      <Checkbox label='Enable updates' />
       <StatusBar style='auto' />
     </View>
   );

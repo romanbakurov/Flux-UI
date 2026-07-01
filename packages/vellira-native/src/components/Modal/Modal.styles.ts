@@ -1,16 +1,18 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  overlay: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-    padding: theme.spacing[5],
-  },
+import type { NativeTheme } from '../../theme';
 
-  backdrop: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: theme.colors.overlay.backdrop,
-  },
-});
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    overlay: {
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center',
+      padding: theme.tokens.spacing[5],
+    },
+
+    backdrop: {
+      ...StyleSheet.absoluteFill,
+      backgroundColor: theme.components.modal.overlay.bg,
+    },
+  });

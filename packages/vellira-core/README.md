@@ -10,6 +10,8 @@ This package contains hooks that can be reused by web and native packages when t
 - `useKeyboardNavigation`
 - `useTabsKeyboard`
 
+Internal or experimental hooks are not exported from the package root until they are part of the supported public API.
+
 ## Usage
 
 ```ts
@@ -26,4 +28,5 @@ const [value, setValue] = useControllableState({
 
 ```bash
 pnpm --filter @romanbakurov/vellira-core build
+pnpm --filter @romanbakurov/vellira-core typecheck
 ```

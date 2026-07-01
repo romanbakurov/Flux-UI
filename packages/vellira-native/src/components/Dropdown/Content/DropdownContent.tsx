@@ -1,6 +1,8 @@
 import { Modal, Pressable, View } from 'react-native';
 
-import { styles } from './DropdownContent.styles';
+import { useThemeStyles } from '../../../theme';
+
+import { createStyles } from './DropdownContent.styles';
 import type { DropdownContentProps } from './types';
 
 export function DropdownContent({
@@ -8,6 +10,8 @@ export function DropdownContent({
   children,
   onClose,
 }: DropdownContentProps) {
+  const styles = useThemeStyles(createStyles);
+
   return (
     <Modal
       transparent

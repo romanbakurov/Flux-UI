@@ -1,50 +1,57 @@
-import { theme } from '@romanbakurov/vellira-tokens';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, type TextStyle } from 'react-native';
 
-export const styles = StyleSheet.create({
-  root: {
-    width: '100%',
-    minWidth: 0,
-    alignSelf: 'stretch',
-    gap: theme.spacing[2],
-  },
+import type { NativeTheme } from '../../theme';
 
-  label: {
-    color: theme.colors.text.primary,
-    fontFamily: theme.typography.family.medium,
-    fontSize: theme.typography.size.sm,
-    lineHeight: theme.typography.lineHeight.sm,
-  },
+const fontWeight = (value: string): TextStyle['fontWeight'] =>
+  value as TextStyle['fontWeight'];
 
-  labelDisabled: {
-    color: theme.colors.text.disabled,
-  },
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    root: {
+      width: '100%',
+      minWidth: 0,
+      alignSelf: 'stretch',
+      gap: theme.tokens.spacing[2],
+    },
 
-  required: {
-    color: theme.colors.text.danger,
-  },
+    label: {
+      color: theme.components.formField.label.fg,
+      fontFamily: theme.tokens.typography.family.medium,
+      fontSize: theme.tokens.typography.size.md,
+      fontWeight: fontWeight(theme.tokens.typography.weight.medium),
+      lineHeight: theme.tokens.typography.lineHeight.md,
+    },
 
-  description: {
-    color: theme.colors.text.secondary,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.sm,
-    lineHeight: theme.typography.lineHeight.sm,
-  },
+    labelDisabled: {
+      color: theme.components.formField.disabled.labelFg,
+    },
 
-  descriptionDisabled: {
-    color: theme.colors.text.disabled,
-  },
+    required: {
+      marginLeft: theme.tokens.spacing[1],
+      color: theme.components.formField.requiredMark.fg,
+    },
 
-  control: {
-    width: '100%',
-    minWidth: 0,
-    alignSelf: 'stretch',
-  },
+    description: {
+      color: theme.components.formField.description.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.sm,
+      lineHeight: theme.tokens.typography.lineHeight.sm,
+    },
 
-  error: {
-    color: theme.colors.text.danger,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.xs,
-    lineHeight: theme.typography.lineHeight.sm,
-  },
-});
+    descriptionDisabled: {
+      color: theme.components.formField.disabled.descriptionFg,
+    },
+
+    control: {
+      width: '100%',
+      minWidth: 0,
+      alignSelf: 'stretch',
+    },
+
+    error: {
+      color: theme.components.formField.helperText.error.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.sm,
+      lineHeight: theme.tokens.typography.lineHeight.sm,
+    },
+  });

@@ -1,10 +1,16 @@
-import { forwardRef } from 'react';
+import { cloneElement, forwardRef, useState } from 'react';
 
-import { TextInput } from 'react-native';
+import type { TextInputProps } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 import { FormField } from '../../patterns/FormField';
+import { useTheme, useThemeStyles } from '../../theme';
 
-import { placeholderTextColor, styles } from './Input.styles';
+import {
+  createStyles,
+  getDisabledPlaceholderTextColor,
+  getPlaceholderTextColor,
+} from './Input.styles';
 import type { InputProps, NativeInputKeyboardType } from './types';
 
 const keyboardTypeByInputType: Record<
@@ -58,19 +64,45 @@ export const Input = forwardRef<TextInput, InputProps>(
       disabled = false,
       required = false,
       type = 'text',
+      leftIcon,
+      iconSize,
       containerStyle,
       inputStyle,
       keyboardType,
       secureTextEntry,
       autoCapitalize,
       autoCorrect,
+      onBlur,
+      onFocus,
       accessibilityLabel,
       accessibilityHint,
       ...props
     },
     ref
   ) => {
+    const { theme } = useTheme();
+    const styles = useThemeStyles(createStyles);
+    const [isFocused, setIsFocused] = useState(false);
+    const placeholderTextColor = disabled
+      ? getDisabledPlaceholderTextColor(theme)
+      : getPlaceholderTextColor(theme);
     const isPassword = type === 'password';
+    const resolvedIconSize = iconSize ?? 16;
+    const iconColor = disabled
+      ? theme.components.input.disabled.fg
+      : isFocused
+        ? theme.components.input.focus.fg
+        : theme.components.input.default.placeholder;
+
+    const handleFocus: NonNullable<TextInputProps['onFocus']> = (event) => {
+      setIsFocused(true);
+      onFocus?.(event);
+    };
+
+    const handleBlur: NonNullable<TextInputProps['onBlur']> = (event) => {
+      setIsFocused(false);
+      onBlur?.(event);
+    };
 
     return (
       <FormField
@@ -80,29 +112,50 @@ export const Input = forwardRef<TextInput, InputProps>(
         disabled={disabled}
         style={containerStyle}
       >
-        <TextInput
-          {...props}
-          ref={ref}
-          value={value}
-          editable={!disabled}
-          placeholder={placeholder}
-          keyboardType={keyboardType ?? keyboardTypeByInputType[type]}
-          secureTextEntry={secureTextEntry ?? isPassword}
-          autoCapitalize={autoCapitalize ?? autoCapitalizeByInputType[type]}
-          autoCorrect={autoCorrect ?? autoCorrectByInputType[type]}
-          onChangeText={onChange}
-          placeholderTextColor={placeholderTextColor}
-          accessibilityLabel={accessibilityLabel ?? label}
-          accessibilityHint={accessibilityHint}
-          accessibilityState={{ disabled }}
-          style={[
-            styles.input,
-            styles[size],
-            error && styles.error,
-            disabled && styles.disabled,
-            inputStyle,
-          ]}
-        />
+        <View style={styles.inputWrapper}>
+          {leftIcon && (
+            <View
+              pointerEvents='none'
+              style={styles.leftIcon}
+              accessibilityElementsHidden
+              importantForAccessibility='no'
+            >
+              {cloneElement(leftIcon, {
+                color: iconColor,
+                size: resolvedIconSize,
+              })}
+            </View>
+          )}
+
+          <TextInput
+            {...props}
+            ref={ref}
+            value={value}
+            editable={!disabled}
+            placeholder={placeholder}
+            keyboardType={keyboardType ?? keyboardTypeByInputType[type]}
+            secureTextEntry={secureTextEntry ?? isPassword}
+            autoCapitalize={autoCapitalize ?? autoCapitalizeByInputType[type]}
+            autoCorrect={autoCorrect ?? autoCorrectByInputType[type]}
+            onChangeText={onChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            placeholderTextColor={placeholderTextColor}
+            accessibilityLabel={accessibilityLabel ?? label}
+            accessibilityHint={accessibilityHint}
+            accessibilityState={{ disabled }}
+            style={[
+              styles.input,
+              styles[size],
+              inputStyle,
+              leftIcon && styles.inputWithLeftIcon,
+              isFocused && !disabled && styles.focused,
+              error && styles.error,
+              isFocused && error && !disabled && styles.errorFocused,
+              disabled && styles.disabled,
+            ]}
+          />
+        </View>
       </FormField>
     );
   }

@@ -1,41 +1,45 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  root: {
-    alignSelf: 'flex-start',
-  },
+import type { NativeTheme } from '../../theme';
 
-  overlay: {
-    ...StyleSheet.absoluteFill,
-  },
-
-  bubble: {
-    position: 'absolute',
-    zIndex: 1000,
-
-    backgroundColor: theme.colors.surface.inverse,
-    borderRadius: theme.radius.md,
-
-    paddingHorizontal: theme.spacing[3],
-    paddingVertical: theme.spacing[2],
-
-    shadowColor: theme.colors.surface.inverse,
-    shadowOffset: {
-      width: 0,
-      height: 2,
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    root: {
+      alignSelf: 'flex-start',
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
 
-    elevation: 4,
-  },
+    overlay: {
+      ...StyleSheet.absoluteFill,
+    },
 
-  text: {
-    color: theme.colors.text.inverse,
-    fontFamily: theme.typography.family.regular,
-    fontSize: theme.typography.size.xs,
-    lineHeight: theme.typography.lineHeight.sm,
-    textAlign: 'center',
-  },
-});
+    bubble: {
+      position: 'absolute',
+      zIndex: 1000,
+
+      backgroundColor: theme.components.tooltip.content.bg,
+      borderColor: theme.components.tooltip.content.border,
+      borderRadius: theme.tokens.radius.sm,
+      borderWidth: 1,
+
+      paddingHorizontal: theme.tokens.spacing[3],
+      paddingVertical: theme.tokens.spacing[2],
+
+      shadowColor: theme.tokens.shadows.sm.color,
+      shadowOffset: {
+        width: theme.tokens.shadows.sm.x,
+        height: theme.tokens.shadows.sm.y,
+      },
+      shadowOpacity: theme.tokens.shadows.sm.opacity,
+      shadowRadius: theme.tokens.shadows.sm.blur,
+
+      elevation: theme.tokens.shadows.sm.elevation,
+    },
+
+    text: {
+      color: theme.components.tooltip.content.fg,
+      fontFamily: theme.tokens.typography.family.regular,
+      fontSize: theme.tokens.typography.size.sm,
+      lineHeight: 20,
+      textAlign: 'center',
+    },
+  });

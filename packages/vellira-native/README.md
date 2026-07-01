@@ -67,13 +67,14 @@ Native tests and test utilities are excluded from the package build through `tsc
 
 ## Storybook
 
-Native stories live next to components as `*.stories.tsx` and are consumed by the Expo playground React Native Storybook app.
+Native stories live next to components as `*.stories.tsx` and are consumed by `apps/native-storybook`.
 
 Run on-device Storybook from the workspace root:
 
 ```bash
-pnpm --filter native-playground storybook:ios
-pnpm --filter native-playground storybook:android
+pnpm --filter native-storybook start
+pnpm --filter native-storybook ios
+pnpm --filter native-storybook android
 ```
 
 ## Development

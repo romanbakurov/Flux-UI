@@ -1,12 +1,12 @@
 import { cloneElement, isValidElement } from 'react';
 
-import { theme } from '@romanbakurov/vellira-tokens';
 import type { ReactElement } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { useTheme, useThemeStyles } from '../../../theme';
 import { useTabs } from '../TabsContext';
 
-import { styles } from './Tab.styles';
+import { createStyles } from './Tab.styles';
 import type { TabProps } from './types';
 
 export const Tab = ({
@@ -17,6 +17,8 @@ export const Tab = ({
   style,
   textStyle,
 }: TabProps) => {
+  const { theme } = useTheme();
+  const styles = useThemeStyles(createStyles);
   const { activeIndex, appearance, orientation, setActiveIndex } = useTabs();
   const isActive = activeIndex === index;
   const isPills = appearance === 'pills';
@@ -25,10 +27,10 @@ export const Tab = ({
 
   const iconColor =
     isPills && isActive
-      ? theme.colors.text.inverse
+      ? theme.components.tabs.pills.active.fg
       : isActive
-        ? theme.colors.interactive.primary
-        : theme.colors.text.secondary;
+        ? theme.components.tabs.trigger.active.fg
+        : theme.components.tabs.trigger.default.fg;
 
   const renderedIcon = isValidElement(icon)
     ? cloneElement(icon as ReactElement<{ color?: string }>, {
@@ -61,6 +63,7 @@ export const Tab = ({
             styles.tabText,
             isPills && isActive && styles.tabTextPillsActive,
             !isPills && isActive && styles.tabTextActive,
+            disabled && styles.tabTextDisabled,
             textStyle,
           ]}
         >

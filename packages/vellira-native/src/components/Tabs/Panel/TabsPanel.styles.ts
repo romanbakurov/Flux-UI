@@ -1,11 +1,12 @@
-import { theme } from '@romanbakurov/vellira-tokens';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  panel: {
-    flex: 1,
-    minWidth: 0,
-    backgroundColor: theme.colors.surface.default,
-    paddingTop: theme.spacing[3],
-  },
-});
+import type { NativeTheme } from '../../../theme';
+
+export const createStyles = (theme: NativeTheme) =>
+  StyleSheet.create({
+    panel: {
+      flex: 1,
+      minWidth: 0,
+      padding: theme.tokens.spacing[4],
+    },
+  });

@@ -29,6 +29,11 @@ export const control = {
       fg: text.inverse,
       border: colors.primary[800],
     },
+    muted: {
+      bg: colors.primary[600],
+      fg: colors.mono[50],
+      border: colors.primary[600],
+    },
     radioDefault: {
       bg: colors.primary[400],
       fg: colors.primary[600],

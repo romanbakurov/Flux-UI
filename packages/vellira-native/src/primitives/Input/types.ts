@@ -3,6 +3,7 @@ import type {
   InputSize,
   InputType,
 } from '@romanbakurov/vellira-types';
+import type { ReactElement } from 'react';
 import type {
   StyleProp,
   TextInputProps,
@@ -13,6 +14,11 @@ import type {
 export type { InputSize, InputType } from '@romanbakurov/vellira-types';
 
 export type NativeInputKeyboardType = TextInputProps['keyboardType'];
+
+export type InputIconElement = ReactElement<{
+  color?: string;
+  size?: number;
+}>;
 
 export interface InputProps
   extends
@@ -32,6 +38,8 @@ export interface InputProps
   size?: InputSize;
   error?: string;
   type?: InputType;
+  leftIcon?: InputIconElement;
+  iconSize?: number;
   containerStyle?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
 }
