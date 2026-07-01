@@ -327,6 +327,7 @@ pnpm ci
 ```bash
 pnpm ci:quality
 pnpm ci:build
+pnpm ci:typecheck
 pnpm ci:playwright
 pnpm ci:test
 pnpm ci:smoke

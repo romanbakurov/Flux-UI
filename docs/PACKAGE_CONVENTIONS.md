@@ -249,7 +249,7 @@ Before a package can be released, all checks must pass:
 pnpm ci
 ```
 
-`pnpm ci` runs `ci:quality`, `ci:build`, `ci:playwright`, `ci:test`, and `ci:smoke`. Use the narrower scripts for local iteration when you only need one gate.
+`pnpm ci` runs `ci:quality`, `ci:build`, `ci:typecheck`, `ci:playwright`, `ci:test`, and `ci:smoke`. Use the narrower scripts for local iteration when you only need one gate.
 
 ---
 

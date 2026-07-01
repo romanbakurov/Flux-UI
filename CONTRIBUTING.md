@@ -93,7 +93,7 @@ Before opening a Pull Request, all commands below must succeed:
 pnpm ci
 ```
 
-`pnpm ci` expands to `ci:quality`, `ci:build`, `ci:playwright`, `ci:test`, and `ci:smoke`. For focused local checks, run the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
+`pnpm ci` expands to `ci:quality`, `ci:build`, `ci:typecheck`, `ci:playwright`, `ci:test`, and `ci:smoke`. For focused local checks, run the narrower scripts directly: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:coverage`, `pnpm build`, `pnpm smoke:packages`, `pnpm check:public-api`, or `pnpm docs:api:check`.
 
 Do not open a Pull Request if any of these checks fail.
 
