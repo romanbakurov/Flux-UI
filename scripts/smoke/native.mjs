@@ -309,8 +309,15 @@ if (!theme.components.select) {
   throw new Error('select component tokens missing');
 }
 
+function isColorToken(value) {
+  return (
+    typeof value === 'string' &&
+    (value === 'transparent' || /^#[0-9a-f]{6}$/i.test(value))
+  );
+}
+
 function assertColorToken(value, name) {
-  if (typeof value !== 'string' || !value.startsWith('#')) {
+  if (!isColorToken(value)) {
     throw new Error(name + ' token invalid');
   }
 }

@@ -211,8 +211,12 @@ if (!theme.components.select) {
   throw new Error('select component tokens missing');
 }
 
+const isColorToken = (value) =>
+  typeof value === 'string' &&
+  (value === 'transparent' || /^#[0-9a-f]{6}$/i.test(value));
+
 const assertColor = (value, name) => {
-  if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) {
+  if (!isColorToken(value)) {
     throw new Error(name + ' token invalid');
   }
 };
