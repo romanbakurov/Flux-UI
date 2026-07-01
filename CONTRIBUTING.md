@@ -155,6 +155,8 @@ Every public API change must pass:
 pnpm check:public-api
 ```
 
+This check validates package export keys and public symbol snapshots. Intentional public API additions or removals must update `scripts/check-public-api.mjs` in the same change.
+
 ---
 
 # Documentation

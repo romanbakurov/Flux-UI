@@ -52,6 +52,7 @@ Project documentation:
 | `@romanbakurov/vellira-types`  | Renderer-neutral TypeScript contracts |
 | `@romanbakurov/vellira-icons`  | Shared icon library                   |
 | `@romanbakurov/vellira-tokens` | Design tokens and theme               |
+| `@romanbakurov/vellira-assets` | Shared fonts and static assets        |
 
 ---
 
@@ -81,7 +82,8 @@ packages/
 ├── vellira-core
 ├── vellira-types
 ├── vellira-icons
-└── vellira-tokens
+├── vellira-tokens
+└── vellira-assets
 ```
 
 Each package has a single responsibility.
@@ -90,6 +92,7 @@ Each package has a single responsibility.
 - **types** define renderer-neutral public contracts.
 - **core** contains reusable runtime logic and hooks.
 - **icons** provides shared icon components.
+- **assets** provides shared fonts and static assets.
 - **web** contains DOM-specific implementations.
 - **native** contains React Native implementations.
 
@@ -133,6 +136,7 @@ pnpm add @romanbakurov/vellira-web
 pnpm add @romanbakurov/vellira-native
 pnpm add @romanbakurov/vellira-icons
 pnpm add @romanbakurov/vellira-tokens
+pnpm add @romanbakurov/vellira-assets
 ```
 
 ---
@@ -211,18 +215,19 @@ Vellira exposes a shared `theme` object through
 `@romanbakurov/vellira-tokens`.
 
 ```ts
-import { theme } from '@romanbakurov/vellira-tokens';
+import { darkTheme, lightTheme, theme } from '@romanbakurov/vellira-tokens';
 
-theme.colors.primary;
-theme.colors.secondary;
+theme.semantic.surface.default;
+theme.semantic.text.primary;
+theme.components.button.primary.default.bg;
 
-theme.spacing[4];
+theme.tokens.spacing[4];
+theme.tokens.radius.md;
+theme.tokens.typography.family.regular;
+theme.tokens.typography.size.md;
 
-theme.radius.md;
-
-theme.typography.family.regular;
-
-theme.typography.size.md;
+lightTheme.name;
+darkTheme.semantic.focus.ring;
 ```
 
 Tokens are available as:
@@ -387,6 +392,7 @@ pnpm up @romanbakurov/vellira-web
 pnpm up @romanbakurov/vellira-native
 pnpm up @romanbakurov/vellira-icons
 pnpm up @romanbakurov/vellira-tokens
+pnpm up @romanbakurov/vellira-assets
 ```
 
 Then reinstall dependencies:
@@ -418,7 +424,7 @@ See:
 
 Vellira maintains stable public package exports.
 
-Every release validates public APIs using automated checks.
+Every release validates package export keys and public symbol snapshots using automated checks.
 
 Breaking changes are introduced only in major releases whenever possible.
 

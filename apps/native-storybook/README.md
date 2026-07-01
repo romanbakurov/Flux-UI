@@ -17,13 +17,6 @@ pnpm --filter native-storybook ios
 pnpm --filter native-storybook android
 ```
 
-## Native Storybook
-
-```bash
-pnpm --filter native-storybook ios
-pnpm --filter native-storybook android
-```
-
 If stories are added or removed, regenerate the React Native Storybook registry:
 
 ```bash
@@ -38,7 +31,7 @@ Native package unit tests run outside the simulator:
 pnpm --filter @romanbakurov/vellira-native test
 ```
 
-The playground itself is mainly for manual Expo and on-device Storybook checks.
+The Storybook app is mainly for manual Expo and on-device component checks.
 
 ## Notes
 

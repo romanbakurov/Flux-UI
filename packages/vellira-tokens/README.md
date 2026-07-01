@@ -2,13 +2,13 @@
 
 Shared design tokens for Vellira.
 
-This package is the single source of truth for colors, typography, spacing, radius, shadows, and z-index values used by both the Web and React Native packages.
+This package is the single source of truth for primitive colors, semantic colors, component tokens, typography, spacing, radius, shadows, and z-index values used by both the Web and React Native packages.
 
 ## Features
 
 - Shared design tokens
 - Semantic color system
-- Renderer-neutral theme object
+- Renderer-neutral theme objects
 - Generated CSS variables
 - TypeScript-first API
 
@@ -17,16 +17,28 @@ This package is the single source of truth for colors, typography, spacing, radi
 ## Usage
 
 ```ts
-import { theme } from '@romanbakurov/vellira-tokens';
+import {
+  darkTheme,
+  highContrastTheme,
+  lightTheme,
+  theme,
+} from '@romanbakurov/vellira-tokens';
 
-theme.colors.primary;
-theme.colors.surface.default;
-theme.colors.text.primary;
-theme.colors.interactive.primary;
+theme.semantic.surface.default;
+theme.semantic.text.primary;
+theme.semantic.border.default;
+theme.semantic.status.success.fg;
 
-theme.typography.family.regular;
-theme.spacing[4];
-theme.radius.md;
+theme.components.button.primary.default.bg;
+theme.components.input.default.bg; // may be a hex color or transparent
+
+theme.tokens.typography.family.regular;
+theme.tokens.spacing[4];
+theme.tokens.radius.md;
+
+lightTheme.name;
+darkTheme.name;
+highContrastTheme.name;
 ```
 
 ---
@@ -40,33 +52,42 @@ Current semantic groups include:
 - `surface`
 - `text`
 - `border`
-- `interactive`
 - `status`
 - `focus`
-- `overlay`
 - `divider`
-- `selection`
+- `navigation`
 - `skeleton`
 
 Example:
 
 ```ts
-theme.colors.surface.default;
-theme.colors.surface.elevated;
+theme.semantic.surface.default;
+theme.semantic.surface.elevated;
 
-theme.colors.text.primary;
-theme.colors.text.secondary;
+theme.semantic.text.primary;
+theme.semantic.text.secondary;
 
-theme.colors.border.default;
+theme.semantic.border.default;
 
-theme.colors.interactive.primary;
-theme.colors.interactive.primaryHover;
-
-theme.colors.status.success;
-theme.colors.status.error;
+theme.semantic.status.success.fg;
+theme.semantic.status.error.fg;
 ```
 
 Using semantic tokens instead of raw palette values makes components easier to maintain and prepares the design system for future theming.
+
+---
+
+## Component Tokens
+
+Component tokens define renderer-neutral values for component states.
+
+```ts
+theme.components.button.primary.default.bg;
+theme.components.input.focus.border;
+theme.components.dropdown.content.bg;
+```
+
+Color-like component tokens may use either hex colors or the literal `transparent` when the intended rendered value is transparent.
 
 ---
 
@@ -81,11 +102,11 @@ import '@romanbakurov/vellira-tokens/css';
 Examples:
 
 ```css
---color-primary
---color-surface-default
---color-text-primary
---color-border-default
---color-interactive-primary
+--color-mono-0
+--surface-default
+--text-primary
+--border-default
+--button-primary-default-bg
 ```
 
 ---

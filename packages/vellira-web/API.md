@@ -63,7 +63,7 @@ import {
 | `TextWrap`          | `'nowrap'`, `'wrap'`, `'truncate'`                                          |
 | `TabsAppearance`    | `'default'`, `'underline'`, `'pills'`                                       |
 | `FloatingPlacement` | `'top'`, `'bottom'`, `'left'`, `'right'`                                    |
-| `ThemeName`         | `'light'`, `'dark'`, `'high-contrast'`                                      |
+| `ThemeName`         | `'light'`, `'dark'`, `'high-contrast'`, `'highContrast'`                    |
 
 ### TooltipDelay
 
@@ -524,11 +524,12 @@ import { ThemeProvider } from '@romanbakurov/vellira-web';
 
 ### Supported Themes
 
-| Theme           | Description          |
-| --------------- | -------------------- |
-| `light`         | Default light theme. |
-| `dark`          | Dark theme.          |
-| `high-contrast` | High contrast theme. |
+| Theme           | Description                         |
+| --------------- | ----------------------------------- |
+| `light`         | Default light theme.                |
+| `dark`          | Dark theme.                         |
+| `high-contrast` | High contrast theme.                |
+| `highContrast`  | Alias accepted by the provider API. |
 
 ### Controlled
 

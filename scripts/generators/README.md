@@ -70,15 +70,16 @@ scripts/
 
 ### Template Responsibilities
 
-| Template            | Purpose                    |
-| ------------------- | -------------------------- |
-| web-component.ts    | React Web component        |
-| native-component.ts | React Native component     |
-| story.ts            | Storybook stories          |
-| styles.ts           | SCSS module template       |
-| test.ts             | Component test template    |
-| types.ts            | Component type definitions |
-| index.ts            | Template exports           |
+| Template                   | Purpose                      |
+| -------------------------- | ---------------------------- |
+| component-web.ts           | React Web component          |
+| component-native.ts        | React Native component       |
+| component-story.ts         | Storybook stories            |
+| component-styles.ts        | SCSS module template         |
+| component-native-styles.ts | React Native styles template |
+| component-test.ts          | Component test template      |
+| component-types.ts         | Component type definitions   |
+| index.ts                   | Template exports             |
 
 ## Features
 

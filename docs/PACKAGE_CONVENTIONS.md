@@ -20,6 +20,7 @@ Current packages:
 | `@romanbakurov/vellira-types`  | Shared TypeScript contracts    |
 | `@romanbakurov/vellira-icons`  | Cross-platform icon library    |
 | `@romanbakurov/vellira-tokens` | Design tokens                  |
+| `@romanbakurov/vellira-assets` | Shared fonts and static assets |
 
 A package should not take responsibilities that belong to another package.
 
@@ -95,6 +96,10 @@ icons          types
           ├───────┘
           │
      web / native
+
+assets
+   │
+ apps / docs / storybook
 ```
 
 Rules:
@@ -102,6 +107,7 @@ Rules:
 - web must not depend on native
 - native must not depend on web
 - tokens must remain independent
+- assets must remain static and renderer-neutral
 - types must not import runtime code
 - core must not import renderer-specific code
 
@@ -120,6 +126,8 @@ Do not expose:
 - internal hooks unless intentionally public
 
 Every public export becomes part of the package contract.
+
+`pnpm check:public-api` validates both package export keys and public symbol snapshots for package entry points. If a public symbol is intentionally added or removed, update the snapshot in `scripts/check-public-api.mjs` in the same change.
 
 ---
 
@@ -144,7 +152,7 @@ Avoid wildcard exports.
 
 # Build
 
-Every package must build independently.
+Every code package must build independently.
 
 Packages should produce:
 
@@ -157,6 +165,8 @@ Generated output belongs only inside:
 ```text
 dist/
 ```
+
+Static asset packages may publish source assets directly when they do not need a compile step.
 
 ---
 

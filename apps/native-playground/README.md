@@ -20,15 +20,12 @@ pnpm --filter native-playground web
 
 ## Native Storybook
 
+Use `apps/native-storybook` for on-device Storybook:
+
 ```bash
+pnpm --filter native-storybook start
 pnpm --filter native-storybook ios
 pnpm --filter native-storybook android
-```
-
-If stories are added or removed, regenerate the React Native Storybook registry:
-
-```bash
-pnpm --filter native-storybook exec sb-rn-get-stories
 ```
 
 ## Testing
@@ -46,4 +43,4 @@ The playground itself is mainly for manual Expo and on-device Storybook checks.
 - Built with Expo `56`.
 - Uses React Native `0.85`.
 - Consumes `@romanbakurov/vellira-native` from the workspace.
-- Native stories cover Button, Checkbox, Input, FormField, RadioGroup, Select, Dropdown, Tabs, Tooltip, and Modal.
+- Manual playground screens cover the native package in an Expo app context.

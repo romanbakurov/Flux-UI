@@ -5,10 +5,32 @@ API reference for `@romanbakurov/vellira-native`.
 Import public components from the package root:
 
 ```tsx
-import { Button, Input, Modal, Select } from '@romanbakurov/vellira-native';
+import {
+  Button,
+  Input,
+  Modal,
+  Select,
+  ThemeProvider,
+  useTheme,
+} from '@romanbakurov/vellira-native';
 ```
 
 The native package uses React Native `StyleSheet` styles and consumes shared design tokens from `@romanbakurov/vellira-tokens`.
+
+## Contents
+
+- Button
+- Checkbox
+- Input
+- FormField
+- RadioGroup
+- Select
+- Dropdown
+- Tabs
+- Tooltip
+- Modal
+- ThemeProvider
+- useTheme
 
 ## API Conventions
 
@@ -470,3 +492,61 @@ import { Button, Modal } from '@romanbakurov/vellira-native';
 ### Modal Accessibility
 
 Provide a clear title and body copy for screen reader users. The native implementation exposes modal structure and close behavior, while the consuming app remains responsible for meaningful labels and actions.
+
+## ThemeProvider
+
+Provides theme context for native components.
+
+```tsx
+import { ThemeProvider } from '@romanbakurov/vellira-native';
+
+<ThemeProvider defaultTheme='dark'>
+  <App />
+</ThemeProvider>;
+```
+
+### ThemeProvider Props
+
+<!-- api-docgen:start native.ThemeProviderProps.ThemeProvider -->
+
+<!-- api-docgen:start native.ThemeProviderProps.ThemeProviderProps -->
+
+| Prop            | Type                                  | Required | Description                               |
+| --------------- | ------------------------------------- | -------- | ----------------------------------------- |
+| `children`      | `ReactNode`                           | Yes      | Content wrapped by the provider.          |
+| `theme`         | `'light' \| 'dark' \| 'highContrast'` | No       | Controlled theme value.                   |
+| `defaultTheme`  | `'light' \| 'dark' \| 'highContrast'` | No       | Initial theme for uncontrolled usage.     |
+| `onThemeChange` | `(theme: NativeThemeName) => void`    | No       | Called whenever the active theme changes. |
+
+<!-- api-docgen:end native.ThemeProviderProps.ThemeProviderProps -->
+<!-- api-docgen:end native.ThemeProviderProps.ThemeProvider -->
+
+### Supported Themes
+
+| Theme          | Description                 |
+| -------------- | --------------------------- |
+| `light`        | Default light theme.        |
+| `dark`         | Dark theme.                 |
+| `highContrast` | High contrast native theme. |
+
+## useTheme
+
+Returns the current native theme, current theme name, and a function to update it.
+
+```tsx
+import { useTheme } from '@romanbakurov/vellira-native';
+
+function ThemeReader() {
+  const { themeName, theme, setTheme } = useTheme();
+
+  return null;
+}
+```
+
+### Returns
+
+| Property    | Type                               | Description                |
+| ----------- | ---------------------------------- | -------------------------- |
+| `themeName` | `NativeThemeName`                  | Current active theme name. |
+| `theme`     | `NativeTheme`                      | Current token object.      |
+| `setTheme`  | `(theme: NativeThemeName) => void` | Updates the active theme.  |

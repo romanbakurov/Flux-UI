@@ -34,4 +34,4 @@ Chromatic publishes the hosted visual review build from this Storybook app.
 
 - Uses Storybook React Vite.
 - Uses Chromatic for hosted visual review.
-- Fonts used by Storybook are served from `apps/storybook/public/fonts`.
+- Fonts used by Storybook come from `@romanbakurov/vellira-assets`.
